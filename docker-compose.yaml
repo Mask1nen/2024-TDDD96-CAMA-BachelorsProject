@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./cama_backend        
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./cama_backend:/cama_backend
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build: ./cama_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./cama_frontend:/cama_frontend
+
+
