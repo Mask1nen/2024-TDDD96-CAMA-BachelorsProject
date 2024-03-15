@@ -24,6 +24,11 @@ If you want to learn more about creating good readme files then refer the follow
 
 
 
+## Öppna miljön med docker
+
+1. installera docker copmose https://docs.docker.com/compose/install/
+2. I rooten skriv `docker compose build`
+3. Fortfarande i rooten skriv `docker compose up`
 
 ## Öppna miljön första gången
 
