@@ -4,7 +4,7 @@ WORKDIR /cama_frontend
 
 COPY . .
 
-RUN npm install
+RUN npm install -D
 
 EXPOSE 3000
 
