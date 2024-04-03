@@ -15,15 +15,17 @@ Ex:
 
 # Brancher
 
-main - rör ej
+- main - rör ej
 
-dev - Rör oftast ej
+- dev - Rör oftast ej
 
-feature - Här sker utveckling skapa från main med `git branch -c feat/[user story number]-[short desc]`
+- feature - Här sker utveckling skapa från main med `git switch -c feat/[user story number]-[short desc]`
+  - Man kan göra brancher från feature brancher för att t.ex dela upp arbete enklare med ex `git switch -c feat/[user story number]-[short desc]/[short desc2]`
 
-release - Vid release för att uppdatera denna branch kör `git merge dev`
 
-hotfix - Skapas från main om det behövs från main med `git branch -c hotfix/[short desc]`
+- release - Vid release för att uppdatera denna branch kör `git merge dev`
+
+- hotfix - Skapas från main om det behövs från main med `git switch -c hotfix/[short desc]`
 
 
 # Introduction
