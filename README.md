@@ -1,3 +1,31 @@
+# Commit-meddelanden
+Commitmeddelanden kontrolleras efter regex:
+```regex
+(\d{1,4}|N\/A) (fix|feat|refactor|test|doc|other): .*
+```
+
+Ex:
+
+`101 fix: fixed this`
+
+`N/A other: did something that does not go under category`
+
+`50 feat: landing page done`
+
+
+# Brancher
+
+main - rör ej
+
+dev - Rör oftast ej
+
+feature - Här sker utveckling skapa från main med `git branch -c feat/[user story number]-[short desc]`
+
+release - Vid release för att uppdatera denna branch kör `git merge dev`
+
+hotfix - Skapas från main om det behövs
+
+
 # Introduction
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
 
@@ -10,18 +38,6 @@ TODO: Guide users through getting your code up and running on their own system. 
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests.
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better.
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
-
-
-
-
 
 
 ## Öppna miljön med docker
@@ -43,4 +59,4 @@ If you want to learn more about creating good readme files then refer the follow
 
 5. Starta django-server i cama\_backend `python3 manage.py runserver`
 
-6. Starta frontend i cama\_frontend i dev mode `npm start` 
+6. Starta frontend i cama\_frontend i dev mode `npm start`
