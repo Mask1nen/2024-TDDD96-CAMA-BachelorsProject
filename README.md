@@ -17,7 +17,7 @@ Ex:
 
 - main - rör ej
 
-- dev - Rör oftast ej
+- dev - Rör oftast ej. Skapa merge requests hit från färdiga feature branches från gitlab (code->branches->[din branch]->create merge request)
 
 - feature - Här sker utveckling skapa från main med `git switch -c feat/[user story number]-[short desc]`
   - Man kan göra brancher från feature brancher för att t.ex dela upp arbete enklare med ex `git switch -c feat/[user story number]-[short desc]/[short desc2]`
