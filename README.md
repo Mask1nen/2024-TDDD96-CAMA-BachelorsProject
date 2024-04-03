@@ -23,7 +23,7 @@ feature - Här sker utveckling skapa från main med `git branch -c feat/[user st
 
 release - Vid release för att uppdatera denna branch kör `git merge dev`
 
-hotfix - Skapas från main om det behövs
+hotfix - Skapas från main om det behövs från main med `git branch -c hotfix/[short desc]`
 
 
 # Introduction
