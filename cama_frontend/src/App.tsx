@@ -7,9 +7,7 @@ import HomePage from './pages/Home/HomePage';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className='sticky'>
       <Navbar />
-      </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         </Routes>
