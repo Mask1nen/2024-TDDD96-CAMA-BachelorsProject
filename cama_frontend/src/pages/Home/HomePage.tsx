@@ -17,6 +17,30 @@ const HomePage: React.FC = () => {
         <section className="py-8">
           <h2 className="text-2xl font-semibold text-gray-700">Our Projects</h2>
           {/* Add project cards or content here */}
+          <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
+        <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
+        <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
+        <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
+        <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
+        <section className="py-8">
+          <h2 className="text-2xl font-semibold text-gray-700">About Us</h2>
+          <p className="mt-2 text-gray-600">We are a team dedicated to creating innovative solutions. Our mission is to deliver exceptional service and build long-term relationships with our community.</p>
+        </section>
         </section>
       </main>
       <footer className="text-center py-6 text-gray-600">
