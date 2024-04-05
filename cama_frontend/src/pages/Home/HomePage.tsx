@@ -10,8 +10,28 @@ import {
   Typography,
 } from "@mui/material";
 import { MinusCircleIcon } from "@heroicons/react/16/solid";
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { useDemoData } from '@mui/x-data-grid-generator';
+
+const VISIBLE_FIELDS = ['name', 'rating', 'country', 'dateCreated', 'isAdmin'];
 
 const HomePage: React.FC = () => {
+
+  const rows = [
+    { id: 1, name: 'John Doe', age: 30, country: 'USA' },
+    { id: 2, name: 'Jane Doe', age: 25, country: 'Canada' },
+    // Add more rows as needed
+  ];
+
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    { field: 'name', headerName: 'Name', width: 150 },
+    { field: 'age', headerName: 'Age', width: 110 },
+    { field: 'country', headerName: 'Country', width: 150 },
+  ];
+  
+  
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto">
@@ -32,46 +52,11 @@ const HomePage: React.FC = () => {
             <img src={mainImage} alt="Main" className="rounded-lg shadow-lg" />
           </div>
         </div>
-
         {/* Section 2 */}
-        <section className="flex flex-wrap items-center justify-center py-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-6">
-            Most Viewed
-          </h2>
-          <div className="grid grid-cols-2 gap-4">
-            <a href="#" className="block">
-              <img
-                src={bild2}
-                alt="Description"
-                className="rounded-lg"
-              />
-            </a>
-            <a href="#" className="block">
-              <img
-                src={bild2}
-                alt="Description"
-                className="rounded-lg"
-              />
-            </a>
-            <a href="#" className="block">
-              <img
-                src={bild2}
-                alt="Description"
-                className="rounded-lg"
-              />
-            </a>
-            <a href="#" className="block">
-              <img
-                src={bild2}
-                alt="Description"
-                className="rounded-lg"
-              />
-            </a>
-          </div>
-        </section>
+        
 
         {/* Section 3 */}
-        <section className="flex flex-wrap items-center justify-center py-8">
+        <section className="flex flex-wrap justify-center py-8">
           <h2 className="text-2xl font-semibold text-gray-700 mb-6">
             Choose Between These Subjects
           </h2>
@@ -193,19 +178,22 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Section 4 */}
-        {/* Similar to Section 3 but with only 2 cards */}
 
         {/* Section 5 */}
-        <section className="py-8">
-          <h2 className="text-2xl font-semibold text-gray-700">
-            Display Studies Placeholder Section
-          </h2>
-          {/* Placeholder content */}
-        </section>
-
-        <footer className="text-center py-6 text-gray-600">
-          © 2024 Our Site. All rights reserved.
-        </footer>
+        <section className="py-8 mx-4">
+      <h2 className="text-2xl font-semibold text-gray-700 py-4 text-left mx-4 ">
+        Display Studies
+      </h2>
+      <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection
+        // For demo data
+         //{...data}
+      />
+    </div>
+    </section>
       </div>
     </div>
   );

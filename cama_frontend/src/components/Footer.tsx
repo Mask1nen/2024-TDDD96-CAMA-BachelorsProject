@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 function Footer() {
   
@@ -12,47 +11,65 @@ function Footer() {
         <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                    <a href="#" className=" hover:underline">About</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Team</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">App</a>
-                </li>
+              <li className="mb-4">
+                <a href="#" className=" hover:underline">
+                  About
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Team
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  App
+                </a>
+              </li>
             </ul>
-        </div>
-        <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Help center
+            </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Documentation</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Data</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Metadata</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Metadata</a>
-                </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Documentation
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Data
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Metadata
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Metadata
+                </a>
+              </li>
             </ul>
-        </div>
-        <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contact</h2>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              Contact
+            </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Contact info</a>
-                </li>
+              <li className="mb-4">
+                <a href="#" className="hover:underline">
+                  Contact info
+                </a>
+              </li>
             </ul>
+          </div>
         </div>
       </div>
-    </div>
-</footer>
-
-
-	);
-  }
-  export default Footer;
+    </footer>
+  );
+}
+export default Footer;

@@ -9,6 +9,7 @@ import Profile from './pages/Profile/Profile';
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
+import DatabasePage from './pages/Database/DatabasePage.tsx';
 
 
 
@@ -41,6 +42,7 @@ const theme = createTheme({
             <Route path="/Home" element={<HomePage />} />
             <Route path="/Subjects" element={<HomePage />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/Database" element={<DatabasePage />} />
         </Routes>
       </Container>
       <Footer /></ThemeProvider>
