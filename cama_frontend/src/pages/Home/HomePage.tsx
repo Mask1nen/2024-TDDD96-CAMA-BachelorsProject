@@ -14,7 +14,7 @@ import { MinusCircleIcon } from "@heroicons/react/16/solid";
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         {/* Section 1 */}
         <div className="flex flex-wrap items-center justify-center py-12">
           <div className="w-full md:w-1/2 lg:w-2/5 px-4 mb-8 md:mb-0">

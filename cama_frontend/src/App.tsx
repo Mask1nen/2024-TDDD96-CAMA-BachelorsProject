@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  Navbar from './components/Navbar.tsx';
 import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
+import Profile from './pages/Profile/Profile';
 
 import { createTheme } from '@mui/material/styles';
+import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 
 
@@ -16,7 +18,7 @@ const theme = createTheme({
   palette: {
     primary: {
       light: '#757ce8',
-      main: '#3f50b5',
+      main: '#000000',
       dark: '#002884',
       contrastText: '#fff',
     },
@@ -33,11 +35,14 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
+      <Container sx={{px:4, py:3}}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/Subjects" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Home" element={<HomePage />} />
+          <Route path="/Subjects" element={<HomePage />} />
+          <Route path="/Profile" element={<Profile />} />
       </Routes>
+      </Container>
       <Footer /></ThemeProvider>
     </Router>
   )
