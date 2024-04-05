@@ -8,4 +8,4 @@ class TestClass:
 
     def test(self):
         sentence = self.start()
-        assert sentence == "not this"
+        assert sentence == "not that"
