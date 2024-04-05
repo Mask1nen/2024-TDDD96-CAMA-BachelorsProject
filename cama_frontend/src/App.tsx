@@ -35,13 +35,13 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
-      <Container sx={{px:4, py:3}}>
-      <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Home" element={<HomePage />} />
-          <Route path="/Subjects" element={<HomePage />} />
-          <Route path="/Profile" element={<Profile />} />
-      </Routes>
+      <Container sx={{px:4, py:0}} className="bg-gray-100">
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/Home" element={<HomePage />} />
+            <Route path="/Subjects" element={<HomePage />} />
+            <Route path="/Profile" element={<Profile />} />
+        </Routes>
       </Container>
       <Footer /></ThemeProvider>
     </Router>
