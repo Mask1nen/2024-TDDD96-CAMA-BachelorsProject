@@ -1,6 +1,10 @@
 stages:
   - build
   - test
+before_script:
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r cama_backend/requirements.txt
 
 build-job:
   stage: build
@@ -8,11 +12,8 @@ build-job:
   script:
     - echo "Hello, $GITLAB_USER_LOGIN!"
 
-test-job1:
+run_tests:
   stage: test
   image: python:3.12-slim
   script:
-      python3 -m venv .venv
-      source .venv/bin/activate
-      pip install -r cama_backend/requirements.txt
-      pytest
+    - pytest
