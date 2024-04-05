@@ -37,7 +37,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" color='default'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -121,7 +121,7 @@ function Navbar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{  color: 'white', display: 'block' }}
+                  sx={{  color: 'black', display: 'block' }}
                   >
                   {page}
                 </Button>
