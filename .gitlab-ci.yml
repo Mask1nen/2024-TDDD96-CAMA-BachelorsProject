@@ -4,11 +4,13 @@ stages:
 
 build-job:
   stage: build
+  image: python:3.12-slim
   script:
     - echo "Hello, $GITLAB_USER_LOGIN!"
 
 test-job1:
   stage: test
+  image: python:3.12-slim
   script:
-      python3 -m pip install -r requirements.txt
-      python3 -m pytest
+      pip install -r requirements.txt
+      pytest
