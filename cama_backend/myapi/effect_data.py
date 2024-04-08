@@ -5,7 +5,7 @@ from .study import Study
 # Create your models here.
 
 class EffectData(models.Model):
-    effect_size_number = models.IntegerField()
+    effect_size_number = models.AutoField(primary_key=True)
     study_id = models.ForeignKey(Study, on_delete=models.CASCADE)
     experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE)
     sd1i = models.FloatField(null=True)

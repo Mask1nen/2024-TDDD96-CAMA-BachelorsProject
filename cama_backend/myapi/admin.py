@@ -9,7 +9,7 @@ from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Imple
 from .effect_data import EffectData
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['orc_id', 'name', 'email', 'organisation', 'nr_uploads']
+    list_display = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
     search_fields = ['orc_id']
 
 

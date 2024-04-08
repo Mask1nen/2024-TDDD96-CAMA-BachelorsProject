@@ -22,7 +22,7 @@ class Implementation(models.Model):
 
 class Experiment(models.Model):
     study_id = models.ForeignKey(Study, on_delete=models.CASCADE)
-    experiment_nr = models.IntegerField()
+    experiment_nr = models.AutoField(primary_key=True)
     study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.SET_NULL)
     risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.SET_NULL)
     grade = models.ForeignKey(Grade, null=True, on_delete=models.SET_NULL)
