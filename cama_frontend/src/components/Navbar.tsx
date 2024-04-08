@@ -134,7 +134,7 @@ function Navbar() {
               <Button size="small"
                 key="addstudy"
                 variant="contained"
-                color="error"
+                color="primary"
                 sx={{mr:3}}
 
               >
