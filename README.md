@@ -46,6 +46,8 @@ TODO: Describe and show how to build your code and run the tests.
 2. I rooten skriv `docker compose build`
 3. Fortfarande i rooten skriv `docker compose up`
 
+In case of error, try: `docker compose up -V `
+
 ## Öppna miljön första gången
 
 1. Installera python venv

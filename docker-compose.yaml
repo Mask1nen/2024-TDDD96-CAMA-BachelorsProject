@@ -13,4 +13,5 @@ services:
       - "3000:3000"
     volumes:
       - ./cama_frontend:/cama_frontend
+      - /cama_frontend/node_modules
 
