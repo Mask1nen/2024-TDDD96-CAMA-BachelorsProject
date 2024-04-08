@@ -5,6 +5,7 @@ import  Navbar from './components/Navbar.tsx';
 import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
+import AboutPage from './pages/About/AboutPage.tsx';
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -41,6 +42,7 @@ const theme = createTheme({
           <Route path="/Home" element={<HomePage />} />
           <Route path="/Subjects" element={<HomePage />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/About" element={<AboutPage />} />
       </Routes>
       </Container>
       <Footer /></ThemeProvider>
