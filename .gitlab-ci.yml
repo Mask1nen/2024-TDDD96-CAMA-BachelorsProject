@@ -7,13 +7,12 @@ stages:
 build_back_end:
   stage: build
   image: python:3.12-slim
+  artifacts:
+    paths:
+      - cama_backend/tempenv
   cache:
     key: 'back_end'
     paths: 
-      - cama_backend/tempenv
-  artifacts:
-    key: 'back_end'
-    paths:
       - cama_backend/tempenv
   script:
     - pip install virtualenv
