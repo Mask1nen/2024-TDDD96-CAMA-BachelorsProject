@@ -10,12 +10,12 @@ build_back_end:
   cache:
     key: 'back_end_cache'
     paths: 
-      - cama_backend/.venv
+      - cama_backend/tempenv
   script:
     - pip install virtualenv
-    - cd /builds/filny841/g10-tddd96-pum/cama_backend
-    - virtualenv .venv
-    - source .venv/bin/activate
+    - cd cama_backend/
+    - virtualenv tempenv
+    - source tempenv/bin/activate
     - pip install --upgrade pip
     - pip install -r requirements.txt
 
@@ -24,7 +24,7 @@ test_back_end:
   image: python:3.12-slim
   needs: ['build_back_end']
   script:
-    - cd /builds/filny841/g10-tddd96-pum/cama_backend
+    - cd cama_backend/
     - source .venv/bin/activate
     - python -m pytest
     
