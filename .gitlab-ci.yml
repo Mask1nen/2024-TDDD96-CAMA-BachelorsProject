@@ -38,4 +38,4 @@ log_back_end:
   stage: log
   needs: ['test_back_end']
   script:
-    - $ECHO "Lägg till någon sorts logging här."
+    - echo "Lägg till någon sorts logging här."
