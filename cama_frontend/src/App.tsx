@@ -10,6 +10,7 @@ import AboutPage from './pages/About/AboutPage.tsx';
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
+import DatabasePage from './pages/Database/DatabasePage.tsx';
 
 
 
@@ -36,14 +37,15 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
-      <Container sx={{px:4, py:3}}>
-      <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Home" element={<HomePage />} />
-          <Route path="/Subjects" element={<HomePage />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/About" element={<AboutPage />} />
-      </Routes>
+      <Container sx={{px:4, py:0}} className="bg-gray-100">
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/Home" element={<HomePage />} />
+            <Route path="/Subjects" element={<HomePage />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Database" element={<DatabasePage />} />
+            <Route path="/About" element={<AboutPage />} />
+        </Routes>
       </Container>
       <Footer /></ThemeProvider>
     </Router>

@@ -37,7 +37,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="sticky" color='default'>
+    <AppBar position="sticky" color="default">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -134,7 +134,7 @@ function Navbar() {
               <Button size="small"
                 key="addstudy"
                 variant="contained"
-                color="error"
+                color="primary"
                 sx={{mr:3}}
 
               >

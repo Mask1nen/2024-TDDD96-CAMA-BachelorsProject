@@ -15,4 +15,3 @@ services:
       - ./cama_frontend:/cama_frontend
       - /cama_frontend/node_modules
 
-
