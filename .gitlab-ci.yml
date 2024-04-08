@@ -3,6 +3,7 @@
 stages:
   - build
   - test
+  - log
 
 build_back_end:
   stage: build
@@ -10,6 +11,8 @@ build_back_end:
   artifacts:
     paths:
       - cama_backend/tempenv
+    expire_in: 2 hrs
+    untracked: true
   cache:
     key: 'back_end'
     paths: 
@@ -31,4 +34,8 @@ test_back_end:
     - source tempenv/bin/activate
     - python -m pytest
     
-  
+log_back_end:
+  stage: log
+  needs: ['test_back_end']
+  script:
+    - $ECHO "Lägg till någon sorts logging här."
