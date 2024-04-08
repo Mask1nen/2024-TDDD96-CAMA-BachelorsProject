@@ -25,7 +25,7 @@ test_back_end:
   needs: ['build_back_end']
   script:
     - cd cama_backend/
-    - source .venv/bin/activate
+    - source tempenv/bin/activate
     - python -m pytest
     
   
