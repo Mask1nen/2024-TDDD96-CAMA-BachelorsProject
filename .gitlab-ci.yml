@@ -14,7 +14,7 @@ build_back_end:
   script:
     - pip install virtualenv
     - cd /builds/filny841/g10-tddd96-pum/cama_backend
-    - python -m venv .venv
+    - virtualenv .venv
     - source .venv/bin/activate
     - pip install --upgrade pip
     - pip install -r requirements.txt
