@@ -8,8 +8,9 @@ build_back_end:
   stage: build
   image: python:3.12-slim
   cache:
-    key: back_end_cache
-    paths: cama_backend/.venv
+    key: 'back_end_cache'
+    paths: 
+      - cama_backend/.venv
   script:
     - pip install virtualenv
     - cd /builds/filny841/g10-tddd96-pum/cama_backend
