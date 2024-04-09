@@ -31,12 +31,13 @@ test_back_end:
   needs: ['build_back_end']
   script:
     - cd cama_backend/
+    - ls -l
     - source tempenv/bin/activate
     - pytest --cov=myapi tests/
     - coverage xml
   artifacts:
     paths:
-      - coverage.xml    
+      - cama_backend/coverage.xml    
 log_back_end:
   stage: log
   needs: ['test_back_end']
@@ -47,5 +48,5 @@ log_back_end:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: coverage.xml
+        path:  cama_backend/coverage.xml    
     expire_in: 1 week
