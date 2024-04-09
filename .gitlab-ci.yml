@@ -45,11 +45,9 @@ log_back_end:
 build_front_end:
   stage: build
   image: node:21.6.2
-  timeout: 20s 
   script:
     - cd cama_frontend/
     - npm install -D
-    - npm run dev
   artifacts:
     paths:
       - cama_frontend/node_modules/
