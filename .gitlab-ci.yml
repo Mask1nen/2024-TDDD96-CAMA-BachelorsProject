@@ -34,7 +34,7 @@ test_back_end:
     - source tempenv/bin/activate
     - python -m pytest
     - pytest --cov=myapi tests/
-    - coverage.xml
+    - coverage xml
   artifacts:
     paths:
       - cama_backend/coverage.xml    
