@@ -29,17 +29,18 @@ test_back_end:
   stage: test
   image: python:3.12-slim
   needs: ['build_back_end']
+  coverage: '/TOTAL.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   script:
     - cd cama_backend/
     - ls -l
     - source tempenv/bin/activate
     - pytest --cov=myapi tests/
-    - coverage xml
-  artifacts:
-    paths:
-      - cama_backend/coverage.xml    
+    #- coverage xml
+  #artifacts:
+    #paths:
+      #- cama_backend/coverage.xml    
 log_back_end:
-  stage: log
+  #stage: log
   image: python:3.12-slim
   needs: ['test_back_end']
   script:
