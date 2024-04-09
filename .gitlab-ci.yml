@@ -33,9 +33,10 @@ test_back_end:
     - cd cama_backend/
     - source tempenv/bin/activate
     - python -m pytest
+    - pytest --cov=cama_backend/myapi/tests/
     
 log_back_end:
   stage: log
   needs: ['test_back_end']
   script:
-    - echo "Lägg till någon sorts logging här."
+    echo "hello"
