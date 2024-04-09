@@ -51,6 +51,7 @@ build_front_end:
   artifacts:
     paths:
       - cama_frontend/node_modules/
+    untracked: true
 
 
 test_front_end:
