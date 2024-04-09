@@ -57,5 +57,6 @@ test_front_end:
   stage: test
   script:
     - cd cama_frontend
+    - npm install -D
     - npm test
 
