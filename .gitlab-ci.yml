@@ -55,6 +55,7 @@ build_front_end:
 
 test_front_end:
   stage: test
+  image: node:21.6.2
   script:
     - cd cama_frontend
     - npm install -D
