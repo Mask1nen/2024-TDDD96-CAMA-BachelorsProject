@@ -39,26 +39,3 @@ log_back_end:
   needs: ['test_back_end']
   script:
     - echo "Lägg till någon sorts logging här."
-
-
-
-build_front_end:
-  stage: build
-  image: node:21.6.2
-  script:
-    - cd cama_frontend/
-    - npm install -D
-  artifacts:
-    paths:
-      - cama_frontend/node_modules/
-    untracked: true
-
-
-test_front_end:
-  stage: test
-  image: node:21.6.2
-  script:
-    - cd cama_frontend
-    - npm install -D
-    - npm test
-
