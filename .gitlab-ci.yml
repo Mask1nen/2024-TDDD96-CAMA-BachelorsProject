@@ -42,4 +42,4 @@ log_back_end:
   stage: log
   needs: ['test_back_end']
   script:
-    echo "hello"
+    - python -m coverage.py
