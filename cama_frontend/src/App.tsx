@@ -18,6 +18,7 @@ const App: React.FC = () => {
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
       light: '#757ce8',
       main: '#000000',

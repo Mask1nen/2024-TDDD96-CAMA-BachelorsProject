@@ -1,54 +1,66 @@
-import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+  Box,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { DataEntry } from "../types/dataType"; // Adjust the import path as necessary
+import rawData from "../data/data.json";
+import bild2 from "../assets/images/bild2.png";
 
+const data: DataEntry[] = rawData as unknown as DataEntry[];
 interface DatasetCardProps {
-  to: string;
-  image: string;
-  heading: string;
-  description: string;
-  content: string;
+  data: DataEntry;
 }
 
-const DatasetCard: React.FC<DatasetCardProps> = ({ to, image, heading, description, content }) => {
+const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 px-4 mb-4 transition-transform transform hover:scale-105 duration-300">
-      <Link to={to}>
+    <Box
+      sx={{
+        width: "100%",
+        marginBottom: 2,
+        transition: "transform 0.3s",
+        "&:hover": { transform: "scale(1.05)" },
+      }}
+    >
+      <Link to={data.to || "#!"}  style={{ textDecoration: "none" }}>
         <Card
           sx={{
             minWidth: 240,
             maxWidth: 320,
-            m: 4,
+            margin: "auto",
             maxHeight: "100%",
-            boxShadow: "0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)",
+            boxShadow:
+              "0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)",
           }}
         >
           <CardMedia
-            image={image}
-            sx={{
-              width: "100%",
-              height: 0,
-              paddingBottom: "min(60%, 200px)",
-              bgcolor: "rgba(0, 0, 0, 0.08)",
-            }}
+            component="img"
+            image={data.image || bild2} // Provide a default or a placeholder
+            alt={data.title}
+            sx={{ width: "100%", height: "auto" }}
           />
           <CardContent>
-            <Typography variant="h4" component="div">
-              {heading}
+            <Typography variant="h6" component="div" gutterBottom>
+              {data.title}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {description}
-            </Typography>
-            <Typography variant="body1">
-              {content}
+            <Typography variant="body2" color="text.secondary" gutterBottom>
+              {data.authors}
             </Typography>
           </CardContent>
-          <CardActions style={{ justifyContent: "center" }}>
-            <Button size="small" variant="contained" color="primary">Learn More</Button>
+          <CardActions sx={{ justifyContent: "center" }}>
+            <Button size="small" variant="contained" color="primary">
+              Learn More
+            </Button>
           </CardActions>
         </Card>
       </Link>
-    </div>
+    </Box>
   );
 };
 
