@@ -35,8 +35,15 @@ Ex:
 
 
 
-# Öppna miljön lokalt (använd docker istället)
+## Öppna miljön första gången
+1. installera docker copmose https://docs.docker.com/compose/install/
+2. I rooten skriv `docker compose build`
+3. Fortfarande i rooten skriv `docker compose up`
 
+In case of error, try: `docker compose up -V `
+
+
+# Öppna miljön lokalt (använd docker istället)
 1. Installera python venv
 
 2. `python3 -m venv .venv`
