@@ -69,3 +69,35 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+  color: black;
+  src: url('fonts/slick.eot');
+  src: url('/fonts/slick.ttf') format('embedded-opentype'),
+       url('/fonts/slick.woff') format('woff'),
+       url('/fonts/slick.ttf') format('truetype'),
+       url('/fonts/slick.svg#slick') format('svg');
+}
+.slick-prev,
+.slick-next {
+  color: #000 !important; /* Change arrow color */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Change the color of the arrows specifically */
+.slick-prev:before,
+.slick-next:before {
+  color: #000 !important;
+}
+
+/* Adjust positioning if needed */
+.slick-prev {
+  left: -45px !important;
+}
+.slick-next {
+  right: -45px !important;
+}
