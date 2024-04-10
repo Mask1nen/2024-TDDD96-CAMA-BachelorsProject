@@ -17,6 +17,7 @@ import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
 const App: React.FC = () => {
 
 const theme = createTheme({
+  
   palette: {
     mode: 'light',
     primary: {
@@ -48,7 +49,8 @@ const theme = createTheme({
             <Route path="/About" element={<AboutPage />} />
         </Routes>
       </Container>
-      <Footer /></ThemeProvider>
+      <Footer />
+      </ThemeProvider>
     </Router>
   )
 };
