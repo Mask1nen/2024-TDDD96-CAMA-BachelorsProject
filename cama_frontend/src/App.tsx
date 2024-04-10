@@ -6,6 +6,7 @@ import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
 import AboutPage from './pages/About/AboutPage.tsx';
+import UploadPage from './pages/Upload/UploadPage.tsx';
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -39,7 +40,7 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
-      <Container sx={{px:4, py:4}} className="bg-gray-100">
+      <Container sx={{px:4, py:4, minHeight: '60vh'}} className="bg-gray-100">
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />
@@ -47,6 +48,7 @@ const theme = createTheme({
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatasetsPage />} />
             <Route path="/About" element={<AboutPage />} />
+            <Route path="/Upload" element={<UploadPage />} />
         </Routes>
       </Container>
       <Footer />
