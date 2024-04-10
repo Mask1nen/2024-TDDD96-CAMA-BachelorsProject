@@ -39,7 +39,7 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
-      <Container sx={{px:4, py:0}} className="bg-gray-100">
+      <Container sx={{px:4, py:4}} className="bg-gray-100">
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />

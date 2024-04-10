@@ -53,7 +53,7 @@ const DatasetsPage: React.FC = () => {
       console.log("See All clicked. Implement navigation to the list view.");
     };
     return (
-      <Box sx={{ padding: "2rem", bgcolor: "#f0f0f0" }}>
+      <Box sx={{ px: 4}}>
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
             <Typography variant="h5" color="primary" component="h1" sx={{ display: "inline", mr: 1 }}>

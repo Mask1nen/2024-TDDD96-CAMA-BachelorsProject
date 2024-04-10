@@ -5,7 +5,7 @@ import '@mui/material';
 
 const ProfilePage: React.FC = () => {
 	return (
-		<Box sx={{py:4}}>
+		<Box sx={{py:2, pl:2}}>
 			<Grid container spacing={2}>
 				<Box display="flex">
 					<Grid item xs={6}>
