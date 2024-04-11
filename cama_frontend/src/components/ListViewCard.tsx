@@ -7,7 +7,7 @@ import {
   Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { DataEntry } from "../types/dataType"; // Adjust the import path as necessary
+import { DataEntry } from "../api/types"; // Adjust the import path as necessary
 import defaultImage from "../assets/images/bild2.png"; // Import the default image
 
 interface ListViewCardProps {

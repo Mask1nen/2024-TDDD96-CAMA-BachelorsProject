@@ -1,5 +1,14 @@
-import React, { useState } from "react";
-import { Grid, Box, Typography, Button, Pagination } from "@mui/material";
+import React, { useState, useMemo } from "react";
+import {
+  Grid,
+  Box,
+  Typography,
+  Button,
+  Pagination,
+  TextField,
+  InputAdornment,
+  Tooltip,
+} from "@mui/material";
 import DatasetCard from "../../components/DatasetCard";
 import ListViewCard from "../../components/ListViewCard";
 import bild2 from "../../assets/images/bild2.png";
@@ -8,9 +17,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
+import SearchIcon from "@mui/icons-material/Search";
 import data from "../../data/randomized_data.json";
-import { DataEntry } from "../../types/dataType";
+import { DataEntry } from "../../api/types";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "@mkyy/mui-search-bar";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import ViewModuleIcon from "@mui/icons-material/ViewModule";
 
 const sliderSettings = {
   dots: true,
@@ -47,20 +60,43 @@ const DatasetsPage = () => {
   const [displayMode, setDisplayMode] = useState("default"); // Toggle between 'default' and 'all'
   const [viewMode, setViewMode] = useState("grid"); // Toggle between 'grid' and 'list'
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const itemsPerPage = viewMode === "grid" ? 24 : 25;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const itemsPerPage = viewMode === "grid" ? 23 : 25;
+  //const totalPages = Math.ceil(data.length / itemsPerPage);
   const handleSeeAllClick = () => setDisplayMode("all");
   const toggleViewMode = () =>
     setViewMode(viewMode === "grid" ? "list" : "grid");
-  const trendingDatasets = data.slice(0, 8);
-  const latestDatasets = data.slice(-8);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+  const filteredData = data.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Use useMemo to efficiently compute filtered titles based on the search query
+  const filteredTitles = useMemo(() => {
+    const titles = data
+      .filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      .map((item) => item.title);
+    return [...new Set(titles)];
+  }, [searchQuery]);
+
+  // Use useMemo to compute the total pages based on filtered titles
+  const totalPages = useMemo(() => {
+    return Math.ceil(filteredTitles.length / itemsPerPage);
+  }, [filteredTitles, itemsPerPage]);
+
+  const trendingDatasets = filteredTitles.slice(0, 8);
+  const latestDatasets = filteredTitles.slice(-8);
 
   return (
-    <Box sx={{ px:4 }}>
+    <Box sx={{ px: 4 }}>
       {displayMode === "default" && (
         <>
-          {/* Trending Datasets Section */}
           <Grid
             container
             justifyContent="space-between"
@@ -70,20 +106,22 @@ const DatasetsPage = () => {
             <Typography variant="h5" color="primary" component="h1">
               Trending Datasets <TrendingUpIcon color="primary" />
             </Typography>
-            <Button variant="text" onClick={() => handleSeeAllClick()}>
+            <Button variant="text" onClick={handleSeeAllClick}>
               See All
             </Button>
           </Grid>
-
           <Slider {...sliderSettings}>
-            {trendingDatasets.map((entry, index) => (
-              <Box key={index} padding={1}>
-                <DatasetCard data={entry} />
-              </Box>
-            ))}
+            {latestDatasets.map((title, index) => {
+             
+                const datasetEntry = data.find(item => item.title === title);
+              return datasetEntry ? (
+                <Box key={index} padding={1}>
+                  <DatasetCard data={datasetEntry} />
+                </Box>
+              ) : null;
+            })}
           </Slider>
 
-          {/* Latest Datasets Section */}
           <Grid
             container
             justifyContent="space-between"
@@ -93,56 +131,91 @@ const DatasetsPage = () => {
             <Typography variant="h5" color="primary" component="h1">
               Latest Datasets <NewReleasesIcon color="primary" />
             </Typography>
-            <Button variant="text" onClick={() => handleSeeAllClick()}>
+            <Button variant="text" onClick={handleSeeAllClick}>
               See All
             </Button>
           </Grid>
           <Slider {...sliderSettings}>
-          {latestDatasets.map((entry, index) => (
-            <Box key={index} padding={1}>
-              <DatasetCard data={entry} />
-            </Box>
-          ))}
-        </Slider>
+            {latestDatasets.map((title, index) => {
+              // Assuming 'entry' is actually a title here, we need to find a data entry
+             
+                const datasetEntry = data.find(item => item.title === title);
+               // Ensure 'entry.title' is correct based on your data structure
+              // Make sure to check if datasetEntry exists before trying to render DatasetCard
+              return datasetEntry ? (
+                <Box key={index} padding={1}>
+                  <DatasetCard data={datasetEntry} />
+                </Box>
+              ) : null;
+            })}
+          </Slider>
         </>
       )}
 
       {displayMode === "all" && (
-        // "All" view with Grid or List toggle and Pagination
         <>
-          <Button variant="text" onClick={toggleViewMode}>
-            {viewMode === "grid"
-              ? "Switch to List View"
-              : "Switch to Grid View"}
-          </Button>
+          <TextField
+            fullWidth
+            style={{
+              marginBottom: 40,
+              maxWidth: 800,
+              backgroundColor: "white",
+            }}
+            onChange={(e) => handleSearch(e.target.value)}
+            placeholder="Search datasets..."
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Tooltip
+            title={
+              viewMode === "grid"
+                ? "Switch to List View"
+                : "Switch to Grid View"
+            }
+          >
+            <Button
+              variant="text"
+              onClick={toggleViewMode}
+              sx={{ minWidth: "auto", marginLeft: 12 }}
+            >
+              {viewMode === "grid" ? <ViewListIcon /> : <ViewModuleIcon />}
+            </Button>
+          </Tooltip>
 
           {viewMode === "grid" ? (
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
+                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: 2,
               }}
             >
-              {data
+              {filteredTitles
                 .slice(
                   (currentPage - 1) * itemsPerPage,
                   currentPage * itemsPerPage
                 )
-                .map((entry, index) => (
-                  <DatasetCard key={index} data={entry} />
-                ))}
+                .map((title, index) => {
+                  const entry = data.find((item) => item.title === title);
+                  return entry && <DatasetCard key={index} data={entry} />;
+                })}
             </Box>
           ) : (
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-              {data
+              {filteredTitles
                 .slice(
                   (currentPage - 1) * itemsPerPage,
                   currentPage * itemsPerPage
                 )
-                .map((entry, index) => (
-                  <ListViewCard key={index} data={entry} />
-                ))}
+                .map((title, index) => {
+                  const entry = data.find((item) => item.title === title);
+                  return entry && <ListViewCard key={index} data={entry} />;
+                })}
             </Box>
           )}
 

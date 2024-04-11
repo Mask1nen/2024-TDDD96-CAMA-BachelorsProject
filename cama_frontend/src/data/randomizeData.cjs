@@ -22,25 +22,6 @@ const mockTitles = [
   "COVID-19 Data Analysis: Insights into the Pandemic's Spread",
 ];
 
-const mockAuthors = [
-     "Jordan Ellis, Ph.D.",
-     "Alexa Simmonds, M.Sc.",
-     "Raj Patel, Data Scientist",
-     "Dr. Liu Yang, Statistician",
-     "Isabella Chen, Machine Learning Expert",
-     "Prof. Miguel Santos, Environmental Data Analyst",
-     "Dr. Nora Q. Abrams, Epidemiologist",
-     "Samuel Clarkson, Blockchain Researcher",
-     "Anika Bhatnagar, Ph.D. in Genomics",
-     "Carlos Mendez, Public Policy Analyst",
-     "Fatima Zahra, M.Sc. in Urban Planning",
-     "Elijah Martin, Cybersecurity Specialist",
-     "Sophia Park, M.Sc. in Renewable Energy",
-     "Mohammad Al Farsi, Healthcare Data Analyst",
-     "Lena Schmidt, Social Media Analyst",
-     "Hiro Tanaka, Ph.D. in Natural Language Processing",
-     "Emily Watson, Ph.D. in Financial Mathematics",
-];
 
 function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);

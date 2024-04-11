@@ -12,6 +12,8 @@ import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
+import { Dataset } from '@mui/icons-material';
+import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
 
 
 
@@ -49,6 +51,7 @@ const theme = createTheme({
             <Route path="/Database" element={<DatasetsPage />} />
             <Route path="/About" element={<AboutPage />} />
             <Route path="/Upload" element={<UploadPage />} />
+            <Route path="/Database/:titleSlug" element={<DatasetDetail />} />
         </Routes>
       </Container>
       <Footer />
