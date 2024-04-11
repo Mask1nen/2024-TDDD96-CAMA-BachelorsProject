@@ -6,6 +6,11 @@ import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
 import AboutPage from './pages/About/AboutPage.tsx';
+import TeamPage from './pages/Team/TeamPage.tsx';
+import ContactInfoPage from './pages/ContactInfo/ContactInfoPage.tsx';
+import AppPage from './pages/App/AppPage.tsx';
+import FbFPage from './pages/FbF/FbFPage.tsx';
+
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -45,6 +50,10 @@ const theme = createTheme({
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatasetsPage />} />
             <Route path="/About" element={<AboutPage />} />
+            <Route path="/Team" element={<TeamPage />} />
+            <Route path="/ContactInfo" element={<ContactInfoPage />} />  
+            <Route path="/App" element={<AppPage />} />  
+            <Route path="/FbF" element={<FbFPage />} />  
         </Routes>
       </Container>
       <Footer /></ThemeProvider>
