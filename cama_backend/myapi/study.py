@@ -15,6 +15,7 @@ class Category(models.Model):
 class Study(models.Model):
     study_id = models.AutoField(primary_key=True)
     uploader = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    year = models.ForeignKey(Year, null=True, on_delete=models.SET_NULL)
     country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     peer_reviewed = models.BooleanField(null=True)

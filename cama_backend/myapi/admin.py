@@ -14,7 +14,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class StudyAdmin(admin.ModelAdmin):
-    list_display = ['study_id', 'uploader', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
+    list_display = ['study_id', 'year', 'uploader', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
     search_fields = ['study_id']
 
 class ExperimentAdmin(admin.ModelAdmin):
