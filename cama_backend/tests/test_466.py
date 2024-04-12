@@ -1,9 +1,13 @@
-from models import *
-import pytest
 from django.db import *
+import sys
+import pytest
 from django.core.exceptions import *
+sys.path.append('../myapi')
+from myapi.models import *  
 
-
+def test_print():
+    testTable = User(orc_id="orc_id", name="name", email="email", organization="org", nr_uploads="1")
+    print(testTable.objects)
 
 """This file contains the integration test of the database and 
 its structure through a series of database requests"""
@@ -32,7 +36,7 @@ def create_user(number_of_users):
         user_test_list.append(user.orc_id)
     print(User._meta.get_fields()[0])
     
-create_user(5)
+
 
 """Study tests"""
 
@@ -345,15 +349,18 @@ def test_providing_no_data():
     empty_study.delete
 
     
-def validation_check_improvment(table, value_to_change, new_value):
-    with pytest.raises(ValidationError):
-        for x in User._meta.get_fields(): 
-            match x:
-                case models.fields.CharField:
-                    x.
-                case models.fields.IntegerField:
-                    
-                case models.fields.BooleanField:
+#def validation_check_improvment(table, value_to_change, new_value):
+#    with pytest.raises(ValidationError):
+#        for x in User._meta.get_fields(): 
+#            print(x.field)
+#            match x.db_type:
+#                case models.fields.CharField:
+#                    x.name
+#                    models.Model.
+#                    user = User(x.name=new_value)
+#                case models.fields.IntegerField:
+#                    
+#                case models.fields.BooleanField:
                     
             
     
