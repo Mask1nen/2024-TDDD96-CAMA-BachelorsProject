@@ -1,21 +1,17 @@
 import React from "react";
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
   Box,
   Tooltip
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import { DataEntry } from "../api/types";
-import rawData from "../data/data.json";
+import rawData from "../data/randomized_data.json";
 import bild2 from "../assets/images/bild2.png";
 import { useNavigate } from "react-router-dom";
 
-const data: DataEntry[] = rawData as unknown as DataEntry[];
 interface DatasetCardProps {
   data: DataEntry;
 }
@@ -23,8 +19,9 @@ interface DatasetCardProps {
 const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
   let navigate = useNavigate();
 
+
+
   const handleCardClick = () => {
-    // Use a slug or encoded title for URL-safe navigation
     const titleSlug = encodeURIComponent(data.title);
     navigate(`/datasets/${titleSlug}`);
   };
@@ -85,11 +82,6 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
               {data.authors}
             </Typography>
           </CardContent>
-          {/* <CardActions sx={{ justifyContent: "center" }}>
-            <Button size="small" variant="contained" color="primary">
-              Learn More
-            </Button>
-          </CardActions> */}
         </Card>
         </Tooltip>
     </Box>

@@ -6,9 +6,10 @@ import data from "../../data/randomized_data.json";
 import bild2 from "../../assets/images/bild2.png";
 
 const DatasetDetail = () => {
-  let { titleSlug } = useParams();
-  const title = decodeURIComponent(titleSlug || "");
-  const matchingEntries = data.filter((d) => d.title === title);
+   let { titleSlug } = useParams();
+  const title = decodeURIComponent(titleSlug || ""); 
+  const matchingEntries = data.filter((d) => d.title.toLowerCase() === title.toLowerCase()); 
+  
 
   if (!matchingEntries.length) {
     return <div>Dataset not found.</div>;

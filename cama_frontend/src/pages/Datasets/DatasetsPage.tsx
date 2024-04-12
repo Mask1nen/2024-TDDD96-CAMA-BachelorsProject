@@ -21,7 +21,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import data from "../../data/randomized_data.json";
 import { DataEntry } from "../../api/types";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "@mkyy/mui-search-bar";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
 
@@ -63,7 +62,6 @@ const DatasetsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = viewMode === "grid" ? 23 : 25;
-  //const totalPages = Math.ceil(data.length / itemsPerPage);
   const handleSeeAllClick = () => setDisplayMode("all");
   const toggleViewMode = () =>
     setViewMode(viewMode === "grid" ? "list" : "grid");
@@ -111,7 +109,7 @@ const DatasetsPage = () => {
             </Button>
           </Grid>
           <Slider {...sliderSettings}>
-            {latestDatasets.map((title, index) => {
+            {trendingDatasets.map((title, index) => {
              
                 const datasetEntry = data.find(item => item.title === title);
               return datasetEntry ? (
@@ -137,11 +135,9 @@ const DatasetsPage = () => {
           </Grid>
           <Slider {...sliderSettings}>
             {latestDatasets.map((title, index) => {
-              // Assuming 'entry' is actually a title here, we need to find a data entry
+              
              
                 const datasetEntry = data.find(item => item.title === title);
-               // Ensure 'entry.title' is correct based on your data structure
-              // Make sure to check if datasetEntry exists before trying to render DatasetCard
               return datasetEntry ? (
                 <Box key={index} padding={1}>
                   <DatasetCard data={datasetEntry} />

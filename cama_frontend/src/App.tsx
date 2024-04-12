@@ -51,7 +51,7 @@ const theme = createTheme({
             <Route path="/Database" element={<DatasetsPage />} />
             <Route path="/About" element={<AboutPage />} />
             <Route path="/Upload" element={<UploadPage />} />
-            <Route path="/Database/:titleSlug" element={<DatasetDetail />} />
+            <Route path="/datasets/:titleSlug" element={<DatasetDetail />} />
         </Routes>
       </Container>
       <Footer />
