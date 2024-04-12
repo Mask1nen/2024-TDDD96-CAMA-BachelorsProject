@@ -1,13 +1,6 @@
-from django.db import *
-import sys
+from django.db import models
 import pytest
 from django.core.exceptions import *
-sys.path.append('../myapi')
-from myapi.models import *  
-
-def test_print():
-    testTable = User(orc_id="orc_id", name="name", email="email", organization="org", nr_uploads="1")
-    print(testTable.objects)
 
 """This file contains the integration test of the database and 
 its structure through a series of database requests"""
