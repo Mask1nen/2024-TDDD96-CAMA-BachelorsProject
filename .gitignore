@@ -5,11 +5,13 @@
 /.pnp
 .pnp.js
 node_modules
+
 # testing
 /coverage
-
 *__pycache__
+.pytest_cache
 *.venv
+/cov_html
 
 # production
 /build
