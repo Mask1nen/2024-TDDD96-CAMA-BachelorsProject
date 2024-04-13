@@ -35,7 +35,6 @@ test_back_end:
     - ls -l
     - source tempenv/bin/activate
     - pytest --cov-report xml:cov.xml --cov=myapi tests/
-    - coverage xml
   artifacts:
     paths:
       - cama_backend/cov.xml    
@@ -43,9 +42,9 @@ log_back_end:
   stage: log
   image: python:3.12-slim
   needs: ['test_back_end']
-  #script:
-  #  - cd cama_backend
-  #  - python coverage.py
+  script:
+    - cd cama_backend
+    - python coverage.py
   artifacts:
     reports:
       coverage_report:
