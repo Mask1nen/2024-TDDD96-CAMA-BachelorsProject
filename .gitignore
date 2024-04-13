@@ -7,16 +7,16 @@
 node_modules
 
 # testing
-/coverage
-*__pycache__
-.pytest_cache
-*.venv
-/cov_html
+.coverage
+__pycache__/
+.pytest_cache/
+cov_html
 
 # production
 /build
 
 # misc
+.venv
 .DS_Store
 .env.local
 .env.development.local

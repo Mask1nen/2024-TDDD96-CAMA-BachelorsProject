@@ -56,3 +56,12 @@ In case of error, try: `docker compose up -V `
 5. Starta django-server i cama\_backend `python3 manage.py runserver`
 
 6. Starta frontend i cama\_frontend i dev mode `npm start`
+
+# Generera coverage report för back-end
+1. Gå till root
+
+2. "cd cama_backend"
+
+3. "pytest --cov-report html:cov_html --cov-config=.coveragerc --cov=myapi tests/
+
+4. Öppna den nu skapade cov_html mappen och öppna index.html för att undersöka vad som behöver testas
