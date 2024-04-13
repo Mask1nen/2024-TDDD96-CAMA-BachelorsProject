@@ -62,10 +62,10 @@ In case of error, try: `docker compose up -V `
 
 2. cd cama_backend
 
-***Utan coverage report i html:***
+***Utan coverage report i html:*** <br>
 3. pytest --cov=myapi tests/
 
-***Med coverage report i html (bättre djup)***
+***Med coverage report i html (bättre djup)***<br>
 3. pytest --cov-report html:cov_html --cov-config=.coveragerc --cov=myapi tests/
 
 4. Öppna den nu skapade cov_html mappen och öppna index.html för att undersöka vad som behöver testas
