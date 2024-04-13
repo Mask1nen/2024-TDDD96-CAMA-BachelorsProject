@@ -57,11 +57,15 @@ In case of error, try: `docker compose up -V `
 
 6. Starta frontend i cama\_frontend i dev mode `npm start`
 
-# Generera coverage report för back-end
+# Köra tester lokalt
 1. Gå till root
 
 2. cd cama_backend
 
+## Utan coverage report i html:
+3. pytest --cov=myapi tests/
+
+## Med coverage report i html (bättre djup)
 3. pytest --cov-report html:cov_html --cov-config=.coveragerc --cov=myapi tests/
 
 4. Öppna den nu skapade cov_html mappen och öppna index.html för att undersöka vad som behöver testas
