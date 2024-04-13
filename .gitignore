@@ -16,6 +16,7 @@ cov_html
 /build
 
 # misc
+*/.venv
 .venv
 .DS_Store
 .env.local
