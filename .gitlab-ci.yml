@@ -36,6 +36,11 @@ test_back_end:
   services: 
     - name: postgres:latest
       alias: postgres
+  variables:
+     POSTGRES_DB: $POSTGRES_DB
+     POSTGRES_USER: $POSTGRES_USER
+     POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+     POSTGRES_HOST_AUTH_METHOD: trust
   script:
     - cd cama_backend/
     - ls -l
