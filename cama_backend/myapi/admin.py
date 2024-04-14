@@ -3,13 +3,13 @@ from django.contrib import admin
 
 
 # Register your models here.
-from .user import User
+from .camauser import CamaUser
 from .study import Year, Country, Category, Study 
 from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
 from .effect_data import EffectData
 
-class UserAdmin(admin.ModelAdmin):
-    model = User
+class CamaUserAdmin(admin.ModelAdmin):
+    model = CamaUser
     list_display = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
     search_fields = ['orc_id']
 
@@ -70,7 +70,7 @@ class ImplementationAdmin(admin.ModelAdmin):
     list_display = ['implementor']
     search_fields = ['implementor']
 
-admin.site.register(User, UserAdmin)
+admin.site.register(CamaUser, CamaUserAdmin)
 admin.site.register(Study, StudyAdmin)
 admin.site.register(Experiment, ExperimentAdmin)
 admin.site.register(EffectData, EffectDataAdmin)

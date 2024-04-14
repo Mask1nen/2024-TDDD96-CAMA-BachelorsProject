@@ -1,5 +1,5 @@
 from django.db import models
-from .user import User
+from .camauser import CamaUser
 
 # Create your models here.
 class Year(models.Model):
@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Study(models.Model):
     study_id = models.AutoField(primary_key=True)
-    uploader = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    uploader = models.ForeignKey(CamaUser, null=True, on_delete=models.SET_NULL)
     study_year = models.ForeignKey(Year, null=True, on_delete=models.SET_NULL)
     country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
@@ -24,3 +24,6 @@ class Study(models.Model):
     abstract = models.CharField(max_length=255, null=True)
     keywords = models.CharField(max_length=255, null=True)
     nr_downloads = models.CharField(max_length=255, null=True)
+
+    def get_uploader(self):
+        return self.uploader.orc_id

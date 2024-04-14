@@ -1,0 +1,2735 @@
+versions pytest-8.1.1, python-3.10.12.final.0
+invocation_dir=/home/masky/g10-tddd96-pum
+cwd=/home/masky/g10-tddd96-pum
+args=('--debug',)
+
+  pytest_cmdline_main [hook]
+      config: <_pytest.config.Config object at 0x7f7b02ba6320>
+    pytest_plugin_registered [hook]
+        plugin: <Session  exitstatus='<UNSET>' testsfailed=0 testscollected=0>
+        plugin_name: session
+        manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+    finish pytest_plugin_registered --> [] [hook]
+    pytest_configure [hook]
+        config: <_pytest.config.Config object at 0x7f7b02ba6320>
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.LFPlugin object at 0x7f7b0230f940>
+          plugin_name: lfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.NFPlugin object at 0x7f7b0230fac0>
+          plugin_name: nfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+    early skip of rewriting module: faulthandler [assertion]
+      pytest_plugin_registered [hook]
+          plugin: <class '_pytest.legacypath.LegacyTmpdirPlugin'>
+          plugin_name: legacypath-tmpdir
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+    early skip of rewriting module: pdb [assertion]
+    early skip of rewriting module: cmd [assertion]
+    early skip of rewriting module: code [assertion]
+    early skip of rewriting module: codeop [assertion]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+          plugin_name: 140166311740272
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.config.Config object at 0x7f7b02ba6320>
+          plugin_name: pytestconfig
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.mark' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/mark/__init__.py'>
+          plugin_name: mark
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.main' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/main.py'>
+          plugin_name: main
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.runner' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/runner.py'>
+          plugin_name: runner
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.fixtures' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/fixtures.py'>
+          plugin_name: fixtures
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.helpconfig' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/helpconfig.py'>
+          plugin_name: helpconfig
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.python' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/python.py'>
+          plugin_name: python
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.terminal' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/terminal.py'>
+          plugin_name: terminal
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.debugging' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/debugging.py'>
+          plugin_name: debugging
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.unittest' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/unittest.py'>
+          plugin_name: unittest
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.capture' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/capture.py'>
+          plugin_name: capture
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.skipping' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/skipping.py'>
+          plugin_name: skipping
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.legacypath' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/legacypath.py'>
+          plugin_name: legacypath
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.tmpdir' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/tmpdir.py'>
+          plugin_name: tmpdir
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.monkeypatch' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/monkeypatch.py'>
+          plugin_name: monkeypatch
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.recwarn' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/recwarn.py'>
+          plugin_name: recwarn
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.pastebin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/pastebin.py'>
+          plugin_name: pastebin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.assertion' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/assertion/__init__.py'>
+          plugin_name: assertion
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.junitxml' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/junitxml.py'>
+          plugin_name: junitxml
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.doctest' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/doctest.py'>
+          plugin_name: doctest
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.cacheprovider' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/cacheprovider.py'>
+          plugin_name: cacheprovider
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.freeze_support' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/freeze_support.py'>
+          plugin_name: freeze_support
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.setuponly' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/setuponly.py'>
+          plugin_name: setuponly
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.setupplan' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/setupplan.py'>
+          plugin_name: setupplan
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.stepwise' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/stepwise.py'>
+          plugin_name: stepwise
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.warnings' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/warnings.py'>
+          plugin_name: warnings
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.logging' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/logging.py'>
+          plugin_name: logging
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.reports' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/reports.py'>
+          plugin_name: reports
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.python_path' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/python_path.py'>
+          plugin_name: python_path
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.unraisableexception' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/unraisableexception.py'>
+          plugin_name: unraisableexception
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.threadexception' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/threadexception.py'>
+          plugin_name: threadexception
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.faulthandler' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/faulthandler.py'>
+          plugin_name: faulthandler
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module 'pytest_django.plugin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_django/plugin.py'>
+          plugin_name: django
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module 'pytest_cov.plugin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_cov/plugin.py'>
+          plugin_name: pytest_cov
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <CaptureManager _method='fd' _global_capturing=<MultiCapture out=<FDCapture 1 oldfd=5 _state='suspended' tmpfile=<_io.TextIOWrapper name="<_io.FileIO name=6 mode='rb+' closefd=True>" mode='r+' encoding='utf-8'>> err=<FDCapture 2 oldfd=7 _state='suspended' tmpfile=<_io.TextIOWrapper name="<_io.FileIO name=8 mode='rb+' closefd=True>" mode='r+' encoding='utf-8'>> in_=<FDCapture 0 oldfd=3 _state='started' tmpfile=<_io.TextIOWrapper name='/dev/null' mode='r' encoding='utf-8'>> _state='suspended' _in_suspended=False> _capture_fixture=None>
+          plugin_name: capturemanager
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+          plugin_name: session
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.LFPlugin object at 0x7f7b0230f940>
+          plugin_name: lfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.NFPlugin object at 0x7f7b0230fac0>
+          plugin_name: nfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <class '_pytest.legacypath.LegacyTmpdirPlugin'>
+          plugin_name: legacypath-tmpdir
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.terminal.TerminalReporter object at 0x7f7b0230fcd0>
+          plugin_name: terminalreporter
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.logging.LoggingPlugin object at 0x7f7b0230fdf0>
+          plugin_name: logging-plugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+    finish pytest_configure --> [] [hook]
+    pytest_sessionstart [hook]
+        session: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+          plugin_name: 140166311740272
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.config.Config object at 0x7f7b02ba6320>
+          plugin_name: pytestconfig
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.mark' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/mark/__init__.py'>
+          plugin_name: mark
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.main' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/main.py'>
+          plugin_name: main
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.runner' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/runner.py'>
+          plugin_name: runner
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.fixtures' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/fixtures.py'>
+          plugin_name: fixtures
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.helpconfig' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/helpconfig.py'>
+          plugin_name: helpconfig
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.python' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/python.py'>
+          plugin_name: python
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.terminal' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/terminal.py'>
+          plugin_name: terminal
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.debugging' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/debugging.py'>
+          plugin_name: debugging
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.unittest' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/unittest.py'>
+          plugin_name: unittest
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.capture' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/capture.py'>
+          plugin_name: capture
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.skipping' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/skipping.py'>
+          plugin_name: skipping
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.legacypath' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/legacypath.py'>
+          plugin_name: legacypath
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.tmpdir' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/tmpdir.py'>
+          plugin_name: tmpdir
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.monkeypatch' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/monkeypatch.py'>
+          plugin_name: monkeypatch
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.recwarn' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/recwarn.py'>
+          plugin_name: recwarn
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.pastebin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/pastebin.py'>
+          plugin_name: pastebin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.assertion' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/assertion/__init__.py'>
+          plugin_name: assertion
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.junitxml' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/junitxml.py'>
+          plugin_name: junitxml
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.doctest' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/doctest.py'>
+          plugin_name: doctest
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.cacheprovider' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/cacheprovider.py'>
+          plugin_name: cacheprovider
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.freeze_support' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/freeze_support.py'>
+          plugin_name: freeze_support
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.setuponly' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/setuponly.py'>
+          plugin_name: setuponly
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.setupplan' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/setupplan.py'>
+          plugin_name: setupplan
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.stepwise' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/stepwise.py'>
+          plugin_name: stepwise
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.warnings' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/warnings.py'>
+          plugin_name: warnings
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.logging' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/logging.py'>
+          plugin_name: logging
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.reports' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/reports.py'>
+          plugin_name: reports
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.python_path' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/python_path.py'>
+          plugin_name: python_path
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.unraisableexception' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/unraisableexception.py'>
+          plugin_name: unraisableexception
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.threadexception' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/threadexception.py'>
+          plugin_name: threadexception
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module '_pytest.faulthandler' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/faulthandler.py'>
+          plugin_name: faulthandler
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module 'pytest_django.plugin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_django/plugin.py'>
+          plugin_name: django
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <module 'pytest_cov.plugin' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_cov/plugin.py'>
+          plugin_name: pytest_cov
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <CaptureManager _method='fd' _global_capturing=<MultiCapture out=<FDCapture 1 oldfd=5 _state='suspended' tmpfile=<_io.TextIOWrapper name="<_io.FileIO name=6 mode='rb+' closefd=True>" mode='r+' encoding='utf-8'>> err=<FDCapture 2 oldfd=7 _state='suspended' tmpfile=<_io.TextIOWrapper name="<_io.FileIO name=8 mode='rb+' closefd=True>" mode='r+' encoding='utf-8'>> in_=<FDCapture 0 oldfd=3 _state='started' tmpfile=<_io.TextIOWrapper name='/dev/null' mode='r' encoding='utf-8'>> _state='suspended' _in_suspended=False> _capture_fixture=None>
+          plugin_name: capturemanager
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+          plugin_name: session
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.LFPlugin object at 0x7f7b0230f940>
+          plugin_name: lfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.cacheprovider.NFPlugin object at 0x7f7b0230fac0>
+          plugin_name: nfplugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <class '_pytest.legacypath.LegacyTmpdirPlugin'>
+          plugin_name: legacypath-tmpdir
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.terminal.TerminalReporter object at 0x7f7b0230fcd0>
+          plugin_name: terminalreporter
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.logging.LoggingPlugin object at 0x7f7b0230fdf0>
+          plugin_name: logging-plugin
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_plugin_registered [hook]
+          plugin: <_pytest.fixtures.FixtureManager object at 0x7f7b0230f8b0>
+          plugin_name: funcmanage
+          manager: <_pytest.config.PytestPluginManager object at 0x7f7b03388370>
+      finish pytest_plugin_registered --> [] [hook]
+      pytest_report_header [hook]
+          config: <_pytest.config.Config object at 0x7f7b02ba6320>
+          start_path: /home/masky/g10-tddd96-pum
+          startdir: /home/masky/g10-tddd96-pum
+      early skip of rewriting module: email.parser [assertion]
+      early skip of rewriting module: email.feedparser [assertion]
+      finish pytest_report_header --> [['rootdir: /home/masky/g10-tddd96-pum', 'plugins: django-4.8.0, cov-5.0.0'], ['using: pytest-8.1.1', 'setuptools registered plugins:', '  pytest-django-4.8.0 at /home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_django/plugin.py', '  pytest-cov-5.0.0 at /home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/pytest_cov/plugin.py']] [hook]
+    finish pytest_sessionstart --> [] [hook]
+    pytest_collection [hook]
+        session: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+    perform_collect <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0> ['/home/masky/g10-tddd96-pum'] [collection]
+        pytest_collectstart [hook]
+            collector: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+        finish pytest_collectstart --> [] [hook]
+        pytest_make_collect_report [hook]
+            collector: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+        processing argument CollectionArgument(path=PosixPath('/home/masky/g10-tddd96-pum'), parts=[], module_name=None) [collection]
+            pytest_collect_directory [hook]
+                path: /home/masky/g10-tddd96-pum
+                parent: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=0>
+            finish pytest_collect_directory --> <Dir g10-tddd96-pum> [hook]
+        finish pytest_make_collect_report --> <CollectReport '' lenresult=1 outcome='passed'> [hook]
+        pytest_collectreport [hook]
+            report: <CollectReport '' lenresult=1 outcome='passed'>
+        finish pytest_collectreport --> [] [hook]
+    genitems <Dir g10-tddd96-pum> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir g10-tddd96-pum>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir g10-tddd96-pum>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/.git
+            path: /home/masky/g10-tddd96-pum/.git
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/.gitignore
+            path: /home/masky/g10-tddd96-pum/.gitignore
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/.gitignore
+            path: /home/masky/g10-tddd96-pum/.gitignore
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/.gitlab-ci.yml
+            path: /home/masky/g10-tddd96-pum/.gitlab-ci.yml
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/.gitlab-ci.yml
+            path: /home/masky/g10-tddd96-pum/.gitlab-ci.yml
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/.pytest_cache
+            path: /home/masky/g10-tddd96-pum/.pytest_cache
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/.venv
+            path: /home/masky/g10-tddd96-pum/.venv
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/README.md
+            path: /home/masky/g10-tddd96-pum/README.md
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/README.md
+            path: /home/masky/g10-tddd96-pum/README.md
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend
+            path: /home/masky/g10-tddd96-pum/cama_backend
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend
+            parent: <Dir g10-tddd96-pum>
+        finish pytest_collect_directory --> <Package cama_backend> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend
+            path: /home/masky/g10-tddd96-pum/cama_frontend
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend
+            parent: <Dir g10-tddd96-pum>
+        finish pytest_collect_directory --> <Dir cama_frontend> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/docker-compose.yaml
+            path: /home/masky/g10-tddd96-pum/docker-compose.yaml
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/docker-compose.yaml
+            path: /home/masky/g10-tddd96-pum/docker-compose.yaml
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/hello_world.py
+            path: /home/masky/g10-tddd96-pum/hello_world.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/hello_world.py
+            path: /home/masky/g10-tddd96-pum/hello_world.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/package-lock.json
+            path: /home/masky/g10-tddd96-pum/package-lock.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/package-lock.json
+            path: /home/masky/g10-tddd96-pum/package-lock.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/pytestdebug.log
+            path: /home/masky/g10-tddd96-pum/pytestdebug.log
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir g10-tddd96-pum>
+            file_path: /home/masky/g10-tddd96-pum/pytestdebug.log
+            path: /home/masky/g10-tddd96-pum/pytestdebug.log
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport '.' lenresult=2 outcome='passed'> [hook]
+    genitems <Package cama_backend> [collection]
+      pytest_collectstart [hook]
+          collector: <Package cama_backend>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Package cama_backend>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/__init__.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/__init__.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/.coverage
+            path: /home/masky/g10-tddd96-pum/cama_backend/.coverage
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/.coverage
+            path: /home/masky/g10-tddd96-pum/cama_backend/.coverage
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/.coveragerc
+            path: /home/masky/g10-tddd96-pum/cama_backend/.coveragerc
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/.coveragerc
+            path: /home/masky/g10-tddd96-pum/cama_backend/.coveragerc
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/.pytest_cache
+            path: /home/masky/g10-tddd96-pum/cama_backend/.pytest_cache
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/Dockerfile
+            path: /home/masky/g10-tddd96-pum/cama_backend/Dockerfile
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/Dockerfile
+            path: /home/masky/g10-tddd96-pum/cama_backend/Dockerfile
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/__pycache__
+            path: /home/masky/g10-tddd96-pum/cama_backend/__pycache__
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend
+            parent: <Package cama_backend>
+        finish pytest_collect_directory --> <Package cama_backend> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html
+            parent: <Package cama_backend>
+        finish pytest_collect_directory --> <Dir cov_html> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/coverage.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/coverage.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/coverage.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/coverage.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/manage.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/manage.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/manage.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/manage.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi
+            parent: <Package cama_backend>
+        finish pytest_collect_directory --> <Package myapi> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/pytest.ini
+            path: /home/masky/g10-tddd96-pum/cama_backend/pytest.ini
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/pytest.ini
+            path: /home/masky/g10-tddd96-pum/cama_backend/pytest.ini
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/requirements.txt
+            path: /home/masky/g10-tddd96-pum/cama_backend/requirements.txt
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/requirements.txt
+            path: /home/masky/g10-tddd96-pum/cama_backend/requirements.txt
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/tests
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests
+            parent: <Package cama_backend>
+        finish pytest_collect_directory --> <Package tests> [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend' lenresult=4 outcome='passed'> [hook]
+    genitems <Package cama_backend> [collection]
+      pytest_collectstart [hook]
+          collector: <Package cama_backend>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Package cama_backend>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__init__.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__init__.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__pycache__
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/__pycache__
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/asgi.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/asgi.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/asgi.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/asgi.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+          pytest_pycollect_makemodule [hook]
+              parent: <Package cama_backend>
+              module_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+              path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py
+          finish pytest_pycollect_makemodule --> <Module settings_test.py> [hook]
+        finish pytest_collect_file --> [<Module settings_test.py>] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/urls.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/urls.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/urls.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/urls.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/wsgi.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/wsgi.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package cama_backend>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/wsgi.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/cama_backend/wsgi.py
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/cama_backend' lenresult=1 outcome='passed'> [hook]
+    genitems <Module settings_test.py> [collection]
+      pytest_collectstart [hook]
+          collector: <Module settings_test.py>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Module settings_test.py>
+      early skip of rewriting module: cama_backend [assertion]
+      early skip of rewriting module: cama_backend.cama_backend [assertion]
+      find_module called for: cama_backend.cama_backend.settings_test [assertion]
+      matched test file '/home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py' [assertion]
+      found cached rewritten pyc for /home/masky/g10-tddd96-pum/cama_backend/cama_backend/settings_test.py [assertion]
+      early skip of rewriting module: cama_backend.cama_backend.settings [assertion]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: @py_builtins
+            obj: <module 'builtins' (built-in)>
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: @pytest_ar
+            obj: <module '_pytest.assertion.rewrite' from '/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py'>
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: Path
+            obj: <class 'pathlib.Path'>
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: BASE_DIR
+            obj: /home/masky/g10-tddd96-pum/cama_backend
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: SECRET_KEY
+            obj: django-insecure-2xacu7x(eg9w*ni63((4v)^fzv#mf%v8bq@&(*-_+qt8bd-t@7
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: DEBUG
+            obj: True
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: ALLOWED_HOSTS
+            obj: []
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: INSTALLED_APPS
+            obj: ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'rest_framework', 'corsheaders', 'myapi', 'tests']
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: MIDDLEWARE
+            obj: ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'corsheaders.middleware.CorsMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware']
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: CORS_ORIGIN_ALLOW_ALL
+            obj: True
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: ROOT_URLCONF
+            obj: cama_backend.urls
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: TEMPLATES
+            obj: [{'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': [], 'APP_DIRS': True, 'OPTIONS': {'context_processors': ['django.template.context_processors.debug', 'django.template.context_processors.request', 'django.contrib.auth.context_processors.auth', 'django.contrib.messages.context_processors.messages']}}]
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: WSGI_APPLICATION
+            obj: cama_backend.wsgi.application
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: DATABASES
+            obj: {'default': {'ENGINE': 'django.db.backends.postgresql', 'NAME': 'pum10test', 'USER': 'pum10admin', 'PASSWORD': 'admin', 'HOST': 'localhost', 'PORT': '5432'}}
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: AUTH_PASSWORD_VALIDATORS
+            obj: [{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'}, {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'}, {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'}, {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}]
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: LANGUAGE_CODE
+            obj: en-us
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: TIME_ZONE
+            obj: UTC
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: USE_I18N
+            obj: True
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: USE_TZ
+            obj: True
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: STATIC_URL
+            obj: static/
+        finish pytest_pycollect_makeitem --> None [hook]
+        pytest_pycollect_makeitem [hook]
+            collector: <Module settings_test.py>
+            name: DEFAULT_AUTO_FIELD
+            obj: django.db.models.BigAutoField
+        finish pytest_pycollect_makeitem --> None [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/cama_backend/settings_test.py' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/cama_backend/settings_test.py' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/cama_backend' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir cov_html> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir cov_html>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir cov_html>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/.gitignore
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/.gitignore
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/.gitignore
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/.gitignore
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/coverage_html.js
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/coverage_html.js
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/coverage_html.js
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/coverage_html.js
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0001_initial_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0001_initial_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0001_initial_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0001_initial_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0002_rename_year_study_study_year_and_more_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0002_rename_year_study_study_year_and_more_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0002_rename_year_study_study_year_and_more_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381_0002_rename_year_study_study_year_and_more_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381___init___py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381___init___py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381___init___py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_6ad8176251eb7381___init___py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1___init___py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1___init___py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1___init___py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1___init___py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_admin_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_admin_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_admin_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_admin_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_apps_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_apps_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_apps_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_apps_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_conftest_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_conftest_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_conftest_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_conftest_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_effect_data_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_effect_data_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_effect_data_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_effect_data_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_experiment_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_experiment_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_experiment_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_experiment_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_models_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_models_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_models_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_models_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_study_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_study_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_study_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_study_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_urls_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_urls_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_urls_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_urls_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_user_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_user_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_user_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_user_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_views_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_views_py.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_views_py.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/d_942210f6c53923a1_views_py.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/favicon_32.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/favicon_32.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/favicon_32.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/favicon_32.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/index.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/index.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/index.html
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/index.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_closed.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_closed.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_closed.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_closed.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_open.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_open.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_open.png
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/keybd_open.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/status.json
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/status.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/status.json
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/status.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/style.css
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/style.css
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cov_html>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/style.css
+            path: /home/masky/g10-tddd96-pum/cama_backend/cov_html/style.css
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/cov_html' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/cov_html' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Package myapi> [collection]
+      pytest_collectstart [hook]
+          collector: <Package myapi>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Package myapi>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__init__.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__init__.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__pycache__
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/__pycache__
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/admin.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/admin.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/admin.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/admin.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/apps.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/apps.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/apps.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/apps.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/camauser.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/camauser.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/camauser.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/camauser.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/effect_data.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/effect_data.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/effect_data.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/effect_data.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/experiment.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/experiment.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/experiment.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/experiment.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations
+            parent: <Package myapi>
+        finish pytest_collect_directory --> <Package migrations> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/models.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/models.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/models.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/models.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/study.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/study.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/study.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/study.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/urls.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/urls.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/urls.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/urls.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/views.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/views.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package myapi>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/views.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/views.py
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/myapi' lenresult=1 outcome='passed'> [hook]
+    genitems <Package migrations> [collection]
+      pytest_collectstart [hook]
+          collector: <Package migrations>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Package migrations>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__init__.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package migrations>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__init__.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0001_initial.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0001_initial.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package migrations>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0001_initial.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0001_initial.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0002_rename_year_study_study_year_and_more.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0002_rename_year_study_study_year_and_more.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package migrations>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0002_rename_year_study_study_year_and_more.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/0002_rename_year_study_study_year_and_more.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__pycache__
+            path: /home/masky/g10-tddd96-pum/cama_backend/myapi/migrations/__pycache__
+        finish pytest_ignore_collect --> True [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/myapi/migrations' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/myapi/migrations' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/myapi' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Package tests> [collection]
+      pytest_collectstart [hook]
+          collector: <Package tests>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Package tests>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/tests/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/__init__.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package tests>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/tests/__init__.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/__init__.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/tests/__pycache__
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/__pycache__
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/tests/donottest_466.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/donottest_466.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package tests>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/tests/donottest_466.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/donottest_466.py
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Package tests>
+            file_path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+            path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+          pytest_pycollect_makemodule [hook]
+              parent: <Package tests>
+              module_path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+              path: /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py
+          finish pytest_pycollect_makemodule --> <Module test_modules.py> [hook]
+        finish pytest_collect_file --> [<Module test_modules.py>] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/tests' lenresult=1 outcome='passed'> [hook]
+    genitems <Module test_modules.py> [collection]
+      pytest_collectstart [hook]
+          collector: <Module test_modules.py>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Module test_modules.py>
+      early skip of rewriting module: cama_backend.tests [assertion]
+      find_module called for: cama_backend.tests.test_modules [assertion]
+      matched test file '/home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py' [assertion]
+      found cached rewritten pyc for /home/masky/g10-tddd96-pum/cama_backend/tests/test_modules.py [assertion]
+      early skip of rewriting module: django [assertion]
+      early skip of rewriting module: django.utils [assertion]
+      early skip of rewriting module: django.utils.version [assertion]
+      early skip of rewriting module: django.utils.regex_helper [assertion]
+      early skip of rewriting module: django.utils.functional [assertion]
+      early skip of rewriting module: django.apps [assertion]
+      early skip of rewriting module: django.apps.config [assertion]
+      early skip of rewriting module: django.core [assertion]
+      early skip of rewriting module: django.core.exceptions [assertion]
+      early skip of rewriting module: django.utils.hashable [assertion]
+      early skip of rewriting module: django.utils.itercompat [assertion]
+      early skip of rewriting module: django.utils.module_loading [assertion]
+      early skip of rewriting module: django.utils.deprecation [assertion]
+      early skip of rewriting module: asgiref [assertion]
+      early skip of rewriting module: asgiref.sync [assertion]
+      early skip of rewriting module: asyncio [assertion]
+      early skip of rewriting module: asyncio.base_events [assertion]
+      early skip of rewriting module: concurrent [assertion]
+      early skip of rewriting module: concurrent.futures [assertion]
+      early skip of rewriting module: concurrent.futures._base [assertion]
+      early skip of rewriting module: ssl [assertion]
+      early skip of rewriting module: _ssl [assertion]
+      early skip of rewriting module: asyncio.constants [assertion]
+      early skip of rewriting module: asyncio.coroutines [assertion]
+      early skip of rewriting module: asyncio.base_futures [assertion]
+      early skip of rewriting module: asyncio.format_helpers [assertion]
+      early skip of rewriting module: asyncio.log [assertion]
+      early skip of rewriting module: asyncio.events [assertion]
+      early skip of rewriting module: contextvars [assertion]
+      early skip of rewriting module: _contextvars [assertion]
+      early skip of rewriting module: _asyncio [assertion]
+      early skip of rewriting module: asyncio.exceptions [assertion]
+      early skip of rewriting module: asyncio.base_tasks [assertion]
+      early skip of rewriting module: asyncio.futures [assertion]
+      early skip of rewriting module: asyncio.protocols [assertion]
+      early skip of rewriting module: asyncio.sslproto [assertion]
+      early skip of rewriting module: asyncio.transports [assertion]
+      early skip of rewriting module: asyncio.staggered [assertion]
+      early skip of rewriting module: asyncio.locks [assertion]
+      early skip of rewriting module: asyncio.mixins [assertion]
+      early skip of rewriting module: asyncio.tasks [assertion]
+      early skip of rewriting module: asyncio.trsock [assertion]
+      early skip of rewriting module: asyncio.runners [assertion]
+      early skip of rewriting module: asyncio.queues [assertion]
+      early skip of rewriting module: asyncio.streams [assertion]
+      early skip of rewriting module: asyncio.subprocess [assertion]
+      early skip of rewriting module: asyncio.threads [assertion]
+      early skip of rewriting module: asyncio.unix_events [assertion]
+      early skip of rewriting module: asyncio.base_subprocess [assertion]
+      early skip of rewriting module: asyncio.selector_events [assertion]
+      early skip of rewriting module: concurrent.futures.thread [assertion]
+      early skip of rewriting module: queue [assertion]
+      early skip of rewriting module: _queue [assertion]
+      early skip of rewriting module: asgiref.current_thread_executor [assertion]
+      early skip of rewriting module: asgiref.local [assertion]
+      early skip of rewriting module: django.apps.registry [assertion]
+      early skip of rewriting module: django.conf [assertion]
+      early skip of rewriting module: django.conf.global_settings [assertion]
+      early skip of rewriting module: django.urls [assertion]
+      early skip of rewriting module: django.urls.base [assertion]
+      early skip of rewriting module: django.utils.translation [assertion]
+      early skip of rewriting module: django.utils.autoreload [assertion]
+      early skip of rewriting module: django.core.signals [assertion]
+      early skip of rewriting module: django.dispatch [assertion]
+      early skip of rewriting module: django.dispatch.dispatcher [assertion]
+      early skip of rewriting module: django.utils.inspect [assertion]
+      early skip of rewriting module: termios [assertion]
+      early skip of rewriting module: pywatchman [assertion]
+      early skip of rewriting module: django.urls.exceptions [assertion]
+      early skip of rewriting module: django.http [assertion]
+      early skip of rewriting module: django.http.cookie [assertion]
+      early skip of rewriting module: http [assertion]
+      early skip of rewriting module: http.cookies [assertion]
+      early skip of rewriting module: django.http.request [assertion]
+      early skip of rewriting module: django.core.signing [assertion]
+      early skip of rewriting module: django.utils.crypto [assertion]
+      early skip of rewriting module: hmac [assertion]
+      early skip of rewriting module: secrets [assertion]
+      early skip of rewriting module: django.utils.encoding [assertion]
+      early skip of rewriting module: django.core.files [assertion]
+      early skip of rewriting module: django.core.files.base [assertion]
+      early skip of rewriting module: django.core.files.utils [assertion]
+      early skip of rewriting module: django.core.files.uploadhandler [assertion]
+      early skip of rewriting module: django.core.files.uploadedfile [assertion]
+      early skip of rewriting module: django.core.files.temp [assertion]
+      early skip of rewriting module: django.http.multipartparser [assertion]
+      early skip of rewriting module: html [assertion]
+      early skip of rewriting module: html.entities [assertion]
+      early skip of rewriting module: django.utils.datastructures [assertion]
+      early skip of rewriting module: django.utils.http [assertion]
+      early skip of rewriting module: django.http.response [assertion]
+      early skip of rewriting module: mimetypes [assertion]
+      early skip of rewriting module: _winapi [assertion]
+      early skip of rewriting module: winreg [assertion]
+      early skip of rewriting module: http.client [assertion]
+      early skip of rewriting module: django.core.serializers [assertion]
+      early skip of rewriting module: django.core.serializers.base [assertion]
+      early skip of rewriting module: django.db [assertion]
+      early skip of rewriting module: django.db.utils [assertion]
+      early skip of rewriting module: pkgutil [assertion]
+      early skip of rewriting module: django.utils.connection [assertion]
+      early skip of rewriting module: django.db.models [assertion]
+      early skip of rewriting module: django.db.models.signals [assertion]
+      early skip of rewriting module: django.db.models.utils [assertion]
+      early skip of rewriting module: django.db.models.aggregates [assertion]
+      early skip of rewriting module: django.db.models.expressions [assertion]
+      early skip of rewriting module: django.db.models.fields [assertion]
+      early skip of rewriting module: django.forms [assertion]
+      early skip of rewriting module: django.forms.boundfield [assertion]
+      early skip of rewriting module: django.forms.utils [assertion]
+      early skip of rewriting module: django.forms.renderers [assertion]
+      early skip of rewriting module: django.template [assertion]
+      early skip of rewriting module: django.template.engine [assertion]
+      early skip of rewriting module: django.template.base [assertion]
+      early skip of rewriting module: django.template.context [assertion]
+      early skip of rewriting module: django.utils.formats [assertion]
+      early skip of rewriting module: django.utils.dateformat [assertion]
+      early skip of rewriting module: django.utils.dates [assertion]
+      early skip of rewriting module: django.utils.timezone [assertion]
+      early skip of rewriting module: zoneinfo [assertion]
+      early skip of rewriting module: zoneinfo._tzpath [assertion]
+      early skip of rewriting module: _sysconfigdata__x86_64-linux-gnu [assertion]
+      early skip of rewriting module: zoneinfo._common [assertion]
+      early skip of rewriting module: _zoneinfo [assertion]
+      early skip of rewriting module: django.utils.numberformat [assertion]
+      early skip of rewriting module: django.utils.safestring [assertion]
+      early skip of rewriting module: django.utils.html [assertion]
+      early skip of rewriting module: html.parser [assertion]
+      early skip of rewriting module: _markupbase [assertion]
+      early skip of rewriting module: django.utils.text [assertion]
+      early skip of rewriting module: gzip [assertion]
+      early skip of rewriting module: django.template.exceptions [assertion]
+      early skip of rewriting module: django.template.library [assertion]
+      early skip of rewriting module: django.template.utils [assertion]
+      early skip of rewriting module: django.template.autoreload [assertion]
+      early skip of rewriting module: django.template.backends [assertion]
+      early skip of rewriting module: django.template.backends.django [assertion]
+      early skip of rewriting module: django.template.backends.base [assertion]
+      early skip of rewriting module: django.utils._os [assertion]
+      early skip of rewriting module: django.template.loader [assertion]
+      early skip of rewriting module: django.forms.widgets [assertion]
+      early skip of rewriting module: django.templatetags [assertion]
+      early skip of rewriting module: django.templatetags.static [assertion]
+      early skip of rewriting module: django.utils.topological_sort [assertion]
+      early skip of rewriting module: django.forms.fields [assertion]
+      early skip of rewriting module: django.core.validators [assertion]
+      early skip of rewriting module: ipaddress [assertion]
+      early skip of rewriting module: django.utils.deconstruct [assertion]
+      early skip of rewriting module: django.utils.ipv6 [assertion]
+      early skip of rewriting module: django.utils.dateparse [assertion]
+      early skip of rewriting module: django.utils.duration [assertion]
+      early skip of rewriting module: django.forms.forms [assertion]
+      early skip of rewriting module: django.forms.formsets [assertion]
+      early skip of rewriting module: django.forms.models [assertion]
+      early skip of rewriting module: django.core.checks [assertion]
+      early skip of rewriting module: django.core.checks.messages [assertion]
+      early skip of rewriting module: django.core.checks.registry [assertion]
+      early skip of rewriting module: django.core.checks.async_checks [assertion]
+      early skip of rewriting module: django.core.checks.caches [assertion]
+      early skip of rewriting module: django.core.cache [assertion]
+      early skip of rewriting module: django.core.cache.backends [assertion]
+      early skip of rewriting module: django.core.cache.backends.base [assertion]
+      early skip of rewriting module: django.core.cache.backends.filebased [assertion]
+      early skip of rewriting module: django.core.files.locks [assertion]
+      early skip of rewriting module: django.core.files.move [assertion]
+      early skip of rewriting module: django.core.checks.compatibility [assertion]
+      early skip of rewriting module: django.core.checks.compatibility.django_4_0 [assertion]
+      early skip of rewriting module: django.core.checks.database [assertion]
+      early skip of rewriting module: django.core.checks.files [assertion]
+      early skip of rewriting module: django.core.checks.model_checks [assertion]
+      early skip of rewriting module: django.core.checks.security [assertion]
+      early skip of rewriting module: django.core.checks.security.base [assertion]
+      early skip of rewriting module: django.core.checks.security.csrf [assertion]
+      early skip of rewriting module: django.core.checks.security.sessions [assertion]
+      early skip of rewriting module: django.core.checks.templates [assertion]
+      early skip of rewriting module: django.core.checks.translation [assertion]
+      early skip of rewriting module: django.utils.translation.trans_real [assertion]
+      early skip of rewriting module: django.conf.locale [assertion]
+      early skip of rewriting module: django.core.checks.urls [assertion]
+      early skip of rewriting module: django.db.models.constants [assertion]
+      early skip of rewriting module: django.db.models.query_utils [assertion]
+      early skip of rewriting module: django.utils.tree [assertion]
+      early skip of rewriting module: django.db.models.functions [assertion]
+      early skip of rewriting module: django.db.models.functions.comparison [assertion]
+      early skip of rewriting module: django.db.models.fields.json [assertion]
+      early skip of rewriting module: django.db.models.lookups [assertion]
+      early skip of rewriting module: django.db.models.fields.mixins [assertion]
+      early skip of rewriting module: django.db.models.functions.datetime [assertion]
+      early skip of rewriting module: django.db.models.functions.math [assertion]
+      early skip of rewriting module: django.db.models.functions.mixins [assertion]
+      early skip of rewriting module: django.db.models.functions.text [assertion]
+      early skip of rewriting module: django.db.models.functions.window [assertion]
+      early skip of rewriting module: django.db.models.constraints [assertion]
+      early skip of rewriting module: django.db.models.indexes [assertion]
+      early skip of rewriting module: django.db.backends [assertion]
+      early skip of rewriting module: django.db.backends.utils [assertion]
+      early skip of rewriting module: django.db.models.sql [assertion]
+      early skip of rewriting module: django.db.models.sql.query [assertion]
+      early skip of rewriting module: django.db.models.fields.related_lookups [assertion]
+      early skip of rewriting module: django.db.models.sql.constants [assertion]
+      early skip of rewriting module: django.db.models.sql.datastructures [assertion]
+      early skip of rewriting module: django.db.models.sql.where [assertion]
+      early skip of rewriting module: django.db.models.sql.subqueries [assertion]
+      early skip of rewriting module: django.db.models.deletion [assertion]
+      early skip of rewriting module: django.db.transaction [assertion]
+      early skip of rewriting module: django.db.models.enums [assertion]
+      early skip of rewriting module: django.db.models.fields.files [assertion]
+      early skip of rewriting module: django.core.files.images [assertion]
+      early skip of rewriting module: django.core.files.storage [assertion]
+      early skip of rewriting module: django.core.files.storage.base [assertion]
+      early skip of rewriting module: django.core.files.storage.filesystem [assertion]
+      early skip of rewriting module: django.core.files.storage.mixins [assertion]
+      early skip of rewriting module: django.core.files.storage.handler [assertion]
+      early skip of rewriting module: django.core.files.storage.memory [assertion]
+      early skip of rewriting module: django.db.models.fields.proxy [assertion]
+      early skip of rewriting module: django.db.models.manager [assertion]
+      early skip of rewriting module: django.db.models.query [assertion]
+      early skip of rewriting module: django.db.models.base [assertion]
+      early skip of rewriting module: django.db.models.fields.related [assertion]
+      early skip of rewriting module: django.db.models.fields.related_descriptors [assertion]
+      early skip of rewriting module: django.db.models.fields.reverse_related [assertion]
+      early skip of rewriting module: django.db.models.options [assertion]
+      early skip of rewriting module: django.core.serializers.json [assertion]
+      early skip of rewriting module: django.core.serializers.python [assertion]
+      early skip of rewriting module: django.urls.resolvers [assertion]
+      early skip of rewriting module: django.urls.converters [assertion]
+      early skip of rewriting module: django.urls.utils [assertion]
+      early skip of rewriting module: django.urls.conf [assertion]
+      early skip of rewriting module: django.utils.log [assertion]
+      early skip of rewriting module: logging.config [assertion]
+      early skip of rewriting module: logging.handlers [assertion]
+      early skip of rewriting module: socketserver [assertion]
+      early skip of rewriting module: django.core.mail [assertion]
+      early skip of rewriting module: django.core.mail.message [assertion]
+      early skip of rewriting module: email.generator [assertion]
+      early skip of rewriting module: email.headerregistry [assertion]
+      early skip of rewriting module: email._header_value_parser [assertion]
+      early skip of rewriting module: email.mime [assertion]
+      early skip of rewriting module: email.mime.base [assertion]
+      early skip of rewriting module: email.policy [assertion]
+      early skip of rewriting module: email.contentmanager [assertion]
+      early skip of rewriting module: email.mime.message [assertion]
+      early skip of rewriting module: email.mime.nonmultipart [assertion]
+      early skip of rewriting module: email.mime.multipart [assertion]
+      early skip of rewriting module: email.mime.text [assertion]
+      early skip of rewriting module: django.core.mail.utils [assertion]
+      early skip of rewriting module: django.core.management [assertion]
+      early skip of rewriting module: django.core.management.base [assertion]
+      early skip of rewriting module: django.core.management.color [assertion]
+      early skip of rewriting module: django.utils.termcolors [assertion]
+      early skip of rewriting module: colorama [assertion]
+      finish pytest_make_collect_report --> <CollectReport 'cama_backend/tests/test_modules.py' lenresult=0 outcome='failed'> [hook]
+      pytest_exception_interact [hook]
+          node: <Module test_modules.py>
+          call: <CallInfo when='collect' excinfo=<ExceptionInfo ImproperlyConfigured('Requested setting LOGGING_CONFIG, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.') tblen=18>>
+          report: <CollectReport 'cama_backend/tests/test_modules.py' lenresult=0 outcome='failed'>
+      finish pytest_exception_interact --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/tests/test_modules.py' lenresult=0 outcome='failed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend/tests' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_backend' lenresult=4 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir cama_frontend> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir cama_frontend>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir cama_frontend>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/.eslintrc.cjs
+            path: /home/masky/g10-tddd96-pum/cama_frontend/.eslintrc.cjs
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/.eslintrc.cjs
+            path: /home/masky/g10-tddd96-pum/cama_frontend/.eslintrc.cjs
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/Dockerfile
+            path: /home/masky/g10-tddd96-pum/cama_frontend/Dockerfile
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/Dockerfile
+            path: /home/masky/g10-tddd96-pum/cama_frontend/Dockerfile
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/README.md
+            path: /home/masky/g10-tddd96-pum/cama_frontend/README.md
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/README.md
+            path: /home/masky/g10-tddd96-pum/cama_frontend/README.md
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/index.html
+            path: /home/masky/g10-tddd96-pum/cama_frontend/index.html
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/index.html
+            path: /home/masky/g10-tddd96-pum/cama_frontend/index.html
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/node_modules
+            path: /home/masky/g10-tddd96-pum/cama_frontend/node_modules
+        finish pytest_ignore_collect --> True [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/package-lock.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/package-lock.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/package-lock.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/package-lock.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/package.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/package.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/package.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/package.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/postcss.config.js
+            path: /home/masky/g10-tddd96-pum/cama_frontend/postcss.config.js
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/postcss.config.js
+            path: /home/masky/g10-tddd96-pum/cama_frontend/postcss.config.js
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/public
+            path: /home/masky/g10-tddd96-pum/cama_frontend/public
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/public
+            parent: <Dir cama_frontend>
+        finish pytest_collect_directory --> <Dir public> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src
+            parent: <Dir cama_frontend>
+        finish pytest_collect_directory --> <Dir src> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/tailwind.config.js
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tailwind.config.js
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/tailwind.config.js
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tailwind.config.js
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.node.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.node.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.node.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/tsconfig.node.json
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/vite.config.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/vite.config.ts
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir cama_frontend>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/vite.config.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/vite.config.ts
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend' lenresult=2 outcome='passed'> [hook]
+    genitems <Dir public> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir public>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir public>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/public/vite.svg
+            path: /home/masky/g10-tddd96-pum/cama_frontend/public/vite.svg
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir public>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/public/vite.svg
+            path: /home/masky/g10-tddd96-pum/cama_frontend/public/vite.svg
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/public' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/public' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir src> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir src>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir src>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.css
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.css
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir src>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.css
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.css
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir src>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/App.tsx
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/api
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/api
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/api
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir api> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir assets> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir components> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir context> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir data> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir hooks> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/index.css
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/index.css
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir src>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/index.css
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/index.css
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/main.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/main.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir src>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/main.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/main.tsx
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir pages> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils
+            parent: <Dir src>
+        finish pytest_collect_directory --> <Dir utils> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/vite-env.d.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/vite-env.d.ts
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir src>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/vite-env.d.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/vite-env.d.ts
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src' lenresult=8 outcome='passed'> [hook]
+    genitems <Dir api> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir api>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir api>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/api/apiConfig.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/api/apiConfig.ts
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir api>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/api/apiConfig.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/api/apiConfig.ts
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/api' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/api' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir assets> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir assets>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir assets>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir assets>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images
+            parent: <Dir assets>
+        finish pytest_collect_directory --> <Dir images> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/react.svg
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/react.svg
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir assets>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/react.svg
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/react.svg
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/assets' lenresult=1 outcome='passed'> [hook]
+    genitems <Dir images> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir images>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir images>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/CAMA_test_icon.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/CAMA_test_icon.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/CAMA_test_icon.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/CAMA_test_icon.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(1).png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(1).png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(2).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(2).png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(2).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard(2).png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Dashboard.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Mathematics.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Mathematics.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Mathematics.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Mathematics.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4(1).png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4(1).png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 4.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7(1).png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7(1).png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7(1).png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/Rectangle 7.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/bild2.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/bild2.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/bild2.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/bild2.png
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/falcon.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/falcon.png
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir images>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/falcon.png
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/assets/images/falcon.png
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/assets/images' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/assets/images' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/assets' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir components> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir components>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir components>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/DatasetCard.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/DatasetCard.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir components>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/DatasetCard.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/DatasetCard.tsx
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Footer.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Footer.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir components>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Footer.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Footer.tsx
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Navbar.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Navbar.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir components>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Navbar.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/Navbar.tsx
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_
+            parent: <Dir components>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form
+            parent: <Dir components>
+        finish pytest_collect_directory --> <Dir form> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui
+            parent: <Dir components>
+        finish pytest_collect_directory --> <Dir ui> [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/components' lenresult=3 outcome='passed'> [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/components/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/components/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir form> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir form>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir form>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir form>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/form/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/components/form' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/components/form' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir ui> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir ui>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir ui>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir ui>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/components/ui/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/components/ui' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/components/ui' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/components' lenresult=3 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir context> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir context>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir context>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/AuthContext.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/AuthContext.ts
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir context>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/AuthContext.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/AuthContext.ts
+        finish pytest_collect_file --> [] [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_
+            parent: <Dir context>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/context' lenresult=1 outcome='passed'> [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/context/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/context/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/context/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/context' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir data> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir data>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir data>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_
+            parent: <Dir data>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/data.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/data.json
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir data>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/data.json
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/data.json
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/data' lenresult=1 outcome='passed'> [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/data/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/data/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/data/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/data' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir hooks> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir hooks>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir hooks>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_
+            parent: <Dir hooks>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/useAuth.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/useAuth.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir hooks>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/useAuth.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/useAuth.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/hooks' lenresult=1 outcome='passed'> [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/hooks/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/hooks/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/hooks/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/hooks' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir pages> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir pages>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir pages>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir About> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Datasets> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Home> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Login> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Profile> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Settings> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir Signup> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_
+            parent: <Dir pages>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages' lenresult=8 outcome='passed'> [hook]
+    genitems <Dir About> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir About>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir About>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About/AboutPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About/AboutPage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir About>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About/AboutPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/About/AboutPage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/About' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/About' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Datasets> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Datasets>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Datasets>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets/DatasetsPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets/DatasetsPage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Datasets>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets/DatasetsPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Datasets/DatasetsPage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Datasets' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Datasets' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Home> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Home>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Home>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home/HomePage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home/HomePage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Home>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home/HomePage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Home/HomePage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Home' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Home' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Login> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Login>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Login>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login/LoginPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login/LoginPage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Login>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login/LoginPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Login/LoginPage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Login' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Login' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Profile> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Profile>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Profile>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile/Profile.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile/Profile.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Profile>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile/Profile.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Profile/Profile.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Profile' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Profile' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Settings> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Settings>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Settings>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings/SettingsPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings/SettingsPage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Settings>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings/SettingsPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Settings/SettingsPage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Settings' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Settings' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir Signup> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir Signup>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir Signup>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup/SignupPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup/SignupPage.tsx
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir Signup>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup/SignupPage.tsx
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/Signup/SignupPage.tsx
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/Signup' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/Signup' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/pages/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/pages/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/pages' lenresult=8 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+    genitems <Dir utils> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir utils>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir utils>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_directory [hook]
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_
+            parent: <Dir utils>
+        finish pytest_collect_directory --> <Dir _tests_> [hook]
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/sorting.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/sorting.ts
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir utils>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/sorting.ts
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/sorting.ts
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/utils' lenresult=1 outcome='passed'> [hook]
+    genitems <Dir _tests_> [collection]
+      pytest_collectstart [hook]
+          collector: <Dir _tests_>
+      finish pytest_collectstart --> [] [hook]
+      pytest_make_collect_report [hook]
+          collector: <Dir _tests_>
+        pytest_ignore_collect [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            collection_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_/.gitkeep
+        finish pytest_ignore_collect --> None [hook]
+        pytest_collect_file [hook]
+            parent: <Dir _tests_>
+            file_path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_/.gitkeep
+            path: /home/masky/g10-tddd96-pum/cama_frontend/src/utils/_tests_/.gitkeep
+        finish pytest_collect_file --> [] [hook]
+      finish pytest_make_collect_report --> <CollectReport 'cama_frontend/src/utils/_tests_' lenresult=0 outcome='passed'> [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/utils/_tests_' lenresult=0 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src/utils' lenresult=1 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend/src' lenresult=8 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport 'cama_frontend' lenresult=2 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collectreport [hook]
+          report: <CollectReport '.' lenresult=2 outcome='passed'>
+      finish pytest_collectreport --> [] [hook]
+      pytest_collection_modifyitems [hook]
+          session: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=0>
+          config: <_pytest.config.Config object at 0x7f7b02ba6320>
+          items: []
+      finish pytest_collection_modifyitems --> [] [hook]
+      pytest_collection_finish [hook]
+          session: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=0>
+        pytest_report_collectionfinish [hook]
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+            items: []
+            start_path: /home/masky/g10-tddd96-pum
+            startdir: /home/masky/g10-tddd96-pum
+        finish pytest_report_collectionfinish --> [] [hook]
+      finish pytest_collection_finish --> [] [hook]
+    finish pytest_collection --> None [hook]
+    pytest_runtestloop [hook]
+        session: <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=0>
+    pytest_keyboard_interrupt [hook]
+        excinfo: <ExceptionInfo Interrupted('1 error during collection') tblen=13>
+    finish pytest_keyboard_interrupt --> [] [hook]
+    pytest_sessionfinish [hook]
+        session: <Session  exitstatus=<ExitCode.INTERRUPTED: 2> testsfailed=1 testscollected=0>
+        exitstatus: 2
+      pytest_terminal_summary [hook]
+          terminalreporter: <_pytest.terminal.TerminalReporter object at 0x7f7b0230fcd0>
+          exitstatus: 2
+          config: <_pytest.config.Config object at 0x7f7b02ba6320>
+      early skip of rewriting module: pygments [assertion]
+      early skip of rewriting module: pygments [assertion]
+      early skip of rewriting module: pygments [assertion]
+      early skip of rewriting module: pygments [assertion]
+        pytest_report_teststatus [hook]
+            report: <CollectReport 'cama_backend/tests/test_modules.py' lenresult=0 outcome='failed'>
+            config: <_pytest.config.Config object at 0x7f7b02ba6320>
+        finish pytest_report_teststatus --> ('error', 'E', 'ERROR') [hook]
+      finish pytest_terminal_summary --> [] [hook]
+    finish pytest_sessionfinish --> [] [hook]
+    pytest_unconfigure [hook]
+        config: <_pytest.config.Config object at 0x7f7b02ba6320>
+    finish pytest_unconfigure --> [] [hook]
