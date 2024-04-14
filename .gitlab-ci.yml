@@ -5,6 +5,10 @@ stages:
   - test
   - log
 
+services:
+  name: postgres:latest
+  alias: postgres
+
 build_back_end:
   stage: build
   image: python:3.12-slim
