@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
 import countries from "../../assets/countries.json"
 import '@mui/material';
+import fields from "./fields.json"
 
 const UploadPage: React.FC = () => {
 
@@ -56,9 +57,8 @@ const UploadPage: React.FC = () => {
 			
 				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 					<Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-						<Tab label="Item One" {...a11yProps(0)} />
-						<Tab label="Item Two" {...a11yProps(1)} />
-						<Tab label="Item Three" {...a11yProps(2)} />
+						<Tab label="Upload to existing dataset" {...a11yProps(0)} />
+						<Tab label="Add meta analysis" {...a11yProps(1)} />
 					</Tabs>
 				</Box>
 				<CustomTabPanel value={value} index={0}>
@@ -130,6 +130,34 @@ const UploadPage: React.FC = () => {
 				<Typography variant="h5">
 					Data for meta-analysis
 				</Typography>
+				{fields.map((field) => (field.type === "option" ? (
+					<FormControl sx={{width:"30%", mt: 2, ml:1}} variant="standard">
+					<TextField
+						id={"form" + field.key}
+						label={field.name}
+						select
+						defaultValue={field.options[0]} 
+						>
+						{field.options.map((option) => (
+							<MenuItem key={option} value={option}>
+							{option}
+							</MenuItem>
+						))}
+					</TextField>
+					
+				</FormControl>
+				)
+				: (
+
+					<FormControl sx={{width:"23%", m: 1 }} variant="standard">
+						<InputLabel htmlFor="standard-adornment-amount">{field.name}</InputLabel>
+						<Input id={"form" +field.key}/>
+					</FormControl>
+				)))}
+
+				<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
+					<Button variant="contained" className="float-">Send</Button>
+				</Box>
 
 
 				</CustomTabPanel>
@@ -139,9 +167,11 @@ const UploadPage: React.FC = () => {
 				<CustomTabPanel value={value} index={2}>
 					Item Three
 				</CustomTabPanel>
+
 			
 		</Box>
 
+		
 		);
 	};
 	
