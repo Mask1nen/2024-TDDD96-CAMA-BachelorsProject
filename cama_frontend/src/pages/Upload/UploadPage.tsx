@@ -5,7 +5,7 @@ import '@mui/material';
 
 const UploadPage: React.FC = () => {
 
-	const [value, setValue] = React.useState(1);
+	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 	  setValue(newValue);
@@ -62,31 +62,75 @@ const UploadPage: React.FC = () => {
 					</Tabs>
 				</Box>
 				<CustomTabPanel value={value} index={0}>
-					<FormControl sx={{width:"50%", m: 1 }} variant="standard">
-						<InputLabel htmlFor="standard-adornment-amount">Year</InputLabel>
-						<Input id="formYear"/>
-					</FormControl>
+					<Typography variant="h5">
+						Metadata
+					</Typography>
+					<Box sx={{display:"flex", flexWrap: 'wrap'}}>	
 
-					<FormControl sx={{width:"50%", m: 1 }} variant="standard">
-						<InputLabel htmlFor="standard-adornment-amount">Authors</InputLabel>
-						<Input id="formAuthors"/>
-					</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">Authors</InputLabel>
+							<Input id="formAuthors"/>
+						</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">Year</InputLabel>
+							<Input id="formYear"/>
+						</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">Abstract</InputLabel>
+							<Input id="formAbstract"/>
+						</FormControl>
 
-					<FormControl sx={{width:"50%", mt: 2 }} variant="standard">
-						<TextField
-							id="outlined-select-currency"
-							label="country"
-							select
-							defaultValue="SE"
-							>
-							{countries.map((option) => (
-								<MenuItem key={option.value} value={option.value}>
-								{option.label}
-								</MenuItem>
-							))}
-						</TextField>
-						
-					</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">Keywords</InputLabel>
+							<Input id="formKeywords"/>
+						</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">Category</InputLabel>
+							<Input id="formCategory"/>
+						</FormControl>
+						<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-amount">DOI</InputLabel>
+							<Input id="formDOI"/>
+						</FormControl>
+
+						<FormControl sx={{width:"45%", mt: 2, ml:1}} variant="standard">
+							<TextField
+								id="formCountry"
+								label="country"
+								select
+								defaultValue="SE"
+								>
+								{countries.map((option) => (
+									<MenuItem key={option.value} value={option.value}>
+									{option.label}
+									</MenuItem>
+								))}
+							</TextField>
+							
+						</FormControl>
+						<FormControl sx={{width:"45%", mt: 2, ml: 2}} variant="standard">
+							<TextField
+								id="formPeerReview"
+								label="Peer review"
+								select
+								defaultValue="yes"
+								>
+								
+									<MenuItem key="yes" value="yes">
+									Yes
+									</MenuItem>
+									<MenuItem key="no" value="no">
+									No
+									</MenuItem>
+							</TextField>
+							
+						</FormControl>
+					</Box>
+				<Box sx={{width:"90%", borderTop: 1, m:2}}></Box>
+				<Typography variant="h5">
+					Data for meta-analysis
+				</Typography>
+
 
 				</CustomTabPanel>
 				<CustomTabPanel value={value} index={1}>
