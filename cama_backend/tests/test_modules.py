@@ -21,3 +21,9 @@ def test_studyuser():
     study = Study(study_id=1, uploader=user,study_year=study_year, country=study_country, category=study_category,
                   peer_reviewed = True, authors = "123", doi="123", abstract="123", keywords="123", nr_downloads="123")
     assert study.get_uploader() == "1"
+    
+
+@pytest.mark.django_db
+def test_cascade():
+    effect_data = EffectData
+    study = Study
