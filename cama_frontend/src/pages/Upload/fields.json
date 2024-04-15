@@ -1,7 +1,7 @@
 [
 	{"name": "Study Design", "key": "study_design", "type": "option", "desc":"Eg. RCT, QES", "options":["RCT", "QES"]},
 	{"name": "Participant Design", "key": "participant_design", "type": "option", "desc":"E.g. within or between subject design", "options":["within", "between", "mixed"]},
-	{"name": "Implementation", "key": "implementation", "type": "option", "desc":"Who conducted/implemented the intervention", "options":["researcher", "teacher", "papaprofessional"]},
+	{"name": "Implementation", "key": "implementation", "type": "option", "desc":"Who conducted/implemented the intervention", "options":["researcher", "teacher", "paraprofessional"]},
 	{"name": "Risk of Bias (Cochrane)", "key": "rob", "type": "string", "desc":"Risk of bias assessment for randomized studies - final score for the entire study"},
 	{"name": "School grade", "key": "grade", "type": "string", "desc":"State the grades (eg. K-12)"},
 	{"name": "Males", "key": "gender_1", "type": "percent", "desc":"Total number of males included in the study"},
