@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import CamaUserListView
 
 urlpatterns = [
-    path('hello-world/', views.hello_world, name='hello_world'),
+    path('cama-users/', CamaUserListView.as_view(), name='cama_user_list'),
 ]

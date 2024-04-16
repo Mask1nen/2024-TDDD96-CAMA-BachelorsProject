@@ -1,10 +1,18 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
+from .models import CamaUser
+from .serializers import CamaUserSerializer
 
-@api_view(['GET'])
-def hello_world(request):
-    return Response({'message': 'Hello, world! haha'})
+class CamaUserListView(APIView):
+    def get(self, request):
+        cama_users = CamaUser.objects.all()
+        serializer = CamaUserSerializer(cama_users, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = CamaUserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
