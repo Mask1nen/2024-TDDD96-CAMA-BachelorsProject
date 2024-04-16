@@ -4,7 +4,7 @@ import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInp
 import countries from "../../assets/countries.json"
 import fields from "./fields_experiment.json"
 import Effectform from "./effect_form"
-import {Remove, ArrowDownward} from "@mui/icons-material"
+import {Remove, ArrowDownward, AddCircleOutline} from "@mui/icons-material"
 
 
 
@@ -23,6 +23,10 @@ function Experimentform() {
 		setInputs(values => ({...values, [name]: val}))
 		console.log(inputs)
 	}
+
+	const addEffect = () => {     setEffects((prev) => [...prev, prev.length]);   };
+	
+	const [effects, setEffects] = useState<number[]>([]);
 
 
 	return (
@@ -49,6 +53,7 @@ function Experimentform() {
 									select
 									value={inputs[field.key] || ""} 
 									onChange={handleChange}
+									key={field.key}
 									>
 									{field.options.map((option) => (
 										<MenuItem key={option} value={option}>
@@ -66,6 +71,7 @@ function Experimentform() {
 								<Input 
 									name={field.key}
 									onChange={handleChange}
+									key={field.key}
 									value={inputs[field.key] || ""} 
 									endAdornment={field.type === "percent" ? <InputAdornment position="end">%</InputAdornment> : ""}
 									id={"form" +field.key}/>
@@ -75,6 +81,10 @@ function Experimentform() {
 
 
 					<Effectform/>
+					{effects.map((id, index) => 
+						<Effectform key={id}/>
+					)}
+					<Button onClick={addEffect} variant="outlined" sx={{mt:2}}>Add Effect<AddCircleOutline sx={{ml:1}}/></Button>
 
 				</AccordionDetails>
 			</Accordion>

@@ -65,12 +65,11 @@ const UploadPage: React.FC = () => {
 				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 					<Tabs value={value} onChange={handleTabChange} aria-label="basic tabs example">
 						<Tab label="Upload to existing dataset" {...a11yProps(0)} />
-						<Tab label="Add meta analysis" {...a11yProps(1)} />
 					</Tabs>
 				</Box>
 				<CustomTabPanel value={value} index={0}>
 					<Typography variant="h5">
-						Metadata
+						Study information
 					</Typography>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 							<Studyform/>
@@ -79,7 +78,7 @@ const UploadPage: React.FC = () => {
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 
 							{experiments.map((id, index) => 
-								<Experimentform/>
+								<Experimentform key={id}/>
 							)}
 							
 

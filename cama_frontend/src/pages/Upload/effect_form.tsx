@@ -48,6 +48,7 @@ function Effectform() {
 										select
 										value={inputs[field.key] || ""} 
 										onChange={handleChange}
+										key={field.key}
 										>
 										{field.options.map((option) => (
 											<MenuItem key={option} value={option}>
@@ -64,6 +65,8 @@ function Effectform() {
 									<Input 
 										name={field.key}
 										onChange={handleChange}
+										key={field.key}
+
 										value={inputs[field.key] || ""} 
 										endAdornment={field.type === "percent" ? <InputAdornment position="end">%</InputAdornment> : ""}
 										id={"form" +field.key}/>
