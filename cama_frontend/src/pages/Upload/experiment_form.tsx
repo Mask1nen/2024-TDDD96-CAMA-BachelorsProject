@@ -80,7 +80,6 @@ function Experimentform() {
 					</form>
 
 
-					<Effectform/>
 					{effects.map((id, index) => 
 						<Effectform key={id}/>
 					)}
