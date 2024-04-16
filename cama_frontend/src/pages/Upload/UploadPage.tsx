@@ -2,7 +2,10 @@ import React, { useState, useMemo } from "react";
 import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
 import countries from "../../assets/countries.json"
 import '@mui/material';
-import Metaform from "./metadataForm"
+import Studyform from "./study_form"
+import Effectform from "./effect_form"
+import Experimentform from "./experiment_form"
+import {AddCircleOutline} from "@mui/icons-material"
 
 const UploadPage: React.FC = () => {
 
@@ -67,16 +70,21 @@ const UploadPage: React.FC = () => {
 						Metadata
 					</Typography>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
-							<Metaform/>
+							<Studyform/>
+							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
+							<Button variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
+
+
+							<Experimentform/>
+							<Experimentform/>
 
 
 					</Box>
+					<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
+						<Button type="submit" variant="contained" className="float-">Send</Button>
+					</Box>
 				
-
-
-
-
 				</CustomTabPanel>
 				<CustomTabPanel value={value} index={1}>
 					Item Two
@@ -85,7 +93,7 @@ const UploadPage: React.FC = () => {
 					Item Three
 				</CustomTabPanel>
 
-			
+
 		</Box>
 
 		
