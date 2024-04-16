@@ -16,3 +16,12 @@ class CamaUserListView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+from rest_framework.generics import ListCreateAPIView
+from .models import Study
+from .serializers import StudySerializer
+
+class StudyListCreateAPIView(ListCreateAPIView):
+    queryset = Study.objects.all()
+    serializer_class = StudySerializer

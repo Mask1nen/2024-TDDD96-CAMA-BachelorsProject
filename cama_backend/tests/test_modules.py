@@ -7,6 +7,7 @@ from myapi.models import Country
 from myapi.models import Category
 from myapi.models import Year
 from myapi.models import Study
+from myapi.models import EffectData
 '''
 pytestmark = pytest.mark.django_db # Mark all functions to require database access.
 @pytest.mark.django_db(Transaction = True) # Mark a function to require transaction access to database
