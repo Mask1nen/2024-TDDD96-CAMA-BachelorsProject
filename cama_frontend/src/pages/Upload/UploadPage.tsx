@@ -47,7 +47,10 @@ const UploadPage: React.FC = () => {
 		  'aria-controls': `simple-tabpanel-${index}`,
 		};
 	  }
+
+	const addExperiment = () => {     setExperiments((prev) => [...prev, prev.length]);   };
 	
+	const [experiments, setExperiments] = useState<number[]>([]);
 
 
 	return (
@@ -73,11 +76,12 @@ const UploadPage: React.FC = () => {
 							<Studyform/>
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
-							<Button variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
+							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 
-
-							<Experimentform/>
-							<Experimentform/>
+							{experiments.map((id, index) => 
+								<Experimentform/>
+							)}
+							
 
 
 					</Box>
