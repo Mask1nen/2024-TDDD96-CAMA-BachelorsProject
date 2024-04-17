@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from rest_framework.test import APIClient
 from rest_framework import status
-from myapi.models import CamaUser, Study
+from myapi.models import *
 from myapi.serializers import StudySerializer, ExperimentSerializer
 
 class CamaUserAPITest(TestCase):
@@ -29,27 +29,28 @@ class CamaUserAPITest(TestCase):
         self.assertEqual(CamaUser.objects.get().name, 'John Doe')
 
 
-
 class StudyListCreateAPIViewTests(APITestCase):
     def setUp(self):
         self.url = reverse('study-list-create')
         self.valid_payload = {
-            "uploader": {
-                "orc_id": "12345",
-                "name": "John Doe",
-                "email": "john@example.com",
-                "organization": "Example Org",
-                "nr_uploads": 5
-            },
-            "study_year": {"study_year": 2022},
-            "country": {"name": "Example Country"},
-            "category": {"name": "Example Category"},
-            "peer_reviewed": True,
-            "authors": "Example Author",
-            "doi": "example_doi",
-            "abstract": "Example Abstract",
-            "keywords": "Example Keywords",
-            "nr_downloads": "100"
+            "study_data": {
+                "uploader": {
+                    "orc_id": "12345",
+                    "name": "John Doe",
+                    "email": "john@example.com",
+                    "organization": "Example Org",
+                    "nr_uploads": 5
+                },
+                "study_year": {"study_year": 2022},
+                "country": {"name": "Example Country"},
+                "category": {"name": "Example Category"},
+                "peer_reviewed": True,
+                "authors": "Example Author",
+                "doi": "example_doi",
+                "abstract": "Example Abstract",
+                "keywords": "Example Keywords",
+                "nr_downloads": "100"
+            }
         }
 
     def test_create_study(self):
@@ -74,19 +75,10 @@ class StudyListCreateAPIViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
-
-from myapi.models import Study, Year, Country, Category, CamaUser,  StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
-from rest_framework.renderers import JSONRenderer
-
-
-
-
 class ExperimentTestCase(TestCase):
     def setUp(self):
-
         self.experiment_attributes = {
-            "gender_2":0.5,
-            "study_id":{"study_id":20,
+            "study":{"study_id":20,
                         "uploader":
                         {"orc_id":55555,
                          "name":"John Doe",
@@ -94,17 +86,32 @@ class ExperimentTestCase(TestCase):
                          "organization":"Example Org",
                          "nr_uploads":10
                          },
-                        "study_year": {'study_year':2222},"country":{"name":"Example sssssss"},"category":{"name":"Example sssssss"},"peer_reviewed":True,"authors":"Example sssssss","doi":"example_doi","abstract":"Example sssssss","keywords":"Example ssssss","nr_downloads":100
+                        "study_year": {'study_year':2222},
+                        "country":{"name":"Example sssssss"},
+                        "category":{"name":"Example sssssss"},
+                        "peer_reviewed":True,
+                        "authors":"Example sssssss",
+                        "doi":"example_doi",
+                        "abstract":"Example sssssss",
+                        "keywords":"Example ssssss",
+                        "nr_downloads":100
                         },
-            "study_design":{"design":"2www"},"risks":{"id":30,"rob":"low","robins":"low"},"grade":{"grade":"A"},"participant_design":{"design":"Test"},"implemented":{"implementor":"Test"},"gender_1":0.500,"gender_2":0.500,"intensity_n":0,"duration_week":1,"frequency_n":1,"outcome":"a","outcome_full":"b"
+            "study_design":{"design":"2www"},
+            "risks":{"id":30,"rob":"low","robins":"low"},
+            "grade":{"grade":"A"},
+            "participant_design":{"design":"Test"},
+            "implemented":{"implementor":"Test"},
+            "gender_1":0.500,
+            "gender_2":0.500,
+            "intensity_n":0,
+            "duration_week":1,
+            "frequency_n":1,
+            "outcome":"a",
+            "outcome_full":"b"
         }
         self.client = APIClient()
 
-
-
-
     def test_create_experiment_get_request(self):
-
 
         url = reverse('experiment-list-create') 
 

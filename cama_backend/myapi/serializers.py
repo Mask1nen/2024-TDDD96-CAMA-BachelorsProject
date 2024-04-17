@@ -1,23 +1,7 @@
 from rest_framework import serializers
 from .models import *
-
-class CountrySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Country
-        fields = ['name']
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ['name']
-
-class YearSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Year
-        fields = ['study_year']
-
-    #def to_representation(self, instance):
-    #    return instance.study_year
+import logging
+logger = logging.getLogger(__name__)
 
 
 class StudyDesignSerializer(serializers.ModelSerializer):
@@ -48,66 +32,67 @@ class ImplementationSerializer(serializers.ModelSerializer):
 class EffectDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectData
-        fields = '__all__'  # add other fields if needed
+        fields = '__all__'  # add other fields if needed        
 
-class ExperimentSerializer(serializers.ModelSerializer):
-    effect_sizes = EffectDataSerializer(many=True)
-
+class CountrySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Experiment
-        fields = '__all__'  # add other fields if needed
+        model = Country
+        fields = ['name']
 
-    def create(self, validated_data):
-        effect_sizes_data = validated_data.pop('effect_data')
-        experiment = Experiment.objects.create(validated_data)
-        #for effect_size_data in effect_sizes_data:
-        #    EffectData.objects.create(experiment=experiment, **effect_size_data)
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+class YearSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Year
+        fields = ['study_year']
+
+class CamaUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CamaUser
+        fields = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
     
-        study_id = validated_data.pop('study_id')
-        study_design_data = validated_data.pop('study_design')
-        risks_data = validated_data.pop('risks')
-        grade_data = validated_data.pop('grade')
-        participant_design_data = validated_data.pop('participant_design')
-        implemented_data = validated_data.pop('implemented')
-
-        study_id, _ = Study.objects.get_or_create(**study_id)      
-        study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
-        risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
-        grade, _ = Grade.objects.get_or_create(**grade_data)
-        participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
-        implemented, _ = Implementation.objects.get_or_create(**implemented_data)
-
-        experiment = Experiment.objects.create(
-            study_id=study_id,
-            study_design=study_design,
-            risks=risks,
-            grade=grade,
-            participant_design=participant_design,
-            implemented=implemented,
-            **validated_data
-        )
-        return experiment
-
 class StudySerializer(serializers.ModelSerializer):
-    experiments = ExperimentSerializer(many=True)
+    uploader = CamaUserSerializer(many=False)
+    study_year = YearSerializer(many=False)
+    country = CountrySerializer(many=False)
+    category = CategorySerializer(many=False)
 
     class Meta:
         model = Study
         fields = '__all__'  # add other fields if needed
 
     def create(self, validated_data):
-        experiments_data = validated_data.pop('experiments')
-        study = Study.objects.create(validated_data)
-        for experiment_data in experiments_data:
-            Experiment.objects.create(study=study, **experiment_data)
+        logger.info(f"This is the validated data: {validated_data}")
+        cama_user_data = validated_data.pop('uploader')
+        cama_user = CamaUser.objects.create(**cama_user_data)
+        study_year_data = validated_data.pop('study_year')
+        study_year = Year.objects.create(**study_year_data)
+        country_data = validated_data.pop('country')
+        country = Country.objects.create(**country_data)
+        category_data = validated_data.pop('category')
+        category = Category.objects.create(**category_data)
+        
+        study = Study.objects.create(
+            uploader = cama_user,
+            study_year = study_year,
+            country = country,
+            category = category,
+            **validated_data
+            )
+        logger.info(study)
         return study
 
-class CamaUserSerializer(serializers.ModelSerializer):
+class ExperimentSerializer(serializers.ModelSerializer):
+    study_id = StudySerializer(many=False)
+    study_design = StudyDesignSerializer(many=False)
+    risks = RiskOfBiasSerializer(many=False)
+    grade = GradeSerializer(many=False)
+    participant_design = ParticipantDesignSerializer(many=False)
+    implemented = ImplementationSerializer(many=False)
+
     class Meta:
-        model = CamaUser
-        fields = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
-    def create(self, validated_data):
-        studies_data = validated_data.pop('uploader')
-        cama_user = CamaUser.objects.create(validated_data)
-        for study_data in studies_data:
-            Study.
+        model = Experiment
+        fields = '__all__'  # add other fields if needed

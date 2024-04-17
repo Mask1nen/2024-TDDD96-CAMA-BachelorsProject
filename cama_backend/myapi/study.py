@@ -11,7 +11,6 @@ class Country(models.Model):
 class Category(models.Model):
     name = models.CharField(primary_key=True, max_length=255)
 
-
 class Study(models.Model):
     study_id = models.AutoField(primary_key=True)
     uploader = models.ForeignKey(CamaUser, null=True, on_delete=models.SET_NULL)

@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for cama_backend project.
 
@@ -132,20 +134,44 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGGING = {
+'''LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'DEBUG',  # Adjust as needed
+            'level': 'INFO',  # Adjust as needed
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'DEBUG',  # Adjust as needed
+            'level': 'INFO',  # Adjust as needed
             'propagate': True,
         },
+    },
+}'''
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": "general.log",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console", "file"],
+            "level": os.environ.get("DJANGO_LOG_LEVEL", "INFO"),
+        }
+    },
+    "formatters": {
+        "verbose": {
+            "format": "{asctime} ({levelname})- {name}- {message}",
+            "style": "{",
+        }
     },
 }
