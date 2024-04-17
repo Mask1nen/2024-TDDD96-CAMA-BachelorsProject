@@ -83,6 +83,37 @@ from rest_framework.renderers import JSONRenderer
 
 class ExperimentTestCase(TestCase):
     def setUp(self):
+
+        self.experiment_attributes = {
+            "gender_2":0.5,
+            "study_id":{"study_id":20,
+                        "uploader":
+                        {"orc_id":55555,
+                         "name":"John Doe",
+                         "email":"john@example.com",
+                         "organization":"Example Org",
+                         "nr_uploads":10
+                         },
+                        "study_year": {'study_year':2222},"country":{"name":"Example sssssss"},"category":{"name":"Example sssssss"},"peer_reviewed":True,"authors":"Example sssssss","doi":"example_doi","abstract":"Example sssssss","keywords":"Example ssssss","nr_downloads":100
+                        },
+            "study_design":{"design":"2www"},"risks":{"id":30,"rob":"low","robins":"low"},"grade":{"grade":"A"},"participant_design":{"design":"Test"},"implemented":{"implementor":"Test"},"gender_1":0.500,"gender_2":0.500,"intensity_n":0,"duration_week":1,"frequency_n":1,"outcome":"a","outcome_full":"b"
+        }
+        self.client = APIClient()
+
+
+
+
+    def test_create_experiment_get_request(self):
+
+
+        url = reverse('experiment-list-create') 
+
+        response = self.client.post(url, self.experiment_attributes, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Experiment.objects.count(), 1)
+        self.assertEqual(Experiment.objects.get().study_design.design, self.experiment_attributes['study_design']['design'])
+
+    def test_create_experiment_post_request(self):
         self.study = Study.objects.create(
             uploader=CamaUser.objects.create(
                 orc_id="12345",
@@ -122,22 +153,6 @@ class ExperimentTestCase(TestCase):
             implementor = 'Test'
         )
 
-        self.experiment_attributes = {
-            "gender_2":0.5,
-            # "study_id":{"study_id":20,
-            #             "uploader":
-            #             {"orc_id":55555,
-            #              "name":"John Doe",
-            #              "email":"john@example.com",
-            #              "organization":"Example Org",
-            #              "nr_uploads":10
-            #              },
-            #             "study_year": {'study_year':2222},"country":{"name":"Example sssssss"},"category":{"name":"Example sssssss"},"peer_reviewed":True,"authors":"Example sssssss","doi":"example_doi","abstract":"Example sssssss","keywords":"Example ssssss","nr_downloads":100},
-            "study_design":{"design":"2www"},"risks":{"id":30,"rob":"low","robins":"low"},"grade":{"grade":"A"},"participant_design":{"design":"Test"},"implemented":{"implementor":"Test"},"gender_1":0.500,"gender_2":0.500,"intensity_n":0,"duration_week":1,"frequency_n":1,"outcome":"a","outcome_full":"b"
-        }
-        self.client = APIClient()
-
-    def test_create_experiment_post_request(self):
         # experiment = Experiment.objects.create(
         #     study_id = self.study,
         #     experiment_nr = 112,
@@ -166,15 +181,8 @@ class ExperimentTestCase(TestCase):
         # json_str = json_data.decode('utf-8')
         # print(json_str)
 
+        pass
 
-
-
-        url = reverse('experiment-list-create') 
-
-        response = self.client.post(url, self.experiment_attributes, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Experiment.objects.count(), 1)
-        self.assertEqual(Experiment.objects.get().study_design.design, self.experiment_attributes['study_design']['design'])
 
 
       
