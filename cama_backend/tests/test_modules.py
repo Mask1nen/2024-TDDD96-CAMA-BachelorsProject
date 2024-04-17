@@ -8,6 +8,10 @@ from myapi.models import Category
 from myapi.models import Year
 from myapi.models import Study
 from myapi.models import EffectData
+from .factories import CamaUserFactory, StudyYearFactory, CountryFactory, \
+                        CategoryFactory, StudyFactory, StudyDesignFactory, \
+                        RiskOfBiasFactory, GradeFactory, ParticipantDesignFactory,\
+                        ImplementationFactory, ExperimentFactory, EffectDataFactory
 '''
 pytestmark = pytest.mark.django_db # Mark all functions to require database access.
 @pytest.mark.django_db(Transaction = True) # Mark a function to require transaction access to database
@@ -25,6 +29,38 @@ def test_studyuser():
     
 
 @pytest.mark.django_db
-def test_cascade():
-    effect_data = EffectData
-    study = Study
+def test_user_user_factory(cama_user_factory):
+   user = CamaUserFactory.create_batch(10)
+   print(len(user))
+   assert len(user) == 10
+   for x in user:
+       print(f'{x.orc_id} : {x.name} : {x.email} : {x.organization} : {x.nr_uploads}')
+       assert x.name != None
+       
+
+@pytest.mark.django_db
+def test_study_factory(study_factory):
+   study = StudyFactory.create_batch(10)
+   print(len(study))
+   assert len(study) == 10
+   for x in study:
+       print(f'{x.study_id} : {x.uploader} : {x.study_year} : {x.country} : {x.category} : {x.peer_reviewed} : {x.authors} : {x.doi} : {x.abstract} : {x.keywords} : {x.nr_downloads}')
+       
+       
+@pytest.mark.django_db
+def test_experiment_factory(experiment_factory):
+   experiemnt = ExperimentFactory.create_batch(10)
+   print(len(experiemnt))
+   assert len(experiemnt) == 10
+   for x in experiemnt:
+       print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.grade} : {x.participant_design} : {x.implemented} : {x.gender_1} : {x.gender_2} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.outcome} : {x.outcome_full}')
+       
+       
+@pytest.mark.django_db
+def test_effect_data_factory(effect_data_factory):
+   effect_data = EffectDataFactory.create_batch(10)
+   print(len(effect_data))
+   assert len(effect_data) == 10
+   for x in effect_data:
+       print(f'{x.effekt_size_number} : {x.study_id} : {x.experiment_nr} : {x.sd1i} : {x.sd21} : {x.n1i} : {x.n2i} : {x.m1i} : {x.m2i} : {x.d_var} : {x.d} : {x.f_stat} : {x.t} : {x.ri} : {x.mean_age} : {x.ni} : {x.icc} : {x.ai} : {x.bi} : {x.ci} : {x.di}')
+       
