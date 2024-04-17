@@ -53,8 +53,7 @@ const UploadPage: React.FC = () => {
 		setExperiments(prev => [...prev, uuidv4()]);
 	};
 	
-	const [experiments, setExperiments] = useState<number[]>([]);
-
+	const [experiments, setExperiments] = useState<string[]>([]);
 
 	return (
 		<Box sx={{py:2, pl:2, textAlign:"left"}}>
@@ -80,8 +79,8 @@ const UploadPage: React.FC = () => {
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 
-							{experiments.map((id) => 
-								<Experimentform key={id}/>
+							{experiments.map((experimentId) => 
+								<Experimentform key={experimentId}/>
 							)}
 							
 

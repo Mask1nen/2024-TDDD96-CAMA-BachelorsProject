@@ -80,8 +80,8 @@ function Experimentform() {
 					</form>
 
 
-					{effects.map((id, index) => 
-						<Effectform key={id}/>
+					{effects.map((effectId) => 
+						<Effectform key={effectId}/>
 					)}
 					<Button onClick={addEffect} variant="outlined" sx={{mt:2}}>Add Effect<AddCircleOutline sx={{ml:1}}/></Button>
 
