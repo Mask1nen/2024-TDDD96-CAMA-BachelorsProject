@@ -6,6 +6,7 @@ import Studyform from "./study_form"
 import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
+import { v4 as uuidv4 } from 'uuid';
 
 const UploadPage: React.FC = () => {
 
@@ -48,7 +49,9 @@ const UploadPage: React.FC = () => {
 		};
 	  }
 
-	const addExperiment = () => {     setExperiments((prev) => [...prev, prev.length]);   };
+	  const addExperiment = () => {
+		setExperiments(prev => [...prev, uuidv4()]);
+	};
 	
 	const [experiments, setExperiments] = useState<number[]>([]);
 
@@ -77,7 +80,7 @@ const UploadPage: React.FC = () => {
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 
-							{experiments.map((id, index) => 
+							{experiments.map((id) => 
 								<Experimentform key={id}/>
 							)}
 							

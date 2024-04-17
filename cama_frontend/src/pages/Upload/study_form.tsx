@@ -10,15 +10,13 @@ function Studyform() {
 	const [inputs, setInputs] = useState({});
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(inputs)
-	}
+		console.log(inputs);
+	  };
+	  
 	const handleChange = (event) => {
-		console.log(event.target.name)
-		const name = event.target.name;
-		const val = event.target.value;
-		setInputs(values => ({...values, [name]: val}))
-		console.log(inputs)
-	}
+		const { name, value } = event.target;
+		setInputs(prev => ({ ...prev, [name]: value }));
+	  };
 
 
 	return (

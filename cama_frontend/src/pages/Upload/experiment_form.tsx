@@ -56,7 +56,7 @@ function Experimentform() {
 									key={field.key}
 									>
 									{field.options.map((option) => (
-										<MenuItem key={option} value={option}>
+										<MenuItem key={`${field.key}-${option}`} value={option}>
 										{option}
 										</MenuItem>
 									))}
