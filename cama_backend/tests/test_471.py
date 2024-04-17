@@ -137,7 +137,6 @@ class ExperimentTestCase(TestCase):
             design="Example"
         )
         self.risks = RiskOfBias.objects.create(
-
             id=1,
             rob='low',
             robins='low'
