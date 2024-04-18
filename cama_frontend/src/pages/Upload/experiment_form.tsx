@@ -4,7 +4,7 @@ import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 
-const ExperimentForm: React.FC = () => {
+const ExperimentForm: React.FC = (props) => {
     const [inputs, setInputs] = useState<Record<string, string>>({});
     const [effects, setEffects] = useState<number[]>([]);
 
@@ -20,6 +20,7 @@ const ExperimentForm: React.FC = () => {
 
     const addEffect = () => {
         setEffects(prev => [...prev, prev.length + 1]);  // Ensure you are adding unique identifiers
+
     };
 	const removeEffect = (index: number) => {
         if(window.confirm('Are you sure you want to remove this effect?')) {
@@ -28,13 +29,12 @@ const ExperimentForm: React.FC = () => {
     };
 
     return (
-        <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
+        <Box className="experiment-form" id={props.experimentId ||"hejsan"} sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
             <Accordion>
                 <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
                     <Typography>Experiment Data</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <form onSubmit={handleSubmit}>
                         {experimentFields.map(field => (
                             <FormControl key={field.key} sx={{ width: "30%", mt: 1, ml: 1 }} variant="standard">
 								<TextField
@@ -42,8 +42,8 @@ const ExperimentForm: React.FC = () => {
                                     label={field.name}
                                     name={field.key}
                                     select={!!field.options}
-                                    value={inputs[field.key] || ""}
-                                    onChange={handleChange}
+                                    value={props.inputs.experiments[props.experimentId][field.key] || ""}
+                                    onChange={(e) => {props.onChange(e, props.experimentId)}}
                                 >
                                     {field.options?.map(option => (
                                         <MenuItem key={`${field.key}-${option}`} value={option}>
@@ -53,7 +53,6 @@ const ExperimentForm: React.FC = () => {
                                 </TextField>
                             </FormControl>
                         ))}
-                    </form>
                     {effects.map((effectId, index) => (
                         <Box key={effectId}>
                             <EffectForm />

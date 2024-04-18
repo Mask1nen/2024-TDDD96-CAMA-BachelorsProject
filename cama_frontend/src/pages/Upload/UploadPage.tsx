@@ -15,9 +15,60 @@ const UploadPage: React.FC = () => {
 
 
 	  const addExperiment = () => {
-		setExperiments(prev => [...prev, uuidv4()]);
+		let id = uuidv4();
+		setInputs(function(prev){
+			prev["experiments"][id] = {"experiment_id": id}
+			return prev;
+		}); 
+		setExperiments(prev => [...prev, id]);
 	};
 	
+	
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(inputs);
+		let exps = inputs["experiments"] || {};
+		exps = Object.values(exps);
+		console.log(exps)
+		inputs["experiments"] = exps;
+		console.log(inputs)
+	};
+
+	const [inputs, setInputs] = useState({experiments:{}});
+	
+	const handleChange = (event) => {
+		console.log(event)
+		const { name, value } = event.target;
+		setInputs(prev => ({...prev, [name]: value }));
+	  };
+
+	const handleExperimentChange = (event, experimentId) => {
+		const { name, value } = event.target;
+		
+		setInputs(function(prev) {
+			let exps = prev["experiments"] || {};
+			exps[experimentId] = exps[experimentId] || {"experiment_id":experimentId/*Unpack interface here*/};
+			exps[experimentId][name] = value;
+			prev["experiments"] = exps;
+			
+			return {...prev}
+		})
+	}
+
+	const handleEffectChange = (event, experimentId, effectId) => {
+
+		const { name, value } = event.target;
+		
+		setInputs(function(prev) {
+			let exps = prev["experiments"] || {};
+			exps[experimentId] = exps[experimentId] || {"experiment_id":experimentId/*Unpack interface here*/};
+			exps[experimentId][name] = value;
+			prev["experiments"] = exps;
+			
+			return {...prev}
+		})
+	}
+
 	const [experiments, setExperiments] = useState<string[]>([]);
 
 	return (
@@ -36,20 +87,19 @@ const UploadPage: React.FC = () => {
 						Study information
 					</Typography>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
-							<Studyform/>
+						<form onSubmit={handleSubmit}>
+							<Studyform onChange={handleChange} inputs={inputs}/>
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
 							{experiments.map((experimentId) => 
-								<Experimentform key={experimentId}/>
+								<Experimentform key={experimentId} onChange={handleExperimentChange} inputs={inputs} experimentId={experimentId}/>
 							)}
-							
-
-
-					</Box>
-					<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
-						<Button type="submit" variant="contained" className="float-">Send</Button>
+							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
+								<Button type="submit" variant="contained" className="float-">Send</Button>
+							</Box>
+						</form>
 					</Box>
 				
 

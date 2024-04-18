@@ -27,7 +27,6 @@ const EffectForm: React.FC = () => {
           <Typography>Effect Data</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <form onSubmit={handleSubmit}>
             {effectFields.map(field => (
               <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 1, ml: 1 }} variant="standard">
                 {field.type === 'option' ? (
@@ -61,7 +60,6 @@ const EffectForm: React.FC = () => {
                 )}
               </FormControl>
             ))}
-          </form>
         </AccordionDetails>
       </Accordion>
     </Box>

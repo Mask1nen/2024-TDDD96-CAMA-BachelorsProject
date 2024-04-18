@@ -4,7 +4,7 @@ import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInp
 import countries from "../../assets/countries.json"
 
 
-function Studyform() {
+function Studyform(props) {
 
 
 	const [inputs, setInputs] = useState({});
@@ -20,25 +20,24 @@ function Studyform() {
 
 
 	return (
-		
-		<form onSubmit={handleSubmit}>
+			<div>	
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Authors</InputLabel>
-				<Input value={inputs.authors || ""} name="authors" onChange={handleChange} id="formAuthors"/>
+				<Input value={props.inputs.authors || ""} name="authors" onChange={props.onChange} id="formAuthors"/>
 			</FormControl>
 			
-			<TextField sx={{width:"45%", m:1}} variant="standard" label="Year" value={inputs.year||""} name="year" onChange={handleChange} id="formYear"/>
+			<TextField sx={{width:"45%", m:1}} variant="standard" label="Year" value={inputs.year||""} name="year" onChange={props.onChange} id="formYear"/>
 			
-			<TextField label="Abstract" multiline sx={{width:"93%", my:2}} value={inputs.abstract||""} name="abstract" onChange={handleChange} id="formAbstract"/>
+			<TextField label="Abstract" multiline sx={{width:"93%", my:2}} value={props.inputs.abstract||""} name="abstract" onChange={props.onChange} id="formAbstract"/>
 
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Keywords</InputLabel>
-				<Input value={inputs.keywords||""} name="keywords" onChange={handleChange} id="formKeywords"/>
+				<Input value={props.inputs.keywords||""} name="keywords" onChange={props.onChange} id="formKeywords"/>
 			</FormControl>
 
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Category</InputLabel>
-				<Input value={inputs.category||""} name="category" onChange={handleChange} id="formCategory"/>
+				<Input value={props.inputs.category||""} name="category" onChange={props.onChange} id="formCategory"/>
 			</FormControl>
 
 			<FormControl sx={{width:"45%", mt: 2, ml:1}} variant="standard">
@@ -48,8 +47,8 @@ function Studyform() {
 					name="country"
 					label="country"
 					select
-					value={inputs.country || "SE"}
-					onChange={handleChange}
+					value={props.inputs.country || "SE"}
+					onChange={props.onChange}
 					>
 					{countries.map((option) => (
 						<MenuItem key={option.value} value={option.value}>
@@ -65,8 +64,8 @@ function Studyform() {
 					label="Peer review"
 					name="peer_review"
 					select
-					value={inputs.peer_review || "yes"}
-					onChange={handleChange}
+					value={props.inputs.peer_review || "yes"}
+					onChange={props.onChange}
 					>
 					
 						<MenuItem key="yes" value="yes">
@@ -80,11 +79,10 @@ function Studyform() {
 			</FormControl>
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">DOI</InputLabel>
-				<Input value={inputs.DOI||""} name="DOI" onChange={handleChange} id="formDOI"/>
+				<Input value={props.inputs.DOI||""} name="DOI" onChange={props.onChange} id="formDOI"/>
 			</FormControl>
-
+			</div>
 				
-		</form>
 
 	)}
 
