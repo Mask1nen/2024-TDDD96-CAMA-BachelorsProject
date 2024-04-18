@@ -131,7 +131,7 @@ function Navbar() {
 
 
           <Box sx={{ flexGrow: 0, display:"flex"}}>
-              <Link to="Upload">
+              <Link to="Login">
                 <Button size="small"
                   key="addstudy"
                   variant="contained"

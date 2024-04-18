@@ -7,6 +7,7 @@ import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
 import AboutPage from './pages/About/AboutPage.tsx';
 import UploadPage from './pages/Upload/UploadPage.tsx';
+import LoginPage from './pages/Login/LoginPage.tsx';
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -52,6 +53,7 @@ const theme = createTheme({
             <Route path="/About" element={<AboutPage />} />
             <Route path="/Upload" element={<UploadPage />} />
             <Route path="/datasets/:titleSlug" element={<DatasetDetail />} />
+            <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Container>
       <Footer />

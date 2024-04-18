@@ -40,7 +40,9 @@ Ex:
 2. I rooten skriv `docker compose build`
 3. Fortfarande i rooten skriv `docker compose up`
 
-In case of error, try: `docker compose up -V `
+In case of error, try: 
+`docker compose build --no-cache`
+`docker compose up -V `
 
 
 # Öppna miljön lokalt (använd docker istället)
