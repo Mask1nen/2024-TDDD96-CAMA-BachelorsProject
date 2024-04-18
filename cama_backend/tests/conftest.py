@@ -1,12 +1,11 @@
 from pytest_factoryboy import register
 
-from .factories import CamaUserFactory, StudyYearFactory, CountryFactory, \
+from .factories import CamaUserFactory, CountryFactory, \
                         CategoryFactory, StudyFactory, StudyDesignFactory, \
                         RiskOfBiasFactory, GradeFactory, ParticipantDesignFactory,\
                         ImplementationFactory, ExperimentFactory, EffectDataFactory
                         
 register(CamaUserFactory)
-register(StudyYearFactory)
 register(CountryFactory)
 register(CategoryFactory)
 register(StudyFactory)

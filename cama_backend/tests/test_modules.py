@@ -5,10 +5,9 @@ from django.contrib.auth.models import User
 from myapi.models import CamaUser
 from myapi.models import Country
 from myapi.models import Category
-from myapi.models import Year
 from myapi.models import Study
 from myapi.models import EffectData
-from .factories import CamaUserFactory, StudyYearFactory, CountryFactory, \
+from .factories import CamaUserFactory, CountryFactory, \
                         CategoryFactory, StudyFactory, StudyDesignFactory, \
                         RiskOfBiasFactory, GradeFactory, ParticipantDesignFactory,\
                         ImplementationFactory, ExperimentFactory, EffectDataFactory

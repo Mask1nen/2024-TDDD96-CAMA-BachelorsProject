@@ -2,6 +2,7 @@ import factory
 import factory.random
 from myapi.models import *
 import random as rd
+import django
 
 
 # All assignments are incorect, it is temporary data which is under progress
@@ -36,11 +37,6 @@ class CamaUserFactory(factory.django.DjangoModelFactory):
     nr_uploads = int() # Either make random or just have a static number for all
 
 
-class StudyYearFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Year   
-    study_year =  2024
-    
 class CountryFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Country
@@ -55,6 +51,7 @@ class CategoryFactory(factory.django.DjangoModelFactory):
     name = "Math"
 
 
+@django_db
 class StudyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Study
@@ -62,35 +59,9 @@ class StudyFactory(factory.django.DjangoModelFactory):
     rd.seed(factory.random.randgen.getstate())
     
     uploader = factory.SubFactory(CamaUserFactory)
-    study_year = Year(study_year=2024) 
-    country = factory.Faker('country')
     study_year = rd.randint(2000, 2024)
+    country = factory.Faker('country')
     category = factory.Iterator(["Math", "STEM", "Language"])
-
-    @classmethod
-    def create(cls, **kwargs):
-        country = kwargs.pop('country', None)
-        study_year = kwargs.pop('study_year', None)
-        category = kwargs.pop('category', None)
-        if country:
-            # Check if a Country with the provided name exists
-            country, created = Country.objects.get_or_create(name=country)
-            kwargs['country'] = country
-        
-    
-        if study_year:
-            # Check if a Year with the provided value exists
-            year, created = Year.objects.get_or_create(study_year=study_year)
-            kwargs['study_year'] = year
-            
-        if category:
-            # Check if a Category with the provided name exists
-            category, created = Category.objects.get_or_create(name=category)
-            kwargs['category'] = category
-
-        return super().create(**kwargs)
-    
-    
     peer_reviewed = True
     authors = factory.SelfAttribute('uploader.name') 
     doi = factory.Sequence(lambda n: f"https://doi.org/10.2{n}07/j.ctt1k85dmc")
@@ -98,6 +69,39 @@ class StudyFactory(factory.django.DjangoModelFactory):
                 study and makes them want to learn more about it"
     keywords =  f"Interesting, I dont know what to write"
     nr_downloads = factory.LazyAttribute(lambda x: rd.randint(0, 10000)) 
+    country, created = Country.objects.get_or_create(name=country)
+    category, created = Category.objects.get_or_create(name=category)
+
+
+    @classmethod
+    def create(cls, **kwargs):
+        country = kwargs.pop('country', None)
+        category = kwargs.pop('category', None)
+        #print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        #print(country_pop, category_pop)
+        #print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+
+       
+        # Check if a Country with the provided name exists
+        if country:
+            country, created = Country.objects.get_or_create(name=country)
+            kwargs['country'] = country
+            
+
+        if category:
+        # Check if a Category with the provided name exists
+            category, created = Category.objects.get_or_create(name=category)
+            kwargs['category'] = category
+        
+        print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        print(kwargs)
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+
+
+        return super().create(**kwargs)
+    
+    
+    
 
 class StudyDesignFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -166,7 +170,6 @@ class EffectDataFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = EffectData
     
-    study_id = factory.SubFactory(StudyYearFactory)
     experiment_nr = factory.SubFactory(ExperimentFactory)
     
 

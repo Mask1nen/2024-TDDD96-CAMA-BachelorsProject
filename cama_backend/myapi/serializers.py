@@ -46,7 +46,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class YearSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Year
+        #model = Year
         fields = ['study_year']
 
 class CamaUserSerializer(serializers.ModelSerializer):

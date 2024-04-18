@@ -4,9 +4,9 @@ from django.contrib import admin
 
 # Register your models here.
 from .camauser import CamaUser
-from .study import Year, Country, Category, Study 
+from .study import Country, Category, Study 
 from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
-from .effect_data import EffectData
+from .effect_data import EffectData, TestTime, EffectSizeType
 
 class CamaUserAdmin(admin.ModelAdmin):
     model = CamaUser
@@ -20,20 +20,16 @@ class StudyAdmin(admin.ModelAdmin):
 
 class ExperimentAdmin(admin.ModelAdmin):
     model = Experiment
-    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'grade', 'participant_design', 'implemented', 'gender_1',
-                    'gender_2', 'intensity_n', 'duration_week', 'frequency_n', 'outcome', 'outcome_full']
+    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'grade', 'participant_design', 'implemented', 'intensity_n',
+                    'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source']
     search_fields = ['study_id', 'experiment_nr']
 
 class EffectDataAdmin(admin.ModelAdmin):
     model = EffectData
-    list_display = ['effect_size_number', 'study_id', 'experiment_nr', 'sd1i', 'sd2i', 'n1i', 'n2i', 'm1i', 'm2i', 'd_var',
-                    'd', 'f_stat', 't', 'ri', 'mean_age', 'ni', 'icc', 'ai', 'bi', 'ci', 'di']
-    search_fields = ['effect_size_number', 'study_id', 'experiment_nr']
-
-class YearAdmin(admin.ModelAdmin):
-    model = Year
-    list_display = ['study_year']
-    search_fields = ['study_year']
+    list_display = ['effect_size_number', 'experiment_nr', 'effect_size_type', 'test_time', 'test_name', 'outcome', 'outcome_full', 'outcome_op', 'gender_1', 'gender_2', 'gender_3', 'd_var',
+                    'd', 'f_stat', 't', 'ri', 'icc', 'mean_age_1i', 'mean_age_2i', 'ai', 'bi', 'ci', 'di', 
+                    'sd1i', 'sd2i', 'n1i', 'n2i', 'm1i', 'm2i']
+    search_fields = ['effect_size_number', 'experiment_nr']
     
 class CountryAdmin(admin.ModelAdmin):
     model = Country
@@ -70,11 +66,20 @@ class ImplementationAdmin(admin.ModelAdmin):
     list_display = ['implementor']
     search_fields = ['implementor']
 
+class TestTimeAdmin(admin.ModelAdmin):
+    model = TestTime
+    list_display = ['time']
+    search_fields = ['time']
+
+class EffectSizeTypeAdmin(admin.ModelAdmin):
+    model = EffectSizeType
+    list_display = ['name']
+    search_fields = ['name']
+
 admin.site.register(CamaUser, CamaUserAdmin)
 admin.site.register(Study, StudyAdmin)
 admin.site.register(Experiment, ExperimentAdmin)
 admin.site.register(EffectData, EffectDataAdmin)
-admin.site.register(Year, YearAdmin)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(StudyDesign, StudyDesignAdmin)
