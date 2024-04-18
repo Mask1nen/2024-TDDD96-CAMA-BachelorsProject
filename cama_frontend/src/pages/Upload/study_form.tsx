@@ -24,7 +24,7 @@ function Studyform() {
 		<form onSubmit={handleSubmit}>
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Authors</InputLabel>
-				<Input value={inputs.authors} name="authors" onChange={handleChange} id="formAuthors"/>
+				<Input value={inputs.authors || ""} name="authors" onChange={handleChange} id="formAuthors"/>
 			</FormControl>
 			
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">

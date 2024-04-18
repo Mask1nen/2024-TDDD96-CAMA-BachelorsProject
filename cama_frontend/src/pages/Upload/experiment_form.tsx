@@ -1,93 +1,74 @@
-import React, { useState, useMemo } from "react";
-import {Link} from "react-router-dom";
-import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem, Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
-import countries from "../../assets/countries.json"
-import fields from "./fields_experiment.json"
-import Effectform from "./effect_form"
-import {Remove, ArrowDownward, AddCircleOutline} from "@mui/icons-material"
+import React, { useState } from "react";
+import { Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
+import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
+import { experimentFields } from "./experimentFields";
+import  EffectForm  from "./effect_form";
 
+const ExperimentForm: React.FC = () => {
+    const [inputs, setInputs] = useState<Record<string, string>>({});
+    const [effects, setEffects] = useState<number[]>([]);
 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(inputs);
+    };
 
-function Experimentform() {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setInputs(prev => ({ ...prev, [name]: value }));
+    };
 
+    const addEffect = () => {
+        setEffects(prev => [...prev, prev.length + 1]);  // Ensure you are adding unique identifiers
+    };
+	const removeEffect = (index: number) => {
+        if(window.confirm('Are you sure you want to remove this effect?')) {
+            setEffects(prev => prev.filter((_, idx) => idx !== index));
+        }
+    };
 
-	const [inputs, setInputs] = useState({});
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(inputs)
-	}
-	const handleChange = (event) => {
-		console.log(event.target.name)
-		const name = event.target.name;
-		const val = event.target.value;
-		setInputs(values => ({...values, [name]: val}))
-		console.log(inputs)
-	}
+    return (
+        <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
+            <Accordion>
+                <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
+                    <Typography>Experiment Data</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <form onSubmit={handleSubmit}>
+                        {experimentFields.map(field => (
+                            <FormControl key={field.key} sx={{ width: "30%", mt: 0, ml: 1 }} variant="standard">
+                                <TextField
+                                    id={"form" + field.key}
+                                    label={field.name}
+                                    name={field.key}
+                                    select={!!field.options}
+                                    value={inputs[field.key] || ""}
+                                    onChange={handleChange}
+                                >
+                                    {field.options?.map(option => (
+                                        <MenuItem key={`${field.key}-${option}`} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </FormControl>
+                        ))}
+                    </form>
+                    {effects.map((effectId, index) => (
+                        <Box key={effectId}>
+                            <EffectForm />
+                            <Button onClick={() => removeEffect(index)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                                Remove Effect
+                            </Button>
+                        </Box>
+                    ))}
+                    <Button onClick={addEffect} variant="outlined" sx={{ mt: 2 }}>
+                        Add Effect<AddCircleOutline sx={{ ml: 1 }} />
+                    </Button>
+                </AccordionDetails>
+            </Accordion>
+        </Box>
+    );
+};
 
-	const addEffect = () => {     setEffects((prev) => [...prev, prev.length]);   };
-	
-	const [effects, setEffects] = useState<number[]>([]);
-
-
-	return (
-		<Box sx={{width:"90%", borderLeft: 4, mt:5, pl:3}}>
-		
-			<Accordion>
-				<AccordionSummary
-					expandIcon={<ArrowDownward />}
-					aria-controls="panel1-content"
-					id="panel1-header"
-					>
-					<Typography>Experiment Data</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-
-					<form onSubmit={handleSubmit}>
-
-						{fields.map((field) => (field.type === "option" ? (
-							<FormControl sx={{width:"30%", mt: 0, ml:1}} variant="standard">
-								<TextField
-									id={"form" + field.key}
-									label={field.name}
-									name={field.key}
-									select
-									value={inputs[field.key] || ""} 
-									onChange={handleChange}
-									key={field.key}
-									>
-									{field.options.map((option) => (
-										<MenuItem key={`${field.key}-${option}`} value={option}>
-										{option}
-										</MenuItem>
-									))}
-								</TextField>
-								
-							</FormControl>
-						)
-						: (
-
-							<FormControl sx={{width:"23%", m: 1 }} variant="standard">
-								<InputLabel htmlFor="standard-adornment-amount">{field.name}</InputLabel>
-								<Input 
-									name={field.key}
-									onChange={handleChange}
-									key={field.key}
-									value={inputs[field.key] || ""} 
-									endAdornment={field.type === "percent" ? <InputAdornment position="end">%</InputAdornment> : ""}
-									id={"form" +field.key}/>
-							</FormControl>
-						)))}
-					</form>
-
-
-					{effects.map((effectId) => 
-						<Effectform key={effectId}/>
-					)}
-					<Button onClick={addEffect} variant="outlined" sx={{mt:2}}>Add Effect<AddCircleOutline sx={{ml:1}}/></Button>
-
-				</AccordionDetails>
-			</Accordion>
-		</Box>
-	)}
-
-	export default Experimentform;
+export default ExperimentForm;

@@ -1,5 +1,7 @@
-[
-	{"name": "Number of the effect size", "key": "effect_size_number", "type": "int", "desc":"Which effect size in the study was it"},
+import { EffectField } from '../../types/formFieldTypes';
+
+export const effectFields: EffectField[] = [
+    {"name": "Number of the effect size", "key": "effect_size_number", "type": "int", "desc":"Which effect size in the study was it"},
 	{"name": "Standard deviation of experimental group", "key": "sd1i", "type": "Float", "desc":""},
 	{"name": "Number of participants in experimental grp", "key": "n1i", "type": "Float", "desc":""},
 	{"name": "Number of participants in control group", "key": "n2i", "type": "Float", "desc":""},
@@ -18,4 +20,4 @@
 	{"name": "bi", "key": "bi", "type": "Integer", "desc":"Events in group b"},
 	{"name": "ci", "key": "ci", "type": "Integer", "desc":"Events in group c"},
 	{"name": "di", "key": "di", "type": "Integer", "desc":"Events in group d"}
-]
+];

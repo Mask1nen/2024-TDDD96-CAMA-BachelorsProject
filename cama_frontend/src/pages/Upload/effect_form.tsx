@@ -1,85 +1,71 @@
-import React, { useState, useMemo } from "react";
-import {Link} from "react-router-dom";
-import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem, Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
-import countries from "../../assets/countries.json"
-import fields from "./fields_effect.json"
-import {Remove, ArrowDownward} from "@mui/icons-material"
-import { grey, blueGrey} from '@mui/material/colors';
+import React, { useState } from 'react';
+import { 
+  Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, 
+  FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment 
+} from '@mui/material';
+import { ArrowDownward } from '@mui/icons-material';
+import { blueGrey } from '@mui/material/colors';
+import { effectFields } from './effectFields'; // Make sure the import path is correct
 
+const EffectForm: React.FC = () => {
+  const [inputs, setInputs] = useState<Record<string, string>>({});
 
-function Effectform() {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setInputs(prev => ({ ...prev, [name]: value }));
+  };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(inputs);
+  };
 
-	const [inputs, setInputs] = useState({});
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(inputs)
-	}
-	const handleChange = (event) => {
-		console.log(event.target.name)
-		const name = event.target.name;
-		const val = event.target.value;
-		setInputs(values => ({...values, [name]: val}))
-		console.log(inputs)
-	}
+  return (
+    <Box sx={{ mt: 3 }}>
+      <Accordion sx={{ backgroundColor: blueGrey['A100'] }}>
+        <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
+          <Typography>Effect Data</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <form onSubmit={handleSubmit}>
+            {effectFields.map(field => (
+              <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 2, ml: 1 }} variant="standard">
+                {field.type === 'option' ? (
+                  <TextField
+                    id={"form" + field.key}
+                    label={field.name}
+                    name={field.key}
+                    select
+                    value={inputs[field.key] || ""}
+                    onChange={handleChange}
+                    fullWidth
+                  >
+                    {field.options?.map(option => (
+                      <MenuItem key={`${field.key}-${option}`} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                ) : (
+                  <TextField
+                    id={"form" + field.key}
+                    label={field.name}
+                    name={field.key}
+                    value={inputs[field.key] || ""}
+                    onChange={handleChange}
+                    fullWidth
+                    InputProps={{
+                      endAdornment: field.type === 'percent' ? <InputAdornment position="end">%</InputAdornment> : null
+                    }}
+                  />
+                )}
+              </FormControl>
+            ))}
+          </form>
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
+};
 
-
-	return (
-		<Box sx={{mt:3}}>
-			<Accordion sx={{backgroundColor: blueGrey['A100']}}>
-				<AccordionSummary
-					expandIcon={<ArrowDownward />}
-					aria-controls="panel1-content"
-					id="panel1-header"
-					>
-					<Typography>Effect Data</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					
-					<form onSubmit={handleSubmit}>
-						<Box sx={{width:"100%", borderTop: 0, my:0}}></Box>
-
-							{fields.map((field) => (field.type === "option" ? (
-								<FormControl sx={{width:"30%", mt: 2, ml:1}} variant="standard">
-									<TextField
-										id={"form" + field.key}
-										label={field.name}
-										name={field.key}
-										select
-										value={inputs[field.key] || ""} 
-										onChange={handleChange}
-										key={field.key}
-										>
-										{field.options.map((option) => (
-											<MenuItem key={option} value={option}>
-											{option}
-											</MenuItem>
-										))}
-									</TextField>
-									
-								</FormControl>
-							)
-							: (
-								<FormControl sx={{width:"23%", m: 1 }} variant="standard">
-									<InputLabel htmlFor="standard-adornment-amount">{field.name}</InputLabel>
-									<Input 
-										name={field.key}
-										onChange={handleChange}
-										key={field.key}
-
-										value={inputs[field.key] || ""} 
-										endAdornment={field.type === "percent" ? <InputAdornment position="end">%</InputAdornment> : ""}
-										id={"form" +field.key}/>
-								</FormControl>
-							)))}
-
-					</form>
-
-
-				</AccordionDetails>
-			</Accordion>
-		</Box>
-
-	)}
-
-	export default Effectform;
+export default EffectForm;
