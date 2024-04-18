@@ -29,7 +29,7 @@ const ExperimentForm: React.FC = (props) => {
     };
 
     return (
-        <Box className="experiment-form" id={props.experimentId ||"hejsan"} sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
+        <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
             <Accordion>
                 <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
                     <Typography>Experiment Data</Typography>
