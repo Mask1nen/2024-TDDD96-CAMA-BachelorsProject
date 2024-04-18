@@ -20,10 +20,18 @@ class CamaUserListView(APIView):
 
 
 
-class StudyListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Study.objects.all()
-    serializer_class = StudySerializer
+class StudyListCreateAPIView(APIView):
+    def get(self, request):
+        study = Study.objects.all()
+        serializer = ExperimentSerializer(study, many=True)
+        return Response(serializer.data)
 
+    def post(self, request):
+        serializer = StudySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ExperimentListCreateAPIView(APIView):
     def get(self, request):

@@ -17,55 +17,11 @@ class CamaUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CamaUser
         fields = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
+
 class YearSerializer(serializers.ModelSerializer):
     class Meta:
         model = Year
         fields = ['study_year']
-
-    # def to_representation(self, instance):
-    #     return instance.study_year
-
-
-class StudySerializer(serializers.ModelSerializer):
-    uploader = CamaUserSerializer()
-    study_year = YearSerializer()
-    country = CountrySerializer()
-    category = CategorySerializer()
-
-    class Meta:
-        model = Study
-        fields = '__all__'
-
-    
-    def create(self, validated_data):
-        uploader_data = validated_data.pop('uploader')
-        study_year_data = validated_data.pop('study_year')
-        country_data = validated_data.pop('country')
-        category_data = validated_data.pop('category')
-
-        uploader, _ = CamaUser.objects.get_or_create(**uploader_data)
-        study_year, _ = Year.objects.get_or_create(**study_year_data)
-        country, _ = Country.objects.get_or_create(**country_data)
-        category, _ = Category.objects.get_or_create(**category_data)
-
-
-
-
-        study = Study.objects.create(
-            uploader=uploader,
-            study_year=study_year,
-            country=country,
-            category=category,
-            **validated_data
-        )
-        return study
-
-
-    # def get_study_year(self, obj):
-    #     return obj.study_year.study_year
-
-
-
 
 class StudyDesignSerializer(serializers.ModelSerializer):
     class Meta:
@@ -93,42 +49,110 @@ class ImplementationSerializer(serializers.ModelSerializer):
         fields = ['implementor']
 
 class ExperimentSerializer(serializers.ModelSerializer):
-    study_id = StudySerializer()
-    study_design = StudyDesignSerializer()
-    risks = RiskOfBiasSerializer()
-    grade = GradeSerializer()
-    participant_design = ParticipantDesignSerializer()
-    implemented = ImplementationSerializer()
+    # study_design = StudyDesignSerializer()
+    # risks = RiskOfBiasSerializer()
+    # grade = GradeSerializer()
+    # participant_design = ParticipantDesignSerializer()
+    # implemented = ImplementationSerializer()
 
     class Meta:
         model = Experiment
-        fields = ['gender_2', 'study_design', 'risks','grade','participant_design','implemented','study_id']
+        fields = ['gender_2']#'__all__'
+
+    
+    # def create(self, validated_data):
+    #     study_design_data = validated_data.pop('study_design')
+    #     risks_data = validated_data.pop('risks')
+    #     grade_data = validated_data.pop('grade')
+    #     participant_design_data = validated_data.pop('participant_design')
+    #     implemented_data = validated_data.pop('implemented')
+
+
+    #     study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
+    #     risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
+    #     grade, _ = Grade.objects.get_or_create(**grade_data)
+    #     participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
+    #     implemented, _ = Implementation.objects.get_or_create(**implemented_data)
+
+    #     experiment = Experiment.objects.create(
+    #         study_design=study_design,
+    #         risks=risks,
+    #         grade=grade,
+    #         participant_design=participant_design,
+    #         implemented=implemented,
+    #         **validated_data
+    #     )
+    #     return experiment
+
+
+
+class StudySerializer(serializers.ModelSerializer):
+    experiment = ExperimentSerializer(many=True)
+    study_year = YearSerializer()
+    country = CountrySerializer()
+    category = CategorySerializer()
+
+    class Meta:
+        model = Study
+        fields = ['study_id', 'experiment', 'study_year','country','category','peer_reviewed','authors','doi','abstract','keywords','nr_downloads']
 
     
     def create(self, validated_data):
-        study_id = validated_data.pop('study_id')
-        study_design_data = validated_data.pop('study_design')
-        risks_data = validated_data.pop('risks')
-        grade_data = validated_data.pop('grade')
-        participant_design_data = validated_data.pop('participant_design')
-        implemented_data = validated_data.pop('implemented')
 
-        study_id, _ = Study.objects.get_or_create(**study_id)      
-        study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
-        risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
-        grade, _ = Grade.objects.get_or_create(**grade_data)
-        participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
-        implemented, _ = Implementation.objects.get_or_create(**implemented_data)
+        print(validated_data)
+        # Get experiment list
+        experiments_data = validated_data.pop('experiment')
+        
+        
 
-        experiment = Experiment.objects.create(
-            study_id=study_id,
-            study_design=study_design,
-            risks=risks,
-            grade=grade,
-            participant_design=participant_design,
-            implemented=implemented,
+        # Get uploader id
+        #uploader_id = validated_data.pop('uploader')
+        # Get all dictionaries from json
+        # study_year_data = validated_data.pop('study_year')
+        # country_data = validated_data.pop('country')
+        # category_data = validated_data.pop('category')
+    
+        # Create tables in order to create a study
+        #uploader, _ = CamaUser.objects.get(validated_data['uploader'])
+        # study_year, _ = Year.objects.get_or_create(study_year=study_year_data)
+        # country, _ = Country.objects.get_or_create(name=country_data)
+        # category, _ = Category.objects.get_or_create(name=category_data)
+
+
+        # Create study
+        study = Study.objects.create(
+            #uploader=uploader,
+            # study_year=study_year,
+            # country=country,
+            # category=category,
             **validated_data
         )
-        return experiment
+
+        # Create experiment tables
+        for entry in experiments_data:
+            # Get all dictionaries from 
+            # study_design_data = validated_data.pop('study_design')
+            # risks_data = validated_data.pop('risks')
+            # grade_data = validated_data.pop('grade')
+            # participant_design_data = validated_data.pop('participant_design')
+            # implemented_data = validated_data.pop('implemented')
+
+            # study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
+            # risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
+            # grade, _ = Grade.objects.get_or_create(**grade_data)
+            # participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
+            # implemented, _ = Implementation.objects.get_or_create(**implemented_data)
+
+            experiment = Experiment.objects.create(
+                # study_id=study,
+                # study_design=study_design,
+                # risks=risks,
+                # grade=grade,
+                # participant_design=participant_design,
+                # implemented=implemented,
+                **entry
+            )  
 
 
+
+        return study

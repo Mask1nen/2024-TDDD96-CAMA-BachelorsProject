@@ -7,7 +7,7 @@ class StudyDesign(models.Model):
     design = models.CharField(max_length=255, primary_key=True)
 
 class RiskOfBias(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     rob = models.CharField(max_length=255)
     robins = models.CharField(max_length=255)
 
@@ -21,7 +21,7 @@ class Implementation(models.Model):
     implementor = models.CharField(max_length=255)
 
 class Experiment(models.Model):
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True)
+    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name='experiment')
     experiment_nr = models.AutoField(primary_key=True)
     study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.SET_NULL)
     risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.SET_NULL)

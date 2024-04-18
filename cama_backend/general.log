@@ -1,0 +1,281 @@
+2024-04-18 07:29:58,964 (INFO)- myapi.views- True
+2024-04-18 07:29:58,982 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:29:59,077 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:34:42,260 (INFO)- myapi.views- True
+2024-04-18 07:34:42,276 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:34:42,359 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:38:35,580 (INFO)- myapi.views- True
+2024-04-18 07:38:35,580 (INFO)- myapi.serializers- This is the validated data: {'uploader': OrderedDict([('orc_id', '12345'), ('name', 'John Doe'), ('email', 'john@example.com'), ('organization', 'Example Org'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2022)]), 'country': OrderedDict([('name', 'Example Country')]), 'category': OrderedDict([('name', 'Example Category')]), 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-18 07:38:35,582 (INFO)- myapi.serializers- Study object (1)
+2024-04-18 07:38:35,595 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:38:35,683 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:39:43,890 (INFO)- myapi.views- True
+2024-04-18 07:39:43,890 (INFO)- myapi.serializers- This is the validated data: {'uploader': OrderedDict([('orc_id', '12345'), ('name', 'John Doe'), ('email', 'john@example.com'), ('organization', 'Example Org'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2022)]), 'country': OrderedDict([('name', 'Example Country')]), 'category': OrderedDict([('name', 'Example Category')]), 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-18 07:39:43,892 (INFO)- myapi.serializers- Study object (1)
+2024-04-18 07:39:43,902 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:42:11,465 (INFO)- myapi.views- True
+2024-04-18 07:42:11,465 (INFO)- myapi.serializers- This is the validated data: {'uploader': OrderedDict([('orc_id', '12345'), ('name', 'John Doe'), ('email', 'john@example.com'), ('organization', 'Example Org'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2022)]), 'country': OrderedDict([('name', 'Example Country')]), 'category': OrderedDict([('name', 'Example Category')]), 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-18 07:42:11,467 (INFO)- myapi.serializers- Study object (1)
+2024-04-18 07:42:11,477 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:42:11,564 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:49:23,892 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 42, in post
+    logger.info(serializer.is_valid())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 220, in is_valid
+    assert hasattr(self, 'initial_data'), (
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+2024-04-18 07:49:23,987 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 42, in post
+    logger.info(serializer.is_valid())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 220, in is_valid
+    assert hasattr(self, 'initial_data'), (
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+2024-04-18 07:49:24,045 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:50:08,477 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 42, in post
+    logger.info(serializer.is_valid())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 220, in is_valid
+    assert hasattr(self, 'initial_data'), (
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+2024-04-18 07:50:08,579 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 42, in post
+    logger.info(serializer.is_valid())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 220, in is_valid
+    assert hasattr(self, 'initial_data'), (
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+2024-04-18 07:50:08,635 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:50:32,600 (INFO)- myapi.views- False
+2024-04-18 07:50:32,601 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:50:32,630 (INFO)- myapi.views- False
+2024-04-18 07:50:32,630 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:50:32,664 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:51:03,309 (INFO)- myapi.views- True
+2024-04-18 07:51:03,310 (INFO)- myapi.serializers- This is the validated data: {'uploader': OrderedDict([('orc_id', '12345'), ('name', 'John Doe'), ('email', 'john@example.com'), ('organization', 'Example Org'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2022)]), 'country': OrderedDict([('name', 'Example Country')]), 'category': OrderedDict([('name', 'Example Category')]), 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-18 07:51:03,312 (INFO)- myapi.serializers- Study object (1)
+2024-04-18 07:51:03,340 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:51:03,414 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:51:18,797 (INFO)- myapi.views- True
+2024-04-18 07:51:18,797 (INFO)- myapi.serializers- This is the validated data: {'uploader': OrderedDict([('orc_id', '12345'), ('name', 'John Doe'), ('email', 'john@example.com'), ('organization', 'Example Org'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2022)]), 'country': OrderedDict([('name', 'Example Country')]), 'category': OrderedDict([('name', 'Example Category')]), 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-18 07:51:18,800 (INFO)- myapi.serializers- Study object (1)
+2024-04-18 07:51:18,812 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-18 07:51:18,901 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:51:51,928 (INFO)- myapi.views- False
+2024-04-18 07:51:51,929 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:51:51,952 (INFO)- myapi.views- False
+2024-04-18 07:51:51,952 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:51:51,979 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-18 07:53:22,880 (INFO)- myapi.views- {'study_data': {'uploader': {'orc_id': '12345', 'name': 'John Doe', 'email': 'john@example.com', 'organization': 'Example Org', 'nr_uploads': 5}, 'study_year': {'study_year': 2022}, 'country': {'name': 'Example Country'}, 'category': {'name': 'Example Category'}, 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}}
+2024-04-18 07:53:22,881 (INFO)- myapi.views- False
+2024-04-18 07:53:22,881 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:53:22,907 (INFO)- myapi.views- {}
+2024-04-18 07:53:22,908 (INFO)- myapi.views- False
+2024-04-18 07:53:22,908 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-18 07:53:22,938 (WARNING)- django.request- Method Not Allowed: /api/experiments/
