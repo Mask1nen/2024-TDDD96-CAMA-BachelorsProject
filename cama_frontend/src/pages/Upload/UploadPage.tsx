@@ -40,7 +40,7 @@ const UploadPage: React.FC = () => {
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
-
+							
 							{experiments.map((experimentId) => 
 								<Experimentform key={experimentId}/>
 							)}

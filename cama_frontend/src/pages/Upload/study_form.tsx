@@ -27,15 +27,9 @@ function Studyform() {
 				<Input value={inputs.authors || ""} name="authors" onChange={handleChange} id="formAuthors"/>
 			</FormControl>
 			
-			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
-				<InputLabel htmlFor="">Year</InputLabel>
-				<Input value={inputs.year||""} name="year" onChange={handleChange} id="formYear"/>
-			</FormControl>
-
-			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
-				<InputLabel htmlFor="">Abstract</InputLabel>
-				<Input value={inputs.abstract||""} name="abstract" onChange={handleChange} id="formAbstract"/>
-			</FormControl>
+			<TextField sx={{width:"45%", m:1}} variant="standard" label="Year" value={inputs.year||""} name="year" onChange={handleChange} id="formYear"/>
+			
+			<TextField label="Abstract" multiline sx={{width:"93%", my:2}} value={inputs.abstract||""} name="abstract" onChange={handleChange} id="formAbstract"/>
 
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Keywords</InputLabel>
@@ -45,11 +39,6 @@ function Studyform() {
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Category</InputLabel>
 				<Input value={inputs.category||""} name="category" onChange={handleChange} id="formCategory"/>
-			</FormControl>
-
-			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
-				<InputLabel htmlFor="">DOI</InputLabel>
-				<Input value={inputs.DOI||""} name="DOI" onChange={handleChange} id="formDOI"/>
 			</FormControl>
 
 			<FormControl sx={{width:"45%", mt: 2, ml:1}} variant="standard">
@@ -70,7 +59,7 @@ function Studyform() {
 				</TextField>
 				
 			</FormControl>
-			<FormControl sx={{width:"45%", mt: 2, ml: 2}} variant="standard">
+			<FormControl sx={{width:"45%", mt: 2, ml: 1}} variant="standard">
 				<TextField
 					id="formPeerReview"
 					label="Peer review"
@@ -88,6 +77,10 @@ function Studyform() {
 						</MenuItem>
 				</TextField>
 				
+			</FormControl>
+			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+				<InputLabel htmlFor="">DOI</InputLabel>
+				<Input value={inputs.DOI||""} name="DOI" onChange={handleChange} id="formDOI"/>
 			</FormControl>
 
 				

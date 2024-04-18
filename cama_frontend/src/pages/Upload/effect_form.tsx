@@ -29,7 +29,7 @@ const EffectForm: React.FC = () => {
         <AccordionDetails>
           <form onSubmit={handleSubmit}>
             {effectFields.map(field => (
-              <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 2, ml: 1 }} variant="standard">
+              <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 1, ml: 1 }} variant="standard">
                 {field.type === 'option' ? (
                   <TextField
                     id={"form" + field.key}

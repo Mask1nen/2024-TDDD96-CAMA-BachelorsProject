@@ -36,8 +36,8 @@ const ExperimentForm: React.FC = () => {
                 <AccordionDetails>
                     <form onSubmit={handleSubmit}>
                         {experimentFields.map(field => (
-                            <FormControl key={field.key} sx={{ width: "30%", mt: 0, ml: 1 }} variant="standard">
-                                <TextField
+                            <FormControl key={field.key} sx={{ width: "30%", mt: 1, ml: 1 }} variant="standard">
+								<TextField
                                     id={"form" + field.key}
                                     label={field.name}
                                     name={field.key}
