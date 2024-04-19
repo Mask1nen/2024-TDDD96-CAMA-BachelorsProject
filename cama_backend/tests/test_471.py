@@ -34,17 +34,17 @@ class StudyListCreateAPIViewTests(APITestCase):
     def setUp(self):
         self.url = reverse('study-list-create')
         self.valid_payload = {
-            #"uploader": 5,
-            "study_year": 2022,
-            "country": "Example Country",
-            "category": "Example Category",
+            "uploader": 5,
+            "study_year": {"study_year": 2022},
+            "country": {"name": "Country"},
+            "category": {"name": "Category"},
             "peer_reviewed": True,
-            "authors": "Example Author",
+            "authors": "Author",
             "doi": "example_doi",
-            "abstract": "Example Abstract",
-            "keywords": "Example Keywords",
-            "nr_downloads": 100,
-            'experiment': [{'gender_2': 0.5#, 'experiment_nr':1, 'gender_1':0.5, 'intensity_n':1, 'duration_week':1, 'frequency_n':'test', 'outcome':'test','outcome_full':'test',
+            "abstract": "Abstract",
+            "keywords": "Keywords",
+            "nr_downloads": "100",
+            'experiment': [{'gender_2': 0.5, #'experiment_nr':1, 'gender_1':0.5, 'intensity_n':1, 'duration_week':1, 'frequency_n':'test', 'outcome':'test','outcome_full':'test',
                             
                             
                             

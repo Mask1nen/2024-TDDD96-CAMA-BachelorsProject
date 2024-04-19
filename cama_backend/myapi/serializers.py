@@ -108,23 +108,23 @@ class StudySerializer(serializers.ModelSerializer):
         # Get uploader id
         #uploader_id = validated_data.pop('uploader')
         # Get all dictionaries from json
-        # study_year_data = validated_data.pop('study_year')
-        # country_data = validated_data.pop('country')
-        # category_data = validated_data.pop('category')
+        study_year_data = validated_data.pop('study_year')
+        country_data = validated_data.pop('country')
+        category_data = validated_data.pop('category')
     
         # Create tables in order to create a study
         #uploader, _ = CamaUser.objects.get(validated_data['uploader'])
-        # study_year, _ = Year.objects.get_or_create(study_year=study_year_data)
-        # country, _ = Country.objects.get_or_create(name=country_data)
-        # category, _ = Category.objects.get_or_create(name=category_data)
+        study_year, _ = Year.objects.get_or_create(**study_year_data)
+        country, _ = Country.objects.get_or_create(**country_data)
+        category, _ = Category.objects.get_or_create(**category_data)
 
 
         # Create study
         study = Study.objects.create(
             #uploader=uploader,
-            # study_year=study_year,
-            # country=country,
-            # category=category,
+            study_year=study_year,
+            country=country,
+            category=category,
             **validated_data
         )
 
