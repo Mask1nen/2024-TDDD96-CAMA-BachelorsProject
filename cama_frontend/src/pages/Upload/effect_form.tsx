@@ -10,7 +10,6 @@ import { effectFields } from './effectFields'; // Make sure the import path is c
 const EffectForm: React.FC = (props) => {
   const [inputs, setInputs] = useState<Record<string, string>>({});
 
-  console.log(props.inputs)
 
   return (
     <Box sx={{ mt: 3 }}>
@@ -27,8 +26,8 @@ const EffectForm: React.FC = (props) => {
                     label={field.name}
                     name={field.key}
                     select
-                    value={props.inputs.experiments[props.experimentId]["effects"][props.effectId][field.key] ?? ""}
-                    onChange={props.onChange}
+                    value={props.inputs[field.key] ?? ""}
+                    onChange={(e) => {props.onChange(e, props.exerimentId, props.effectId)}}
                     fullWidth
                   >
                     {field.options?.map(option => (
@@ -42,8 +41,8 @@ const EffectForm: React.FC = (props) => {
                     id={"form" + field.key}
                     label={field.name}
                     name={field.key}
-                    value={props.inputs.experiments[props.experimentId]["effects"][props.effectId][field.key] ?? ""}
-                    onChange={props.onChange}
+                    value={props.inputs[field.key] ?? ""}
+                    onChange={(e) => {props.onChange(e, props.experimentId, props.effectId)}}
                     fullWidth
                     InputProps={{
                       endAdornment: field.type === 'percent' ? <InputAdornment position="end">%</InputAdornment> : null

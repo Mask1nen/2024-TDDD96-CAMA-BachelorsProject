@@ -5,37 +5,7 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 
 const ExperimentForm: React.FC = (props) => {
-    const [inputs, setInputs] = useState<Record<string, string>>({});
-    const [effects, setEffects] = useState<number[]>([]);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(inputs);
-    };
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setInputs(prev => ({ ...prev, [name]: value }));
-    };
-
-    const addEffect = () => {
-
-        setEffects(function(prev) {
-            let id = prev.length + 1;
-            setInputs(function(pre){
-                pre["experiments"][props.experimentId][""] = {"experiment_id": id}
-                return pre;
-            }); 
-            return [...prev, id]
-        });  // Ensure you are adding unique identifiers
-    };
-	const removeEffect = (index: number) => {
-        if(window.confirm('Are you sure you want to remove this effect?')) {
-            setEffects(prev => prev.filter((_, idx) => idx !== index));
-        }
-    };
-
-    console.log(props)
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -62,15 +32,20 @@ const ExperimentForm: React.FC = (props) => {
                                 </TextField>
                             </FormControl>
                         ))}
-                    {effects.map((effectId, index) => (
-                        <Box key={effectId}>
-                            <EffectForm onChange={props.onChangeEffect} inputs={props.inputs} experimentId={props.experimentId} effectId={effectId}/>
-                            <Button onClick={() => removeEffect(index)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                    {props.effects.map((effect, index) => (
+                        <Box key={effect.id}>
+                            <EffectForm 
+                                onChange={props.onChangeEffect} 
+                                inputs={effect} 
+                                experimentId={props.experimentId} 
+                                effectId={effect.id}/>
+
+                            <Button onClick={() => props.removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
                                 Remove Effect
                             </Button>
                         </Box>
                     ))}
-                    <Button onClick={addEffect} variant="outlined" sx={{ mt: 2 }}>
+                    <Button onClick={(e) => {props.addEffect(props.experimentId)}} variant="outlined" sx={{ mt: 2 }}>
                         Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                     </Button>
                 </AccordionDetails>

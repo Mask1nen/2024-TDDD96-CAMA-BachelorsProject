@@ -7,13 +7,15 @@ import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment } from '../../api/newTypes'
+import {Experiment, Effect } from '../../api/newTypes'
 
 const UploadPage: React.FC = () => {
 
 	const [value, setValue] = React.useState(0);
 
 
+
+	//EXPERIMENT
 	
 	const emptyExperiment = (id): Experiment => ({
 		id: id,
@@ -60,10 +62,63 @@ const UploadPage: React.FC = () => {
 		})
 		console.log(experimentValues);
 	}
-	React.useEffect(() => {
-		console.log('experimentValues efter uppdatering:', experimentValues);
-	  }, [experimentValues]);
-	
+
+	//EFFECT
+
+	const emptyEffect = (id): Effect => ({
+		id: id,
+		source: "",
+		experiment_number: "",
+		intervention: "",
+		intervention_op: "",
+		target_population: "",
+		mean_age: "",
+		grade: "",
+		ni: "",
+		study_design: "",
+		participant_design: "",
+		implementation: "",
+		duration_week: "",
+		frequency_n: "",
+		intensity_n: "",
+		robins: "",
+		rob: "",
+		effects: [],
+	});
+
+
+	const [effects, setEffects] = useState<number[]>([]);
+
+    const addEffect = (experimentId: string) => {
+		console.log(experimentId)
+        setEffects(function(prev) {
+            let id = prev.length + 1;
+			let newEffect = emptyEffect(id);
+			newEffect["experiment_id"] = experimentId;
+            return [...prev, newEffect]
+        });  // Ensure you are adding unique identifiers
+    };
+	const removeEffect = (index: number) => {
+        if(window.confirm('Are you sure you want to remove this effect?')) {
+            setEffects(prev => prev.filter((_, idx) => idx !== index));
+        }
+    };
+
+	const handleEffectChange = (event, experimentId, effectId) => {
+		console.log(experimentId, effectId);
+		const { name, value } = event.target;
+		console.log(effects);
+		setEffects(function(prev) {
+			const res = [...prev];
+			const index = prev.findIndex(e => e.id == effectId && e.experiment_id == experimentId)
+			res[index][name] = value;
+
+			return res;
+		});
+		
+	}
+
+
 	
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -84,19 +139,6 @@ const UploadPage: React.FC = () => {
 	};
 
 
-	const handleEffectChange = (event, experimentId, effectId) => {
-
-		const { name, value } = event.target;
-		
-		setInputs(function(prev) {
-			let exps = prev["experiments"] || {};
-			exps[experimentId] = exps[experimentId] || {"experiment_id":experimentId/*Unpack interface here*/};
-			exps[experimentId][name] = value;
-			prev["experiments"] = exps;
-			
-			return {...prev}
-		})
-	}
 
 
 	return (
@@ -128,6 +170,9 @@ const UploadPage: React.FC = () => {
 									onChange={handleExperimentChange} 
 									inputs={experimentValues} 
 									index={index}
+									effects={effects}
+									addEffect={addEffect}
+									removeEffect={removeEffect}
 									experimentId={experiment['id']}/>
 							)}
 							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
@@ -135,9 +180,6 @@ const UploadPage: React.FC = () => {
 							</Box>
 						</form>
 					</Box>
-				
-
-
 
 		</Box>
 
