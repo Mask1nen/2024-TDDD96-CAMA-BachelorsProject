@@ -21,23 +21,27 @@ class CamaUserSerializer(serializers.ModelSerializer):
 class StudyDesignSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyDesign
-        fields = ['design']
+        fields = '__all__'  # Customize fields as needed
 
+# RiskOfBias Serializer
 class RiskOfBiasSerializer(serializers.ModelSerializer):
     class Meta:
         model = RiskOfBias
-        fields = ['id', 'rob', 'robins']
+        fields = '__all__'  # Customize fields as needed
 
+# Grade Serializer
 class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
-        fields = ['grade']
+        fields = '__all__'  # Customize fields as needed
 
+# ParticipantDesign Serializer
 class ParticipantDesignSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParticipantDesign
-        fields = ['design']
+        fields = '__all__'  # Customize fields as needed
 
+# Implementation Serializer
 class ImplementationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Implementation
@@ -50,37 +54,14 @@ class ExperimentSerializer(serializers.ModelSerializer):
     # participant_design = serializers.PrimaryKeyRelatedField(queryset=ParticipantDesign.objects.all())
     # implemented = serializers.PrimaryKeyRelatedField(queryset=Implementation.objects.all())
 
+# CamaUser Serializer
+class CamaUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experiment
         fields = ['gender_2','experiment_nr','gender_1', 'intensity_n', 'duration_week', 'frequency_n', 'outcome','outcome_full', 'study_design']#, 'risks', 'grade', 'participant_design', 'implemented']#'__all__'
 
     
-    # def create(self, validated_data):
-    #     study_design_data = validated_data.pop('study_design')
-    #     risks_data = validated_data.pop('risks')
-    #     grade_data = validated_data.pop('grade')
-    #     participant_design_data = validated_data.pop('participant_design')
-    #     implemented_data = validated_data.pop('implemented')
-
-
-    #     study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
-    #     risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
-    #     grade, _ = Grade.objects.get_or_create(**grade_data)
-    #     participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
-    #     implemented, _ = Implementation.objects.get_or_create(**implemented_data)
-
-    #     experiment = Experiment.objects.create(
-    #         study_design=study_design,
-    #         risks=risks,
-    #         grade=grade,
-    #         participant_design=participant_design,
-    #         implemented=implemented,
-    #         **validated_data
-    #     )
-    #     return experiment
-
-
-
+# Study Serializer
 class StudySerializer(serializers.ModelSerializer):
     experiment = ExperimentSerializer(many=True)
     country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
@@ -88,11 +69,15 @@ class StudySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Study
-        fields = ['study_id', 'experiment', 'study_year','country','category','peer_reviewed','authors','doi','abstract','keywords','nr_downloads']
+        fields = '__all__'  # Customize fields as needed'''
 
-    
+# Experiment Serializer
+class ExperimentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Experiment
+        fields = '__all__'
+
     def create(self, validated_data):
-
         # Get experiment list
         experiments_data = validated_data.pop('experiment')
         
