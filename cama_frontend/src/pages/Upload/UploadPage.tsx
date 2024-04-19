@@ -8,23 +8,7 @@ import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 
-import {Study, Experiment, Effect  } from  "../../api/newTypes"
-
 const UploadPage: React.FC = () => {
-
-	const [study, setStudy] = React.useState<Study>({
-		title: "",
-		authors: "",
-		abstract: "",
-		keywords: "",
-		category: "",
-		country: "",
-		year: 0,
-		doi: "",
-		peer_reviewed: false,
-		experiments: {}
-	});
-	
 
 	const [value, setValue] = React.useState(0);
 
@@ -33,16 +17,7 @@ const UploadPage: React.FC = () => {
 	  const addExperiment = () => {
 		let id = uuidv4();
 		setInputs(function(prev){
-			prev["experiments"][id] = {
-				"id": id,
-				"title": "",
-				"design": "",
-				"duration": "",
-				"frequency": "",
-				"intensity": "",
-				"grade": "",
-				"ni": "",
-			}
+			prev["experiments"][id] = {"experiment_id": id}
 			return prev;
 		}); 
 		setExperiments(prev => [...prev, id]);
