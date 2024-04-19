@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import CamaUserListView, StudyListCreateAPIView, ExperimentListCreateAPIView, ExperimentRetrieveUpdateDestroyAPIView
+from .views import CamaUserView, StudyView, ExperimentView, EffectDataView
 
 urlpatterns = [
-    path('cama-users/', CamaUserListView.as_view(), name='cama_user_list'),
-    path('studies/', StudyListCreateAPIView.as_view(), name='study-list-create'),
-    path('experiments/', ExperimentListCreateAPIView.as_view(), name='experiment-list-create'),
-    path('experiments/<int:pk>/', ExperimentRetrieveUpdateDestroyAPIView.as_view(), name='experiment-detail'),
+    path('cama-users/', CamaUserView.as_view(), name='cama_user-list-create'),
+    path('studies/', StudyView.as_view(), name='study-list-create'),
+    path('experiments/', ExperimentView.as_view(), name='experiment-list-create'),
+    path('effect-data/', EffectDataView.as_view(), name='effect_data-list-create'),
 ]

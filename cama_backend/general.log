@@ -279,3 +279,515 @@ KeyError: 'study_data'
 2024-04-18 07:53:22,908 (INFO)- myapi.views- False
 2024-04-18 07:53:22,908 (WARNING)- django.request- Bad Request: /api/studies/
 2024-04-18 07:53:22,938 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-19 10:21:31,924 (INFO)- test_471- Response after POST: {response.data}
+2024-04-19 10:21:31,925 (INFO)- test_471- Response after GET: {response.data}
+2024-04-19 10:21:31,950 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:22:02,644 (INFO)- test_471- Response after POST: {response.data}
+2024-04-19 10:22:02,645 (INFO)- test_471- Response after GET: {response.data}
+2024-04-19 10:22:02,670 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:25:02,907 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 30, in post
+    serializer.save()
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 109, in create
+    uploader_data = validated_data.pop('uploader')
+KeyError: 'uploader'
+2024-04-19 10:25:02,975 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:25:49,602 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:25:49,602 (INFO)- test_471- Response after POST: {response.data}
+2024-04-19 10:25:49,623 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:26:45,249 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:26:45,249 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'123456\', \'name\': \'John Doe\', \'email\': \'john@example.com\', \'organization\': \'Example Org\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:26:45,273 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:28:34,028 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:28:34,028 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'123456\', \'name\': \'John Doe\', \'email\': \'john@example.com\', \'organization\': \'Example Org\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:28:34,050 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:31:23,304 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:31:23,305 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'123456\', \'name\': \'John Doe\', \'email\': \'john@example.com\', \'organization\': \'Example Org\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:31:23,332 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:37:34,272 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:37:34,272 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'123456\', \'name\': \'John Doe\', \'email\': \'john@example.com\', \'organization\': \'Example Org\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:37:34,293 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:49:04,444 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:49:04,445 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'123456\', \'name\': \'John Doe\', \'email\': \'john@example.com\', \'organization\': \'Example Org\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='Incorrect type. Expected pk value, received dict.', code='incorrect_type')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'Country\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Category\'}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:49:04,469 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:50:37,429 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:50:37,429 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "123456" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='Invalid pk "2022" - object does not exist.', code='does_not_exist')], 'country': [ErrorDetail(string='Invalid pk "Country" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Category" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:50:37,452 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:52:00,574 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Country', 'category': 'Category', 'peer_reviewed': True, 'authors': 'Author', 'doi': 'example_doi', 'abstract': 'Abstract', 'keywords': 'Keywords', 'nr_downloads': '100'}
+2024-04-19 10:52:00,579 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 446, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 96, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'Study' object has no attribute 'study_design'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 25, in get
+    return Response(serializer.data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 768, in data
+    ret = super().data
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 686, in to_representation
+    return [
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 687, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 509, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 190, in get_attribute
+    return super().get_attribute(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 479, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `study_design` on serializer `ExperimentSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `Study` instance.
+Original exception text was: 'Study' object has no attribute 'study_design'.
+2024-04-19 10:52:00,700 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:55:04,046 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Country', 'category': 'Category', 'peer_reviewed': True, 'authors': 'Author', 'doi': 'example_doi', 'abstract': 'Abstract', 'keywords': 'Keywords', 'nr_downloads': '100'}
+2024-04-19 10:55:04,047 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Country'), ('category', 'Category'), ('peer_reviewed', True), ('authors', 'Author'), ('doi', 'example_doi'), ('abstract', 'Abstract'), ('keywords', 'Keywords'), ('nr_downloads', '100')])]
+2024-04-19 10:55:04,072 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:55:42,664 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Country', 'category': 'Category', 'peer_reviewed': True, 'authors': 'Author', 'doi': 'example_doi', 'abstract': 'Abstract', 'keywords': 'Keywords', 'nr_downloads': '100'}
+2024-04-19 10:55:42,665 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Country'), ('category', 'Category'), ('peer_reviewed', True), ('authors', 'Author'), ('doi', 'example_doi'), ('abstract', 'Abstract'), ('keywords', 'Keywords'), ('nr_downloads', '100')])]
+2024-04-19 10:55:42,690 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:55:56,643 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Country', 'category': 'Category', 'peer_reviewed': True, 'authors': 'Author', 'doi': 'example_doi', 'abstract': 'Abstract', 'keywords': 'Keywords', 'nr_downloads': '100'}
+2024-04-19 10:55:56,644 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Country'), ('category', 'Category'), ('peer_reviewed', True), ('authors', 'Author'), ('doi', 'example_doi'), ('abstract', 'Abstract'), ('keywords', 'Keywords'), ('nr_downloads', '100')])]
+2024-04-19 10:55:56,670 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:56:20,109 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:56:20,109 (INFO)- test_471- Response after POST: {'country': [ErrorDetail(string='Invalid pk "Example Country" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Example Category" - object does not exist.', code='does_not_exist')]}
+2024-04-19 10:56:20,132 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:56:38,071 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Example Country', 'category': 'Example Category', 'peer_reviewed': True, 'authors': 'Author', 'doi': 'example_doi', 'abstract': 'Abstract', 'keywords': 'Keywords', 'nr_downloads': '100'}
+2024-04-19 10:56:38,072 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Example Country'), ('category', 'Example Category'), ('peer_reviewed', True), ('authors', 'Author'), ('doi', 'example_doi'), ('abstract', 'Abstract'), ('keywords', 'Keywords'), ('nr_downloads', '100')])]
+2024-04-19 10:56:38,096 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 10:56:56,988 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Example Country', 'category': 'Example Category', 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-19 10:56:56,989 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Example Country'), ('category', 'Example Category'), ('peer_reviewed', True), ('authors', 'Example Author'), ('doi', 'example_doi'), ('abstract', 'Example Abstract'), ('keywords', 'Example Keywords'), ('nr_downloads', '100')])]
+2024-04-19 10:56:56,994 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:05:55,292 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2022, 'country': 'Example Country', 'category': 'Example Category', 'peer_reviewed': True, 'authors': 'Example Author', 'doi': 'example_doi', 'abstract': 'Example Abstract', 'keywords': 'Example Keywords', 'nr_downloads': '100'}
+2024-04-19 11:05:55,293 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2022), ('country', 'Example Country'), ('category', 'Example Category'), ('peer_reviewed', True), ('authors', 'Example Author'), ('doi', 'example_doi'), ('abstract', 'Example Abstract'), ('keywords', 'Example Keywords'), ('nr_downloads', '100')])]
+2024-04-19 11:05:55,298 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:16:35,077 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:16:35,077 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "12345678" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='Invalid pk "2024" - object does not exist.', code='does_not_exist')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 11:16:35,081 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:16:53,010 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:16:53,010 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='Invalid pk "12345678" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='Invalid pk "2024" - object does not exist.', code='does_not_exist')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 11:16:53,034 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:17:37,233 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:17:37,233 (INFO)- test_471- Response after POST: {'study_year': [ErrorDetail(string='Invalid pk "2024" - object does not exist.', code='does_not_exist')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 11:17:37,257 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:30:01,290 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:30:01,290 (INFO)- test_471- Response after POST: {'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 11:30:01,312 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:30:28,064 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': '123456', 'study_year': 2024, 'country': 'United States', 'category': 'Health', 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 11:30:28,065 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', '123456'), ('study_year', 2024), ('country', 'United States'), ('category', 'Health'), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 11:30:28,070 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:55:30,245 (WARNING)- django.request- Bad Request: /api/cama-users/
+2024-04-19 11:55:30,280 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 46, in post
+    serializer.save()
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 948, in create
+    raise_errors_on_nested_writes('create', self, validated_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 813, in raise_errors_on_nested_writes
+    assert not any(
+AssertionError: The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `myapi.serializers.StudySerializer`, or set `read_only=True` on nested serializer fields.
+2024-04-19 11:55:30,336 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:58:59,449 (WARNING)- django.request- Bad Request: /api/cama-users/
+2024-04-19 11:58:59,486 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 11:58:59,489 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 11:58:59,494 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 11:59:26,467 (WARNING)- django.request- Bad Request: /api/cama-users/
+2024-04-19 11:59:26,505 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 11:59:26,507 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 11:59:26,512 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:00:39,661 (WARNING)- django.request- Bad Request: /api/cama-users/
+2024-04-19 12:00:39,697 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:00:39,700 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:00:39,704 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:00:55,491 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:00:55,494 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:00:55,499 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:02:26,377 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:02:26,380 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:02:26,384 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:04:42,386 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:04:42,389 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:04:42,392 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:04:42,402 (ERROR)- django.request- Internal Server Error: /api/experiments/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 51, in post
+    camauser_data = study_data.get('uploader')
+AttributeError: 'str' object has no attribute 'get'
+2024-04-19 12:12:07,314 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:12:07,317 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:12:07,321 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:12:07,332 (ERROR)- django.request- Internal Server Error: /api/experiments/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 51, in post
+    camauser_data = study_data.get('uploader')
+AttributeError: 'str' object has no attribute 'get'
+2024-04-19 12:19:27,743 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:19:27,743 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:19:27,765 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:22:10,941 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:22:10,942 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:22:10,964 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:26:01,803 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:26:01,803 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:26:01,829 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:26:46,062 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:26:46,062 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:26:46,084 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:27:00,299 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:27:00,300 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:27:00,322 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:28:00,886 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', None), ('email', None), ('organization', None), ('nr_uploads', None)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:28:00,889 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', None), ('email', None), ('organization', None), ('nr_uploads', None)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:28:00,915 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:28:12,819 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', None), ('email', None), ('organization', None), ('nr_uploads', None)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:28:12,822 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', None), ('email', None), ('organization', None), ('nr_uploads', None)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:28:12,826 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:30:18,021 (INFO)- test_471- Response after POST: {'study_id': 1, 'uploader': OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]), 'study_year': OrderedDict([('study_year', 2024)]), 'country': OrderedDict([('name', 'United States')]), 'category': OrderedDict([('name', 'Health')]), 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:30:18,024 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('uploader', OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)])), ('study_year', OrderedDict([('study_year', 2024)])), ('country', OrderedDict([('name', 'United States')])), ('category', OrderedDict([('name', 'Health')])), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200')])]
+2024-04-19 12:30:18,028 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:30:28,042 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:30:28,043 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:30:28,065 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:38:50,546 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:38:50,546 (INFO)- test_471- Response after POST: {'study_year': [ErrorDetail(string='Invalid pk "2024" - object does not exist.', code='does_not_exist')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 12:38:50,571 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:42:33,398 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:42:33,398 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:42:33,422 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:44:20,778 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    logger.info(serializer.data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 555, in data
+    ret = super().data
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+2024-04-19 12:44:20,851 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    logger.info(serializer.data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 555, in data
+    ret = super().data
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 249, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+2024-04-19 12:45:30,145 (INFO)- myapi.views- StudySerializer(data={'uploader': {'orc_id': '0000-0002-1825-0097', 'name': 'John Doe', 'email': 'john.doe@example.com', 'organization': 'Example University', 'nr_uploads': 5}, 'study_year': {'study_year': 2024}, 'country': {'name': 'United States'}, 'category': {'name': 'Health'}, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}):
+    study_id = IntegerField(read_only=True)
+    uploader = CamaUserSerializer():
+        orc_id = CharField(max_length=255, validators=[<UniqueValidator(queryset=CamaUser.objects.all())>])
+        name = CharField(allow_null=True, max_length=255, required=False)
+        email = CharField(allow_null=True, max_length=255, required=False)
+        organization = CharField(allow_null=True, max_length=255, required=False)
+        nr_uploads = IntegerField(allow_null=True, max_value=2147483647, min_value=-2147483648, required=False)
+    study_year = YearSerializer():
+        study_year = IntegerField(max_value=2147483647, min_value=-2147483648, validators=[<UniqueValidator(queryset=Year.objects.all())>])
+    country = CountrySerializer():
+        name = CharField(max_length=255, validators=[<UniqueValidator(queryset=Country.objects.all())>])
+    category = CategorySerializer():
+        name = CharField(max_length=255, validators=[<UniqueValidator(queryset=Category.objects.all())>])
+    peer_reviewed = BooleanField(allow_null=True, required=False)
+    authors = CharField(allow_null=True, max_length=255, required=False)
+    doi = CharField(allow_null=True, max_length=255, required=False)
+    abstract = CharField(allow_null=True, max_length=255, required=False)
+    keywords = CharField(allow_null=True, max_length=255, required=False)
+    nr_downloads = CharField(allow_null=True, max_length=255, required=False)
+2024-04-19 12:45:30,148 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:45:30,148 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:45:30,171 (INFO)- myapi.views- StudySerializer(data={}):
+    study_id = IntegerField(read_only=True)
+    uploader = CamaUserSerializer():
+        orc_id = CharField(max_length=255, validators=[<UniqueValidator(queryset=CamaUser.objects.all())>])
+        name = CharField(allow_null=True, max_length=255, required=False)
+        email = CharField(allow_null=True, max_length=255, required=False)
+        organization = CharField(allow_null=True, max_length=255, required=False)
+        nr_uploads = IntegerField(allow_null=True, max_value=2147483647, min_value=-2147483648, required=False)
+    study_year = YearSerializer():
+        study_year = IntegerField(max_value=2147483647, min_value=-2147483648, validators=[<UniqueValidator(queryset=Year.objects.all())>])
+    country = CountrySerializer():
+        name = CharField(max_length=255, validators=[<UniqueValidator(queryset=Country.objects.all())>])
+    category = CategorySerializer():
+        name = CharField(max_length=255, validators=[<UniqueValidator(queryset=Category.objects.all())>])
+    peer_reviewed = BooleanField(allow_null=True, required=False)
+    authors = CharField(allow_null=True, max_length=255, required=False)
+    doi = CharField(allow_null=True, max_length=255, required=False)
+    abstract = CharField(allow_null=True, max_length=255, required=False)
+    keywords = CharField(allow_null=True, max_length=255, required=False)
+    nr_downloads = CharField(allow_null=True, max_length=255, required=False)
+2024-04-19 12:45:30,172 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:47:15,632 (INFO)- myapi.views- {'uploader': {'orc_id': '0000-0002-1825-0097', 'name': 'John Doe', 'email': 'john.doe@example.com', 'organization': 'Example University', 'nr_uploads': 5}, 'study_year': {'study_year': 2024}, 'country': {'name': 'United States'}, 'category': {'name': 'Health'}, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:47:15,635 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:47:15,635 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:47:15,656 (INFO)- myapi.views- {}
+2024-04-19 12:47:15,657 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:48:17,826 (INFO)- myapi.views- CamaUser object (0000-0002-1825-0097)
+2024-04-19 12:48:17,826 (INFO)- myapi.views- {'study_year': {'study_year': 2024}, 'country': {'name': 'United States'}, 'category': {'name': 'Health'}, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:48:17,828 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:48:17,828 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='This field is required.', code='required')]}
+2024-04-19 12:48:17,854 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    orc_id=uploader_data.get('orc_id'),
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-04-19 12:48:57,658 (INFO)- myapi.views- CamaUser object (0000-0002-1825-0097)
+2024-04-19 12:48:57,658 (INFO)- myapi.views- {'study_year': {'study_year': 2024}, 'country': {'name': 'United States'}, 'category': {'name': 'Health'}, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200'}
+2024-04-19 12:48:57,660 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:48:57,661 (INFO)- test_471- Response after POST: {'uploader': [ErrorDetail(string='This field is required.', code='required')]}
+2024-04-19 12:48:57,686 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    orc_id=uploader_data.get('orc_id'),
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-04-19 12:49:48,152 (INFO)- myapi.views- CamaUser object (0000-0002-1825-0097)
+2024-04-19 12:49:48,155 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:49:48,155 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:49:48,180 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    orc_id=uploader_data.get('orc_id'),
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-04-19 12:50:55,321 (INFO)- myapi.views- 1
+2024-04-19 12:50:55,324 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:50:55,324 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:50:55,350 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    orc_id=uploader_data.get('orc_id'),
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-04-19 12:54:34,616 (INFO)- myapi.serializers- {'orc_id': '', 'name': '', 'email': '', 'organization': '', 'nr_uploads': None}
+2024-04-19 12:54:34,637 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:54:34,637 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:54:34,662 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:59:21,082 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:59:21,083 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:59:21,106 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:59:38,710 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 12:59:38,710 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 12:59:38,733 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:00:21,246 (ERROR)- django.request- Internal Server Error: /api/cama-users/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 22, in post
+    serializer.save()
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+TypeError: CamaUserSerializer.create() takes 0 positional arguments but 2 were given
+2024-04-19 13:00:21,323 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:00:21,323 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 13:00:21,327 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:02:39,915 (INFO)- myapi.serializers- John Doe
+2024-04-19 13:02:39,928 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:02:39,928 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 13:02:39,952 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:14:20,473 (INFO)- myapi.serializers- John Doe
+2024-04-19 13:14:20,486 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:14:20,486 (INFO)- test_471- Response after POST: {'uploader': {'orc_id': [ErrorDetail(string='cama user with this orc id already exists.', code='unique')]}}
+2024-04-19 13:14:20,508 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 13:22:00,296 (INFO)- test_471- Response after POST: {'study_id': 1, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': None, 'study_year': None, 'country': None, 'category': None}
+2024-04-19 13:22:00,297 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', None), ('study_year', None), ('country', None), ('category', None)])]
+2024-04-19 13:22:23,221 (INFO)- test_471- Response after POST: {'study_id': 1, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': None, 'study_year': None, 'country': None, 'category': None}
+2024-04-19 13:22:23,222 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', None), ('study_year', None), ('country', None), ('category', None)])]

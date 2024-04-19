@@ -6,7 +6,6 @@ from .study import Study
 
 class EffectData(models.Model):
     effect_size_number = models.AutoField(primary_key=True)
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE)
     experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE)
     sd1i = models.FloatField(null=True)
     sd2i = models.FloatField(null=True)
@@ -28,4 +27,4 @@ class EffectData(models.Model):
     di = models.IntegerField(null=True)
 
     class Meta:
-        unique_together = (("effect_size_number", "study_id", "experiment_nr"),)
+        unique_together = (("effect_size_number", "experiment_nr"),)
