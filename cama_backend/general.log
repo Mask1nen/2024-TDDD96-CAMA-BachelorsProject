@@ -791,3 +791,185 @@ TypeError: CamaUserSerializer.create() takes 0 positional arguments but 2 were g
 2024-04-19 13:22:00,297 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', None), ('study_year', None), ('country', None), ('category', None)])]
 2024-04-19 13:22:23,221 (INFO)- test_471- Response after POST: {'study_id': 1, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': None, 'study_year': None, 'country': None, 'category': None}
 2024-04-19 13:22:23,222 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', None), ('study_year', None), ('country', None), ('category', None)])]
+2024-04-19 14:29:18,168 (ERROR)- django.request- Internal Server Error: /api/cama-users/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 21, in post
+    if serializer.is_valid():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `gender_2` is not valid for model `Experiment`.
+2024-04-19 14:29:18,276 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:29:18,276 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='A valid integer is required.', code='invalid')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:29:18,280 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:29:38,674 (ERROR)- django.request- Internal Server Error: /api/cama-users/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 21, in post
+    if serializer.is_valid():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `gender_2` is not valid for model `Experiment`.
+2024-04-19 14:29:38,778 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:29:38,778 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'study_year': [ErrorDetail(string='A valid integer is required.', code='invalid')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:29:38,782 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:39:55,192 (ERROR)- django.request- Internal Server Error: /api/cama-users/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 21, in post
+    if serializer.is_valid():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `gender_2` is not valid for model `Experiment`.
+2024-04-19 14:39:55,303 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:39:55,303 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:39:55,308 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:42:36,770 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:42:36,770 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:42:36,794 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:47:11,339 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/masky/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1027, in get_fields
+    assert hasattr(self, 'Meta'), (
+AssertionError: Class ExperimentSerializer missing "Meta" attribute
+2024-04-19 14:47:11,445 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:47:41,074 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:47:41,075 (INFO)- test_471- Response after POST: {'experiment': [{'study_design': [ErrorDetail(string='This field is required.', code='required')], 'study_id': [ErrorDetail(string='This field is required.', code='required')]}], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:47:41,098 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:48:32,832 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:48:32,833 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "{\'name\': \'United States\'}" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "{\'name\': \'Health\'}" - object does not exist.', code='does_not_exist')], 'uploader': [ErrorDetail(string='Invalid pk "{\'orc_id\': \'0000-0002-1825-0097\', \'name\': \'John Doe\', \'email\': \'john.doe@example.com\', \'organization\': \'Example University\', \'nr_uploads\': 5}" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:48:32,858 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:53:26,429 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-19 14:53:26,429 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-19 14:53:26,455 (WARNING)- django.request- Bad Request: /api/studies/

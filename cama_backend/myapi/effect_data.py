@@ -1,6 +1,5 @@
 from django.db import models
 from .experiment import Experiment
-from .study import Study
 
 # Create your models here.
 
@@ -15,11 +14,11 @@ class EffectData(models.Model):
     experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE)
     effect_size_type = models.CharField(null=True)
     test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
-    test_name =models.CharField(max_length=255, null=True)
+    test_name = models.CharField(max_length=255, null=True)
 
-    outcome = max_length=255, models.CharField(max_length=255, null=True)
-    outcome_full = max_length=255, models.CharField(max_length=255, null=True)
-    outcome_op = max_length=255, models.CharField(max_length=255, null=True)
+    outcome = models.CharField(max_length=255, null=True)
+    outcome_full = models.CharField(max_length=255, null=True)
+    outcome_op = models.CharField(max_length=255, null=True)
 
     gender_1 = models.IntegerField(null=True)
     gender_2 = models.IntegerField(null=True)

@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
 from .models import CamaUser, Experiment, Study, EffectData
-from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer, EffectDataSerializer
+from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer
 
 import logging
 logger = logging.getLogger(__name__)
@@ -82,7 +82,7 @@ class ExperimentView(APIView):
         # Return errors if the data is invalid
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class EffectDataView(APIView):
+'''class EffectDataView(APIView):
     def get(self, request):
         effect_data = EffectData.objects.all()
         serializer = EffectDataSerializer(effect_data, many=True)
@@ -93,4 +93,4 @@ class EffectDataView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)'''

@@ -18,28 +18,60 @@ class TestData:
     }
     
     study_data = {
-        "uploader": {
-            "orc_id": "0000-0002-1825-0097",
-            "name": "John Doe",
-            "email": "john.doe@example.com",
-            "organization": "Example University",
-            "nr_uploads": 5
-        },
-        "study_year": {
-            "study_year": 2024
-        },
-        "country": {
-            "name": "United States"
-        },
-        "category": {
-            "name": "Health"
-        },
+        "uploader": "0000-0002-1825-0097",
+        "study_year": 2024,
+        "country": "United States",
+        "category": "Health",
         "peer_reviewed": True,
         "authors": "Jane Doe, John Smith",
         "doi": "10.1234/abcd.12345",
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
-        "nr_downloads": "200"
+        "nr_downloads": "200",
+        "experiments":
+            [
+                {
+                    "experiment_nr": 1,
+                    "study_design": "Randomized Controlled Trial",
+                    "risks": {
+                        "rob": "Low",
+                        "robins": "Moderate"
+                    },
+                    "grade": "A",
+                    "participant_design": "Between-Group Design",
+                    "implemented": "Pilot Study",
+                    "gender_1": 0.5,
+                    "gender_2": 0.5,
+                    "intensity_n": 3,
+                    "duration_week": 12,
+                    "frequency_n": 3,
+                    "outcome": "Outcome Measurement",
+                    "outcome_full": "Complete Description of Outcome",
+                    "effect_datas": 
+                    [
+                        {
+                            "sd1i": 1.5,
+                            "sd2i": 1.8,
+                            "n1i": 30,
+                            "n2i": 35,
+                            "m1i": 15.2,
+                            "m2i": 16.7,
+                            "d_var": 0.5,
+                            "d": 0.45,
+                            "f_stat": 5.23,
+                            "t": 2.45,
+                            "ri": 1,
+                            "mean_age": 25.3,
+                            "ni": 65,
+                            "icc": 0.78,
+                            "ai": 2,
+                            "bi": 3,
+                            "ci": 4,
+                            "di": 5
+                        },
+                    ]
+                },
+            ]
     }
 
     experiment_data = {
@@ -52,9 +84,7 @@ class TestData:
                 "organization": "Example University",
                 "nr_uploads": 5
             },
-            "study_year": {
-                "study_year": 2024
-            },
+            "study_year": 2024,
             "country": {
                 "name": "United States"
             },
@@ -68,7 +98,6 @@ class TestData:
             "keywords": "health, research, study",
             "nr_downloads": "200"
         },
-        "experiment_nr": 1,
         "study_design": {
             "design": "Randomized Controlled Trial"
         },
@@ -85,42 +114,19 @@ class TestData:
         "implemented": {
             "implementor": "Pilot Study"
         },
-        "gender_1": 0.5,
-        "gender_2": 0.5,
         "intensity_n": 3,
         "duration_week": 12,
         "frequency_n": 3,
-        "outcome": "Outcome Measurement",
-        "outcome_full": "Complete Description of Outcome"
+        "ni": 1,
+        "intervention": "Example Intervention",
+        "intervention_op": "Example Intervention_op",
+        "target_population": "Example Target Population",
+        "mean_age": 25.5,
+        "source": "Example Source"
     }
 
     effect_data = {
-        "study_id": {
-            "study_id": 1,
-            "uploader": {
-                "orc_id": "0000-0002-1825-0097",
-                "name": "John Doe",
-                "email": "john.doe@example.com",
-                "organization": "Example University",
-                "nr_uploads": 5
-            },
-            "study_year": {
-                "study_year": 2024
-            },
-            "country": {
-                "name": "United States"
-            },
-            "category": {
-                "name": "Health"
-            },
-            "peer_reviewed": True,
-            "authors": "Jane Doe, John Smith",
-            "doi": "10.1234/abcd.12345",
-            "abstract": "This study investigates the effects of...",
-            "keywords": "health, research, study",
-            "nr_downloads": "200"
-        },
-        "experiment_nr": {
+        "experiment": {
             "study_id": {
                 "study_id": 1,
                 "uploader": {
@@ -130,9 +136,7 @@ class TestData:
                     "organization": "Example University",
                     "nr_uploads": 5
                 },
-                "study_year": {
-                    "study_year": 2024
-                },
+                "study_year": 2024,
                 "country": {
                     "name": "United States"
                 },
@@ -146,7 +150,6 @@ class TestData:
                 "keywords": "health, research, study",
                 "nr_downloads": "200"
             },
-            "experiment_nr": 1,
             "study_design": {
                 "design": "Randomized Controlled Trial"
             },
@@ -163,13 +166,15 @@ class TestData:
             "implemented": {
                 "implementor": "Pilot Study"
             },
-            "gender_1": 0.5,
-            "gender_2": 0.5,
             "intensity_n": 3,
             "duration_week": 12,
             "frequency_n": 3,
-            "outcome": "Outcome Measurement",
-            "outcome_full": "Complete Description of Outcome"
+            "ni": 1,
+            "intervention": "Example Intervention",
+            "intervention_op": "Example Intervention_op",
+            "target_population": "Example Target Population",
+            "mean_age": 25.5,
+            "source": "Example Source"
         },
         "sd1i": 1.5,
         "sd2i": 1.8,

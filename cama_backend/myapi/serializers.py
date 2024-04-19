@@ -49,18 +49,15 @@ class ImplementationSerializer(serializers.ModelSerializer):
 
 class ExperimentSerializer(serializers.ModelSerializer):
     study_design = serializers.PrimaryKeyRelatedField(queryset=StudyDesign.objects.all())
+
+    class Meta:
+        model = Experiment
+        fields = '__all__'
     # risks = RiskOfBiasSerializer()
     # grade = serializers.PrimaryKeyRelatedField(queryset=Grade.objects.all())
     # participant_design = serializers.PrimaryKeyRelatedField(queryset=ParticipantDesign.objects.all())
     # implemented = serializers.PrimaryKeyRelatedField(queryset=Implementation.objects.all())
-
-# CamaUser Serializer
-class CamaUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Experiment
-        fields = ['gender_2','experiment_nr','gender_1', 'intensity_n', 'duration_week', 'frequency_n', 'outcome','outcome_full', 'study_design']#, 'risks', 'grade', 'participant_design', 'implemented']#'__all__'
-
-    
+ 
 # Study Serializer
 class StudySerializer(serializers.ModelSerializer):
     experiment = ExperimentSerializer(many=True)
@@ -70,12 +67,6 @@ class StudySerializer(serializers.ModelSerializer):
     class Meta:
         model = Study
         fields = '__all__'  # Customize fields as needed'''
-
-# Experiment Serializer
-class ExperimentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Experiment
-        fields = '__all__'
 
     def create(self, validated_data):
         # Get experiment list
