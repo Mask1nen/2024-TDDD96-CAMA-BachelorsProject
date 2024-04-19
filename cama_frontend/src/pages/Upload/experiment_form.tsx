@@ -19,14 +19,23 @@ const ExperimentForm: React.FC = (props) => {
     };
 
     const addEffect = () => {
-        setEffects(prev => [...prev, prev.length + 1]);  // Ensure you are adding unique identifiers
 
+        setEffects(function(prev) {
+            let id = prev.length + 1;
+            setInputs(function(pre){
+                pre["experiments"][props.experimentId][""] = {"experiment_id": id}
+                return pre;
+            }); 
+            return [...prev, id]
+        });  // Ensure you are adding unique identifiers
     };
 	const removeEffect = (index: number) => {
         if(window.confirm('Are you sure you want to remove this effect?')) {
             setEffects(prev => prev.filter((_, idx) => idx !== index));
         }
     };
+
+    console.log(props)
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -42,7 +51,7 @@ const ExperimentForm: React.FC = (props) => {
                                     label={field.name}
                                     name={field.key}
                                     select={!!field.options}
-                                    value={props.inputs.experiments[props.experimentId][field.key] || ""}
+                                    value={props.inputs[props.index][field.key] || ""}
                                     onChange={(e) => {props.onChange(e, props.experimentId)}}
                                 >
                                     {field.options?.map(option => (
@@ -55,7 +64,7 @@ const ExperimentForm: React.FC = (props) => {
                         ))}
                     {effects.map((effectId, index) => (
                         <Box key={effectId}>
-                            <EffectForm />
+                            <EffectForm onChange={props.onChangeEffect} inputs={props.inputs} experimentId={props.experimentId} effectId={effectId}/>
                             <Button onClick={() => removeEffect(index)} variant="outlined" startIcon={<RemoveCircleOutline />}>
                                 Remove Effect
                             </Button>

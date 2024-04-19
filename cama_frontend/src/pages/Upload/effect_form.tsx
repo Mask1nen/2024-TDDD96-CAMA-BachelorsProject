@@ -7,18 +7,10 @@ import { ArrowDownward } from '@mui/icons-material';
 import { blueGrey } from '@mui/material/colors';
 import { effectFields } from './effectFields'; // Make sure the import path is correct
 
-const EffectForm: React.FC = () => {
+const EffectForm: React.FC = (props) => {
   const [inputs, setInputs] = useState<Record<string, string>>({});
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setInputs(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(inputs);
-  };
+  console.log(props.inputs)
 
   return (
     <Box sx={{ mt: 3 }}>
@@ -35,8 +27,8 @@ const EffectForm: React.FC = () => {
                     label={field.name}
                     name={field.key}
                     select
-                    value={inputs[field.key] || ""}
-                    onChange={handleChange}
+                    value={props.inputs.experiments[props.experimentId]["effects"][props.effectId][field.key] ?? ""}
+                    onChange={props.onChange}
                     fullWidth
                   >
                     {field.options?.map(option => (
@@ -50,8 +42,8 @@ const EffectForm: React.FC = () => {
                     id={"form" + field.key}
                     label={field.name}
                     name={field.key}
-                    value={inputs[field.key] || ""}
-                    onChange={handleChange}
+                    value={props.inputs.experiments[props.experimentId]["effects"][props.effectId][field.key] ?? ""}
+                    onChange={props.onChange}
                     fullWidth
                     InputProps={{
                       endAdornment: field.type === 'percent' ? <InputAdornment position="end">%</InputAdornment> : null

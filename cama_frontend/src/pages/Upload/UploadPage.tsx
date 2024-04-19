@@ -7,21 +7,62 @@ import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
+import {Experiment } from '../../api/newTypes'
 
 const UploadPage: React.FC = () => {
 
 	const [value, setValue] = React.useState(0);
 
 
+	
+	const emptyExperiment = (id): Experiment => ({
+		id: id,
+		source: "",
+		experiment_number: "",
+		intervention: "",
+		intervention_op: "",
+		target_population: "",
+		mean_age: "",
+		grade: "",
+		ni: "",
+		study_design: "",
+		participant_design: "",
+		implementation: "",
+		duration_week: "",
+		frequency_n: "",
+		intensity_n: "",
+		robins: "",
+		rob: "",
+		effects: [],
+	});
 
-	  const addExperiment = () => {
-		let id = uuidv4();
-		setInputs(function(prev){
-			prev["experiments"][id] = {"experiment_id": id}
-			return prev;
-		}); 
-		setExperiments(prev => [...prev, id]);
+	const addExperiment = () => {
+		console.log("click")
+
+		setExperimentValues(function(prev) {
+			let id = uuidv4();
+			return [...prev, emptyExperiment(id)];
+		});
+		console.log(experimentValues)
 	};
+	const [experimentValues, setExperimentValues] = React.useState([]);	
+
+	const handleExperimentChange = (event, experimentId) => {
+		const { name, value } = event.target;
+
+		setExperimentValues(function(prev) {
+			console.log([prev,experimentId])
+			const res = [...prev];
+			const index = prev.findIndex(e => e.id == experimentId)
+			res[index][name] = value;
+
+			return res;
+		})
+		console.log(experimentValues);
+	}
+	React.useEffect(() => {
+		console.log('experimentValues efter uppdatering:', experimentValues);
+	  }, [experimentValues]);
 	
 	
 	const handleSubmit = (event) => {
@@ -40,20 +81,8 @@ const UploadPage: React.FC = () => {
 		console.log(event)
 		const { name, value } = event.target;
 		setInputs(prev => ({...prev, [name]: value }));
-	  };
+	};
 
-	const handleExperimentChange = (event, experimentId) => {
-		const { name, value } = event.target;
-		
-		setInputs(function(prev) {
-			let exps = prev["experiments"] || {};
-			exps[experimentId] = exps[experimentId] || {"experiment_id":experimentId/*Unpack interface here*/};
-			exps[experimentId][name] = value;
-			prev["experiments"] = exps;
-			
-			return {...prev}
-		})
-	}
 
 	const handleEffectChange = (event, experimentId, effectId) => {
 
@@ -69,7 +98,6 @@ const UploadPage: React.FC = () => {
 		})
 	}
 
-	const [experiments, setExperiments] = useState<string[]>([]);
 
 	return (
 		<Box sx={{py:2, pl:2, textAlign:"left"}}>
@@ -93,8 +121,14 @@ const UploadPage: React.FC = () => {
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
-							{experiments.map((experimentId) => 
-								<Experimentform key={experimentId} onChange={handleExperimentChange} inputs={inputs} experimentId={experimentId}/>
+							{experimentValues.map((experiment, index) =>  
+								<Experimentform 
+									key={experiment['id']} 
+									onChangeEffect={handleEffectChange} 
+									onChange={handleExperimentChange} 
+									inputs={experimentValues} 
+									index={index}
+									experimentId={experiment['id']}/>
 							)}
 							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
 								<Button type="submit" variant="contained" className="float-">Send</Button>
