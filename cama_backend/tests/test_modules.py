@@ -52,11 +52,11 @@ def test_experiment_factory(experiment_factory):
        print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
        
        
-#@pytest.mark.django_db(transaction=True)
-#def test_effect_data_factory(effect_data_factory):
-#   effect_data = EffectDataFactory.create_batch(10)
-#   print(len(effect_data))
-#   assert len(effect_data) == 10
-#   for x in effect_data:
-#       print(f'{x.effekt_size_number} : {x.study_id} : {x.experiment_nr} : {x.sd1i} : {x.sd21} : {x.n1i} : {x.n2i} : {x.m1i} : {x.m2i} : {x.d_var} : {x.d} : {x.f_stat} : {x.t} : {x.ri} : {x.mean_age} : {x.ni} : {x.icc} : {x.ai} : {x.bi} : {x.ci} : {x.di}')
+@pytest.mark.django_db(transaction=True)
+def test_effect_data_factory(effect_data_factory):
+   effect_data = EffectDataFactory.create_batch(10)
+   print(len(effect_data))
+   assert len(effect_data) == 10
+   for x in effect_data:
+       print(f'{x.effect_size_number} : {x.experiment_nr} : {x.outcome} : {x.outcome_full} : {x.outcome_op} : {x.gender_1} : {x.gender_2} : {x.gender_3} : {x.d_var} : {x.d} : {x.f_stat} : {x.t} : {x.ri} : {x.icc} : {x.mean_age_1i} : {x.mean_age_2i} : {x.ai} : {x.bi} : {x.ci} : {x.di} : {x.sd1i} : {x.sd2i} : {x.n1i} : {x.n2i} : {x.m1i} : {x.m2i}')
        

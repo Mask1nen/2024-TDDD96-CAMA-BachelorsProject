@@ -17,9 +17,9 @@ class EffectData(models.Model):
     test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
     test_name =models.CharField(max_length=255, null=True)
 
-    outcome = max_length=255, models.CharField(max_length=255, null=True)
-    outcome_full = max_length=255, models.CharField(max_length=255, null=True)
-    outcome_op = max_length=255, models.CharField(max_length=255, null=True)
+    outcome = models.CharField(max_length=255, null=True)
+    outcome_full = models.CharField(max_length=255, null=True)
+    outcome_op = models.CharField(max_length=255, null=True)
 
     gender_1 = models.IntegerField(null=True)
     gender_2 = models.IntegerField(null=True)
@@ -29,7 +29,7 @@ class EffectData(models.Model):
     d = models.FloatField(null=True)
     f_stat = models.FloatField(null=True)
     t = models.FloatField(null=True)
-    ri = models.IntegerField(null=True)
+    ri = models.FloatField(null=True)
     icc = models.FloatField(null=True)
 
     mean_age_1i = models.FloatField(null=True)

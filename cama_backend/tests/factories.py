@@ -112,7 +112,6 @@ class ExperimentFactory(factory.django.DjangoModelFactory):
     intervention = "The name of the intervention implemented"
     intervention_op = "A short explanation/description of how the intervention was operationalized"
    
-    target_population = models.CharField(max_length=255, null=True)
     @factory.lazy_attribute
     def target_population(self):
         return TargetPopulation.objects.get_or_create(target=rd.choice(["Typically developing student", "Disabilities"]))[0]
@@ -120,10 +119,6 @@ class ExperimentFactory(factory.django.DjangoModelFactory):
     mean_age = factory.random.randgen.random() * 50 
     source = "The doi to the meta analysis from which the experiment is taken."
                     
-                    
-
-    
-
 
 
 class EffectDataFactory(factory.django.DjangoModelFactory):
@@ -132,23 +127,39 @@ class EffectDataFactory(factory.django.DjangoModelFactory):
     
     experiment_nr = factory.SubFactory(ExperimentFactory)
     
+    @factory.lazy_attribute
+    def effect_size_type(self):
+        return EffectSizeType.objects.get_or_create(name=rd.choice(["SMD","RR/OR"]))[0]
+    
+    @factory.lazy_attribute
+    def test_time(self):
+        return TestTime.objects.get_or_create(time=rd.choice(["pre-test", "post-test", "follow-up"]))[0]
+    
+    outcome = "Machine readable"
+    outcome_full = "Full name of the outcome as stated in the study"
+    outcome_op = "Short explanation/discription of how the outcome was operationalized"
+    
+    gender_1 = factory.random.randgen.randint(1, 1000)
+    gender_2 = factory.random.randgen.randint(1, 1000)
+    gender_3 = factory.random.randgen.randint(1, 1000)
 
-    sd1i = rd.random() * 10 
-    sd2i = rd.random() * 10  
-    n1i = rd.random() * 100  
-    n2i = rd.random() * 100
-    m1i = rd.random() * 10 
-    m2i = rd.random() * 10 
-    d_var = rd.random() * 100 
-    d = rd.random() * 100 
-    f_stat = rd.random() * 50 
-    t = rd.random() * 100 
-    ri = rd.random() * 50 
-    mean_age = rd.random() * 50 
-    ni = rd.random() * 50 
-    icc = rd.random() * 30 
-    ai = rd.random() * 50
-    bi = rd.random() * 50 
-    ci = rd.random() * 50 
-    di = rd.random() * 50 
+    sd1i = factory.random.randgen.random() * 10 
+    sd2i = factory.random.randgen.random() * 10  
+    n1i = factory.random.randgen.random() * 100  
+    n2i = factory.random.randgen.random() * 100
+    m1i = factory.random.randgen.random() * 10 
+    m2i = factory.random.randgen.random() * 10 
+    d_var = factory.random.randgen.random() * 100 
+    d = factory.random.randgen.random() * 100 
+    f_stat = factory.random.randgen.random() * 50 
+    t = factory.random.randgen.random() * 100 
+    ri = factory.random.randgen.random() * 10
+    mean_age_1i = factory.random.randgen.randint(1, 1000)
+    mean_age_2i = factory.random.randgen.randint(1, 1000)
+    icc = factory.random.randgen.random() * 30 
+    
+    ai = factory.random.randgen.randint(1, 100)
+    bi = factory.random.randgen.randint(1, 100)
+    ci = factory.random.randgen.randint(1, 100)
+    di = factory.random.randgen.randint(1, 100)
     
