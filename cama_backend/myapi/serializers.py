@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Study, Year, Country, Category, CamaUser,  StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
+from .models import Study, Country, Category, CamaUser,  StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
 
 
 
@@ -17,11 +17,6 @@ class CamaUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CamaUser
         fields = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
-
-class YearSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Year
-        fields = ['study_year']
 
 class StudyDesignSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,15 +44,15 @@ class ImplementationSerializer(serializers.ModelSerializer):
         fields = ['implementor']
 
 class ExperimentSerializer(serializers.ModelSerializer):
-    # study_design = StudyDesignSerializer()
+    study_design = serializers.PrimaryKeyRelatedField(queryset=StudyDesign.objects.all())
     # risks = RiskOfBiasSerializer()
-    # grade = GradeSerializer()
-    # participant_design = ParticipantDesignSerializer()
-    # implemented = ImplementationSerializer()
+    # grade = serializers.PrimaryKeyRelatedField(queryset=Grade.objects.all())
+    # participant_design = serializers.PrimaryKeyRelatedField(queryset=ParticipantDesign.objects.all())
+    # implemented = serializers.PrimaryKeyRelatedField(queryset=Implementation.objects.all())
 
     class Meta:
         model = Experiment
-        fields = ['gender_2','experiment_nr','gender_1', 'intensity_n', 'duration_week', 'frequency_n', 'outcome','outcome_full']#'__all__'
+        fields = ['gender_2','experiment_nr','gender_1', 'intensity_n', 'duration_week', 'frequency_n', 'outcome','outcome_full', 'study_design']#, 'risks', 'grade', 'participant_design', 'implemented']#'__all__'
 
     
     # def create(self, validated_data):
@@ -88,9 +83,8 @@ class ExperimentSerializer(serializers.ModelSerializer):
 
 class StudySerializer(serializers.ModelSerializer):
     experiment = ExperimentSerializer(many=True)
-    study_year = YearSerializer()
-    country = CountrySerializer()
-    category = CategorySerializer()
+    country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
 
     class Meta:
         model = Study
@@ -99,7 +93,6 @@ class StudySerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
 
-        print(validated_data)
         # Get experiment list
         experiments_data = validated_data.pop('experiment')
         
@@ -108,36 +101,36 @@ class StudySerializer(serializers.ModelSerializer):
         # Get uploader id
         #uploader_id = validated_data.pop('uploader')
         # Get all dictionaries from json
-        study_year_data = validated_data.pop('study_year')
-        country_data = validated_data.pop('country')
-        category_data = validated_data.pop('category')
+        # study_year_data = validated_data.pop('study_year')
+        # country_data = validated_data.pop('country')
+        # category_data = validated_data.pop('category')
     
         # Create tables in order to create a study
         #uploader, _ = CamaUser.objects.get(validated_data['uploader'])
-        study_year, _ = Year.objects.get_or_create(**study_year_data)
-        country, _ = Country.objects.get_or_create(**country_data)
-        category, _ = Category.objects.get_or_create(**category_data)
+        # study_year = Year.objects.get(pk=study_year_data)
+        # country, _ = Country.objects.get_or_create(**country_data)
+        # category, _ = Category.objects.get_or_create(**category_data)
 
 
         # Create study
         study = Study.objects.create(
             #uploader=uploader,
-            study_year=study_year,
-            country=country,
-            category=category,
+            # study_year=study_year,
+            # country=country,
+            # category=category,
             **validated_data
         )
 
         # Create experiment tables
         for entry in experiments_data:
             # Get all dictionaries from 
-            # study_design_data = validated_data.pop('study_design')
+            study_design_data = validated_data.pop('study_design')
             # risks_data = validated_data.pop('risks')
             # grade_data = validated_data.pop('grade')
             # participant_design_data = validated_data.pop('participant_design')
             # implemented_data = validated_data.pop('implemented')
 
-            # study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
+            study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
             # risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
             # grade, _ = Grade.objects.get_or_create(**grade_data)
             # participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)

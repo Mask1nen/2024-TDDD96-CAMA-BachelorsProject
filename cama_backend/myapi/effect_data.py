@@ -4,28 +4,48 @@ from .study import Study
 
 # Create your models here.
 
+class TestTime(models.Model):
+    time = models.CharField(max_length=255, primary_key=True)
+
+class EffectSizeType(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+
 class EffectData(models.Model):
     effect_size_number = models.AutoField(primary_key=True)
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE)
     experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE)
+    effect_size_type = models.CharField(null=True)
+    test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
+    test_name =models.CharField(max_length=255, null=True)
+
+    outcome = max_length=255, models.CharField(max_length=255, null=True)
+    outcome_full = max_length=255, models.CharField(max_length=255, null=True)
+    outcome_op = max_length=255, models.CharField(max_length=255, null=True)
+
+    gender_1 = models.IntegerField(null=True)
+    gender_2 = models.IntegerField(null=True)
+    gender_3 = models.IntegerField(null=True)
+
+    d_var = models.FloatField(null=True)
+    d = models.FloatField(null=True)
+    f_stat = models.FloatField(null=True)
+    t = models.FloatField(null=True)
+    ri = models.IntegerField(null=True)
+    icc = models.FloatField(null=True)
+
+    mean_age_1i = models.FloatField(null=True)
+    mean_age_2i = models.FloatField(null=True)
+    
+    ai = models.IntegerField(null=True)
+    bi = models.IntegerField(null=True)
+    ci = models.IntegerField(null=True)
+    di = models.IntegerField(null=True)
+
     sd1i = models.FloatField(null=True)
     sd2i = models.FloatField(null=True)
     n1i = models.FloatField(null=True)
     n2i = models.FloatField(null=True)
     m1i = models.FloatField(null=True)
     m2i = models.FloatField(null=True)
-    d_var = models.FloatField(null=True)
-    d = models.FloatField(null=True)
-    f_stat = models.FloatField(null=True)
-    t = models.FloatField(null=True)
-    ri = models.IntegerField(null=True)
-    mean_age = models.FloatField(null=True)
-    ni = models.IntegerField(null=True)
-    icc = models.FloatField(null=True)
-    ai = models.IntegerField(null=True)
-    bi = models.IntegerField(null=True)
-    ci = models.IntegerField(null=True)
-    di = models.IntegerField(null=True)
 
     class Meta:
-        unique_together = (("effect_size_number", "study_id", "experiment_nr"),)
+        unique_together = (("effect_size_number", "experiment_nr"),)
