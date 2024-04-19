@@ -57,7 +57,7 @@ class ExperimentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Experiment
-        fields = ['gender_2']#'__all__'
+        fields = ['gender_2','experiment_nr','gender_1', 'intensity_n', 'duration_week', 'frequency_n', 'outcome','outcome_full']#'__all__'
 
     
     # def create(self, validated_data):

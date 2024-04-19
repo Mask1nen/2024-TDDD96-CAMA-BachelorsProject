@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from rest_framework.test import APIClient
 from rest_framework import status
-from myapi.models import CamaUser, Study
+from myapi.models import CamaUser, Study, Year, Country, Category
 from myapi.serializers import StudySerializer, ExperimentSerializer
 
 class CamaUserAPITest(TestCase):
@@ -43,22 +43,33 @@ class StudyListCreateAPIViewTests(APITestCase):
             "doi": "example_doi",
             "abstract": "Abstract",
             "keywords": "Keywords",
-            "nr_downloads": "100",
-            'experiment': [{'gender_2': 0.5, #'experiment_nr':1, 'gender_1':0.5, 'intensity_n':1, 'duration_week':1, 'frequency_n':'test', 'outcome':'test','outcome_full':'test',
+            "nr_downloads": 100,
+            'experiment': [{'gender_2': 0.5, 'experiment_nr':1, 'gender_1':0.5, 'intensity_n':1, 'duration_week':1, 'frequency_n':1, 'outcome':'test','outcome_full':'test'
                             
                             
                             
                             
                             
-                            }
+                            },
+                            {'gender_2': 0.5, 'experiment_nr':1, 'gender_1':0.5, 'intensity_n':1, 'duration_week':1, 'frequency_n':1, 'outcome':'test','outcome_full':'test'}
+                            
                            
                            
                            ]
         }
 
     def test_create_study(self):
+       # Year.objects.create(study_year=2022)
+        # Country.objects.create(name="Country")
+        # Category.objects.create(name="Category")
+
+
         response = self.client.post(self.url, self.valid_payload, format='json')
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        response = self.client.get(self.url)
+        print(response.data)
         # self.assertEqual(Study.objects.count(), 1)
         # study = Study.objects.first()
         # self.assertEqual(study.uploader.orc_id, "12345")
