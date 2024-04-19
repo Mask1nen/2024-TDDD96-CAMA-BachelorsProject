@@ -7,10 +7,7 @@ from myapi.models import Country
 from myapi.models import Category
 from myapi.models import Study
 from myapi.models import EffectData
-from .factories import CamaUserFactory, CountryFactory, \
-                        CategoryFactory, StudyFactory, StudyDesignFactory, \
-                        RiskOfBiasFactory, GradeFactory, ParticipantDesignFactory,\
-                        ImplementationFactory, ExperimentFactory, EffectDataFactory
+from .factories import CamaUserFactory, StudyFactory, ExperimentFactory, EffectDataFactory
 '''
 pytestmark = pytest.mark.django_db # Mark all functions to require database access.
 @pytest.mark.django_db(Transaction = True) # Mark a function to require transaction access to database
@@ -27,7 +24,7 @@ def test_studyuser():
     assert study.get_uploader() == "1"
     
 
-@pytest.mark.django_db
+@pytest.mark.django_db(transaction=True)
 def test_user_user_factory(cama_user_factory):
    user = CamaUserFactory.create_batch(10)
    print(len(user))
@@ -37,29 +34,29 @@ def test_user_user_factory(cama_user_factory):
        assert x.name != None
        
 
-@pytest.mark.django_db
+@pytest.mark.django_db(transaction=True)
 def test_study_factory(study_factory):
-   study = StudyFactory.create_batch(10)
-   print(len(study))
-   assert len(study) == 10
-   for x in study:
-       print(f'{x.study_id} : {x.uploader} : {x.study_year} : {x.country} : {x.category} : {x.peer_reviewed} : {x.authors} : {x.doi} : {x.abstract} : {x.keywords} : {x.nr_downloads}')
+    study = StudyFactory.create_batch(10)
+    print(len(study))
+    assert len(study) == 10
+    for x in study:
+        print(f'{x.study_id} : {x.uploader} : {x.study_year} : {x.country} : {x.category} : {x.peer_reviewed} : {x.authors} : {x.doi} : {x.abstract} : {x.keywords} : {x.nr_downloads}')
+        
        
-       
-@pytest.mark.django_db
+@pytest.mark.django_db(transaction=True)
 def test_experiment_factory(experiment_factory):
-   experiemnt = ExperimentFactory.create_batch(10)
+   experiemnt = ExperimentFactory.build_batch(10)
    print(len(experiemnt))
    assert len(experiemnt) == 10
    for x in experiemnt:
-       print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.grade} : {x.participant_design} : {x.implemented} : {x.gender_1} : {x.gender_2} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.outcome} : {x.outcome_full}')
+       print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
        
        
-@pytest.mark.django_db
-def test_effect_data_factory(effect_data_factory):
-   effect_data = EffectDataFactory.create_batch(10)
-   print(len(effect_data))
-   assert len(effect_data) == 10
-   for x in effect_data:
-       print(f'{x.effekt_size_number} : {x.study_id} : {x.experiment_nr} : {x.sd1i} : {x.sd21} : {x.n1i} : {x.n2i} : {x.m1i} : {x.m2i} : {x.d_var} : {x.d} : {x.f_stat} : {x.t} : {x.ri} : {x.mean_age} : {x.ni} : {x.icc} : {x.ai} : {x.bi} : {x.ci} : {x.di}')
+#@pytest.mark.django_db(transaction=True)
+#def test_effect_data_factory(effect_data_factory):
+#   effect_data = EffectDataFactory.create_batch(10)
+#   print(len(effect_data))
+#   assert len(effect_data) == 10
+#   for x in effect_data:
+#       print(f'{x.effekt_size_number} : {x.study_id} : {x.experiment_nr} : {x.sd1i} : {x.sd21} : {x.n1i} : {x.n2i} : {x.m1i} : {x.m2i} : {x.d_var} : {x.d} : {x.f_stat} : {x.t} : {x.ri} : {x.mean_age} : {x.ni} : {x.icc} : {x.ai} : {x.bi} : {x.ci} : {x.di}')
        

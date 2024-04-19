@@ -19,6 +19,9 @@ class ParticipantDesign(models.Model):
 
 class Implementation(models.Model):
     implementor = models.CharField(max_length=255)
+    
+class TargetPopulation(models.Model):
+    target = models.CharField(max_length=255)
 
 class Experiment(models.Model):
     study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True)

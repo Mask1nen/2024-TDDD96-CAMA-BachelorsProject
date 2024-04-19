@@ -3,6 +3,8 @@ import factory.random
 from myapi.models import *
 import random as rd
 import django
+import pytest
+
 
 
 # All assignments are incorect, it is temporary data which is under progress
@@ -21,6 +23,8 @@ COUNTRY_NAMES = ["Sweden", "England", "Norway", "USA", "Germany"]
 
 CATEGORY_NAMES = ["Math", "Language", "Science"]
 
+CATEGORY_FULL = False
+
 
 
 
@@ -37,31 +41,27 @@ class CamaUserFactory(factory.django.DjangoModelFactory):
     nr_uploads = int() # Either make random or just have a static number for all
 
 
-class CountryFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Country
-    rd.seed('country')
-    name = rd.choice(["Sweden", "England", "Norway", "USA", "Germany"])
-    
-    
-class CategoryFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Category
-    rd.seed('category')
-    name = "Math"
 
-
-@django_db
+@pytest.mark.django_db(transaction=True)
 class StudyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Study
+        
     factory.random.reseed_random('study')
     rd.seed(factory.random.randgen.getstate())
-    
+
     uploader = factory.SubFactory(CamaUserFactory)
     study_year = rd.randint(2000, 2024)
-    country = factory.Faker('country')
-    category = factory.Iterator(["Math", "STEM", "Language"])
+    
+    @factory.lazy_attribute
+    def country(self):
+        return Country.objects.get_or_create(name=rd.choice(["Sweden", "England", "Norway", "USA", "Germany"]))[0]
+    
+    @factory.lazy_attribute
+    def category(self):
+        return Category.objects.get_or_create(name=rd.choice(["Math", "STEM", "Language"]))[0]
+
+    
     peer_reviewed = True
     authors = factory.SelfAttribute('uploader.name') 
     doi = factory.Sequence(lambda n: f"https://doi.org/10.2{n}07/j.ctt1k85dmc")
@@ -69,100 +69,60 @@ class StudyFactory(factory.django.DjangoModelFactory):
                 study and makes them want to learn more about it"
     keywords =  f"Interesting, I dont know what to write"
     nr_downloads = factory.LazyAttribute(lambda x: rd.randint(0, 10000)) 
-    country, created = Country.objects.get_or_create(name=country)
-    category, created = Category.objects.get_or_create(name=category)
 
-
-    @classmethod
-    def create(cls, **kwargs):
-        country = kwargs.pop('country', None)
-        category = kwargs.pop('category', None)
-        #print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-        #print(country_pop, category_pop)
-        #print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-       
-        # Check if a Country with the provided name exists
-        if country:
-            country, created = Country.objects.get_or_create(name=country)
-            kwargs['country'] = country
-            
-
-        if category:
-        # Check if a Category with the provided name exists
-            category, created = Category.objects.get_or_create(name=category)
-            kwargs['category'] = category
-        
-        print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-        print(kwargs)
-        print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-
-        return super().create(**kwargs)
-    
-    
-    
-
-class StudyDesignFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = StudyDesign
-    rd.seed('study_design')
-    
-    design = rd.choice(["RCT", "QES"])
-
-
-class RiskOfBiasFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = RiskOfBias
-    rd.seed('risk')
-    rob = rd.choice(["low", "moderate", "high"])
-    robins = rd.choice(["low", "moderate", "high"])
-
-
-class GradeFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Grade
-    rd.seed('grade')
-    
-    grade = rd.choice(["K", "1", "2", "3", "4", "5", "6", \
-                        "7", "8", "9", "10", "11", "12"])
-
-
-class ParticipantDesignFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = ParticipantDesign
-    rd.seed('participant_design')
-    design = rd.choice(["within", "between", "mixed"])
-
-
-class ImplementationFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Implementation
-    rd.seed('implementation')
-    implementor = rd.choice(["researcher", "teacher", "paraprofessional"])
     
 
 
 class ExperimentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Experiment
+        
     study_id = factory.SubFactory(StudyFactory)
-    study_design = StudyDesign(design="RCT") #factory.SubFactory(StudyDesignFactory)
-    risks = RiskOfBias(rob="moderate", robins="low")#factory.SubFactory(RiskOfBiasFactory) 
-    grade = Grade("5") #factory.SubFactory(GradeFactory)
-    participant_design = ParticipantDesign("between") #factory.SubFactory(ParticipantDesignFactory)
-    implemented = Implementation("reasercher") #factory.SubFactory(ImplementationFactory)
+
+    @factory.lazy_attribute
+    def study_design(self):
+        return StudyDesign.objects.get_or_create(design=rd.choice(["RCT", "QES"]))[0]
     
-    rd.seed('gender')
-    gender_1 = rd.random()
-    gender_2 = 1 - gender_1
+    
+    @factory.lazy_attribute
+    def risks(self):
+        return RiskOfBias.objects.get_or_create(rob=rd.choice(["low", "moderate", "high"]), robins=rd.choice(["low", "moderate", "high"]) )[0]
+    
+    
+    @factory.lazy_attribute
+    def grade(self):
+        return Grade.objects.get_or_create(grade=rd.choice(["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]))[0]
+    
+    
+    @factory.lazy_attribute
+    def participant_design(self):
+        return ParticipantDesign.objects.get_or_create(design=rd.choice(["within", "bewteen", "mixed"]))[0]
+    
+    
+    @factory.lazy_attribute
+    def implemented(self):
+        return Implementation.objects.get_or_create(implementor=rd.choice(["researcher","teacher", "paraprofessional"]))[0]
+    
     
     intensity_n = rd.randint(4, 14)
     duration_week = rd.randint(2, 8)
     frequency_n = rd.randint(2, 6)
-    outcome = "The outcome of the experiment"
-    outcome_full = "The complete outcome of the experiemnt which \
-                    means that it will be longer then the rest"
+    
+    ni = factory.random.randgen.randint(1, 1000)
+    intervention = "The name of the intervention implemented"
+    intervention_op = "A short explanation/description of how the intervention was operationalized"
+   
+    target_population = models.CharField(max_length=255, null=True)
+    @factory.lazy_attribute
+    def target_population(self):
+        return TargetPopulation.objects.get_or_create(target=rd.choice(["Typically developing student", "Disabilities"]))[0]
+    
+    mean_age = factory.random.randgen.random() * 50 
+    source = "The doi to the meta analysis from which the experiment is taken."
+                    
+                    
+
+    
 
 
 
