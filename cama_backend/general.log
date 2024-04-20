@@ -974,6 +974,7 @@ AssertionError: Class ExperimentSerializer missing "Meta" attribute
 2024-04-19 14:53:26,429 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
 2024-04-19 14:53:26,455 (WARNING)- django.request- Bad Request: /api/studies/
 <<<<<<< HEAD
+<<<<<<< HEAD
 2024-04-20 18:44:06,570 (ERROR)- django.request- Internal Server Error: /api/studies/
 Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
@@ -1940,10 +1941,220 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'collections.OrderedDict'
+=======
+2024-04-20 09:06:54,337 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:06:54,337 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:06:54,379 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:12:13,644 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:12:13,644 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:12:13,668 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:12:52,812 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:12:52,813 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:12:52,836 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:13:08,008 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:13:08,008 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:29:14,473 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:29:14,473 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:29:47,317 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:29:47,317 (INFO)- test_471- Response after POST: {'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:30:44,915 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:30:44,915 (INFO)- test_471- Response after POST: {'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
+2024-04-20 09:31:15,901 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 102, in create
+    study_design_data = validated_data.pop('study_design')
+KeyError: 'study_design'
+2024-04-20 09:31:58,651 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 108, in create
+    study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
+NameError: name 'study_design_data' is not defined
+2024-04-20 09:32:06,434 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 09:32:06,436 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 09:33:10,082 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:33:10,082 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:33:45,689 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:33:45,690 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:34:26,022 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:34:26,022 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:34:49,400 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:34:49,400 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:35:15,382 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:35:15,382 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:35:43,235 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:35:43,235 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:36:06,267 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:36:06,267 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:36:30,908 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:36:30,909 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:36:55,973 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:36:55,974 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:37:36,573 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:37:36,573 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:38:22,544 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'grade' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-20 09:38:30,216 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:38:30,216 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-20 09:38:39,097 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:38:39,098 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:39:05,801 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:39:05,802 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:39:46,660 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:39:46,660 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:41:24,056 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:41:24,056 (INFO)- test_471- Response after POST: {'experiments': [{'grade': {'non_field_errors': [ErrorDetail(string='Invalid data. Expected a dictionary, but got str.', code='invalid')]}}]}
+2024-04-20 09:46:02,334 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:46:02,334 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:46:52,952 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:46:52,952 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:47:15,618 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 100, in create
+    for entry in experiments_data:
+NameError: name 'experiments_data' is not defined
+2024-04-20 09:47:26,824 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 72, in create
+    experiments_data = validated_data.pop('experiments')
+KeyError: 'experiments'
+2024-04-20 09:55:16,718 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:55:16,719 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 09:55:28,729 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 09:55:28,729 (INFO)- test_471- Response after POST: {'experiments': [{'grade': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}]}
+2024-04-20 10:02:46,559 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'A'
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
@@ -2690,10 +2901,930 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'collections.OrderedDict'
+=======
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 153, in run_validation
+    return super().run_validation(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 547, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 42, in to_internal_value
+    return self.get_queryset().get(pk=data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1546, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1577, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1492, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1319, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 341, in get_prep_lookup
+    return super().get_prep_lookup()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'A'.
+2024-04-20 10:04:17,469 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:04:17,472 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:08:08,603 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'study_design' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-20 10:08:23,799 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 153, in run_validation
+    return super().run_validation(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 547, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 462, in to_internal_value
+    return queryset.get(**{self.slug_field: data})
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1546, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1577, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1427, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1237, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'design' into field. Choices are: experiment, grade, id
+2024-04-20 10:09:58,240 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 153, in run_validation
+    return super().run_validation(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 547, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 462, in to_internal_value
+    return queryset.get(**{self.slug_field: data})
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1546, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1577, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1427, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1237, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'design' into field. Choices are: experiment, grade, id
+2024-04-20 10:10:51,539 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 153, in run_validation
+    return super().run_validation(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 547, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 462, in to_internal_value
+    return queryset.get(**{self.slug_field: data})
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1546, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1577, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1427, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1237, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'design' into field. Choices are: experiment, grade, id
+2024-04-20 10:11:28,689 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'design' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-20 10:11:45,815 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 153, in run_validation
+    return super().run_validation(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/fields.py", line 547, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/relations.py", line 462, in to_internal_value
+    return queryset.get(**{self.slug_field: data})
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1546, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1577, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1427, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1237, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1725, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'design' into field. Choices are: experiment, grade, id
+2024-04-20 10:12:59,125 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:12:59,126 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:13:11,131 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:13:11,131 (INFO)- test_471- Response after POST: {'experiments': [{'study_design': [ErrorDetail(string='Object with design=Randomized Controlled Trial does not exist.', code='does_not_exist')]}]}
+2024-04-20 10:16:09,146 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:16:09,148 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:17:13,269 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'implemented' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-20 10:17:32,158 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'implemented' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-20 10:17:52,682 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:17:52,683 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:19:10,175 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `gender_1` is not valid for model `Experiment`.
+2024-04-20 10:19:32,608 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name `gender_1` is not valid for model `Experiment`.
+2024-04-20 10:23:42,069 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name ` intervention_op` is not valid for model `Experiment`.
+2024-04-20 10:24:13,040 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name ` intervention_op` is not valid for model `Experiment`.
+2024-04-20 10:24:57,907 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name ` intervention_op` is not valid for model `Experiment`.
+2024-04-20 10:26:11,455 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:26:11,455 (INFO)- test_471- Response after POST: {'experiments': [{'ni': [ErrorDetail(string='A valid integer is required.', code='invalid')], 'study_id': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-20 10:26:33,903 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:26:33,903 (INFO)- test_471- Response after POST: {'experiments': [{'study_id': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-20 10:26:51,154 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1076, in get_fields
+    field_class, field_kwargs = self.build_field(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1222, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1340, in build_unknown_field
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Field name ` intervention_op` is not valid for model `Experiment`.
+2024-04-20 10:27:31,295 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:27:31,297 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:28:56,769 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 114, in create
+    experiment = Experiment.objects.create(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "OrderedDict([('rob', 'Low'), ('robins', 'Moderate')])": "Experiment.risks" must be a "RiskOfBias" instance.
+2024-04-20 10:29:28,474 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 103, in create
+    risks_data = validated_data.pop('risks')
+KeyError: 'risks'
+2024-04-20 10:29:43,246 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:29:43,248 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:35:58,168 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:35:58,168 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': {'non_field_errors': [ErrorDetail(string='Invalid data. Expected a dictionary, but got list.', code='invalid')]}}]}
+2024-04-20 10:36:30,074 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:36:30,074 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:38:45,525 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:38:45,525 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:39:07,704 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 10:39:07,705 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 10:40:51,321 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:40:51,321 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:42:36,155 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:42:36,156 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:49:52,095 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:49:52,096 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')], 'test_time': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')]}]}]}
+2024-04-20 10:51:16,849 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:51:16,850 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'test_time': [ErrorDetail(string='Object with time=1 does not exist.', code='does_not_exist')], 'effect_size_type': [ErrorDetail(string='Object with name=type does not exist.', code='does_not_exist')], 'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:51:58,076 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:51:58,077 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'test_time': [ErrorDetail(string='Object with time=1 does not exist.', code='does_not_exist')], 'effect_size_type': [ErrorDetail(string='Object with name=type does not exist.', code='does_not_exist')], 'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:52:30,124 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'test_time' was declared on serializer EffectDataSerializer, but has not been included in the 'fields' option.
+2024-04-20 10:54:16,614 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:54:16,614 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 10:56:07,922 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
@@ -2755,10 +3886,73 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'collections.OrderedDict'
+=======
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 172, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+2024-04-20 10:57:39,961 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
@@ -2836,10 +4030,73 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'collections.OrderedDict'
+=======
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 172, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+2024-04-20 10:58:50,570 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
@@ -2917,10 +4174,73 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
     return int(value)
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'collections.OrderedDict'
+=======
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 173, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+2024-04-20 10:59:17,425 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
 
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
@@ -3013,3 +4333,499 @@ RuntimeError: You called this URL via POST, but the URL doesn't end in a slash a
 2024-04-22 11:35:53,192 (WARNING)- django.request- Bad Request: /studies/
 =======
 >>>>>>> parent of 03575143 (471 feat: uploading nested serializer implementation)
+=======
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 173, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+2024-04-20 10:59:40,499 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 10:59:40,499 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 11:00:07,188 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 173, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), name, come, outcome, op, 1, 2, 3, 0.5, 0.45, 5.23, 2.45, 1, 1.5, 25.3, 26.4, 2, 3, 4, 5, 1.5, 1.8, 30, 35, 15.2, 16.7, null, 1).
+
+2024-04-20 11:01:52,738 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'test_time' was declared on serializer EffectDataSerializer, but has not been included in the 'fields' option.
+2024-04-20 11:02:09,000 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 173, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+2024-04-20 11:03:39,976 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'effect_size_type' was declared on serializer EffectDataSerializer, but has not been included in the 'fields' option.
+2024-04-20 11:03:51,229 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 174, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, EffectSizeType object (type), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+2024-04-20 11:04:06,742 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 174, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+2024-04-20 11:09:06,343 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 11:09:06,344 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='This field is required.', code='required')]}]}]}
+2024-04-20 11:09:25,223 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 11:09:25,223 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')]}]}]}
+2024-04-20 11:22:13,304 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-20 11:22:13,304 (INFO)- test_471- Response after POST: {'experiments': [{'effect_datas': [{'experiment_nr': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')]}]}]}
+2024-04-20 11:23:38,143 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 37, in post
+    serializer.save()
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/serializers.py", line 175, in create
+    EffectData.objects.create(**effect)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: FEL:  null-värde i kolumn "experiment_nr_id" i relation "myapi_effectdata" bryter mot not-null-villkoret
+DETAIL:  Misslyckande rad innehåller (1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).
+
+2024-04-20 11:24:12,397 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 11:24:12,399 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 11:25:19,495 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 11:25:19,497 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 11:27:33,520 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-20 11:27:33,522 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-20 11:27:33,539 (WARNING)- django.request- Bad Request: /api/studies/
+>>>>>>> c11211c9 (471 feat: serializers post operation finishes tests)
