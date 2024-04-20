@@ -24,8 +24,8 @@ class TargetPopulation(models.Model):
     target = models.CharField(max_length=255)
 
 class Experiment(models.Model):
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name="experiment")
-    experiment_nr = models.AutoField(primary_key=True)
+    experiment_id = models.AutoField(primary_key=True)
+    study = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name="experiment")
     study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.PROTECT)
     risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.PROTECT)
     grade = models.ForeignKey(Grade, null=True, on_delete=models.SET_NULL)
@@ -43,4 +43,4 @@ class Experiment(models.Model):
 
 
     class Meta:
-        unique_together = (("study_id", "experiment_nr"),)
+        unique_together = (("study", "experiment_id"),)

@@ -1,4 +1,3 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase
 from django.urls import reverse
 
@@ -9,6 +8,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class TestData:
+    import json
     cama_user_data = {
         'orc_id': '0000-0002-1825-0097',
         "name": "John Doe",
@@ -16,87 +16,46 @@ class TestData:
         "organization": "Example University",
         "nr_uploads": 5
     }
-    
+    cama_user_payload = json.dumps(cama_user_data)
+
     study_data = {
-        "uploader": "0000-0002-1825-0097",
+        "cama_user": {
+            'orc_id': '0000-0002-1825-0097',
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "organization": "Example University",
+            "nr_uploads": 5
+        },
+        "country": {"name":"United States"},
+        "category": {"name": "Health"},
         "study_year": 2024,
-        "country": "United States",
-        "category": "Health",
         "peer_reviewed": True,
         "authors": "Jane Doe, John Smith",
         "doi": "10.1234/abcd.12345",
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
         "nr_downloads": "200",
-        "experiments":
-            [
-                {
-                    "experiment_nr": 1,
-                    "study_design": "Randomized Controlled Trial",
-                    "risks": {
-                        "rob": "Low",
-                        "robins": "Moderate"
-                    },
-                    "grade": "A",
-                    "participant_design": "Between-Group Design",
-                    "implemented": "Pilot Study",
-                    "gender_1": 0.5,
-                    "gender_2": 0.5,
-                    "intensity_n": 3,
-                    "duration_week": 12,
-                    "frequency_n": 3,
-                    "outcome": "Outcome Measurement",
-                    "outcome_full": "Complete Description of Outcome",
-                    "effect_datas": 
-                    [
-                        {
-                            "sd1i": 1.5,
-                            "sd2i": 1.8,
-                            "n1i": 30,
-                            "n2i": 35,
-                            "m1i": 15.2,
-                            "m2i": 16.7,
-                            "d_var": 0.5,
-                            "d": 0.45,
-                            "f_stat": 5.23,
-                            "t": 2.45,
-                            "ri": 1,
-                            "mean_age": 25.3,
-                            "ni": 65,
-                            "icc": 0.78,
-                            "ai": 2,
-                            "bi": 3,
-                            "ci": 4,
-                            "di": 5
-                        },
-                    ]
-                },
-            ]
     }
+    study_payload = json.dumps(study_data)
 
     experiment_data = {
-        "study_id": {
-            "study_id": 1,
-            "uploader": {
-                "orc_id": "0000-0002-1825-0097",
+        "study": {
+            "cama_user": {
+                'orc_id': '0000-0002-1825-0097',
                 "name": "John Doe",
                 "email": "john.doe@example.com",
                 "organization": "Example University",
                 "nr_uploads": 5
             },
+            "country": {"name":"United States"},
+            "category": {"name": "Health"},
             "study_year": 2024,
-            "country": {
-                "name": "United States"
-            },
-            "category": {
-                "name": "Health"
-            },
             "peer_reviewed": True,
             "authors": "Jane Doe, John Smith",
             "doi": "10.1234/abcd.12345",
             "abstract": "This study investigates the effects of...",
             "keywords": "health, research, study",
-            "nr_downloads": "200"
+            "nr_downloads": "200",
         },
         "study_design": {
             "design": "Randomized Controlled Trial"
@@ -124,6 +83,7 @@ class TestData:
         "mean_age": 25.5,
         "source": "Example Source"
     }
+    experiment_payload = json.dumps(experiment_data)
 
     effect_data = {
         "experiment": {
@@ -196,7 +156,7 @@ class TestData:
         "di": 5
     }
 
-class CamaUserAPITest(TestCase):
+class CamaUserAPITest(APITestCase):
     def setUp(self):
         self.url = reverse('cama_user-list-create')
         self.testData = TestData
@@ -218,17 +178,19 @@ class StudyListCreateAPIViewTests(APITestCase):
         self.testData = TestData
 
     def test_create_study(self):
-        CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
+        '''CamaUser.objects.create(orc_id='0000-0002-1825-0097',
+                                name="John Doe", 
+                                email="john.doe@example.com", 
+                                organization="Example University", 
+                                nr_uploads=5)'''
         response = self.client.post(self.url, self.testData.study_data, format='json')
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        response = self.client.get(self.url)
-        logger.info(f"Response after GET: {response.data}")
         self.assertEqual(Study.objects.count(), 1)
         study = Study.objects.first()
-        self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
-        self.assertEqual(study.uploader.name, "1")
+        self.assertEqual(study.cama_user.orc_id, "0000-0002-1825-0097")
+        self.assertEqual(study.cama_user.name, "John Doe")
 
     def test_invalid_study(self):
         invalid_payload = {}  # Payload with missing required fields
@@ -237,7 +199,7 @@ class StudyListCreateAPIViewTests(APITestCase):
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
 
-'''class ExperimentTestCase(TestCase):
+class ExperimentTestCase(APITestCase):
     def setUp(self):
         self.url = reverse('experiment-list-create') 
         self.testData = TestData
@@ -247,11 +209,9 @@ class StudyListCreateAPIViewTests(APITestCase):
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        response = self.client.get(self.url)
-        logger.info(f"Response after GET: {response.data}")
         self.assertEqual(Experiment.objects.count(), 1)
         experiment = Experiment.objects.first()
-        self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")'''
+        self.assertEqual(experiment.study.cama_user.orc_id, "0000-0002-1825-0097")
 
 
       
