@@ -15,14 +15,14 @@ class CamaUserAdmin(admin.ModelAdmin):
 
 class StudyAdmin(admin.ModelAdmin):
     model = Study
-    list_display = ['study_id', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
+    list_display = ['study_id', 'title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
     search_fields = ['study_id']
 
 class ExperimentAdmin(admin.ModelAdmin):
     model = Experiment
     list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'grade', 'participant_design', 'implemented', 'intensity_n',
                     'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source']
-    search_fields = ['study_id', 'experiment_nr']
+    search_fields = ['study_id', 'title', 'experiment_nr']
 
 class EffectDataAdmin(admin.ModelAdmin):
     model = EffectData
