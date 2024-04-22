@@ -1,0 +1,50 @@
+from django.db import models
+from .experiment import Experiment
+
+# Create your models here.
+
+class TestTime(models.Model):
+    time = models.CharField(max_length=255, primary_key=True)
+
+class EffectSizeType(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+
+class EffectData(models.Model):
+    effect_size_id = models.AutoField(primary_key=True)
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
+    test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
+    effect_size_type = models.CharField(null=True)
+    test_name = models.CharField(max_length=255, null=True)
+
+    outcome = models.CharField(max_length=255, null=True)
+    outcome_full = models.CharField(max_length=255, null=True)
+    outcome_op = models.CharField(max_length=255, null=True)
+
+    gender_1 = models.IntegerField(null=True)
+    gender_2 = models.IntegerField(null=True)
+    gender_3 = models.IntegerField(null=True)
+
+    d_var = models.FloatField(null=True)
+    d = models.FloatField(null=True)
+    f_stat = models.FloatField(null=True)
+    t = models.FloatField(null=True)
+    ri = models.IntegerField(null=True)
+    icc = models.FloatField(null=True)
+
+    mean_age_1i = models.FloatField(null=True)
+    mean_age_2i = models.FloatField(null=True)
+    
+    ai = models.IntegerField(null=True)
+    bi = models.IntegerField(null=True)
+    ci = models.IntegerField(null=True)
+    di = models.IntegerField(null=True)
+
+    sd1i = models.FloatField(null=True)
+    sd2i = models.FloatField(null=True)
+    n1i = models.FloatField(null=True)
+    n2i = models.FloatField(null=True)
+    m1i = models.FloatField(null=True)
+    m2i = models.FloatField(null=True)
+
+    class Meta:
+        unique_together = (("effect_size_id", "experiment"),)

@@ -5,16 +5,20 @@
 /.pnp
 .pnp.js
 node_modules
-# testing
-/coverage
 
-*__pycache__
-*.venv
+# testing
+.coverage
+__pycache__/
+.pytest_cache/
+cov_html
+pytestdebug.log
 
 # production
 /build
 
 # misc
+*/.venv
+.venv
 .DS_Store
 .env.local
 .env.development.local

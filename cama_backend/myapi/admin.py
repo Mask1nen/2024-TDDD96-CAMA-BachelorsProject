@@ -1,3 +1,94 @@
 from django.contrib import admin
 
+
+
 # Register your models here.
+from .camauser import CamaUser
+from .study import Country, Category, Study 
+from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment, TargetPopulation
+from .effect_data import EffectData, TestTime, EffectSizeType
+
+class CamaUserAdmin(admin.ModelAdmin):
+    model = CamaUser
+    list_display = ['cama_user_id', 'orc_id', 'name', 'email', 'organization', 'nr_uploads']
+    search_fields = ['orc_id']
+
+class StudyAdmin(admin.ModelAdmin):
+    model = Study
+    list_display = ['study_id', 'cama_user', 'country', 'category', 'study_year', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
+    search_fields = ['study_id']
+
+class ExperimentAdmin(admin.ModelAdmin):
+    model = Experiment
+    list_display = ['experiment_id', 'study', 'study_design', 'risks', 'grade', 'participant_design', 'implemented', 'intensity_n',
+                    'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source']
+    search_fields = ['study_id', 'experiment_nr']
+
+class EffectDataAdmin(admin.ModelAdmin):
+    model = EffectData
+    list_display = ['effect_size_id', 'experiment', 'effect_size_type', 'test_time', 'test_name', 'outcome', 'outcome_full', 'outcome_op', 'gender_1', 'gender_2', 'gender_3', 'd_var',
+                    'd', 'f_stat', 't', 'ri', 'icc', 'mean_age_1i', 'mean_age_2i', 'ai', 'bi', 'ci', 'di', 
+                    'sd1i', 'sd2i', 'n1i', 'n2i', 'm1i', 'm2i']
+    search_fields = ['effect_size_number', 'experiment_nr']
+    
+class CountryAdmin(admin.ModelAdmin):
+    model = Country
+    list_display = ['name']
+    search_fields = ['name']
+
+class CategoryAdmin(admin.ModelAdmin):
+    model = Category
+    list_display = ['name']
+    search_fields = ['name']
+
+class StudyDesignAdmin(admin.ModelAdmin):
+    model = StudyDesign
+    list_display = ['design']
+    search_fields = ['design']
+
+class RiskOfBiasAdmin(admin.ModelAdmin):
+    model = RiskOfBias
+    list_display = ['id', 'rob', 'robins']
+    search_fields = ['id']
+
+class GradeAdmin(admin.ModelAdmin):
+    model = Grade
+    list_display = ['grade']
+    search_fields = ['grade']
+
+class ParticipantDesignAdmin(admin.ModelAdmin):
+    model = ParticipantDesign
+    list_display = ['design']
+    search_fields = ['design']
+
+class ImplementationAdmin(admin.ModelAdmin):
+    model = Implementation
+    list_display = ['implementor']
+    search_fields = ['implementor']
+    
+class TargetPopulationAdmin(admin.ModelAdmin):
+    model = TargetPopulation
+    list_display = ['target']
+    search_fields = ['target']
+
+class TestTimeAdmin(admin.ModelAdmin):
+    model = TestTime
+    list_display = ['time']
+    search_fields = ['time']
+
+class EffectSizeTypeAdmin(admin.ModelAdmin):
+    model = EffectSizeType
+    list_display = ['name']
+    search_fields = ['name']
+
+admin.site.register(CamaUser, CamaUserAdmin)
+admin.site.register(Study, StudyAdmin)
+admin.site.register(Experiment, ExperimentAdmin)
+admin.site.register(EffectData, EffectDataAdmin)
+admin.site.register(Country, CountryAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(StudyDesign, StudyDesignAdmin)
+admin.site.register(RiskOfBias, RiskOfBiasAdmin)
+admin.site.register(Grade, GradeAdmin)
+admin.site.register(ParticipantDesign, ParticipantDesignAdmin)
+admin.site.register(Implementation, ImplementationAdmin)
