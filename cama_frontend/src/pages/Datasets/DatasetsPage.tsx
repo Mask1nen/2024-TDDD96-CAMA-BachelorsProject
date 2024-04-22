@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Grid,
   Box,
@@ -23,6 +23,10 @@ import { DataEntry } from "../../api/types";
 import { useNavigate } from "react-router-dom";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
+import { fetchStudies } from "../../api/dataAPI";
+
+
+
 
 const sliderSettings = {
   dots: true,
@@ -72,6 +76,25 @@ const DatasetsPage = () => {
   const filteredData = data.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+
+  useEffect(() => {
+    const loadData = async() => {
+      // Fetch studies
+      const fetchedStudies = await fetchStudies();
+      if (fetchedStudies) {
+        console.log("fetchedStudies: " , fetchedStudies);
+      } else
+      {
+        console.log("Error fetching studies");
+      };
+      
+    }
+    loadData();
+  }, []);
+
+
+
 
   // Use useMemo to efficiently compute filtered titles based on the search query
   const filteredTitles = useMemo(() => {

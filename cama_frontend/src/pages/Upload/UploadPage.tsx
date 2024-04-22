@@ -8,6 +8,7 @@ import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect } from '../../api/newTypes'
+import { addStudy } from "../../api/dataAPI";
 
 const UploadPage: React.FC = () => {
 
@@ -47,7 +48,7 @@ const UploadPage: React.FC = () => {
 		});
 		console.log(experimentValues)
 	};
-	const [experimentValues, setExperimentValues] = React.useState([]);	
+	const [experimentValues, setExperimentValues] = React.useState<Experiment[]>([]);	
 
 	const handleExperimentChange = (event, experimentId) => {
 		const { name, value } = event.target;
@@ -117,26 +118,57 @@ const UploadPage: React.FC = () => {
 		});
 		
 	}
-
-
-	
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(inputs);
-		let exps = inputs["experiments"] || {};
-		exps = Object.values(exps);
-		console.log(exps)
-		inputs["experiments"] = exps;
-		console.log(inputs)
-	};
-
 	const [inputs, setInputs] = useState({experiments:{}});
-	
 	const handleChange = (event) => {
 		console.log(event)
 		const { name, value } = event.target;
 		setInputs(prev => ({...prev, [name]: value }));
 	};
+
+
+	
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		
+		const fullStudyData = {
+			...inputs,
+			experiments: experimentValues.map(experiment => ({
+				...experiment,
+				effects: experiment.effects.map(effect => ({
+					...effect
+				}))
+			}))
+		}
+		console.log("Final data to submit", fullStudyData);
+	};
+
+	// const handleSubmit = (event) => {
+	// 	event.preventDefault();
+	// 	console.log("inputs:",inputs);
+	// 	let exps = inputs["experiments"] || {};
+	// 	exps = Object.values(exps);
+	// 	console.log("exps:",exps)
+	// 	inputs["experiments"] = exps;
+	// 	console.log("input after: ",inputs)
+	// };
+
+	
+	
+
+	// try {
+	// 	const response = await addStudy(fullStudyData);
+	// 	if (response) {
+	// 		console.log("Study added successfully");
+	// 	} else {
+	// 		console.log("Error adding study");
+	// 	}
+	// } catch (error) {
+	// 	console.error('Error adding study:', error);
+	// }
+
+	
+	
+	
 
 
 

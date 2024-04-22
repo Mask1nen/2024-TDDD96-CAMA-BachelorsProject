@@ -2969,3 +2969,17 @@ Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2055, in get_prep_value
     raise e.__class__(
 TypeError: Field 'cama_user_id' expected a number but got OrderedDict([('orc_id', '0000-0002-1825-0097'), ('name', 'John Doe'), ('email', 'john.doe@example.com'), ('organization', 'Example University'), ('nr_uploads', 5)]).
+2024-04-22 07:19:39,603 (INFO)- django.utils.autoreload- Watching for file changes with StatReloader
+2024-04-22 07:22:10,696 (WARNING)- django.request- Not Found: /studies/
+2024-04-22 07:22:17,827 (WARNING)- django.request- Not Found: /Studies/
+2024-04-22 07:22:36,815 (WARNING)- django.request- Not Found: /
+2024-04-22 07:23:46,458 (WARNING)- django.request- Not Found: /studies/
+2024-04-22 07:24:41,542 (WARNING)- django.request- Not Found: /studies/
+2024-04-22 07:24:53,218 (WARNING)- django.request- Not Found: /studies/
+2024-04-22 07:25:09,225 (WARNING)- django.request- Not Found: /stusdies/
+2024-04-22 07:25:11,662 (WARNING)- django.request- Not Found: /studies/
+2024-04-22 07:25:31,070 (WARNING)- django.request- Not Found: /studies
+2024-04-22 07:26:27,234 (WARNING)- django.request- Not Found: /myapi/studies/
+2024-04-22 07:27:38,835 (INFO)- django.utils.autoreload- /home/felix/plugg/prog/g10-tddd96-pum/cama_backend/cama_backend/settings.py changed, reloading.
+2024-04-22 07:27:39,113 (INFO)- django.utils.autoreload- Watching for file changes with StatReloader
+2024-04-22 07:28:12,096 (WARNING)- django.request- Bad Request: /studies/
