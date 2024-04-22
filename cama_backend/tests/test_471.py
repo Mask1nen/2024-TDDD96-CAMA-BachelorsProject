@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from rest_framework import status
 from myapi.models import *
+from myapi.serializers import StudySerializer, ExperimentSerializer
 
 import logging
 logger = logging.getLogger(__name__)

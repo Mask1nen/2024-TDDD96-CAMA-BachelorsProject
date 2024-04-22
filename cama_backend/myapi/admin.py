@@ -15,7 +15,7 @@ class CamaUserAdmin(admin.ModelAdmin):
 
 class StudyAdmin(admin.ModelAdmin):
     model = Study
-    list_display = ['study_id', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
+    list_display = ['study_id', 'title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
     search_fields = ['study_id']
 
 class ExperimentAdmin(admin.ModelAdmin):

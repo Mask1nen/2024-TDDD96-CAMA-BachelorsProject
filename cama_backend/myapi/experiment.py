@@ -4,27 +4,33 @@ from .study import Study
 # Create your models here.
 
 class StudyDesign(models.Model):
-    design = models.CharField(max_length=255, primary_key=True)
+    id = models.AutoField(primary_key=True)
+    design = models.CharField(max_length=255, unique=True)
 
 class RiskOfBias(models.Model):
     id = models.AutoField(primary_key=True)
     rob = models.CharField(max_length=255, null=True)
     robins = models.CharField(max_length=255, null=True)
 
+#K-12 implies all grades form kindergarden to 12:th grade, (K, 3, 6) implies Kindergarden, third grade, and sixth grade.
 class Grade(models.Model):
-    grade = models.CharField(max_length=255)
+    id = models.AutoField(primary_key=True)
+    grade = models.CharField(max_length=255) 
 
 class ParticipantDesign(models.Model):
-    design = models.CharField(max_length=255)
+    id = models.AutoField(primary_key=True)
+    design = models.CharField(max_length=255, unique=True)
 
 class Implementation(models.Model):
-    implementor = models.CharField(max_length=255)
+    id = models.AutoField(primary_key=True)
+    implementor = models.CharField(max_length=255, unique=True)
     
 class TargetPopulation(models.Model):
-    target = models.CharField(max_length=255)
+    id = models.AutoField(primary_key=True)
+    target = models.CharField(max_length=255, unique=True)
 
 class Experiment(models.Model):
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name="experiments")
+    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name='experiment')
     experiment_nr = models.AutoField(primary_key=True)
     study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.PROTECT)
     risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.PROTECT)

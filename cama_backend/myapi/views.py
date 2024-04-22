@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
@@ -40,8 +41,8 @@ class StudyView(APIView):
 
 class ExperimentView(APIView):
     def get(self, request):
-        experiment = Experiment.objects.all()
-        serializer = ExperimentSerializer(experiment, many=True)
+        studies = Study.objects.all()
+        serializer = StudySerializer(studies, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -81,6 +82,10 @@ class ExperimentView(APIView):
         
         # Return errors if the data is invalid
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ExperimentListCreateAPIView(APIView):
+    queryset = Experiment.objects.all()
+    serializer_class = ExperimentSerializer
     
 '''class EffectDataView(APIView):
     def get(self, request):

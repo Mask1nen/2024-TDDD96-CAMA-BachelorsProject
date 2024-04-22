@@ -16,19 +16,14 @@ function Footer() {
                     <Link to="About" className=" hover:underline">About</Link>
               </li>
               <li className="mb-4">
-                <a href="#" className=" hover:underline">
-                  About
-                </a>
+                    <Link to="FbF" className=" hover:underline">Faktabaserad Fakta</Link>
               </li>
               <li className="mb-4">
-                <a href="#" className="hover:underline">
-                  Team
-                </a>
+                    <Link to="Team" className=" hover:underline">Team</Link>
               </li>
+              
               <li className="mb-4">
-                <a href="#" className="hover:underline">
-                  App
-                </a>
+                    <Link to="App" className=" hover:underline">App</Link>
               </li>
             </ul>
           </div>
@@ -52,11 +47,6 @@ function Footer() {
                   Metadata
                 </a>
               </li>
-              <li className="mb-4">
-                <a href="#" className="hover:underline">
-                  Metadata
-                </a>
-              </li>
             </ul>
           </div>
           <div>
@@ -64,10 +54,8 @@ function Footer() {
               Contact
             </h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
-              <li className="mb-4">
-                <a href="#" className="hover:underline">
-                  Contact info
-                </a>
+               <li className="mb-4">
+                    <Link to="ContactInfo" className=" hover:underline">Contact info</Link>
               </li>
             </ul>
           </div>
