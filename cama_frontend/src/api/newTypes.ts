@@ -67,3 +67,5 @@ export interface Effect {
     outcome_full: string;
     outcome_op?: string;
 }
+
+

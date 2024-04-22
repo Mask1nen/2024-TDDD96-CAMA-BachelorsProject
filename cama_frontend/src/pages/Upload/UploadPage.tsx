@@ -10,6 +10,13 @@ import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study } from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
 
+interface inputEvent {
+	target: {
+		name: 'title' | 'authors' | 'keywords' | 'abstract' | 'category' | 'country' | 'year' | 'doi' | 'peer_reviewed' | 'source' | 'experiment_number' | 'intervention' | 'intervention_op' | 'target_population' | 'mean_age' | 'grade' | 'ni' | 'study_design' | 'participant_design' | 'implementation' | 'duration_week' | 'frequency_n' | 'intensity_n' | 'robins' | 'rob' | 'test_time' | 'gender_1' | 'gender_2' | 'gender_3' | 'effect_size_type' | 'mean_age_1i' | 'm1i' | 'sd1i' | 'n1i' | 'mean_age_2i' | 'm2i' | 'sd2i' | 'n2i' | 'icc' | 'ai' | 'bi' | 'ci' | 'di' | 'ri' | 't' | 'f_stat' | 'd' | 'd_var' | 'outcome' | 'test_name' | 'outcome_full' | 'outcome_op' ; 
+		value: string;
+	}
+}
+
 const UploadPage: React.FC = () => {
 
 	const [value, setValue] = React.useState(0);
@@ -32,7 +39,7 @@ const UploadPage: React.FC = () => {
 
 	//EXPERIMENT
 	
-	const emptyExperiment = (id): Experiment => ({
+	const emptyExperiment = (id: number): Experiment => ({
 		studyID: inputs.id,
 		id: id,
 		source: "",
@@ -65,7 +72,7 @@ const UploadPage: React.FC = () => {
 	};
 	const [experimentValues, setExperimentValues] = React.useState<Experiment[]>([]);	
 
-	const handleExperimentChange = (event, experimentId) => {
+	const handleExperimentChange = (event: inputEvent, experimentId: number) => {
 		const { name, value } = event.target;
 
 		setExperimentValues(function(prev) {
@@ -81,12 +88,12 @@ const UploadPage: React.FC = () => {
 
 	//EFFECT
 
-	const emptyEffect = (id, experiment_id): Effect => ({
+	const emptyEffect = (id: number, experiment_id: number): Effect => ({
 		id: id,
 		study_id: inputs.id,
 		experiment_id: experiment_id,
 		source: "",
-		experiment_number: "",
+		experiment_number: -1,
 		intervention: "",
 		intervention_op: "",
 		target_population: "",
@@ -122,13 +129,13 @@ const UploadPage: React.FC = () => {
         }
     };
 
-	const handleEffectChange = (event: Event, experimentId, effectId: string) => {
+	const handleEffectChange = (event: any, experimentId: string, effectId: string) => {
 		console.log(experimentId, effectId);
 		const { name, value } = event.target;
 		console.log(effects);
 		setEffects(function(prev) {
 			const res = [...prev];
-			const index = prev.findIndex(e => e.id == effectId && e.experiment_id == experimentId)
+			const index = prev.findIndex((e: any) => e.id == effectId && e.experiment_id == experimentId)
 			res[index][name] = value;
 
 			return res;
@@ -136,15 +143,14 @@ const UploadPage: React.FC = () => {
 		
 	}
 	const [inputs, setInputs] = useState<Study>(emptyStudy(uuidv4()));
-	const handleChange = (event) => {
-		console.log(event)
+	const handleChange = (event: any) => {
 		const { name, value } = event.target;
 		setInputs(prev => ({...prev, [name]: value }));
 	};
 
 
 	
-	const handleSubmit = async (event) => {
+	const handleSubmit = async (event: Event) => {
 		event.preventDefault();
 		
 		const fullStudyData:Study = {
