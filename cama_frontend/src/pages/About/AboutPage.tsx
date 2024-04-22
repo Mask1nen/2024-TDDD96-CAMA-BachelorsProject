@@ -21,9 +21,10 @@ const AboutPage: React.FC = () => {
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>                        
                 </Box>
                 <Box>
-                    <button onClick={() => setBottonPopup(true)}> INFO</button>
-                    <InfoPopUps trigger={buttonPopup} setTrigger={setBottonPopup}>
+                    <button onClick={() => setBottonPopup(true)} style={{ color: 'white' }}> INFO</button>
+                    <InfoPopUps trigger={buttonPopup} setTrigger={setBottonPopup} >
                         <h3 >xxTestxxZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</h3>
+                        
                     </InfoPopUps>
                 </Box>
             </Box>
