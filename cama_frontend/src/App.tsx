@@ -16,13 +16,17 @@ import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
+import { Dataset } from '@mui/icons-material';
+import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
 
 
 
 const App: React.FC = () => {
 
 const theme = createTheme({
+  
   palette: {
+    mode: 'light',
     primary: {
       light: '#757ce8',
       main: '#000000',
@@ -42,7 +46,7 @@ const theme = createTheme({
     <Router>
       <ThemeProvider theme={theme}>
       <Navbar />
-      <Container sx={{px:4, py:0}} className="bg-gray-100">
+      <Container sx={{px:4, py:4, minHeight: '60vh'}} className="bg-gray-100">
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />
@@ -56,7 +60,8 @@ const theme = createTheme({
             <Route path="/FbF" element={<FbFPage />} />  
         </Routes>
       </Container>
-      <Footer /></ThemeProvider>
+      <Footer />
+      </ThemeProvider>
     </Router>
   )
 };

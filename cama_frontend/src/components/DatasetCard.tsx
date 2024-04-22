@@ -1,54 +1,90 @@
-import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Box,
+  Tooltip
+} from "@mui/material";
+import { DataEntry } from "../api/types";
+import rawData from "../data/randomized_data.json";
+import bild2 from "../assets/images/bild2.png";
+import { useNavigate } from "react-router-dom";
 
 interface DatasetCardProps {
-  to: string;
-  image: string;
-  heading: string;
-  description: string;
-  content: string;
+  data: DataEntry;
 }
 
-const DatasetCard: React.FC<DatasetCardProps> = ({ to, image, heading, description, content }) => {
+const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
+  let navigate = useNavigate();
+
+
+
+  const handleCardClick = () => {
+    const titleSlug = encodeURIComponent(data.title);
+    navigate(`/datasets/${titleSlug}`);
+  };
+
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 px-4 mb-4 transition-transform transform hover:scale-105 duration-300">
-      <Link to={to}>
+    <Box
+      sx={{
+        width: "100%",
+        marginBottom: 2,
+        transition: "transform 0.3s",
+        "&:hover": { transform: "scale(1.05)" },
+      }}
+    >
+        <Tooltip title={data.title} placement="top">
         <Card
           sx={{
             minWidth: 240,
             maxWidth: 320,
-            m: 4,
+            margin: "auto",
             maxHeight: "100%",
-            boxShadow: "0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)",
+            boxShadow:
+              "0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)",
+            
           }}
+          onClick={handleCardClick}
         >
           <CardMedia
-            image={image}
-            sx={{
-              width: "100%",
-              height: 0,
-              paddingBottom: "min(60%, 200px)",
-              bgcolor: "rgba(0, 0, 0, 0.08)",
-            }}
+            component="img"
+            image={data.image || bild2}
+            alt={data.title}
+            sx={{ width: "100%", height: "auto" }}
           />
           <CardContent>
-            <Typography variant="h4" component="div">
-              {heading}
+
+            <Typography
+              variant="h6"
+              component="h2"
+              noWrap
+              sx={{
+                width: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {data.title}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {description}
-            </Typography>
-            <Typography variant="body1">
-              {content}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                width: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {data.authors}
             </Typography>
           </CardContent>
-          <CardActions style={{ justifyContent: "center" }}>
-            <Button size="small" variant="contained" color="primary">Learn More</Button>
-          </CardActions>
         </Card>
-      </Link>
-    </div>
+        </Tooltip>
+    </Box>
   );
 };
 
