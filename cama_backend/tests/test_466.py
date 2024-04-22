@@ -56,6 +56,7 @@ def test_effect_data_factory(effect_data_factory):
 def test_database_foriegn_key_whith_cascade(effect_data_factory):
     size = 10
     effect_data = EffectDataFactory.create_batch(size)
+    assert len(effect_data) == size 
     for x in effect_data:
         exp_nr = x.experiment_nr.experiment_nr
         assert x.experiment_nr != None 
@@ -67,7 +68,7 @@ def test_database_foriegn_key_whith_cascade(effect_data_factory):
         with pytest.raises(ObjectDoesNotExist):
             print(EffectData.objects.get(effect_size_number=x.effect_size_number, experiment_nr=x.experiment_nr))
         with pytest.raises(ObjectDoesNotExist):
-            print(Experiment.objects.get(experiment_nr=exp_nr, study_id=study_id)) 
+            print(Experiment.objects.get(experiment_nr=exp_nr, study_id=study_id))
          
         
         
