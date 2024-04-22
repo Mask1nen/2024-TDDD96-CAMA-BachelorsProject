@@ -3,12 +3,12 @@ import { apiUrl } from "./apiConfig.ts"
 
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
-        const response = await fetch(`${apiUrl}/studies`, {
+        const response = await fetch(`${apiUrl}/studies/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(study),
+            body: JSON.stringify({data: study}),
         });
         if (!response.ok) {
             throw new Error('Failed to post study');

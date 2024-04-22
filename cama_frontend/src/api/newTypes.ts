@@ -1,6 +1,6 @@
 
 export interface Study {
-    id?: number;
+    id?: string;
     title: string;
     authors: string;
     keywords: string;
@@ -14,8 +14,8 @@ export interface Study {
 }
 
 export interface Experiment {
-    
-    id?: number;
+    study_id?: string;
+    id?: string;
     source?: string;
     experiment_number: number;
     intervention: string;
@@ -36,7 +36,9 @@ export interface Experiment {
 }
 
 export interface Effect {
-    id?: number;
+    study_id?: string;
+    experiment_id?: string;
+    id?: string;
     test_time: 'baseline' | 'post-test' | 'follow-up';
     gender_1?: number;
     gender_2?: number;

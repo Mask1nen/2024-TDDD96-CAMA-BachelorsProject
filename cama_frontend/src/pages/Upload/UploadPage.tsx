@@ -7,7 +7,7 @@ import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect } from '../../api/newTypes'
+import {Experiment, Effect, Study } from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
 
 const UploadPage: React.FC = () => {
@@ -16,9 +16,24 @@ const UploadPage: React.FC = () => {
 
 
 
+	const emptyStudy = (id): Study => ({
+		id: id,
+		title: "",
+		authors: "",
+		keywords: "",
+		abstract: "",
+		category: "",
+		country: "",
+		year: 0,
+		doi: "",
+		peer_reviewed: false,
+		experiments: [],
+	});	
+
 	//EXPERIMENT
 	
 	const emptyExperiment = (id): Experiment => ({
+		studyID: inputs.id,
 		id: id,
 		source: "",
 		experiment_number: "",
@@ -66,8 +81,10 @@ const UploadPage: React.FC = () => {
 
 	//EFFECT
 
-	const emptyEffect = (id): Effect => ({
+	const emptyEffect = (id, experiment_id): Effect => ({
 		id: id,
+		study_id: inputs.id,
+		experiment_id: experiment_id,
 		source: "",
 		experiment_number: "",
 		intervention: "",
@@ -94,7 +111,7 @@ const UploadPage: React.FC = () => {
 		console.log(experimentId)
         setEffects(function(prev) {
             let id = prev.length + 1;
-			let newEffect = emptyEffect(id);
+			let newEffect = emptyEffect(id, experimentId);
 			newEffect["experiment_id"] = experimentId;
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
@@ -118,7 +135,7 @@ const UploadPage: React.FC = () => {
 		});
 		
 	}
-	const [inputs, setInputs] = useState({experiments:{}});
+	const [inputs, setInputs] = useState<Study>(emptyStudy(uuidv4()));
 	const handleChange = (event) => {
 		console.log(event)
 		const { name, value } = event.target;
@@ -130,41 +147,33 @@ const UploadPage: React.FC = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		
-		const fullStudyData = {
+		const fullStudyData:Study = {
 			...inputs,
-			experiments: experimentValues.map(experiment => ({
+			experiments: experimentValues.map<Experiment>(experiment => ({
 				...experiment,
-				effects: effects.filter(eff => eff.experiment_id == experiment.id ).map((eff: Object) => ({...eff}))
+				effects: effects.filter<Effect>(eff => eff.experiment_id == experiment.id ).map<Effect>((eff:Effect) => ({...eff}))
 			}))
 		}
 		console.log("Final data to submit", fullStudyData);
-	};
-
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	console.log("inputs:",inputs);
-	// 	let exps = inputs["experiments"] || {};
-	// 	exps = Object.values(exps);
-	// 	console.log("exps:",exps)
-	// 	inputs["experiments"] = exps;
-	// 	console.log("input after: ",inputs)
-	// };
-
+		
+		
 	
+		
 	
 
-	// try {
-	// 	const response = await addStudy(fullStudyData);
-	// 	if (response) {
-	// 		console.log("Study added successfully");
-	// 	} else {
-	// 		console.log("Error adding study");
-	// 	}
-	// } catch (error) {
-	// 	console.error('Error adding study:', error);
-	// }
 
-	
+	try {
+		const response = await addStudy(fullStudyData);
+		if (response) {
+			console.log("Study added successfully");
+		} else {
+			console.log("Error adding study");
+		}
+	} catch (error) {
+		console.error('Error adding study:', error);
+	}
+
+};
 	
 	
 

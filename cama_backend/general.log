@@ -2983,3 +2983,27 @@ TypeError: Field 'cama_user_id' expected a number but got OrderedDict([('orc_id'
 2024-04-22 07:27:38,835 (INFO)- django.utils.autoreload- /home/felix/plugg/prog/g10-tddd96-pum/cama_backend/cama_backend/settings.py changed, reloading.
 2024-04-22 07:27:39,113 (INFO)- django.utils.autoreload- Watching for file changes with StatReloader
 2024-04-22 07:28:12,096 (WARNING)- django.request- Bad Request: /studies/
+2024-04-22 09:08:03,412 (ERROR)- django.request- Internal Server Error: /studies
+Traceback (most recent call last):
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/studies/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2024-04-22 09:37:03,478 (ERROR)- django.request- Internal Server Error: /studies
+Traceback (most recent call last):
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+  File "/home/felix/plugg/prog/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/studies/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2024-04-22 09:41:08,684 (WARNING)- django.request- Bad Request: /studies/
+2024-04-22 09:44:35,462 (WARNING)- django.request- Bad Request: /studies/
