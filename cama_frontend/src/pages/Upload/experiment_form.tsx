@@ -4,8 +4,7 @@ import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 
-const ExperimentForm: React.FC = (props) => {
-
+const ExperimentForm: React.FC = (props:{effects}) => {
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -32,18 +31,22 @@ const ExperimentForm: React.FC = (props) => {
                                 </TextField>
                             </FormControl>
                         ))}
-                    {props.effects.map((effect, index) => (
-                        <Box key={effect.id}>
-                            <EffectForm 
-                                onChange={props.onChangeEffect} 
-                                inputs={effect} 
-                                experimentId={props.experimentId} 
-                                effectId={effect.id}/>
+                    {props.effects.map((effect: effect) => (
+                        <div key={effect.id}>
+                            {effect.experiment_id == props.experimentId ? (
+                            <Box key={effect.id}>
+                                <EffectForm 
+                                    onChange={props.onChangeEffect} 
+                                    inputs={effect} 
+                                    experimentId={props.experimentId} 
+                                    effectId={effect.id}/>
 
-                            <Button onClick={() => props.removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
-                                Remove Effect
-                            </Button>
-                        </Box>
+                                <Button onClick={() => props.removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                                    Remove Effect
+                                </Button>
+                            </Box>
+                            ): ""}
+                        </div>
                     ))}
                     <Button onClick={(e) => {props.addEffect(props.experimentId)}} variant="outlined" sx={{ mt: 2 }}>
                         Add Effect<AddCircleOutline sx={{ ml: 1 }} />

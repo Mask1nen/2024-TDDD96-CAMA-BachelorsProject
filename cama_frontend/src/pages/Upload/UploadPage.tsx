@@ -105,7 +105,7 @@ const UploadPage: React.FC = () => {
         }
     };
 
-	const handleEffectChange = (event, experimentId, effectId) => {
+	const handleEffectChange = (event: Event, experimentId, effectId: string) => {
 		console.log(experimentId, effectId);
 		const { name, value } = event.target;
 		console.log(effects);
@@ -134,9 +134,7 @@ const UploadPage: React.FC = () => {
 			...inputs,
 			experiments: experimentValues.map(experiment => ({
 				...experiment,
-				effects: experiment.effects.map(effect => ({
-					...effect
-				}))
+				effects: effects.filter(eff => eff.experiment_id == experiment.id ).map((eff: Object) => ({...eff}))
 			}))
 		}
 		console.log("Final data to submit", fullStudyData);
