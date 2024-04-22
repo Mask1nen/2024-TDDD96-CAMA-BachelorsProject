@@ -50,4 +50,4 @@ class EffectData(models.Model):
     m2i = models.FloatField(null=True)
 
     class Meta:
-        unique_together = (("effect_size_number", "experiment_nr"),)
+        unique_together = (("effect_size_number", "experiment_nr"))
