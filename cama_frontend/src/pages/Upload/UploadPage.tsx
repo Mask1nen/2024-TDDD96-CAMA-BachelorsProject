@@ -7,7 +7,7 @@ import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study } from '../../api/newTypes'
+import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy } from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
 
 interface inputEvent {
@@ -19,53 +19,16 @@ interface inputEvent {
 
 const UploadPage: React.FC = () => {
 
-
-	const emptyStudy = (id: string): Study => ({
-		id: id,
-		title: "",
-		authors: "",
-		keywords: "",
-		abstract: "",
-		category: "",
-		country: "",
-		study_year: 0,
-		doi: "",
-		peer_reviewed: false,
-		experiments: [],
-	});	
-
 	//EXPERIMENT
 	
-	const emptyExperiment = (id: string): Experiment => ({
-		studyID: inputs.id,
-		id: id,
-		source: "",
-		experiment_number: "",
-		intervention: "",
-		intervention_op: "",
-		target_population: "",
-		mean_age: undefined,
-		grade: "",
-		ni: "",
-		study_design: "",
-		participant_design: "",
-		implementation: "",
-		duration_week: "",
-		frequency_n: "",
-		intensity_n: "",
-		robins: "",
-		rob: "",
-		effects: [],
-	});
-
 	const addExperiment = () => {
 
 		setExperimentValues(function(prev) {
 			let id = uuidv4();
-			return [...prev, emptyExperiment(id)];
+			return [...prev, emptyExperiment(id, inputs.id)];
 		});
 	};
-	const [experimentValues, setExperimentValues] = React.useState<Experiment[]>([]);	
+	const [experiments, setExperimentValues] = React.useState<Experiment[]>([]);	
 
 	const handleExperimentChange = (event: inputEvent, experimentId: string) => {
 		const { name, value } = event.target;
@@ -81,48 +44,12 @@ const UploadPage: React.FC = () => {
 
 	//EFFECT
 
-	const emptyEffect = (id: string, experiment_id: string): Effect => ({
-		id: id,
-		study_id: inputs.id,
-		experiment_id: experiment_id,
-		test_time: "",
-		gender_1: "",
-		gender_2: "",
-		gender_3: "",
-		effect_size_type: "",
-		mean_age_1i: "",
-		m1i: "",
-		sd1i: "",
-		n1i: "",
-		mean_age_2i: "",
-		m2i: "",
-		sd2i: "",
-		n2i: "",
-		icc: "",
-		ai: "",
-		bi: "",
-		ci: "",
-		di: "",
-		ri: "",
-		t: "",
-		f_stat: "",
-		d: "",
-		d_var: "",
-		outcome: "",
-		test_name: "",
-		outcome_full: "",
-		outcome_op: "",
-		
-		
-	});
-
-
 	const [effects, setEffects] = useState<Effect[]>([]);
 
     const addEffect = (experimentId: string) => {
         setEffects(function(prev) {
-            let id = prev.length + 1;
-			let newEffect = emptyEffect(id, experimentId);
+            let id = (prev.length + 1).toString();
+			let newEffect = emptyEffect(id, experimentId, inputs.id);
 			newEffect["experiment_id"] = experimentId;
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
@@ -144,6 +71,8 @@ const UploadPage: React.FC = () => {
 		});
 		
 	}
+
+	//STUDY
 	const [inputs, setInputs] = useState<Study>(emptyStudy(uuidv4()));
 	const handleChange = (event: any) => {
 		const { name, value } = event.target;
@@ -157,27 +86,24 @@ const UploadPage: React.FC = () => {
 		
 		const fullStudyData:Study = {
 			...inputs,
-			experiments: experimentValues.map<Experiment>(experiment => ({
+			experiments: experiments.map<Experiment>(experiment => ({
 				...experiment,
 				effect_datas: effects.filter((eff: Effect) => eff.experiment_id == experiment.id ).map((eff:Effect) => ({...eff}))
 			}))
 		}
 		
 		
-	try {
-		const response = await addStudy(fullStudyData);
-		if (response) {
-		} else {
+		try {
+			const response = await addStudy(fullStudyData);
+			if (response) {
+			} else {
+			}
+		} catch (error) {
+			console.error('Error adding study:', error);
 		}
-	} catch (error) {
-		console.error('Error adding study:', error);
-	}
 
-};
+	};
 	
-	
-
-
 
 
 	return (
@@ -202,7 +128,7 @@ const UploadPage: React.FC = () => {
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
-							{experimentValues.map((experiment, index) =>  
+							{experiments.map((experiment) =>  
 								<Experimentform 
 									key={experiment['id']} 
 									onChangeEffect={handleEffectChange} 

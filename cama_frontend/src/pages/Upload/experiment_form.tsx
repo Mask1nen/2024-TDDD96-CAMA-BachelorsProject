@@ -3,6 +3,7 @@ import { Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography,
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
+import { Effect } from '../../api/newTypes'
 
 const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffect, removeEffect, addEffect, effects}: any) => {
 
@@ -31,7 +32,7 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                                 </TextField>
                             </FormControl>
                         ))}
-                    {effects.map((effect: effect) => (
+                    {effects.map((effect: Effect) => (
                         <div key={effect.id}>
                             {effect.experiment_id == experimentId ? (
                             <Box key={effect.id}>
@@ -48,7 +49,7 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                             ): ""}
                         </div>
                     ))}
-                    <Button onClick={(e) => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
+                    <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
                         Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                     </Button>
                 </AccordionDetails>
