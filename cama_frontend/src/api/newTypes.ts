@@ -7,7 +7,7 @@ export interface Study {
     abstract: string;
     category: string;
     country: string;
-    year: number;
+    study_year: number;
     doi: string;
     peer_reviewed: boolean;
     experiments: Experiment[];
@@ -23,7 +23,7 @@ export interface Experiment {
     target_population: string;
     mean_age?: number;
     grade?: string;
-    ni: number;
+    ni: number; //sample size
     study_design: 'RCT' | 'QES';
     participant_design: 'within' | 'between' | 'mixed';
     implementation: 'researcher' | 'teacher' | 'paraprofessional' | null;

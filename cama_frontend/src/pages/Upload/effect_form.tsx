@@ -27,7 +27,7 @@ const EffectForm: React.FC = (props) => {
                     name={field.key}
                     select
                     value={props.inputs[field.key] ?? ""}
-                    onChange={(e) => {props.onChange(e, props.exerimentId, props.effectId)}}
+                    onChange={(e) => {props.onChange(e, props.experimentId, props.effectId)}}
                     fullWidth
                   >
                     {field.options?.map(option => (

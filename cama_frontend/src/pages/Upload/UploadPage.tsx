@@ -92,23 +92,35 @@ const UploadPage: React.FC = () => {
 		id: id,
 		study_id: inputs.id,
 		experiment_id: experiment_id,
-		source: "",
-		experiment_number: -1,
-		intervention: "",
-		intervention_op: "",
-		target_population: "",
-		mean_age: "",
-		grade: "",
-		ni: "",
-		study_design: "",
-		participant_design: "",
-		implementation: "",
-		duration_week: "",
-		frequency_n: "",
-		intensity_n: "",
-		robins: "",
-		rob: "",
-		effects: [],
+		test_time: "",
+		gender_1: "",
+		gender_2: "",
+		gender_3: "",
+		effect_size_type: "",
+		mean_age_1i: "",
+		m1i: "",
+		sd1i: "",
+		n1i: "",
+		mean_age_2i: "",
+		m2i: "",
+		sd2i: "",
+		n2i: "",
+		icc: "",
+		ai: "",
+		bi: "",
+		ci: "",
+		di: "",
+		ri: "",
+		t: "",
+		f_stat: "",
+		d: "",
+		d_var: "",
+		outcome: "",
+		test_name: "",
+		outcome_full: "",
+		outcome_op: "",
+		
+		
 	});
 
 
@@ -136,6 +148,7 @@ const UploadPage: React.FC = () => {
 		setEffects(function(prev) {
 			const res = [...prev];
 			const index = prev.findIndex((e: any) => e.id == effectId && e.experiment_id == experimentId)
+			console.log("effect id: ", effectId, "experiment id: ", experimentId, "index: ", index)
 			res[index][name] = value;
 
 			return res;
@@ -150,14 +163,14 @@ const UploadPage: React.FC = () => {
 
 
 	
-	const handleSubmit = async (event: Event) => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		
 		const fullStudyData:Study = {
 			...inputs,
 			experiments: experimentValues.map<Experiment>(experiment => ({
 				...experiment,
-				effects: effects.filter<Effect>(eff => eff.experiment_id == experiment.id ).map<Effect>((eff:Effect) => ({...eff}))
+				effect_datas: effects.filter<Effect>(eff => eff.experiment_id == experiment.id ).map<Effect>((eff:Effect) => ({...eff}))
 			}))
 		}
 		console.log("Final data to submit", fullStudyData);
