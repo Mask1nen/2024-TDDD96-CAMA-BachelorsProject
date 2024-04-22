@@ -4185,3 +4185,1162 @@ Traceback (most recent call last):
     study_data = request.data.pop('study_data')
 KeyError: 'study_data'
 2024-04-20 11:57:26,202 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:34:49,798 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:34:50,078 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:34:50,196 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:35:31,668 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:35:31,923 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:35:32,087 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:36:03,839 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:36:04,100 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:36:04,261 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:36:21,851 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:36:22,121 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:36:22,237 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:37:00,506 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:37:00,752 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:37:00,916 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:37:15,186 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:37:15,445 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:37:15,567 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:40:23,731 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:40:23,985 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:40:24,146 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:42:37,251 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:42:37,504 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:42:37,666 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:42:54,555 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:42:54,827 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:42:54,989 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:43:48,017 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:43:48,268 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:43:48,421 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:44:29,159 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:44:29,437 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:44:29,603 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:45:06,810 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:45:07,072 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:45:07,235 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:46:40,579 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:46:40,835 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:46:40,999 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:47:38,679 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:47:38,933 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:47:39,094 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:51:46,986 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:51:47,241 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:51:47,403 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:52:32,713 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:52:32,971 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:52:33,132 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:52:41,479 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:52:41,740 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:52:41,902 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:53:13,376 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:53:13,629 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:53:13,790 (WARNING)- django.request- Method Not Allowed: /api/experiments/
+2024-04-22 11:55:34,018 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 43, in post
+    logger.info(serializer.is_valid())
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1032, in get_fields
+    assert hasattr(self.Meta, 'model'), (
+AssertionError: Class YearSerializer missing "Meta.model" attribute
+2024-04-22 11:55:34,267 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/jonfr/tddd96/g10-tddd96-pum/cama_backend/myapi/views.py", line 41, in post
+    study_data = request.data.pop('study_data')
+KeyError: 'study_data'
+2024-04-22 11:55:34,420 (WARNING)- django.request- Method Not Allowed: /api/experiments/
