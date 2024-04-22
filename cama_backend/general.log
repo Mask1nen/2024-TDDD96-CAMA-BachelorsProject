@@ -3007,3 +3007,6 @@ Traceback (most recent call last):
 RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/studies/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
 2024-04-22 09:41:08,684 (WARNING)- django.request- Bad Request: /studies/
 2024-04-22 09:44:35,462 (WARNING)- django.request- Bad Request: /studies/
+2024-04-22 11:35:48,024 (INFO)- django.utils.autoreload- /home/felix/plugg/prog/g10-tddd96-pum/cama_backend/myapi/views.py changed, reloading.
+2024-04-22 11:35:48,291 (INFO)- django.utils.autoreload- Watching for file changes with StatReloader
+2024-04-22 11:35:53,192 (WARNING)- django.request- Bad Request: /studies/
