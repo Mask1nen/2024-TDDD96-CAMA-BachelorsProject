@@ -10,10 +10,10 @@ class EffectSizeType(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
 
 class EffectData(models.Model):
-    effect_size_id = models.AutoField(primary_key=True)
-    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
-    test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
+    effect_size_number = models.AutoField(primary_key=True)
+    experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE)
     effect_size_type = models.CharField(null=True)
+    test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
     test_name = models.CharField(max_length=255, null=True)
 
     outcome = models.CharField(max_length=255, null=True)
@@ -47,4 +47,4 @@ class EffectData(models.Model):
     m2i = models.FloatField(null=True)
 
     class Meta:
-        unique_together = (("effect_size_id", "experiment"),)
+        unique_together = (("effect_size_number", "experiment_nr"),)

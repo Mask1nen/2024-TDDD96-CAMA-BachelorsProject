@@ -973,6 +973,7 @@ AssertionError: Class ExperimentSerializer missing "Meta" attribute
 2024-04-19 14:53:26,429 (WARNING)- django.request- Bad Request: /api/studies/
 2024-04-19 14:53:26,429 (INFO)- test_471- Response after POST: {'experiment': [ErrorDetail(string='This field is required.', code='required')], 'country': [ErrorDetail(string='Invalid pk "United States" - object does not exist.', code='does_not_exist')], 'category': [ErrorDetail(string='Invalid pk "Health" - object does not exist.', code='does_not_exist')]}
 2024-04-19 14:53:26,455 (WARNING)- django.request- Bad Request: /api/studies/
+<<<<<<< HEAD
 2024-04-20 18:44:06,570 (ERROR)- django.request- Internal Server Error: /api/studies/
 Traceback (most recent call last):
   File "/home/masky/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
@@ -3010,3 +3011,5 @@ RuntimeError: You called this URL via POST, but the URL doesn't end in a slash a
 2024-04-22 11:35:48,024 (INFO)- django.utils.autoreload- /home/felix/plugg/prog/g10-tddd96-pum/cama_backend/myapi/views.py changed, reloading.
 2024-04-22 11:35:48,291 (INFO)- django.utils.autoreload- Watching for file changes with StatReloader
 2024-04-22 11:35:53,192 (WARNING)- django.request- Bad Request: /studies/
+=======
+>>>>>>> parent of 03575143 (471 feat: uploading nested serializer implementation)
