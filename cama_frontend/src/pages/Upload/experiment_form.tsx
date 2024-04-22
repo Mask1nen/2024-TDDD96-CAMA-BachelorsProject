@@ -4,7 +4,7 @@ import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 
-const ExperimentForm: React.FC = (props:{effects}) => {
+const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffect, removeEffect, addEffect, effects}: any) => {
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -20,8 +20,8 @@ const ExperimentForm: React.FC = (props:{effects}) => {
                                     label={field.name}
                                     name={field.key}
                                     select={!!field.options}
-                                    value={props.inputs[props.index][field.key] || ""}
-                                    onChange={(e) => {props.onChange(e, props.experimentId)}}
+                                    value={inputs[field.key] || ""}
+                                    onChange={(e) => {onChange(e, experimentId)}}
                                 >
                                     {field.options?.map(option => (
                                         <MenuItem key={`${field.key}-${option}`} value={option}>
@@ -31,24 +31,24 @@ const ExperimentForm: React.FC = (props:{effects}) => {
                                 </TextField>
                             </FormControl>
                         ))}
-                    {props.effects.map((effect: effect) => (
+                    {effects.map((effect: effect) => (
                         <div key={effect.id}>
-                            {effect.experiment_id == props.experimentId ? (
+                            {effect.experiment_id == experimentId ? (
                             <Box key={effect.id}>
                                 <EffectForm 
-                                    onChange={props.onChangeEffect} 
+                                    onChange={onChangeEffect} 
                                     inputs={effect} 
-                                    experimentId={props.experimentId} 
+                                    experimentId={experimentId} 
                                     effectId={effect.id}/>
 
-                                <Button onClick={() => props.removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                                <Button onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
                                     Remove Effect
                                 </Button>
                             </Box>
                             ): ""}
                         </div>
                     ))}
-                    <Button onClick={(e) => {props.addEffect(props.experimentId)}} variant="outlined" sx={{ mt: 2 }}>
+                    <Button onClick={(e) => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
                         Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                     </Button>
                 </AccordionDetails>

@@ -19,11 +19,8 @@ interface inputEvent {
 
 const UploadPage: React.FC = () => {
 
-	const [value, setValue] = React.useState(0);
 
-
-
-	const emptyStudy = (id): Study => ({
+	const emptyStudy = (id: string): Study => ({
 		id: id,
 		title: "",
 		authors: "",
@@ -31,7 +28,7 @@ const UploadPage: React.FC = () => {
 		abstract: "",
 		category: "",
 		country: "",
-		year: 0,
+		study_year: 0,
 		doi: "",
 		peer_reviewed: false,
 		experiments: [],
@@ -39,7 +36,7 @@ const UploadPage: React.FC = () => {
 
 	//EXPERIMENT
 	
-	const emptyExperiment = (id: number): Experiment => ({
+	const emptyExperiment = (id: string): Experiment => ({
 		studyID: inputs.id,
 		id: id,
 		source: "",
@@ -47,7 +44,7 @@ const UploadPage: React.FC = () => {
 		intervention: "",
 		intervention_op: "",
 		target_population: "",
-		mean_age: "",
+		mean_age: undefined,
 		grade: "",
 		ni: "",
 		study_design: "",
@@ -62,33 +59,29 @@ const UploadPage: React.FC = () => {
 	});
 
 	const addExperiment = () => {
-		console.log("click")
 
 		setExperimentValues(function(prev) {
 			let id = uuidv4();
 			return [...prev, emptyExperiment(id)];
 		});
-		console.log(experimentValues)
 	};
 	const [experimentValues, setExperimentValues] = React.useState<Experiment[]>([]);	
 
-	const handleExperimentChange = (event: inputEvent, experimentId: number) => {
+	const handleExperimentChange = (event: inputEvent, experimentId: string) => {
 		const { name, value } = event.target;
 
 		setExperimentValues(function(prev) {
-			console.log([prev,experimentId])
 			const res = [...prev];
 			const index = prev.findIndex(e => e.id == experimentId)
 			res[index][name] = value;
 
 			return res;
 		})
-		console.log(experimentValues);
 	}
 
 	//EFFECT
 
-	const emptyEffect = (id: number, experiment_id: number): Effect => ({
+	const emptyEffect = (id: string, experiment_id: string): Effect => ({
 		id: id,
 		study_id: inputs.id,
 		experiment_id: experiment_id,
@@ -124,10 +117,9 @@ const UploadPage: React.FC = () => {
 	});
 
 
-	const [effects, setEffects] = useState<number[]>([]);
+	const [effects, setEffects] = useState<Effect[]>([]);
 
     const addEffect = (experimentId: string) => {
-		console.log(experimentId)
         setEffects(function(prev) {
             let id = prev.length + 1;
 			let newEffect = emptyEffect(id, experimentId);
@@ -142,13 +134,10 @@ const UploadPage: React.FC = () => {
     };
 
 	const handleEffectChange = (event: any, experimentId: string, effectId: string) => {
-		console.log(experimentId, effectId);
 		const { name, value } = event.target;
-		console.log(effects);
 		setEffects(function(prev) {
 			const res = [...prev];
 			const index = prev.findIndex((e: any) => e.id == effectId && e.experiment_id == experimentId)
-			console.log("effect id: ", effectId, "experiment id: ", experimentId, "index: ", index)
 			res[index][name] = value;
 
 			return res;
@@ -170,23 +159,15 @@ const UploadPage: React.FC = () => {
 			...inputs,
 			experiments: experimentValues.map<Experiment>(experiment => ({
 				...experiment,
-				effect_datas: effects.filter<Effect>(eff => eff.experiment_id == experiment.id ).map<Effect>((eff:Effect) => ({...eff}))
+				effect_datas: effects.filter((eff: Effect) => eff.experiment_id == experiment.id ).map((eff:Effect) => ({...eff}))
 			}))
 		}
-		console.log("Final data to submit", fullStudyData);
 		
 		
-	
-		
-	
-
-
 	try {
 		const response = await addStudy(fullStudyData);
 		if (response) {
-			console.log("Study added successfully");
 		} else {
-			console.log("Error adding study");
 		}
 	} catch (error) {
 		console.error('Error adding study:', error);
@@ -226,8 +207,7 @@ const UploadPage: React.FC = () => {
 									key={experiment['id']} 
 									onChangeEffect={handleEffectChange} 
 									onChange={handleExperimentChange} 
-									inputs={experimentValues} 
-									index={index}
+									inputs={experiment} 
 									effects={effects}
 									addEffect={addEffect}
 									removeEffect={removeEffect}
