@@ -3,32 +3,45 @@
 import React, { useState } from "react";
 import {Box, Button} from "@mui/material";
 import Logo  from "../../assets/images/orcid_logo_icon.png";
-import { loginUser } from "../../api/loginAPI";
-const loginUrl = "https://orcid.org/oauth/authorize?client_id=APP-IZWWE416AT5JC4N6&response_type=token&scope=openid&redirect_uri=http://192.168.0.34:3000/Login"
-
+import axios from "axios";
+import { apiUrl } from "../../api/apiConfig";
+const loginUrl = "https://orcid.org/oauth/authorize?client_id=APP-IZWWE416AT5JC4N6&response_type=code&scope=/authenticate&redirect_uri=http://192.168.0.34:3000/Login"
 
 
 const LoginPage: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLogin = () => {
+        console.log("Logging in...");
         window.location.href = loginUrl;
     };
 
     // Function to extract token from URL after ORCID callback
-    const extractTokenFromURL = () => {
-        alert("extractTokenFromURL");
+    const extractTokenFromURL = async () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const access_token = urlParams.get('access_token');
-        const id_token = urlParams.get('id_token');
-        const tokenId = urlParams.get('tokenId');
-        alert(access_token);
-        if (access_token) {
-            // Handle the code (token) received from ORCID
-            console.log('Received code from ORCID:', access_token);
-            setIsLoggedIn(true);
+        const code = urlParams.get('code');
+        console.log("Code from ORCID:", code);
+    if (code) {
+        try {
+            const response = await fetch(`${apiUrl}/get-orcid-info/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ code }),
+            });
+
+            const data = await response.json();
+            const orcid = data.orcid;
+            const name = data.name;
+            console.log("Response from server:", orcid, name);
+
         }
-    };
+    catch (error) {
+        console.error("Failed to fetch", error);
+    }
+    }
+    }
 
     // Check for token in URL on component mount
     React.useEffect(() => {
@@ -57,5 +70,5 @@ const LoginPage: React.FC = () => {
         </Box>
     );
 	};
-	
+
 export default LoginPage;
