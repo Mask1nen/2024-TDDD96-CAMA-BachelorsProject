@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
-from .models import CamaUser, Experiment, Study
-from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer
+from .models import *
+from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer, CountrySerializer, CategorySerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer, TestTimeSerializer, EffectSizeTypeSerializer
 
 import logging
 logger = logging.getLogger(__name__)
@@ -54,3 +54,139 @@ class ExperimentListCreateAPIView(APIView):
 class ExperimentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Experiment.objects.all()
     serializer_class = ExperimentSerializer
+    
+
+
+class CountryOptionsVeiw(APIView):
+    def get(self, request):
+        options = Country.objects.all()
+        serializer = CountrySerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        name = request.data.pop('name')
+        serializer = CountrySerializer(data=name)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CategoryOptionsView(APIView):
+    def get(self, request):
+        options = Category.objects.all()
+        serializer = CategorySerializer()
+
+    def post(self, request):
+        name = request.data.pop('name')
+        serializer = CategorySerializer(data=name)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+class StudyDesignOptionsView(APIView):
+    def get(self, request):
+        options = StudyDesign.objects.all()
+        serializer = StudyDesignSerializer(options, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        design = request.data.pop('design')
+        serializer = StudyDesignSerializer(data=design)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class RiskOfBiasOptionsView(APIView):
+    def get(self, request):
+        options = RiskOfBias.objects.all()
+        serializer = RiskOfBiasSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        rob = request.data.pop('rob')
+        serializer = RiskOfBiasSerializer(data=rob)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+class GradeOptionsView(APIView):
+    def get(self, request):
+        options = Grade.objects.all()
+        serializer = GradeSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        grade = request.data.pop('grade')
+        serializer = GradeSerializer(data=grade)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ParticipantDesign(APIView):
+    def get(self, request):
+        options = ParticipantDesign.objects.all()
+        serializer = ParticipantDesignSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        design = request.data.pop('design')
+        serializer = ParticipantDesign(data=design)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class Implementation(APIView):
+    def get(self, request):
+        options = Implementation.objects.all()
+        serializer = ImplementationSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        implementor = request.data.pop('implementor')
+        serializer = Implementation(data=implementor)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class TestTimeOptionsViews(APIView):
+    def get(self, request):
+        options = TestTime.objects.all()
+        serializer = TestTimeSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        time = request.data.pop('time')
+        serializer = TestTimeSerializer(data=time)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+class EffectSizeTypeOptionsViews(APIView):
+    def get(self, request):
+        options = EffectSizeType.objects.all()
+        serializer = EffectSizeTypeSerializer(options, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        name = request.data.pop('name')
+        serializer = EffectSizeTypeSerializer(data=name)
+        logger.info(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

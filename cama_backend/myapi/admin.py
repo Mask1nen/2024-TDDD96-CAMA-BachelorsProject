@@ -36,12 +36,12 @@ class EffectDataAdmin(admin.ModelAdmin):
     
 class CountryAdmin(admin.ModelAdmin):
     model = Country
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 class StudyDesignAdmin(admin.ModelAdmin):
@@ -51,32 +51,32 @@ class StudyDesignAdmin(admin.ModelAdmin):
 
 class RiskOfBiasAdmin(admin.ModelAdmin):
     model = RiskOfBias
-    list_display = ['id', 'rob', 'robins']
+    list_display = ['id', 'rob']
     search_fields = ['id']
 
 class GradeAdmin(admin.ModelAdmin):
     model = Grade
-    list_display = ['grade']
+    list_display = ['id', 'grade']
     search_fields = ['grade']
 
 class ParticipantDesignAdmin(admin.ModelAdmin):
     model = ParticipantDesign
-    list_display = ['design']
+    list_display = ['id', 'design']
     search_fields = ['design']
 
 class ImplementationAdmin(admin.ModelAdmin):
     model = Implementation
-    list_display = ['implementor']
+    list_display = ['id', 'implementor']
     search_fields = ['implementor']
 
 class TestTimeAdmin(admin.ModelAdmin):
     model = TestTime
-    list_display = ['time']
+    list_display = ['id', 'time']
     search_fields = ['time']
 
 class EffectSizeTypeAdmin(admin.ModelAdmin):
     model = EffectSizeType
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 admin.site.register(CamaUser, CamaUserAdmin)
