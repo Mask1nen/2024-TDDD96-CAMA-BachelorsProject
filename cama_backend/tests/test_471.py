@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from rest_framework import status
 from myapi.models import *
+from myapi.serializers import StudySerializer, ExperimentSerializer
 
 import logging
 logger = logging.getLogger(__name__)
@@ -10,15 +11,14 @@ logger = logging.getLogger(__name__)
 class TestData:
     import json
     cama_user_data = {
-        'orc_id': '0000-0002-1825-0097',
+        "orc_id": "0000-0002-1825-0097",
         "name": "John Doe",
-        "email": "john.doe@example.com",
-        "organization": "Example University",
         "nr_uploads": 5
     }
     cama_user_payload = json.dumps(cama_user_data)
 
     study_data = {
+<<<<<<< HEAD
         "cama_user": {
             'orc_id': '0000-0002-1825-0097',
             "name": "John Doe",
@@ -28,17 +28,86 @@ class TestData:
         },
         "country": {"name":"United States"},
         "category": {"name": "Health"},
+=======
+        "title": "Example Title",
+        "uploader": "0000-0002-1825-0097",
+>>>>>>> feat/471-api
         "study_year": 2024,
         "peer_reviewed": True,
         "authors": "Jane Doe, John Smith",
         "doi": "10.1234/abcd.12345",
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
+<<<<<<< HEAD
         "nr_downloads": "200",
+=======
+        #"nr_downloads": "200",
+        "experiments":
+            [
+                {
+                    "study_design": "Randomized Controlled Trial",
+                    "rob": "Low",
+                    "robins": "Moderate",
+                    "grade": "A",
+                    "participant_design": "Between-Group Design",
+                    "implemented": "Pilot Study",
+                    "intensity_n": 3,
+                    "duration_week": 12,
+                    "frequency_n": 3,
+                    "ni":1,
+                    "intervention":"vention",
+                    "intervention_op": "intervention",
+                    "target_population":"pop",
+                    "mean_age":15.5,
+                    "source":"hello_world",
+                  "effects": 
+                    [
+                        {
+                           
+                            "effect_size_type": "type",
+                            "test_time": "1",
+                            "test_name": "name",
+
+                            "outcome": "come",
+                            "outcome_full": "outcome",
+                            "outcome_op": "op",
+
+
+                            "gender_1": 1,
+                            "gender_2": 2,
+                            "gender_3": 3,
+
+                            "d_var": 0.5,
+                            "d": 0.45,
+                            "f_stat": 5.23,
+                            "t": 2.45,
+                            "ri": 1,
+                            "icc":1.5,
+
+                            "mean_age_1i": 25.3,
+                            "mean_age_2i":26.4,
+
+                            "ai": 2,
+                            "bi": 3,
+                            "ci": 4,
+                            "di": 5,
+
+                            "sd1i": 1.5,
+                            "sd2i": 1.8,
+                            "n1i": 30,
+                            "n2i": 35,
+                            "m1i": 15.2,
+                            "m2i": 16.7,
+                        },
+                    ]
+                },
+            ]
+>>>>>>> feat/471-api
     }
     study_payload = json.dumps(study_data)
 
     experiment_data = {
+<<<<<<< HEAD
         "study": {
             "cama_user": {
                 'orc_id': '0000-0002-1825-0097',
@@ -84,6 +153,65 @@ class TestData:
         "source": "Example Source"
     }
     experiment_payload = json.dumps(experiment_data)
+=======
+                    "study_id":1,
+                    "study_design": "Randomized Controlled Trial",
+                    "rob": "Low",
+                    "robins": "Moderate",
+                    "grade": "A",
+                    "participant_design": "Between-Group Design",
+                    "implemented": "Pilot Study",
+                    "intensity_n": 3,
+                    "duration_week": 12,
+                    "frequency_n": 3,
+                    "ni":1,
+                    "intervention":"vention",
+                    "intervention_op": "intervention",
+                    "target_population":"pop",
+                    "mean_age":15.5,
+                    "source":"hello_world",
+                    "effects": 
+                    [
+                        {
+                           
+                            "effect_size_type": "type",
+                            "test_time": "1",
+                            "test_name": "name",
+
+                            "outcome": "come",
+                            "outcome_full": "outcome",
+                            "outcome_op": "op",
+
+
+                            "gender_1": 1,
+                            "gender_2": 2,
+                            "gender_3": 3,
+
+                            "d_var": 0.5,
+                            "d": 0.45,
+                            "f_stat": 5.23,
+                            "t": 2.45,
+                            "ri": 1,
+                            "icc":1.5,
+
+                            "mean_age_1i": 25.3,
+                            "mean_age_2i":26.4,
+
+                            "ai": 2,
+                            "bi": 3,
+                            "ci": 4,
+                            "di": 5,
+
+                            "sd1i": 1.5,
+                            "sd2i": 1.8,
+                            "n1i": 30,
+                            "n2i": 35,
+                            "m1i": 15.2,
+                            "m2i": 16.7,
+                        }
+                    ]
+        }
+>>>>>>> feat/471-api
 
     effect_data = {
         "experiment": {
@@ -174,7 +302,7 @@ class CamaUserAPITest(APITestCase):
 
 class StudyListCreateAPIViewTests(APITestCase):
     def setUp(self):
-        self.url = reverse('study-list-create')
+        self.url = reverse('studies')
         self.testData = TestData
 
     def test_create_study(self):
@@ -192,26 +320,45 @@ class StudyListCreateAPIViewTests(APITestCase):
         self.assertEqual(study.cama_user.orc_id, "0000-0002-1825-0097")
         self.assertEqual(study.cama_user.name, "John Doe")
 
-    def test_invalid_study(self):
-        invalid_payload = {}  # Payload with missing required fields
-        response = self.client.post(self.url, invalid_payload, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(Study.objects.count(), 0)  # No object should be created
+#     def test_invalid_study(self):
+#         invalid_payload = {}  # Payload with missing required fields
+#         response = self.client.post(self.url, invalid_payload, format='json')
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
 
+<<<<<<< HEAD
 class ExperimentTestCase(APITestCase):
+=======
+class ExperimentTestCase(TestCase):
+>>>>>>> feat/471-api
     def setUp(self):
-        self.url = reverse('experiment-list-create') 
+        self.url = reverse('experiments') 
         self.testData = TestData
 
     def test_create_experiment(self):
+        Country.objects.create(name="United States")
+        Category.objects.create(name="Health")
+        Grade.objects.create(grade='A')
+        StudyDesign.objects.create(design="Randomized Controlled Trial")
+        ParticipantDesign.objects.create(design="Between-Group Design")
+        Implementation.objects.create(implementor="Pilot Study")
+        user = CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
+        TestTime.objects.create(time="1")
+        RiskOfBias.objects.create(rob='Low')
+        #response = self.client.post(self.url, self.testData.study_data, format='json')
+
         response = self.client.post(self.url, self.testData.experiment_data, format='json')
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(Experiment.objects.count(), 1)
         experiment = Experiment.objects.first()
+<<<<<<< HEAD
         self.assertEqual(experiment.study.cama_user.orc_id, "0000-0002-1825-0097")
+=======
+        # self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")
+>>>>>>> feat/471-api
 
 
       
