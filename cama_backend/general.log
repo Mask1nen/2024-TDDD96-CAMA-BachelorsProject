@@ -1,0 +1,217 @@
+2024-04-22 11:15:58,852 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-22 11:15:58,877 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-22 11:15:58,885 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-22 11:17:21,633 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-22 11:17:21,635 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-22 11:17:21,654 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-22 11:17:45,326 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-22 11:17:45,342 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-22 11:17:45,347 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-22 11:17:45,366 (ERROR)- django.request- Internal Server Error: /api/experiments/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 54, in post
+    camauser_data = study_data.get('uploader')
+AttributeError: 'str' object has no attribute 'get'
+2024-04-22 11:18:49,188 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-22 11:18:49,203 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-22 11:18:49,207 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-22 11:18:49,220 (WARNING)- django.request- Bad Request: /api/experiments/
+2024-04-22 11:18:49,220 (INFO)- test_471- Response after POST: {'grade': [ErrorDetail(string='Object with grade=A does not exist.', code='does_not_exist')], 'study_design': [ErrorDetail(string='Object with design=Randomized Controlled Trial does not exist.', code='does_not_exist')], 'participant_design': [ErrorDetail(string='Object with design=Between-Group Design does not exist.', code='does_not_exist')], 'implemented': [ErrorDetail(string='Object with implementor=Pilot Study does not exist.', code='does_not_exist')], 'risks': [ErrorDetail(string='This field is required.', code='required')], 'effect_datas': [ErrorDetail(string='This field is required.', code='required')]}
+2024-04-22 11:19:49,533 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-22 11:19:49,535 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-22 11:19:49,540 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-22 11:19:49,572 (WARNING)- django.request- Bad Request: /api/experiments/
+2024-04-22 11:19:49,573 (INFO)- test_471- Response after POST: {'grade': [ErrorDetail(string='Object with grade=A does not exist.', code='does_not_exist')], 'study_design': [ErrorDetail(string='Object with design=Randomized Controlled Trial does not exist.', code='does_not_exist')], 'participant_design': [ErrorDetail(string='Object with design=Between-Group Design does not exist.', code='does_not_exist')], 'implemented': [ErrorDetail(string='Object with implementor=Pilot Study does not exist.', code='does_not_exist')], 'risks': [ErrorDetail(string='This field is required.', code='required')], 'effect_datas': [ErrorDetail(string='This field is required.', code='required')]}
+2024-04-23 06:18:10,621 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-23 06:18:10,636 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-23 06:18:10,642 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:18:10,654 (WARNING)- django.request- Bad Request: /api/experiments/
+2024-04-23 06:18:10,655 (INFO)- test_471- Response after POST: {'grade': [ErrorDetail(string='Object with grade=A does not exist.', code='does_not_exist')], 'study_design': [ErrorDetail(string='Object with design=Randomized Controlled Trial does not exist.', code='does_not_exist')], 'participant_design': [ErrorDetail(string='Object with design=Between-Group Design does not exist.', code='does_not_exist')], 'implemented': [ErrorDetail(string='Object with implementor=Pilot Study does not exist.', code='does_not_exist')], 'risks': [ErrorDetail(string='This field is required.', code='required')], 'effect_datas': [ErrorDetail(string='This field is required.', code='required')]}
+2024-04-23 06:19:57,607 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-23 06:19:57,609 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-23 06:19:57,629 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:21:29,800 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-23 06:21:29,822 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-23 06:21:29,827 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:37:03,513 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:37:03,513 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 06:37:03,553 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:47:44,438 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:47:44,438 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 06:47:44,462 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:48:43,295 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:48:43,295 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 06:48:43,318 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:49:28,161 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:49:28,162 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 06:49:28,184 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:54:33,325 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 06:54:33,325 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 06:54:33,348 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:01:20,750 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:01:20,751 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:01:20,773 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:04:20,119 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 36, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 479, in to_internal_value
+    for field in fields:
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 362, in _writable_fields
+    for field in self.fields.values():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'risks' was declared on serializer ExperimentSerializer, but has not been included in the 'fields' option.
+2024-04-23 07:04:20,255 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:04:36,685 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:04:36,685 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:04:36,708 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:00,956 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:00,956 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:05:00,979 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:23,496 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:23,497 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:05:23,520 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:36,465 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:05:36,465 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:05:36,488 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:06,077 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:06,077 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:06:06,105 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:18,610 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:18,614 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:18,614 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:06:18,636 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:18,636 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:27,172 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:27,176 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:27,177 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:06:27,199 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:27,200 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:31,559 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:31,564 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:06:31,565 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:06:31,586 (INFO)- myapi.views- -------------------------
+2024-04-23 07:06:31,587 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:09:55,382 (INFO)- myapi.views- -------------------------
+2024-04-23 07:09:55,389 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:09:55,389 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:09:55,415 (INFO)- myapi.views- -------------------------
+2024-04-23 07:09:55,416 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:10:26,603 (INFO)- myapi.views- bananananan
+2024-04-23 07:10:26,608 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:10:26,609 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:10:26,631 (INFO)- myapi.views- bananananan
+2024-04-23 07:10:26,632 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:19:17,579 (INFO)- myapi.views- bananananan
+2024-04-23 07:19:17,584 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:19:17,584 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field may not be null.', code='null')]}]}
+2024-04-23 07:19:17,622 (INFO)- myapi.views- bananananan
+2024-04-23 07:19:17,623 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:19:35,149 (INFO)- myapi.views- bananananan
+2024-04-23 07:19:35,172 (ERROR)- django.request- Internal Server Error: /api/studies/
+Traceback (most recent call last):
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/tobias/g10-tddd96-pum/cama_backend/myapi/views.py", line 38, in post
+    if serializer.is_valid():
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 227, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 618, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 666, in to_internal_value
+    validated = self.child.run_validation(item)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 426, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 483, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/tobias/g10-tddd96-pum/.venv/lib/python3.10/site-packages/rest_framework/serializers.py", line 430, in run_validation
+    assert value is not None, '.validate() should return the validated data'
+AssertionError: .validate() should return the validated data
+2024-04-23 07:19:35,280 (INFO)- myapi.views- bananananan
+2024-04-23 07:19:35,281 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:21:53,898 (INFO)- myapi.views- bananananan
+2024-04-23 07:21:53,904 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:21:53,904 (INFO)- test_471- Response after POST: {'experiments': [{'risks': [ErrorDetail(string='This field is required.', code='required')]}]}
+2024-04-23 07:21:53,952 (INFO)- myapi.views- bananananan
+2024-04-23 07:21:53,953 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:30:58,346 (INFO)- myapi.views- bananananan
+2024-04-23 07:30:58,351 (INFO)- myapi.views- banaerärrrrrrrrrrrrrrrrrrr
+2024-04-23 07:30:58,355 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-23 07:30:58,357 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-23 07:30:58,362 (INFO)- myapi.views- bananananan
+2024-04-23 07:30:58,364 (WARNING)- django.request- Bad Request: /api/studies/
+2024-04-23 07:31:48,424 (INFO)- myapi.views- bananananan
+2024-04-23 07:31:48,430 (INFO)- myapi.views- banaerärrrrrrrrrrrrrrrrrrr
+2024-04-23 07:31:48,434 (INFO)- test_471- Response after POST: {'study_id': 1, 'experiments': [], 'country': 'United States', 'category': 'Health', 'study_year': 2024, 'peer_reviewed': True, 'authors': 'Jane Doe, John Smith', 'doi': '10.1234/abcd.12345', 'abstract': 'This study investigates the effects of...', 'keywords': 'health, research, study', 'nr_downloads': '200', 'uploader': '0000-0002-1825-0097'}
+2024-04-23 07:31:48,437 (INFO)- test_471- Response after GET: [OrderedDict([('study_id', 1), ('experiments', []), ('country', 'United States'), ('category', 'Health'), ('study_year', 2024), ('peer_reviewed', True), ('authors', 'Jane Doe, John Smith'), ('doi', '10.1234/abcd.12345'), ('abstract', 'This study investigates the effects of...'), ('keywords', 'health, research, study'), ('nr_downloads', '200'), ('uploader', '0000-0002-1825-0097')])]
+2024-04-23 07:31:48,441 (INFO)- myapi.views- bananananan
+2024-04-23 07:31:48,442 (WARNING)- django.request- Bad Request: /api/studies/
