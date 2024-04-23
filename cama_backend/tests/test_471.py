@@ -19,6 +19,7 @@ class TestData:
     }
     
     study_data = {
+        "title": "Example Title",
         "uploader": "0000-0002-1825-0097",
         "study_year": 2024,
         "country": "United States",
