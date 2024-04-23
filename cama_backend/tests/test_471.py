@@ -12,8 +12,6 @@ class TestData:
     cama_user_data = {
         'orc_id': '0000-0002-1825-0097',
         "name": "John Doe",
-        "email": "john.doe@example.com",
-        "organization": "Example University",
         "nr_uploads": 5
     }
     
@@ -32,10 +30,8 @@ class TestData:
             [
                 {
                     "study_design": "Randomized Controlled Trial",
-                    "risks": {
-                        "rob": "Low",
-                        "robins": "Moderate"
-                    },
+                    "rob": "Low",
+                    "robins": "Moderate",
                     "grade": "A",
                     "participant_design": "Between-Group Design",
                     "implemented": "Pilot Study",
@@ -93,54 +89,65 @@ class TestData:
     }
 
     experiment_data = {
-        "study_id": {
-            "study_id": 1,
-            "uploader": {
-                "orc_id": "0000-0002-1825-0097",
-                "name": "John Doe",
-                "email": "john.doe@example.com",
-                "organization": "Example University",
-                "nr_uploads": 5
-            },
-            "study_year": 2024,
-            "country": {
-                "name": "United States"
-            },
-            "category": {
-                "name": "Health"
-            },
-            "peer_reviewed": True,
-            "authors": "Jane Doe, John Smith",
-            "doi": "10.1234/abcd.12345",
-            "abstract": "This study investigates the effects of...",
-            "keywords": "health, research, study",
-            "nr_downloads": "200"
-        },
-        "study_design": {
-            "design": "Randomized Controlled Trial"
-        },
-        "risks": {
-            "rob": "Low",
-            "robins": "Moderate"
-        },
-        "grade": {
-            "grade": "A"
-        },
-        "participant_design": {
-            "design": "Between-Group Design"
-        },
-        "implemented": {
-            "implementor": "Pilot Study"
-        },
-        "intensity_n": 3,
-        "duration_week": 12,
-        "frequency_n": 3,
-        "ni": 1,
-        "intervention": "Example Intervention",
-        "intervention_op": "Example Intervention_op",
-        "target_population": "Example Target Population",
-        "mean_age": 25.5,
-        "source": "Example Source"
+       
+                    "study_design": "Randomized Controlled Trial",
+                    "risks": {
+                        "rob": "Low",
+                        "robins": "Moderate"
+                    },
+                    "grade": "A",
+                    "participant_design": "Between-Group Design",
+                    "implemented": "Pilot Study",
+                    "intensity_n": 3,
+                    "duration_week": 12,
+                    "frequency_n": 3,
+                    "ni":1,
+                    "intervention":"vention",
+                    "intervention_op": "intervention",
+                    "target_population":"pop",
+                    "mean_age":15.5,
+                    "source":"hello_world",
+                  "effect_datas": 
+                    [
+                        {
+                           
+                            "effect_size_type": "type",
+                            "test_time": "1",
+                            "test_name": "name",
+
+                            "outcome": "come",
+                            "outcome_full": "outcome",
+                            "outcome_op": "op",
+
+
+                            "gender_1": 1,
+                            "gender_2": 2,
+                            "gender_3": 3,
+
+                            "d_var": 0.5,
+                            "d": 0.45,
+                            "f_stat": 5.23,
+                            "t": 2.45,
+                            "ri": 1,
+                            "icc":1.5,
+
+                            "mean_age_1i": 25.3,
+                            "mean_age_2i":26.4,
+
+                            "ai": 2,
+                            "bi": 3,
+                            "ci": 4,
+                            "di": 5,
+
+                            "sd1i": 1.5,
+                            "sd2i": 1.8,
+                            "n1i": 30,
+                            "n2i": 35,
+                            "m1i": 15.2,
+                            "m2i": 16.7,
+                        },
+                    ]
+                
     }
 
     effect_data = {
@@ -232,7 +239,7 @@ class TestData:
 
 class StudyListCreateAPIViewTests(APITestCase):
     def setUp(self):
-        self.url = reverse('study-list-create')
+        self.url = reverse('studies')
         self.testData = TestData
 
     def test_create_study(self):
@@ -266,21 +273,21 @@ class StudyListCreateAPIViewTests(APITestCase):
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
 
-'''class ExperimentTestCase(TestCase):
-    def setUp(self):
-        self.url = reverse('experiment-list-create') 
-        self.testData = TestData
+# class ExperimentTestCase(TestCase):
+#     def setUp(self):
+#         self.url = reverse('experiments') 
+#         self.testData = TestData
 
-    def test_create_experiment(self):
-        response = self.client.post(self.url, self.testData.experiment_data, format='json')
-        logger.info(f"Response after POST: {response.data}")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+#     def test_create_experiment(self):
+#         response = self.client.post(self.url, self.testData.experiment_data, format='json')
+#         logger.info(f"Response after POST: {response.data}")
+#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        response = self.client.get(self.url)
-        logger.info(f"Response after GET: {response.data}")
-        self.assertEqual(Experiment.objects.count(), 1)
-        experiment = Experiment.objects.first()
-        self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")'''
+#         response = self.client.get(self.url)
+#         logger.info(f"Response after GET: {response.data}")
+#         self.assertEqual(Experiment.objects.count(), 1)
+#         experiment = Experiment.objects.first()
+#         self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")
 
 
       

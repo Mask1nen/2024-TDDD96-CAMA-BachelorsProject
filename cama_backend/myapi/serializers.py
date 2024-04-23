@@ -22,11 +22,7 @@ class StudyDesignSerializer(serializers.ModelSerializer):
         model = StudyDesign
         fields = '__all__'  # Customize fields as needed
 
-# RiskOfBias Serializer
-class RiskOfBiasSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RiskOfBias
-        fields = '__all__'  # Customize fields as needed
+
 
 # Grade Serializer
 class GradeSerializer(serializers.ModelSerializer):
@@ -90,6 +86,16 @@ class EffectDataSerializer(serializers.ModelSerializer):
                             ]
 
 
+
+
+# RiskOfBias Serializer
+class RiskOfBiasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RiskOfBias
+        fields = '__all__'  
+
+
+
 class ExperimentSerializer(serializers.ModelSerializer):
     grade = serializers.SlugRelatedField(slug_field='grade', queryset=Grade.objects.all())
     study_design = serializers.SlugRelatedField(slug_field='design', queryset=StudyDesign.objects.all())
@@ -101,6 +107,17 @@ class ExperimentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experiment
         fields = ['grade', 'study_design', 'participant_design', 'implemented', 'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source', 'risks', 'effect_datas']
+
+
+    def to_internal_value(self, data):
+        rob = data.pop('rob', None)
+        robins = data.pop('robins', None)
+
+        if rob is not None and robins is not None:
+            data['risks'] = {'rob' : rob, 'robins': robins}
+
+        return super().to_internal_value(data)
+
 
 class StudySerializer(serializers.ModelSerializer):
     experiments = ExperimentSerializer(many=True)
@@ -117,55 +134,27 @@ class StudySerializer(serializers.ModelSerializer):
         experiments_data = validated_data.pop('experiments')
         
         
-
-        # Get uploader id
-        #uploader_id = validated_data.pop('uploader')
-        # Get all dictionaries from json
-        # study_year_data = validated_data.pop('study_year')
-        # country_data = validated_data.pop('country')
-        # category_data = validated_data.pop('category')
-    
-        # Create tables in order to create a study
-        #uploader, _ = CamaUser.objects.get(validated_data['uploader'])
-        # study_year = Year.objects.get(pk=study_year_data)
-        # country, _ = Country.objects.get_or_create(**country_data)
-        # category, _ = Category.objects.get_or_create(**category_data)
-
-
         # Create study
         study = Study.objects.create(
-            #uploader=uploader,
-            # study_year=study_year,
-            # country=country,
-            # category=category,
+         
             **validated_data
         )
 
         # Create experiment tables
         for experiment_data in experiments_data:
-            # Get all dictionaries from 
-            #study_design_data = validated_data.pop('study_design')
+           
             risks_data = experiment_data.pop('risks')
-            #grade_data = entry.pop('grade')
-            # participant_design_data = validated_data.pop('participant_design')
-            # implemented_data = validated_data.pop('implemented')
-
-          #  study_design, _ = StudyDesign.objects.get_or_create(**study_design_data)
+          
             risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
-            # grade, _ = Grade.objects.get_or_create(grade_data)
-            # participant_design, _ = ParticipantDesign.objects.get_or_create(**participant_design_data)
-            # implemented, _ = Implementation.objects.get_or_create(**implemented_data)
+      
 
 
             effect_datas = experiment_data.pop('effect_datas')
 
+            risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
+
             experiment = Experiment.objects.create(
-                #study_id=study,
-                # study_design=study_design,
                 risks=risks,
-                # grade=grade,
-                # participant_design=participant_design,
-                # implemented=implemented,
                 **experiment_data
             )  
 
