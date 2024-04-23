@@ -3,12 +3,16 @@ import { apiUrl } from "./apiConfig.ts"
 
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
+        study.experiments = study.experiments.map(experiment => ({ risks:{rob:"low",robins:""}, implemented: experiment.implementation, ...experiment}))
         const response = await fetch(`${apiUrl}/studies/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({data: study}),
+            body: JSON.stringify({
+                uploader:"0000-0002-1825-0097", nr_downloads: "" , ...study, }
+                
+            ),
         });
         if (!response.ok) {
             throw new Error('Failed to post study');

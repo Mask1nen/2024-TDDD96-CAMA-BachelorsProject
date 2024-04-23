@@ -7,9 +7,7 @@ import { ArrowDownward } from '@mui/icons-material';
 import { blueGrey } from '@mui/material/colors';
 import { effectFields } from './effectFields'; // Make sure the import path is correct
 
-const EffectForm: React.FC = (props) => {
-  const [inputs, setInputs] = useState<Record<string, string>>({});
-
+const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId}: any) => {
 
   return (
     <Box sx={{ mt: 3 }}>
@@ -19,15 +17,15 @@ const EffectForm: React.FC = (props) => {
         </AccordionSummary>
         <AccordionDetails>
             {effectFields.map(field => (
-              <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 1, ml: 1 }} variant="standard">
+              <FormControl key={field.key} sx={{ width: '23%', mt: 1, ml: 1 }} variant="standard">
                 {field.type === 'option' ? (
                   <TextField
                     id={"form" + field.key}
                     label={field.name}
                     name={field.key}
                     select
-                    value={props.inputs[field.key] ?? ""}
-                    onChange={(e) => {props.onChange(e, props.exerimentId, props.effectId)}}
+                    value={inputs[field.key] ?? ""}
+                    onChange={(e) => {onChange(e, experimentId, effectId)}}
                     fullWidth
                   >
                     {field.options?.map(option => (
@@ -41,8 +39,8 @@ const EffectForm: React.FC = (props) => {
                     id={"form" + field.key}
                     label={field.name}
                     name={field.key}
-                    value={props.inputs[field.key] ?? ""}
-                    onChange={(e) => {props.onChange(e, props.experimentId, props.effectId)}}
+                    value={inputs[field.key] ?? ""}
+                    onChange={(e) => {onChange(e, experimentId, effectId)}}
                     fullWidth
                     InputProps={{
                       endAdornment: field.type === 'percent' ? <InputAdornment position="end">%</InputAdornment> : null

@@ -20,25 +20,21 @@ function Studyform(props) {
 
 
 	return (
-			<div>	
+			<div>
+			<TextField sx={{width:"45%", m:1}} variant="standard" label="Title" value={props.inputs.title||""} name="title" onChange={props.onChange} id="formTitle"/>
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Authors</InputLabel>
 				<Input value={props.inputs.authors || ""} name="authors" onChange={props.onChange} id="formAuthors"/>
 			</FormControl>
 			
-			<TextField sx={{width:"45%", m:1}} variant="standard" label="Year" value={inputs.year||""} name="year" onChange={props.onChange} id="formYear"/>
+			<TextField sx={{width:"45%", m:1}} variant="standard" label="Year" value={props.inputs.study_year||""} name="study_year" onChange={props.onChange} id="formYear"/>
 			
-			<TextField label="Abstract" multiline sx={{width:"93%", my:2}} value={props.inputs.abstract||""} name="abstract" onChange={props.onChange} id="formAbstract"/>
-
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">Keywords</InputLabel>
 				<Input value={props.inputs.keywords||""} name="keywords" onChange={props.onChange} id="formKeywords"/>
 			</FormControl>
 
-			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
-				<InputLabel htmlFor="">Category</InputLabel>
-				<Input value={props.inputs.category||""} name="category" onChange={props.onChange} id="formCategory"/>
-			</FormControl>
+			<TextField label="Abstract" multiline sx={{width:"93%", my:2}} value={props.inputs.abstract||""} name="abstract" onChange={props.onChange} id="formAbstract"/>
 
 			<FormControl sx={{width:"45%", mt: 2, ml:1}} variant="standard">
 								
@@ -77,9 +73,15 @@ function Studyform(props) {
 				</TextField>
 				
 			</FormControl>
+
+			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
+				<InputLabel htmlFor="">Category</InputLabel>
+				<Input value={props.inputs.category||""} name="category" onChange={props.onChange} id="formCategory"/>
+			</FormControl>
+
 			<FormControl sx={{width:"45%", m: 1 }} variant="standard">
 				<InputLabel htmlFor="">DOI</InputLabel>
-				<Input value={props.inputs.DOI||""} name="DOI" onChange={props.onChange} id="formDOI"/>
+				<Input value={props.inputs.doi||""} name="doi" onChange={props.onChange} id="formDOI"/>
 			</FormControl>
 			</div>
 				
