@@ -62,9 +62,9 @@ const UploadPage: React.FC = () => {
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
     };
-	const removeEffect = (index: number) => {
+	const removeEffect = (effectId: string, experimentId: string) => {
         if(window.confirm('Are you sure you want to remove this effect?')) {
-            setEffects(prev => prev.filter((_, idx) => idx !== index));
+            setEffects(prev => prev.filter((effect) => !(effect['id'] === effectId && effect['experiment_id'] === experimentId)));
         }
     };
 
