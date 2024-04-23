@@ -45,8 +45,8 @@ class StudyView(APIView):
 
 class ExperimentView(APIView):
     def get(self, request):
-        studies = Study.objects.all()
-        serializer = StudySerializer(studies, many=True)
+        experiments = Experiment.objects.all()
+        serializer = ExperimentSerializer(experiments, many=True)
         return Response(serializer.data)
 
 

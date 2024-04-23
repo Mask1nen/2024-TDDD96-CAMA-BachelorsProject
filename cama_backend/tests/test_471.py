@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class TestData:
     cama_user_data = {
-        'orc_id': '0000-0002-1825-0097',
+        "orc_id": "0000-0002-1825-0097",
         "name": "John Doe",
         "nr_uploads": 5
     }
