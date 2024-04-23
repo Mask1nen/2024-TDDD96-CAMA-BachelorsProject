@@ -22,7 +22,7 @@ class StudyAdmin(admin.ModelAdmin):
 
 class ExperimentAdmin(admin.ModelAdmin):
     model = Experiment
-    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'grade', 'participant_design', 'implemented',
+    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'robins', 'grade', 'participant_design', 'implemented',
                     'intensity_n', 'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op',
                     'target_population', 'mean_age', 'source', 'approved']
     search_fields = ['study_id', 'title', 'experiment_nr', 'approved']
@@ -51,13 +51,15 @@ class StudyDesignAdmin(admin.ModelAdmin):
 
 class RiskOfBiasAdmin(admin.ModelAdmin):
     model = RiskOfBias
-    list_display = ['id', 'rob', 'robins']
+    list_display = ['id', 'rob']
     search_fields = ['id']
 
 class GradeAdmin(admin.ModelAdmin):
     model = Grade
-    list_display = ['grade']
-    search_fields = ['grade']
+    list_display = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+                    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
+    search_fields = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+                    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
 
 class ParticipantDesignAdmin(admin.ModelAdmin):
     model = ParticipantDesign

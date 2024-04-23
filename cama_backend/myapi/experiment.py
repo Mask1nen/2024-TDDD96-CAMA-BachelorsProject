@@ -11,10 +11,25 @@ class RiskOfBias(models.Model):
     id = models.AutoField(primary_key=True)
     rob = models.CharField(max_length=255, null=True)  
 
-#K-12 implies all grades form kindergarden to 12:th grade, (K, 3, 6) implies Kindergarden, third grade, and sixth grade.
 class Grade(models.Model):
     id = models.AutoField(primary_key=True)
-    grade = models.CharField(max_length=255) 
+    k = models.BooleanField(default=False)
+    first = models.BooleanField(default=False)
+    second = models.BooleanField(default=False)
+    third = models.BooleanField(default=False)
+    forth = models.BooleanField(default=False)
+    fifth = models.BooleanField(default=False)
+    sixth = models.BooleanField(default=False)
+    seventh = models.BooleanField(default=False)
+    eighth = models.BooleanField(default=False)
+    ninth = models.BooleanField(default=False)
+    tenth = models.BooleanField(default=False)
+    eleventh = models.BooleanField(default=False)
+    twelfth  = models.BooleanField(default=False)
+    
+    class Meta:
+        unique_together = (("k", "first", "second", "third", "forth", "fifth", "sixth",
+                            "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"))
 
 class ParticipantDesign(models.Model):
     id = models.AutoField(primary_key=True)
