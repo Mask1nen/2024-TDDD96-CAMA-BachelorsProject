@@ -5,19 +5,25 @@ import {Grid, Paper, Box, Typography} from "@mui/material";
 import CAMA_test_icon from "../../assets/images/CAMA_test_icon.png";
 import InfoPopUps from "../../components/infoPopUps";
 import {useState} from "react";
+import multiLanguage from "../../components/multiLanguage";
+import test  from "../../../src/assets/pageText/test.json";
 
 
 import '@mui/material';
+
+function echoText() {
+    return "About";
+}
 
 const AboutPage: React.FC = () => {
     const [buttonPopup, setBottonPopup] = useState(false);
 	return (
         <Box>
-            {/*Creats a centered title wich the icon on both sides*/}
+            {/*Creats a centered title wich the icon on both sides*/} 
             <Box display="flex"  justifyContent="center"  alignItems="center">
                 <Box display="flex" sx={{justifyContent:"flex-start"}}>
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>  
-                    <Typography variant="h1" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> About</Typography>
+                    <Typography variant="h1" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> {multiLanguage(false, test)} </Typography>
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>                        
                 </Box>
                 <Box>
@@ -48,6 +54,7 @@ const AboutPage: React.FC = () => {
                     <p> Join us in our mission to create a more compassionate and equitable society where every individual, 
                         regardless of their learning differences, is afforded the opportunity to thrive. Together, let's build a brighter future for all children, 
                         ensuring that no obstacle stands in the way of their potential and success. </p> <br />
+                        
                 </Paper>
             </Grid>
 
