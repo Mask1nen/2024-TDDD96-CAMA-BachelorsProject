@@ -1,9 +1,19 @@
 from django.urls import path
-from .views import CamaUserListView, StudyListCreateAPIView, ExperimentListCreateAPIView, ExperimentRetrieveUpdateDestroyAPIView
+from .views import CamaUserListView, StudyListCreateAPIView, ExperimentListCreateAPIView, ExperimentRetrieveUpdateDestroyAPIView, \
+                CountryOptionsVeiw, CategoryOptionsView, StudyDesignOptionsView, RiskOfBiasOptionsView, ParticipantDesignOptionsView, \
+                ImplementationOptionsView, TestTimeOptionsView, EffectSizeTypeOptionsView        
 
 urlpatterns = [
     path('cama-users/', CamaUserListView.as_view(), name='cama_user_list'),
     path('studies/', StudyListCreateAPIView.as_view(), name='study-list-create'),
     path('experiments/', ExperimentListCreateAPIView.as_view(), name='experiment-list-create'),
     path('experiments/<int:pk>/', ExperimentRetrieveUpdateDestroyAPIView.as_view(), name='experiment-detail'),
-]
+    path('populate-country/', CountryOptionsVeiw.as_view(), name='populate-country'),
+    path('populate-category/', CategoryOptionsView.as_view(), name='populate-category'),
+    path('populate-study_design/', StudyDesignOptionsView.as_view(), name='populate_stud'),
+    path('populate-risk-of-bias/', RiskOfBiasOptionsView.as_view(), name='populate-risk-of-bias'),
+    path('populate-participant-design/', ParticipantDesignOptionsView.as_view(), name='populate-participant-design'),
+    path('populate-implementation/', ImplementationOptionsView.as_view(), name='populate-implementation'),
+    path('populate-test-time/', TestTimeOptionsView.as_view(), name='populate-test-time'),
+    path('populate-effect-size-type/', EffectSizeTypeOptionsView.as_view(), name='populate-effect-size-type')
+    ]

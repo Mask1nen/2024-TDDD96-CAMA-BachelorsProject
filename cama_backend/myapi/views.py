@@ -131,7 +131,7 @@ class GradeOptionsView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ParticipantDesign(APIView):
+class ParticipantDesignOptionsView(APIView):
     def get(self, request):
         options = ParticipantDesign.objects.all()
         serializer = ParticipantDesignSerializer(options, many=True)
@@ -146,7 +146,7 @@ class ParticipantDesign(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class Implementation(APIView):
+class ImplementationOptionsView(APIView):
     def get(self, request):
         options = Implementation.objects.all()
         serializer = ImplementationSerializer(options, many=True)
@@ -161,7 +161,7 @@ class Implementation(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class TestTimeOptionsViews(APIView):
+class TestTimeOptionsView(APIView):
     def get(self, request):
         options = TestTime.objects.all()
         serializer = TestTimeSerializer(options, many=True)
@@ -176,7 +176,7 @@ class TestTimeOptionsViews(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-class EffectSizeTypeOptionsViews(APIView):
+class EffectSizeTypeOptionsView(APIView):
     def get(self, request):
         options = EffectSizeType.objects.all()
         serializer = EffectSizeTypeSerializer(options, many=True)

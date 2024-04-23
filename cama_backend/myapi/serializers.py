@@ -80,6 +80,11 @@ class CategorySerializer(serializers.ModelSerializer):
             return category
 
 
+class YearSerializer(serializers.ModelSerializer):
+    class Meta:
+    #    model = Year
+        fields = ['study_year']
+
 class CamaUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CamaUser
@@ -121,6 +126,7 @@ class StudySerializer(serializers.ModelSerializer):
         cama_user_data = validated_data.pop('uploader')
         cama_user = CamaUser.objects.create(**cama_user_data)
         study_year_data = validated_data.pop('study_year')
+       # study_year = Year.objects.create(**study_year_data)
        # study_year = Year.objects.create(**study_year_data)
         country_data = validated_data.pop('country')
         country = Country.objects.create(**country_data)
