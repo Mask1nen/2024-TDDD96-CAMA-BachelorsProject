@@ -15,10 +15,10 @@ class Category(models.Model):
 class Study(models.Model):
     study_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, null=False)
-    uploader = models.ForeignKey(CamaUser, null=True, on_delete=models.SET_NULL)
+    uploader = models.ForeignKey(CamaUser, null=True, on_delete=models.SET_NULL, related_name='studies')
     study_year = models.IntegerField(null=False)
-    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
-    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
+    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL, related_name='country')
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, related_name='category')
     peer_reviewed = models.BooleanField(null=False)
     authors = models.CharField(max_length=255, null=False)
     doi = models.CharField(max_length=255, null=False)

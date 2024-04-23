@@ -1,10 +1,12 @@
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import generics
 from .models import CamaUser, Experiment, Study, EffectData
-from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer
+from .serializers.cama_user import CamaUserSerializer
+from .serializers.study import StudySerializer, StudyCreateSerializer
+from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer
+from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -20,7 +22,6 @@ class CamaUserView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # Return errors if the data is invalid
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StudyView(APIView):
@@ -30,12 +31,8 @@ class StudyView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = StudySerializer(data=request.data)
-        logger.info('bananananan')
-
+        serializer = StudyCreateSerializer(data=request.data)
         if serializer.is_valid():
-            logger.info('banaerärrrrrrrrrrrrrrrrrrr')
-
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -46,26 +43,24 @@ class ExperimentView(APIView):
         serializer = ExperimentSerializer(experiments, many=True)
         return Response(serializer.data)
 
-
     def post(self, request):
         logger.info(request.data)
         #logger.info(request.META)
-        serializer = ExperimentSerializer(data=request.data)
+        serializer = ExperimentCreateSerializer(data=request.data)
         if serializer.is_valid():
-            print('here mmmmmmmmmmmmmmmmmmmmmmmmmm')
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-'''class EffectDataView(APIView):
+class EffectDataView(APIView):
     def get(self, request):
         effect_data = EffectData.objects.all()
         serializer = EffectDataSerializer(effect_data, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = EffectDataSerializer(data=request.data)
+        serializer = EffectDataCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)'''
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

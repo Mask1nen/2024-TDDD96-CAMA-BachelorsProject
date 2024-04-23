@@ -10,7 +10,7 @@ from .effect_data import EffectData, TestTime, EffectSizeType
 
 class CamaUserAdmin(admin.ModelAdmin):
     model = CamaUser
-    list_display = ['cama_user_id', 'orc_id', 'name', 'email', 'organization', 'nr_uploads']
+    list_display = ['orc_id', 'name', 'nr_uploads']
     search_fields = ['orc_id']
 
 class StudyAdmin(admin.ModelAdmin):
@@ -29,7 +29,7 @@ class ExperimentAdmin(admin.ModelAdmin):
 
 class EffectDataAdmin(admin.ModelAdmin):
     model = EffectData
-    list_display = ['effect_size_id', 'experiment', 'effect_size_type', 'test_time', 'test_name', 'outcome', 'outcome_full', 'outcome_op', 'gender_1', 'gender_2', 'gender_3', 'd_var',
+    list_display = ['effect_size_number', 'experiment_nr', 'effect_size_type', 'test_time', 'test_name', 'outcome', 'outcome_full', 'outcome_op', 'gender_1', 'gender_2', 'gender_3', 'd_var',
                     'd', 'f_stat', 't', 'ri', 'icc', 'mean_age_1i', 'mean_age_2i', 'ai', 'bi', 'ci', 'di', 
                     'sd1i', 'sd2i', 'n1i', 'n2i', 'm1i', 'm2i', 'approved']
     search_fields = ['effect_size_number', 'experiment_nr', 'approved']
