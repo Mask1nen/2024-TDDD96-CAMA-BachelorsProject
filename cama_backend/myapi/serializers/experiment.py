@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ..models import Experiment, StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Study
-from .study import StudySerializer
+from .effect_data import EffectDataSerializer, EffectDataFromStudySerializer
 
 import logging
 logger = logging.getLogger(__name__)
@@ -32,12 +32,13 @@ class ImplementationSerializer(serializers.ModelSerializer):
         fields = ['implementor']
 
 class ExperimentSerializer(serializers.ModelSerializer):
-    study_id = StudySerializer()
+    study_id = serializers.PrimaryKeyRelatedField(queryset=Study.objects.all())
     study_design = StudyDesignSerializer()
     risks = RiskOfBiasSerializer()
     grade = GradeSerializer()
     participant_design = ParticipantDesignSerializer()
     implemented = ImplementationSerializer()
+    effects = EffectDataSerializer(many=True)
 
     class Meta:
         model = Experiment
@@ -54,3 +55,15 @@ class ExperimentCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experiment
         fields = '__all__'
+
+class ExperimentFromStudySerializer(serializers.ModelSerializer):
+    study_design = serializers.SlugRelatedField(read_only = True, slug_field='study_design')
+    risks = serializers.SlugRelatedField(read_only = True, slug_field='riskofbias')
+    grade = serializers.SlugRelatedField(read_only = True, slug_field='agegrade')
+    participant_design = serializers.SlugRelatedField(read_only = True, slug_field='part_design')
+    implemented = serializers.SlugRelatedField(read_only = True, slug_field='implementation')
+    effects = serializers.ListField(child = EffectDataFromStudySerializer())
+
+    class Meta:
+        model = Experiment
+        exclude = ['study_id']

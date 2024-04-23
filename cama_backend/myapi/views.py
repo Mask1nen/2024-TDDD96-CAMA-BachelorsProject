@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import CamaUser, Experiment, Study, EffectData
 from .serializers.cama_user import CamaUserSerializer
-from .serializers.study import StudySerializer, StudyCreateSerializer
+from .serializers.study import StudySerializer, StudyCreateSerializer, StudyFullCreateSerializer
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer
 
@@ -31,10 +31,10 @@ class StudyView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = StudyCreateSerializer(data=request.data)
+        serializer = StudyFullCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ExperimentView(APIView):
