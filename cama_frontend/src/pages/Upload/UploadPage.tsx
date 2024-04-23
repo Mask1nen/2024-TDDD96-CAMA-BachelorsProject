@@ -5,7 +5,7 @@ import '@mui/material';
 import Studyform from "./study_form"
 import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
-import {AddCircleOutline} from "@mui/icons-material"
+import {AddCircleOutline, RemoveCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy } from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
@@ -28,6 +28,14 @@ const UploadPage: React.FC = () => {
 			return [...prev, emptyExperiment(id, inputs.id)];
 		});
 	};
+
+	const removeExperiment = (experimentId: string) => {
+        if(window.confirm('Are you sure you want to remove this experiment?')) {
+            setExperimentValues(prev => prev.filter((experiment) => experiment['id'] !== experimentId));
+        }
+	}
+
+
 	const [experiments, setExperimentValues] = React.useState<Experiment[]>([]);	
 
 	const handleExperimentChange = (event: inputEvent, experimentId: string) => {
@@ -115,7 +123,7 @@ const UploadPage: React.FC = () => {
 				Are you adding a new study to an existing dataset or a whole new meta-analysis?
 			</Typography>
 			
-				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+				<Box sx={{ borderBottom: 1, borderColor: 'divider', my:1}}>
 				</Box>
 				
 					<Typography variant="h5">
@@ -128,16 +136,22 @@ const UploadPage: React.FC = () => {
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
-							{experiments.map((experiment) =>  
-								<Experimentform 
-									key={experiment['id']} 
-									onChangeEffect={handleEffectChange} 
-									onChange={handleExperimentChange} 
-									inputs={experiment} 
-									effects={effects}
-									addEffect={addEffect}
-									removeEffect={removeEffect}
-									experimentId={experiment['id']}/>
+							{experiments.map((experiment) =>
+								<Box>
+									<Experimentform 
+										key={experiment['id']} 
+										onChangeEffect={handleEffectChange} 
+										onChange={handleExperimentChange} 
+										inputs={experiment} 
+										effects={effects}
+										addEffect={addEffect}
+										removeEffect={removeEffect}
+										experimentId={experiment['id']}/>
+								
+									<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment["id"])} variant="outlined" startIcon={<RemoveCircleOutline />}>
+										Remove Experiment
+									</Button>	
+								</Box>
 							)}
 							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
 								<Button type="submit" variant="contained" className="float-">Send</Button>

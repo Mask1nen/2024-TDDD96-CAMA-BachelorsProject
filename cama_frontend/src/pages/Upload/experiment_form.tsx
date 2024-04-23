@@ -35,14 +35,14 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                     {effects.map((effect: Effect) => (
                         <div key={effect.id}>
                             {effect.experiment_id == experimentId ? (
-                            <Box key={effect.id}>
+                            <Box key={effect.id} >
                                 <EffectForm 
                                     onChange={onChangeEffect} 
                                     inputs={effect} 
                                     experimentId={experimentId} 
                                     effectId={effect.id}/>
 
-                                <Button onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                                <Button sx={{mt:1}} size='small' onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
                                     Remove Effect
                                 </Button>
                             </Box>

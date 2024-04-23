@@ -17,7 +17,7 @@ const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId}: any) =
         </AccordionSummary>
         <AccordionDetails>
             {effectFields.map(field => (
-              <FormControl key={field.key} sx={{ width: field.type === 'option' ? '30%' : '23%', mt: 1, ml: 1 }} variant="standard">
+              <FormControl key={field.key} sx={{ width: '23%', mt: 1, ml: 1 }} variant="standard">
                 {field.type === 'option' ? (
                   <TextField
                     id={"form" + field.key}
