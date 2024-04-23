@@ -43,6 +43,7 @@ class Experiment(models.Model):
     target_population = models.CharField(max_length=255, null=False)
     mean_age = models.FloatField(null=True)
     source = models.CharField(max_length=255, null=True)
+    approved = models.BooleanField(null=False, default=False)
 
 
     class Meta:

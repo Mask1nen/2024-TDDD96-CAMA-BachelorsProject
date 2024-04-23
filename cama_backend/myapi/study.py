@@ -25,6 +25,8 @@ class Study(models.Model):
     abstract = models.CharField(max_length=3000, null=False)
     keywords = models.CharField(max_length=255, null=False)
     nr_downloads = models.IntegerField(null=True)
+    approved = models.BooleanField(null=False, default=False)
+
 
     def get_uploader(self):
         return self.uploader.orc_id

@@ -48,6 +48,9 @@ class EffectData(models.Model):
     n2i = models.FloatField(null=True)
     m1i = models.FloatField(null=True)
     m2i = models.FloatField(null=True)
+    
+    approved = models.BooleanField(null=False, default=False)
+
 
     class Meta:
         unique_together = (("effect_size_number", "experiment_nr"))
