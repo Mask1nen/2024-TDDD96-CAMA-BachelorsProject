@@ -5,7 +5,13 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
 
-const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffect, removeEffect, addEffect, effects}: any) => {
+const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly}: any) => {
+
+    const disabledStyling = {
+		"& .MuiInputBase-input.Mui-disabled": {
+			WebkitTextFillColor: "#010101",
+		  },
+	  };
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -15,43 +21,52 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                 </AccordionSummary>
                 <AccordionDetails>
                         {experimentFields.map(field => (
-                            <FormControl key={field.key} sx={{ width: "30%", mt: 1, ml: 1 }} variant="standard">
-								<TextField
-                                    id={"form" + field.key}
-                                    label={field.name}
-                                    name={field.key}
-                                    select={!!field.options}
-                                    value={inputs[field.key] || ""}
-                                    onChange={(e) => {onChange(e, experimentId)}}
-                                >
-                                    {field.options?.map(option => (
-                                        <MenuItem key={`${field.key}-${option}`} value={option}>
-                                            {option}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </FormControl>
+                            <TextField
+                                disabled={(readOnly||false)}
+                                key={field.key} 
+                                sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
+                                variant="standard"
+                                id={"form" + field.key}
+                                label={field.name}
+                                name={field.key}
+                                select={!!field.options}
+                                value={inputs[field.key] || ""}
+                                onChange={(e) => {onChange(e, experimentId)}}
+                            >
+                                {field.options?.map(option => (
+                                    <MenuItem key={`${field.key}-${option}`} value={option}>
+                                        {option}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
                         ))}
                     {effects.map((effect: Effect) => (
                         <div key={effect.id}>
                             {effect.experiment_id == experimentId ? (
                             <Box key={effect.id} >
                                 <EffectForm 
+                                    readOnly={readOnly}
                                     onChange={onChangeEffect} 
                                     inputs={effect} 
                                     experimentId={experimentId} 
                                     effectId={effect.id}/>
-
-                                <Button sx={{mt:1}} size='small' onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
-                                    Remove Effect
-                                </Button>
+                                {(!readOnly) ?(
+                                    <Button sx={{mt:1}} size='small' onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                                        Remove Effect
+                                    </Button>
+                                ):""
+                                }
                             </Box>
                             ): ""}
                         </div>
                     ))}
-                    <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
-                        Add Effect<AddCircleOutline sx={{ ml: 1 }} />
-                    </Button>
+                    {(!readOnly) ?(
+
+                        <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
+                          Add Effect<AddCircleOutline sx={{ ml: 1 }} />
+                        </Button>
+                    ):""
+                    }
                 </AccordionDetails>
             </Accordion>
         </Box>

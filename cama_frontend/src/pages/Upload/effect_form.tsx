@@ -7,7 +7,13 @@ import { ArrowDownward } from '@mui/icons-material';
 import { blueGrey } from '@mui/material/colors';
 import { effectFields } from './effectFields'; // Make sure the import path is correct
 
-const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId}: any) => {
+const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId, readOnly}: any) => {
+  
+  const disabledStyling = {
+		"& .MuiInputBase-input.Mui-disabled": {
+			  WebkitTextFillColor: "#010101",
+		  },
+	  };
 
   return (
     <Box sx={{ mt: 3 }}>
@@ -17,13 +23,15 @@ const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId}: any) =
         </AccordionSummary>
         <AccordionDetails>
             {effectFields.map(field => (
-              <FormControl key={field.key} sx={{ width: '23%', mt: 1, ml: 1 }} variant="standard">
-                {field.type === 'option' ? (
                   <TextField
+                    disabled={(readOnly||false)}
+                    key={field.key} 
+                    sx={{ width: '23%', mt: 1, ml: 1, ...disabledStyling}}
+                    variant="standard"
                     id={"form" + field.key}
                     label={field.name}
                     name={field.key}
-                    select
+                    select={!!field.options}
                     value={inputs[field.key] ?? ""}
                     onChange={(e) => {onChange(e, experimentId, effectId)}}
                     fullWidth
@@ -34,20 +42,6 @@ const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId}: any) =
                       </MenuItem>
                     ))}
                   </TextField>
-                ) : (
-                  <TextField
-                    id={"form" + field.key}
-                    label={field.name}
-                    name={field.key}
-                    value={inputs[field.key] ?? ""}
-                    onChange={(e) => {onChange(e, experimentId, effectId)}}
-                    fullWidth
-                    InputProps={{
-                      endAdornment: field.type === 'percent' ? <InputAdornment position="end">%</InputAdornment> : null
-                    }}
-                  />
-                )}
-              </FormControl>
             ))}
         </AccordionDetails>
       </Accordion>

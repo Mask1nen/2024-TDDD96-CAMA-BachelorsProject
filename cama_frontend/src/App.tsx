@@ -7,6 +7,7 @@ import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
 import AboutPage from './pages/About/AboutPage.tsx';
 import UploadPage from './pages/Upload/UploadPage.tsx';
+import AdminPage from './pages/Admin/AdminPage.tsx';
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -49,6 +50,7 @@ const theme = createTheme({
             <Route path="/Subjects" element={<HomePage />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatasetsPage />} />
+            <Route path="/Admin" element={<AdminPage />} />
             <Route path="/About" element={<AboutPage />} />
             <Route path="/Upload" element={<UploadPage />} />
             <Route path="/datasets/:titleSlug" element={<DatasetDetail />} />
