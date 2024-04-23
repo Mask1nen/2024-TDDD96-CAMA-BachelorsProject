@@ -43,7 +43,7 @@ function Studyform(props) {
 					name="country"
 					label="country"
 					select
-					value={props.inputs.country || "SE"}
+					value={props.inputs.country || ""}
 					onChange={props.onChange}
 					>
 					{countries.map((option) => (
@@ -60,7 +60,7 @@ function Studyform(props) {
 					label="Peer review"
 					name="peer_review"
 					select
-					value={props.inputs.peer_review || "yes"}
+					value={props.inputs.peer_review || ""}
 					onChange={props.onChange}
 					>
 					

@@ -137,7 +137,7 @@ const UploadPage: React.FC = () => {
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
 							{experiments.map((experiment) =>
-								<Box>
+								<Box key={experiment['id']}>
 									<Experimentform 
 										key={experiment['id']} 
 										onChangeEffect={handleEffectChange} 
