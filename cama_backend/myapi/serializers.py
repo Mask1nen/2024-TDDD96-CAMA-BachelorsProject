@@ -2,91 +2,61 @@ from rest_framework import serializers
 from .models import *
 
 
-class CountrySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Country
-        fields = ['name']
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ['name']
-
 class CamaUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CamaUser
         fields = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
 
-class StudyDesignSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = StudyDesign
-        fields = '__all__'  # Customize fields as needed
 
-
-
-# Grade Serializer
-class GradeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Grade
-        fields = '__all__'  # Customize fields as needed
-
-
-# ParticipantDesign Serializer
-class ParticipantDesignSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ParticipantDesign
-        fields = '__all__'  # Customize fields as needed
-
-# Implementation Serializer
-class ImplementationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Implementation
-        fields = ['implementor']
-
+# Grade Serialize
 
 class EffectDataSerializer(serializers.ModelSerializer):
     test_time = serializers.SlugRelatedField(slug_field='time', queryset=TestTime.objects.all())
     effect_size_type = serializers.SlugRelatedField(slug_field='name', queryset=EffectSizeType.objects.all())
     class Meta:
         model = EffectData
-        fields = ["effect_size_type",
-                            "test_time",
-                            "test_name",
+        fields = [
+                "effect_size_type",
+                "test_time",
+                "test_name",
 
-                            "outcome",
-                            "outcome_full",
-                            "outcome_op",
-
-
-                            "gender_1",
-                            "gender_2",
-                            "gender_3",
-
-                            "d_var",
-                            "d",
-                            "f_stat",
-                            "t",
-                            "ri",
-                            "icc",
-
-                            "mean_age_1i",
-                            "mean_age_2i",
-
-                            "ai",
-                            "bi",
-                            "ci",
-                            "di",
-
-                            "sd1i",
-                            "sd2i",
-                            "n1i",
-                            "n2i",
-                            "m1i",
-                            "m2i",
-                            ]
+                "outcome",
+                "outcome_full",
+                "outcome_op",
 
 
+                "gender_1",
+                "gender_2",
+                "gender_3",
 
+                "d_var",
+                "d",
+                "f_stat",
+                "t",
+                "ri",
+                "icc",
+
+                "mean_age_1i",
+                "mean_age_2i",
+
+                "ai",
+                "bi",
+                "ci",
+                "di",
+
+                "sd1i",
+                "sd2i",
+                "n1i",
+                "n2i",
+                "m1i",
+                "m2i",
+        ]
+
+
+
+
+    def create(self, validated_data):
+        return validated_data
 
 # RiskOfBias Serializer
 class RiskOfBiasSerializer(serializers.ModelSerializer):
@@ -96,46 +66,51 @@ class RiskOfBiasSerializer(serializers.ModelSerializer):
 
 
 
+
 class ExperimentSerializer(serializers.ModelSerializer):
+    effects = EffectDataSerializer(many=True)
     grade = serializers.SlugRelatedField(slug_field='grade', queryset=Grade.objects.all())
     study_design = serializers.SlugRelatedField(slug_field='design', queryset=StudyDesign.objects.all())
     participant_design = serializers.SlugRelatedField(slug_field='design', queryset=ParticipantDesign.objects.all())
     implemented = serializers.SlugRelatedField(slug_field='implementor', queryset=Implementation.objects.all())
-    risks=RiskOfBiasSerializer()
-    #effect_datas = EffectDataSerializer(many=True)
+    rob = serializers.CharField(source="risks")
 
     class Meta:
         model = Experiment
-        fields = ['grade', 'study_design', 'participant_design', 'implemented', 'risks',
-                  'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source' ]
+        fields = [
+            'grade',
+            'study_design', 
+            'participant_design', 
+            'implemented', 
+            'rob', 
+            'effects',
+            'intensity_n',
+            'ni',
+            'duration_week',
+            'frequency_n',
+            'intervention',
+            'intervention_op',
+            'target_population',
+            'mean_age',
+            'source',
+            'robins',
+        ]
 
-    # def to_internal_value(self, data):
-    #     print(data)
-
-    #     data = data.copy()  # Create a mutable copy
-
-    #     rob = data.pop('rob', None)
-    #     robins = data.pop('robins', None)
-
-    #     if rob is not None and robins is not None:
-    #         data['risks'] = {'rob' : rob, 'robins': robins}
-    #         print(data)
-
-    #     return super().to_internal_value(data)
 
 
     def create(self, validated_data):
         # Get experiment list
         
-        
+        print(validated_data)
            
-        risks_data = validated_data.pop('risks').pop()
+        risks_data = validated_data.pop('risks')
+
         
-        risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
+        risks, _ = RiskOfBias.objects.get_or_create(rob=risks_data)
     
 
 
-        # effect_datas = validated_data.pop('effect_datas')
+        # effect_datas = validated_data.pop('effects')
 
 
         experiment = Experiment.objects.create(
@@ -159,7 +134,7 @@ class StudySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Study
-        fields = '__all__'  
+        fields = '__all__'
 
 
     def create(self, validated_data):
@@ -175,25 +150,26 @@ class StudySerializer(serializers.ModelSerializer):
 
         # Create experiment tables
         for experiment_data in experiments_data:
-           
+            
             risks_data = experiment_data.pop('risks')
-          
-            risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
-      
 
+            
+            risks, _ = RiskOfBias.objects.get_or_create(rob=risks_data)
+        
 
-            effect_datas = experiment_data.pop('effect_datas')
+            effects = experiment_data.pop('effects')
 
-            risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
 
             experiment = Experiment.objects.create(
+                study_id=study,
                 risks=risks,
                 **experiment_data
             )  
 
 
-            for effect in effect_datas:
+            for effect in effects:
                 EffectData.objects.create(experiment_nr = experiment, **effect)
+
 
 
 

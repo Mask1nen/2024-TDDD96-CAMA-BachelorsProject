@@ -13,8 +13,8 @@ class EffectSizeType(models.Model):
 
 class EffectData(models.Model):
     effect_size_number = models.AutoField(primary_key=True)
-    experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="effect_datas")
-    effect_size_type = models.CharField(null=True)
+    experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="effects")
+    effect_size_type = models.ForeignKey(EffectSizeType, on_delete=models.SET_NULL ,null=True)
     test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
     test_name =models.CharField(max_length=255, null=False)
 

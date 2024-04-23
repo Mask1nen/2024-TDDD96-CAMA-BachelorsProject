@@ -51,7 +51,7 @@ class StudyDesignAdmin(admin.ModelAdmin):
 
 class RiskOfBiasAdmin(admin.ModelAdmin):
     model = RiskOfBias
-    list_display = ['id', 'rob', 'robins']
+    list_display = ['id', 'rob']
     search_fields = ['id']
 
 class GradeAdmin(admin.ModelAdmin):

@@ -27,7 +27,7 @@ class TestData:
         "doi": "10.1234/abcd.12345",
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
-        "nr_downloads": "200",
+        #"nr_downloads": "200",
         "experiments":
             [
                 {
@@ -46,7 +46,7 @@ class TestData:
                     "target_population":"pop",
                     "mean_age":15.5,
                     "source":"hello_world",
-                  "effect_datas": 
+                  "effects": 
                     [
                         {
                            
@@ -91,7 +91,7 @@ class TestData:
     }
 
     experiment_data = {
-                    # "study_id" : 500,
+                    "study_id":1,
                     "study_design": "Randomized Controlled Trial",
                     "rob": "Low",
                     "robins": "Moderate",
@@ -107,48 +107,47 @@ class TestData:
                     "target_population":"pop",
                     "mean_age":15.5,
                     "source":"hello_world",
-                #   "effect_datas": 
-                #     [
-                        # {
+                    "effects": 
+                    [
+                        {
                            
-                        #     "effect_size_type": "type",
-                        #     "test_time": "1",
-                        #     "test_name": "name",
+                            "effect_size_type": "type",
+                            "test_time": "1",
+                            "test_name": "name",
 
-                        #     "outcome": "come",
-                        #     "outcome_full": "outcome",
-                        #     "outcome_op": "op",
+                            "outcome": "come",
+                            "outcome_full": "outcome",
+                            "outcome_op": "op",
 
 
-                        #     "gender_1": 1,
-                        #     "gender_2": 2,
-                        #     "gender_3": 3,
+                            "gender_1": 1,
+                            "gender_2": 2,
+                            "gender_3": 3,
 
-                        #     "d_var": 0.5,
-                        #     "d": 0.45,
-                        #     "f_stat": 5.23,
-                        #     "t": 2.45,
-                        #     "ri": 1,
-                        #     "icc":1.5,
+                            "d_var": 0.5,
+                            "d": 0.45,
+                            "f_stat": 5.23,
+                            "t": 2.45,
+                            "ri": 1,
+                            "icc":1.5,
 
-                        #     "mean_age_1i": 25.3,
-                        #     "mean_age_2i":26.4,
+                            "mean_age_1i": 25.3,
+                            "mean_age_2i":26.4,
 
-                        #     "ai": 2,
-                        #     "bi": 3,
-                        #     "ci": 4,
-                        #     "di": 5,
+                            "ai": 2,
+                            "bi": 3,
+                            "ci": 4,
+                            "di": 5,
 
-                        #     "sd1i": 1.5,
-                        #     "sd2i": 1.8,
-                        #     "n1i": 30,
-                        #     "n2i": 35,
-                        #     "m1i": 15.2,
-                        #     "m2i": 16.7,
-                        # },
-                    # ]
-                
-    }
+                            "sd1i": 1.5,
+                            "sd2i": 1.8,
+                            "n1i": 30,
+                            "n2i": 35,
+                            "m1i": 15.2,
+                            "m2i": 16.7,
+                        }
+                    ]
+        }
 
     effect_data = {
         "experiment": {
@@ -237,32 +236,32 @@ class TestData:
 #         self.assertEqual(CamaUser.objects.get().name, 'John Doe')
 
 
-# class StudyListCreateAPIViewTests(APITestCase):
-#     def setUp(self):
-#         self.url = reverse('studies')
-#         self.testData = TestData
+class StudyListCreateAPIViewTests(APITestCase):
+    def setUp(self):
+        self.url = reverse('studies')
+        self.testData = TestData
 
-#     def test_create_study(self):
-#         Country.objects.create(name="United States")
-#         Category.objects.create(name="Health")
-#         Grade.objects.create(grade='A')
-#         StudyDesign.objects.create(design="Randomized Controlled Trial")
-#         ParticipantDesign.objects.create(design="Between-Group Design")
-#         Implementation.objects.create(implementor="Pilot Study")
-#         CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
-#         TestTime.objects.create(time="1")
-#         EffectSizeType.objects.create(name="type")
+    def test_create_study(self):
+        Country.objects.create(name="United States")
+        Category.objects.create(name="Health")
+        Grade.objects.create(grade='A')
+        StudyDesign.objects.create(design="Randomized Controlled Trial")
+        ParticipantDesign.objects.create(design="Between-Group Design")
+        Implementation.objects.create(implementor="Pilot Study")
+        CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
+        TestTime.objects.create(time="1")
+        EffectSizeType.objects.create(name="type")
 
-#         response = self.client.post(self.url, self.testData.study_data, format='json')
-#         logger.info(f"Response after POST: {response.data}")
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.post(self.url, self.testData.study_data, format='json')
+        logger.info(f"Response after POST: {response.data}")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-#         response = self.client.get(self.url)
-#         logger.info(f"Response after GET: {response.data}")
-#         self.assertEqual(Study.objects.count(), 1)
-#         study = Study.objects.first()
-#         self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
-#         self.assertEqual(study.uploader.name, "1")
+        response = self.client.get(self.url)
+        logger.info(f"Response after GET: {response.data}")
+        self.assertEqual(Study.objects.count(), 1)
+        study = Study.objects.first()
+        self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
+        self.assertEqual(study.uploader.name, "1")
 
         
 
@@ -287,8 +286,9 @@ class ExperimentTestCase(TestCase):
         Implementation.objects.create(implementor="Pilot Study")
         user = CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
         TestTime.objects.create(time="1")
+        RiskOfBias.objects.create(rob='Low')
+        #response = self.client.post(self.url, self.testData.study_data, format='json')
 
-        
         response = self.client.post(self.url, self.testData.experiment_data, format='json')
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

@@ -24,7 +24,7 @@ class Study(models.Model):
     doi = models.CharField(max_length=255, null=False)
     abstract = models.CharField(max_length=3000, null=False)
     keywords = models.CharField(max_length=255, null=False)
-    nr_downloads = models.IntegerField(null=True)
+    nr_downloads = models.IntegerField(null=True, default=0)
     approved = models.BooleanField(null=False, default=False)
 
 
