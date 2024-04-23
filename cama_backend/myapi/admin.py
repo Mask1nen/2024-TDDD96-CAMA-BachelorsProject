@@ -5,7 +5,7 @@ from django.contrib import admin
 # Register your models here.
 from .camauser import CamaUser
 from .study import Country, Category, Study 
-from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment, TargetPopulation
+from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
 from .effect_data import EffectData, TestTime, EffectSizeType
 
 class CamaUserAdmin(admin.ModelAdmin):
@@ -65,11 +65,6 @@ class ImplementationAdmin(admin.ModelAdmin):
     model = Implementation
     list_display = ['implementor']
     search_fields = ['implementor']
-    
-class TargetPopulationAdmin(admin.ModelAdmin):
-    model = TargetPopulation
-    list_display = ['target']
-    search_fields = ['target']
 
 class TestTimeAdmin(admin.ModelAdmin):
     model = TestTime
@@ -92,3 +87,5 @@ admin.site.register(RiskOfBias, RiskOfBiasAdmin)
 admin.site.register(Grade, GradeAdmin)
 admin.site.register(ParticipantDesign, ParticipantDesignAdmin)
 admin.site.register(Implementation, ImplementationAdmin)
+admin.site.register(TestTime, TestTimeAdmin)
+admin.site.register(EffectSizeType, EffectSizeTypeAdmin)
