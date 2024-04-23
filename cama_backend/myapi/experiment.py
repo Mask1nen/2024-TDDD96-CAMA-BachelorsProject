@@ -26,18 +26,11 @@ class Implementation(models.Model):
     
 
 class Experiment(models.Model):
-<<<<<<< HEAD
-    experiment_id = models.AutoField(primary_key=True)
-    study = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name="experiment")
-    study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.PROTECT)
-    risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.PROTECT)
-=======
     study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name='experiments')
     experiment_nr = models.AutoField(primary_key=True)
     study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.SET_NULL)
     risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.SET_NULL)
     robins = models.CharField(max_length=255, null=True)
->>>>>>> feat/471-api
     grade = models.ForeignKey(Grade, null=True, on_delete=models.SET_NULL)
     participant_design = models.ForeignKey(ParticipantDesign, null=True, on_delete=models.SET_NULL)
     implemented = models.ForeignKey(Implementation, null=True, on_delete=models.SET_NULL)
@@ -54,8 +47,4 @@ class Experiment(models.Model):
 
 
     class Meta:
-<<<<<<< HEAD
-        unique_together = (("study", "experiment_id"),)
-=======
         unique_together = (("study_id", "experiment_nr"))
->>>>>>> feat/471-api

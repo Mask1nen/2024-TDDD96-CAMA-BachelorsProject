@@ -48,14 +48,9 @@ class ExperimentView(APIView):
 
 
     def post(self, request):
-<<<<<<< HEAD
         logger.info(request.data)
         #logger.info(request.META)
         serializer = ExperimentSerializer(data=request.data)
-=======
-        serializer = ExperimentSerializer(data=request.data)
-        print('here baaaaaaaaaaaaaaa')
->>>>>>> feat/471-api
         if serializer.is_valid():
             print('here mmmmmmmmmmmmmmmmmmmmmmmmmm')
             serializer.save()

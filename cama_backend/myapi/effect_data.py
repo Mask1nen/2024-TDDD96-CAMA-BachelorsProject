@@ -12,19 +12,11 @@ class EffectSizeType(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
 class EffectData(models.Model):
-<<<<<<< HEAD
-    effect_size_id = models.AutoField(primary_key=True)
-    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
-    test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
-    effect_size_type = models.CharField(null=True)
-    test_name = models.CharField(max_length=255, null=True)
-=======
     effect_size_number = models.AutoField(primary_key=True)
     experiment_nr = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="effects")
     effect_size_type = models.ForeignKey(EffectSizeType, on_delete=models.SET_NULL ,null=True)
     test_time = models.ForeignKey(TestTime, null=True, on_delete=models.PROTECT)
     test_name =models.CharField(max_length=255, null=False)
->>>>>>> feat/471-api
 
     outcome = models.CharField(max_length=255, null=False)
     outcome_full = models.CharField(max_length=255, null=False)
@@ -60,8 +52,4 @@ class EffectData(models.Model):
 
 
     class Meta:
-<<<<<<< HEAD
-        unique_together = (("effect_size_id", "experiment"),)
-=======
         unique_together = (("effect_size_number", "experiment_nr"))
->>>>>>> feat/471-api
