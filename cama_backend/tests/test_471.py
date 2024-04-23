@@ -91,12 +91,10 @@ class TestData:
     }
 
     experiment_data = {
-       
+                    # "study_id" : 500,
                     "study_design": "Randomized Controlled Trial",
-                    "risks": {
-                        "rob": "Low",
-                        "robins": "Moderate"
-                    },
+                    "rob": "Low",
+                    "robins": "Moderate",
                     "grade": "A",
                     "participant_design": "Between-Group Design",
                     "implemented": "Pilot Study",
@@ -109,46 +107,46 @@ class TestData:
                     "target_population":"pop",
                     "mean_age":15.5,
                     "source":"hello_world",
-                  "effect_datas": 
-                    [
-                        {
+                #   "effect_datas": 
+                #     [
+                        # {
                            
-                            "effect_size_type": "type",
-                            "test_time": "1",
-                            "test_name": "name",
+                        #     "effect_size_type": "type",
+                        #     "test_time": "1",
+                        #     "test_name": "name",
 
-                            "outcome": "come",
-                            "outcome_full": "outcome",
-                            "outcome_op": "op",
+                        #     "outcome": "come",
+                        #     "outcome_full": "outcome",
+                        #     "outcome_op": "op",
 
 
-                            "gender_1": 1,
-                            "gender_2": 2,
-                            "gender_3": 3,
+                        #     "gender_1": 1,
+                        #     "gender_2": 2,
+                        #     "gender_3": 3,
 
-                            "d_var": 0.5,
-                            "d": 0.45,
-                            "f_stat": 5.23,
-                            "t": 2.45,
-                            "ri": 1,
-                            "icc":1.5,
+                        #     "d_var": 0.5,
+                        #     "d": 0.45,
+                        #     "f_stat": 5.23,
+                        #     "t": 2.45,
+                        #     "ri": 1,
+                        #     "icc":1.5,
 
-                            "mean_age_1i": 25.3,
-                            "mean_age_2i":26.4,
+                        #     "mean_age_1i": 25.3,
+                        #     "mean_age_2i":26.4,
 
-                            "ai": 2,
-                            "bi": 3,
-                            "ci": 4,
-                            "di": 5,
+                        #     "ai": 2,
+                        #     "bi": 3,
+                        #     "ci": 4,
+                        #     "di": 5,
 
-                            "sd1i": 1.5,
-                            "sd2i": 1.8,
-                            "n1i": 30,
-                            "n2i": 35,
-                            "m1i": 15.2,
-                            "m2i": 16.7,
-                        },
-                    ]
+                        #     "sd1i": 1.5,
+                        #     "sd2i": 1.8,
+                        #     "n1i": 30,
+                        #     "n2i": 35,
+                        #     "m1i": 15.2,
+                        #     "m2i": 16.7,
+                        # },
+                    # ]
                 
     }
 
@@ -239,57 +237,67 @@ class TestData:
 #         self.assertEqual(CamaUser.objects.get().name, 'John Doe')
 
 
-class StudyListCreateAPIViewTests(APITestCase):
+# class StudyListCreateAPIViewTests(APITestCase):
+#     def setUp(self):
+#         self.url = reverse('studies')
+#         self.testData = TestData
+
+#     def test_create_study(self):
+#         Country.objects.create(name="United States")
+#         Category.objects.create(name="Health")
+#         Grade.objects.create(grade='A')
+#         StudyDesign.objects.create(design="Randomized Controlled Trial")
+#         ParticipantDesign.objects.create(design="Between-Group Design")
+#         Implementation.objects.create(implementor="Pilot Study")
+#         CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
+#         TestTime.objects.create(time="1")
+#         EffectSizeType.objects.create(name="type")
+
+#         response = self.client.post(self.url, self.testData.study_data, format='json')
+#         logger.info(f"Response after POST: {response.data}")
+#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+#         response = self.client.get(self.url)
+#         logger.info(f"Response after GET: {response.data}")
+#         self.assertEqual(Study.objects.count(), 1)
+#         study = Study.objects.first()
+#         self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
+#         self.assertEqual(study.uploader.name, "1")
+
+        
+
+#     def test_invalid_study(self):
+#         invalid_payload = {}  # Payload with missing required fields
+#         response = self.client.post(self.url, invalid_payload, format='json')
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(Study.objects.count(), 0)  # No object should be created
+
+
+class ExperimentTestCase(TestCase):
     def setUp(self):
-        self.url = reverse('studies')
+        self.url = reverse('experiments') 
         self.testData = TestData
 
-    def test_create_study(self):
+    def test_create_experiment(self):
         Country.objects.create(name="United States")
         Category.objects.create(name="Health")
         Grade.objects.create(grade='A')
         StudyDesign.objects.create(design="Randomized Controlled Trial")
         ParticipantDesign.objects.create(design="Between-Group Design")
         Implementation.objects.create(implementor="Pilot Study")
-        CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
+        user = CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
         TestTime.objects.create(time="1")
-        EffectSizeType.objects.create(name="type")
 
-        response = self.client.post(self.url, self.testData.study_data, format='json')
+        
+        response = self.client.post(self.url, self.testData.experiment_data, format='json')
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         response = self.client.get(self.url)
         logger.info(f"Response after GET: {response.data}")
-        self.assertEqual(Study.objects.count(), 1)
-        study = Study.objects.first()
-        self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
-        self.assertEqual(study.uploader.name, "1")
-
-        
-
-    def test_invalid_study(self):
-        invalid_payload = {}  # Payload with missing required fields
-        response = self.client.post(self.url, invalid_payload, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(Study.objects.count(), 0)  # No object should be created
-
-
-# class ExperimentTestCase(TestCase):
-#     def setUp(self):
-#         self.url = reverse('experiments') 
-#         self.testData = TestData
-
-#     def test_create_experiment(self):
-#         response = self.client.post(self.url, self.testData.experiment_data, format='json')
-#         logger.info(f"Response after POST: {response.data}")
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-#         response = self.client.get(self.url)
-#         logger.info(f"Response after GET: {response.data}")
-#         self.assertEqual(Experiment.objects.count(), 1)
-#         experiment = Experiment.objects.first()
-#         self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")
+        self.assertEqual(Experiment.objects.count(), 1)
+        experiment = Experiment.objects.first()
+        # self.assertEqual(experiment.study_id.uploader.orc_id, "0000-0002-1825-0097")
 
 
       

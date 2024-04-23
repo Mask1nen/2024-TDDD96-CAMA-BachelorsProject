@@ -102,21 +102,54 @@ class ExperimentSerializer(serializers.ModelSerializer):
     participant_design = serializers.SlugRelatedField(slug_field='design', queryset=ParticipantDesign.objects.all())
     implemented = serializers.SlugRelatedField(slug_field='implementor', queryset=Implementation.objects.all())
     risks=RiskOfBiasSerializer()
-    effect_datas = EffectDataSerializer(many=True)
+    #effect_datas = EffectDataSerializer(many=True)
 
     class Meta:
         model = Experiment
-        fields = ['grade', 'study_design', 'participant_design', 'implemented', 'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source', 'risks', 'effect_datas']
+        fields = ['grade', 'study_design', 'participant_design', 'implemented', 'risks',
+                  'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source' ]
+
+    # def to_internal_value(self, data):
+    #     print(data)
+
+    #     data = data.copy()  # Create a mutable copy
+
+    #     rob = data.pop('rob', None)
+    #     robins = data.pop('robins', None)
+
+    #     if rob is not None and robins is not None:
+    #         data['risks'] = {'rob' : rob, 'robins': robins}
+    #         print(data)
+
+    #     return super().to_internal_value(data)
 
 
-    def to_internal_value(self, data):
-        rob = data.pop('rob', None)
-        robins = data.pop('robins', None)
+    def create(self, validated_data):
+        # Get experiment list
+        
+        
+           
+        risks_data = validated_data.pop('risks').pop()
+        
+        risks, _ = RiskOfBias.objects.get_or_create(**risks_data)
+    
 
-        if rob is not None and robins is not None:
-            data['risks'] = {'rob' : rob, 'robins': robins}
 
-        return super().to_internal_value(data)
+        # effect_datas = validated_data.pop('effect_datas')
+
+
+        experiment = Experiment.objects.create(
+            risks=risks,
+            **validated_data
+        )  
+
+
+        # for effect in effect_datas:
+        #     EffectData.objects.create(experiment_nr = experiment, **effect)
+
+
+
+        return experiment
 
 
 class StudySerializer(serializers.ModelSerializer):
