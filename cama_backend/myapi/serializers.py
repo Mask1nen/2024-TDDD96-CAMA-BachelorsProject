@@ -121,8 +121,8 @@ class ExperimentSerializer(serializers.ModelSerializer):
 
 class StudySerializer(serializers.ModelSerializer):
     experiments = ExperimentSerializer(many=True)
-    country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
-    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    country = serializers.SlugRelatedField(slug_field='name', queryset=Country.objects.all())
+    category = serializers.SlugRelatedField(slug_field='name', queryset=Category.objects.all())
 
     class Meta:
         model = Study

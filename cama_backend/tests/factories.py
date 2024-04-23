@@ -1,155 +1,146 @@
 import factory
 import factory.random
+import factory.fuzzy
 from myapi.models import *
 import random as rd
+import django
+import pytest
+
 
 
 # All assignments are incorect, it is temporary data which is under progress
 # Aka it is all just copied from the model definitions
 
-# Seed variables
-year_seed = None
-country_seed = None
-category_seed = None
-study_design_seed = None
-risk_of_bias_seed = None
-grade_seed = None
-
-
-
+factory.random.randgen 
 class CamaUserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = CamaUser
     # ressed_random takes a parameter and creates a "random" sequense from the int value of the parameter
-    orc_id = factory.random.reseed_random('orc_id')
-    first_name = factory.Faker('first_name')
-    last_name = factory.Faker('last_name')
-    name = f"{first_name} {last_name}"
-    email_later = factory.Sequence(lambda n: f'test.mail{n}@gmail.com')
+    factory.random.reseed_random('orc_id')
+    orc_id = factory.sequence(lambda n: n)
+    name = factory.Faker('first_name')
+    email = factory.Sequence(lambda n: f'test.mail{n}@gmail.com')
     organization = factory.Sequence(lambda n: f'organization{n}')
-    nr_uploads = int() # Either make random or just have a static number for all
+    nr_uploads = factory.fuzzy.FuzzyInteger(1, 10000) 
 
 
-class StudyYearFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Year
-    if not year_seed:
-        rd.seed('year')
-    else:
-        rd.setstate(year_seed)
-    study_year = rd.choice([2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024])
-    year_seed = rd.getstate()
-    
-class CountryFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Country
-    rd.seed('country')
-    name = rd.choice(["Sweden", "England", "Norway", "USA", "Germany"])
-    
-    
-class CategoryFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Category
-    rd.seed('category')
-    name = rd.choice(["Math", "STEM", "Language"])
-
-
+@pytest.mark.django_db(transaction=True)
 class StudyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Study
-    study_id = models.AutoField(primary_key=True)
-    
+        
+    title = "This is a example title which is extremely captivating"
     uploader = factory.SubFactory(CamaUserFactory)
-    study_year = factory.SubFactory(StudyYearFactory)
-    country = factory.SubFactory(CountryFactory)
-    category = factory.SubFactory(CategoryFactory)
+    study_year = factory.fuzzy.FuzzyInteger(2000, 2024)
+    
+    @factory.lazy_attribute
+    def country(self):
+        return Country.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Sweden", "England", "Norway", "USA", "Germany"]))[0]
+    
+    @factory.lazy_attribute
+    def category(self):
+        return Category.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Math", "STEM", "Language"]))[0]
+
     
     peer_reviewed = True
-    authors = f'{uploader.name}'
+    authors = factory.SelfAttribute('uploader.name') 
     doi = factory.Sequence(lambda n: f"https://doi.org/10.2{n}07/j.ctt1k85dmc")
     abstract = "This is a amazing abstract which pulls the reader in to the \
                 study and makes them want to learn more about it"
-    keywords = f"Interesting, {category.name}, I dont know what to write"
-    nr_downloads = 0
-    
-
-class StudyDesignFactory(models.Model):
-    rd.seed('study_design')
-    design = rd.choice(["RCT", "QES"])
-
-
-class RiskOfBiasFactory(models.Model):
-    rd.seed('risk')
-    rob = rd.choice(["low", "moderate", "high"])
-    robins = rd.choice(["low", "moderate", "high"])
-
-
-class GradeFactory(models.Model):
-    rd.seed('grade')
-    
-    grade = rd.choice(["K", "1", "2", "3", "4", "5", "6", \
-                        "7", "8", "9", "10", "11", "12"])
-
-
-class ParticipantDesignFactory(models.Model):
-    rd.seed('participant_design')
-    design = rd.choice(["within", "between", "mixed"])
-
-
-class ImplementationFactory(models.Model):
-    rd.seed('implementation')
-    implementor = rd.choice(["researcher", "teacher", "paraprofessional"])
-    
+    keywords =  f"Interesting, I dont know what to write"
+    nr_downloads = factory.fuzzy.FuzzyInteger(0, 10000)
 
 
 class ExperimentFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = Category
+        model = Experiment
         
-    study_id = factory.SubFactory(StudyYearFactory)
-    
-    study_design = factory.SubFactory(StudyDesignFactory)
-    risks = factory.SubFactory(RiskOfBiasFactory)
-    grade = factory.SubFactory(GradeFactory)
-    participant_design = factory.SubFactory(ParticipantDesignFactory)
-    implemented = factory.SubFactory(ImplementationFactory)
-    
-    rd.seed('gender')
-    gender_1 = rd.random()
-    gender_2 = 1 - gender_1
-    
-    intensity_n = 60
-    duration_week = 6
-    frequency_n = 3
-    outcome = "The outcome of the experiment"
-    outcome_full = "The complete outcome of the experiemnt which \
-                    means that it will be longer then the rest"
+    study_id = factory.SubFactory(StudyFactory)
 
-
+    @factory.lazy_attribute
+    def study_design(self):
+        return StudyDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["RCT", "QES"]))[0]
+    
+    
+    @factory.lazy_attribute
+    def risks(self):
+        return RiskOfBias.objects.get_or_create(rob=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]), robins=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]) )[0]
+    
+    
+    @factory.lazy_attribute
+    def grade(self):
+        return Grade.objects.get_or_create(grade=factory.fuzzy.FuzzyChoice(["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]))[0]
+    
+    
+    @factory.lazy_attribute
+    def participant_design(self):
+        return ParticipantDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["within", "bewteen", "mixed"]))[0]
+    
+    
+    @factory.lazy_attribute
+    def implemented(self):
+        return Implementation.objects.get_or_create(implementor=factory.fuzzy.FuzzyChoice(["researcher","teacher", "paraprofessional"]))[0]
+    
+    
+    intensity_n = factory.fuzzy.FuzzyInteger(4, 14) 
+    duration_week = factory.fuzzy.FuzzyInteger(2, 8) 
+    frequency_n = factory.fuzzy.FuzzyInteger(2, 6) 
+    
+    ni = factory.fuzzy.FuzzyInteger(1, 1000)
+    intervention = "The name of the intervention implemented"
+    intervention_op = "A short explanation/description of how the intervention was operationalized"
+   
+    @factory.lazy_attribute
+    def target_population(self):
+        return TargetPopulation.objects.get_or_create(target=factory.fuzzy.FuzzyChoice(["Typically developing student", "Disabilities"]))[0]
+    
+    mean_age = factory.fuzzy.FuzzyFloat(5, 50) 
+    source = "The doi to the meta analysis from which the experiment is taken."
+                    
 
 class EffectDataFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = EffectData
     
-    study_id = factory.SubFactory(StudyYearFactory)
+    factory.random.reseed_random('effect_data')
+    
     experiment_nr = factory.SubFactory(ExperimentFactory)
+    
+    @factory.lazy_attribute
+    def effect_size_type(self):
+        return EffectSizeType.objects.get_or_create(name=rd.choice(["SMD","RR/OR"]))[0]
+    
+    @factory.lazy_attribute
+    def test_time(self):
+        return TestTime.objects.get_or_create(time=rd.choice(["pre-test", "post-test", "follow-up"]))[0]
+    
+    test_name = "This is the name of the test used to measure the outcome"
+    
+    outcome = "Machine readable"
+    outcome_full = "Full name of the outcome as stated in the study"
+    outcome_op = "Short explanation/discription of how the outcome was operationalized"
+    
+    gender_1 = factory.fuzzy.FuzzyInteger(1, 1000) 
+    gender_2 = factory.fuzzy.FuzzyInteger(1, 1000)
+    gender_3 = factory.fuzzy.FuzzyInteger(1, 1000)
 
-    sd1i = 3.2132
-    sd2i = 3.2132 
-    n1i = 22.213
-    n2i = 21.213
-    m1i = 4.0011
-    m2i = 4.0201
-    d_var = 21.321
-    d = 32.1231
-    f_stat = 12.123
-    t = 42.213
-    ri = 23.123
-    mean_age = 22
-    ni = 21.32
-    icc = 12.42
-    ai = 14
-    bi = 54
-    ci = 12
-    di = None
+    sd1i = factory.fuzzy.FuzzyFloat(1, 100) 
+    sd2i = factory.fuzzy.FuzzyFloat(1, 100)  
+    n1i = factory.fuzzy.FuzzyFloat(1, 100)  
+    n2i = factory.fuzzy.FuzzyFloat(1, 100)
+    m1i = factory.fuzzy.FuzzyFloat(1, 100) 
+    m2i = factory.fuzzy.FuzzyFloat(1, 100) 
+    d_var = factory.fuzzy.FuzzyFloat(1, 100) 
+    d = factory.fuzzy.FuzzyFloat(1, 100) 
+    f_stat = factory.fuzzy.FuzzyFloat(1, 100) 
+    t = factory.fuzzy.FuzzyFloat(1, 100) 
+    ri = factory.fuzzy.FuzzyFloat(1, 100)
+    mean_age_1i = factory.fuzzy.FuzzyFloat(1, 100)
+    mean_age_2i = factory.fuzzy.FuzzyFloat(1, 100)
+    icc = factory.fuzzy.FuzzyFloat(1, 100) 
+    
+    ai = factory.fuzzy.FuzzyInteger(1, 100)
+    bi = factory.fuzzy.FuzzyInteger(1, 100)
+    ci = factory.fuzzy.FuzzyInteger(1, 100)
+    di = factory.fuzzy.FuzzyInteger(1, 100)
     
