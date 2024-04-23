@@ -47,6 +47,15 @@ class ImplementationSerializer(serializers.ModelSerializer):
         model = Implementation
         fields = ['implementor']
 
+class EffectSizeTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EffectSizeType
+        fields = '__all__'
+
+class TestTimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestTime
+        fields = '__all__'
 
 class EffectDataSerializer(serializers.ModelSerializer):
     test_time = serializers.SlugRelatedField(slug_field='time', queryset=TestTime.objects.all())
@@ -96,11 +105,11 @@ class ExperimentSerializer(serializers.ModelSerializer):
     participant_design = serializers.SlugRelatedField(slug_field='design', queryset=ParticipantDesign.objects.all())
     implemented = serializers.SlugRelatedField(slug_field='implementor', queryset=Implementation.objects.all())
     risks=RiskOfBiasSerializer()
-    effect_datas = EffectDataSerializer(many=True)
+    effects = EffectDataSerializer(many=True)
 
     class Meta:
         model = Experiment
-        fields = ['grade', 'study_design', 'participant_design', 'implemented', 'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source', 'risks', 'effect_datas']
+        fields = ['grade', 'study_design', 'participant_design', 'implemented', 'intensity_n', 'ni', 'duration_week','frequency_n', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source', 'risks', 'effects']
 
 class StudySerializer(serializers.ModelSerializer):
     experiments = ExperimentSerializer(many=True)
