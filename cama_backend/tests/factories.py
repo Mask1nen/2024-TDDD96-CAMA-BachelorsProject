@@ -62,10 +62,11 @@
 #         return StudyDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["RCT", "QES"]))[0]
     
     
-#     @factory.lazy_attribute
-#     def risks(self):
-#         return RiskOfBias.objects.get_or_create(rob=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]), robins=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]) )[0]
+    # @factory.lazy_attribute
+    # def risks(self):
+    #     return RiskOfBias.objects.get_or_create(rob=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]))[0]
     
+    # robins = "The robins value"
     
 #     @factory.lazy_attribute
 #     def grade(self):
