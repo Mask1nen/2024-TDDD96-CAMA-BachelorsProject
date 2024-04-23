@@ -32,6 +32,7 @@ class StudyView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        print(request.data)
         serializer = StudySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

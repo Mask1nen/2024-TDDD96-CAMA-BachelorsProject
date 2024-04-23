@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = "myapi.urls"
+ROOT_URLCONF = "cama_backend.urls"
 
 TEMPLATES = [
     {

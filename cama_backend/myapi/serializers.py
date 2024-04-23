@@ -95,6 +95,7 @@ class ExperimentSerializer(serializers.ModelSerializer):
     study_design = serializers.SlugRelatedField(slug_field='design', queryset=StudyDesign.objects.all())
     participant_design = serializers.SlugRelatedField(slug_field='design', queryset=ParticipantDesign.objects.all())
     implemented = serializers.SlugRelatedField(slug_field='implementor', queryset=Implementation.objects.all())
+
     risks=RiskOfBiasSerializer()
     effect_datas = EffectDataSerializer(many=True)
 
