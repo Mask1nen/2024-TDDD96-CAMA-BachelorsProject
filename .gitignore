@@ -10,8 +10,7 @@ node_modules
 
 # testing
 .coverage
-__pycache__
-*/__pycache__
+__pycache__/
 .pytest_cache/
 cov_html
 pytestdebug.log

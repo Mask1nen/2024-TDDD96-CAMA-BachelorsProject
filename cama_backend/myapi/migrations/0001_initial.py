@@ -150,7 +150,6 @@ class Migration(migrations.Migration):
             name='EffectData',
             fields=[
                 ('effect_size_number', models.AutoField(primary_key=True, serialize=False)),
-                ('effect_size_type', models.CharField(null=True)),
                 ('test_name', models.CharField(max_length=255)),
                 ('outcome', models.CharField(max_length=255)),
                 ('outcome_full', models.CharField(max_length=255)),

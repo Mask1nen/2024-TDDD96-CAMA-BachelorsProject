@@ -11,7 +11,7 @@ from .effect_data import EffectData, TestTime, EffectSizeType
 
 class CamaUserAdmin(admin.ModelAdmin):
     model = CamaUser
-    list_display = ['orc_id', 'name', 'email', 'organization', 'nr_uploads']
+    list_display = ['orc_id', 'name', 'nr_uploads']
     search_fields = ['orc_id']
 
 class StudyAdmin(admin.ModelAdmin):
@@ -52,7 +52,6 @@ class StudyDesignAdmin(admin.ModelAdmin):
 
 class RiskOfBiasAdmin(admin.ModelAdmin):
     model = RiskOfBias
-    list_display = ['id', 'rob']
     list_display = ['id', 'rob']
     search_fields = ['id']
 

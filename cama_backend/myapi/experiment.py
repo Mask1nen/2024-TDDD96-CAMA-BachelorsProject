@@ -41,14 +41,14 @@ class Implementation(models.Model):
     
 
 class Experiment(models.Model):
-    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name='experiment')
+    study_id = models.ForeignKey(Study, on_delete=models.CASCADE, null=True, related_name='experiments')
     experiment_nr = models.AutoField(primary_key=True)
-    study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.SET_NULL)
-    risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.SET_NULL)
+    study_design = models.ForeignKey(StudyDesign, null=True, on_delete=models.SET_NULL, related_name="study_design")
+    risks = models.ForeignKey(RiskOfBias, null=True, on_delete=models.SET_NULL, related_name="riskofbias")
     robins = models.CharField(max_length=255, null=True)
-    grade = models.ForeignKey(Grade, null=True, on_delete=models.SET_NULL)
-    participant_design = models.ForeignKey(ParticipantDesign, null=True, on_delete=models.SET_NULL)
-    implemented = models.ForeignKey(Implementation, null=True, on_delete=models.SET_NULL)
+    grade = models.ForeignKey(Grade, null=True, on_delete=models.SET_NULL, related_name="agegrade")
+    participant_design = models.ForeignKey(ParticipantDesign, null=True, on_delete=models.SET_NULL, related_name="part_design")
+    implemented = models.ForeignKey(Implementation, null=True, on_delete=models.SET_NULL, related_name="implementation")
     intensity_n = models.IntegerField(null=True)
     duration_week = models.IntegerField(null=True)
     frequency_n = models.IntegerField(null=True)

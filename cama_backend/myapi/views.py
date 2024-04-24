@@ -1,17 +1,18 @@
 import requests
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import generics
-from .models import *
-from .serializers import CamaUserSerializer, StudySerializer, ExperimentSerializer, CountrySerializer, CategorySerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer, TestTimeSerializer, EffectSizeTypeSerializer
+from .models import CamaUser, Experiment, Study, EffectData, Country, Category, StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, TestTime, EffectSizeType
+from .serializers.cama_user import CamaUserSerializer
+from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
+from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
+from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
+
 
 import logging
 logger = logging.getLogger(__name__)
 
-
-class CamaUserListView(APIView):
+class CamaUserView(APIView):
     def get(self, request):
         cama_users = CamaUser.objects.all()
         serializer = CamaUserSerializer(cama_users, many=True)
@@ -24,41 +25,49 @@ class CamaUserListView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-'''class StudyListCreateAPIView(generics.ListCreateAPIView):
-    logger.info("bye")
-    queryset = Study.objects.all()
-    serializer_class = StudySerializer'''
-
-class StudyListCreateAPIView(APIView):
- 
+class StudyView(APIView):
     def get(self, request):
-        studies = Study.objects.all()
-        serializer = StudySerializer(studies, many=True)
+        study = Study.objects.all()
+        serializer = StudySerializer(study, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        study_data = request.data.pop('study_data')
-        serializer = StudySerializer(data=study_data)
-        logger.info(serializer.is_valid())
+        serializer = StudyCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ExperimentView(APIView):
+    def get(self, request):
+        experiments = Experiment.objects.all()
+        serializer = ExperimentSerializer(experiments, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        logger.info(request.data)
+        #logger.info(request.META)
+        serializer = ExperimentCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ExperimentListCreateAPIView(APIView):
-    queryset = Experiment.objects.all()
-    serializer_class = ExperimentSerializer
+class EffectDataView(APIView):
+    def get(self, request):
+        effect_data = EffectData.objects.all()
+        serializer = EffectDataSerializer(effect_data, many=True)
+        return Response(serializer.data)
     
+    def post(self, request):
+        serializer = EffectDataCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ExperimentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Experiment.objects.all()
-    serializer_class = ExperimentSerializer
     
-
-
-class CountryOptionsVeiw(APIView):
+class CountryOptionsView(APIView):
     def get(self, request):
         options = Country.objects.all()
         serializer = CountrySerializer(options, many=True)
