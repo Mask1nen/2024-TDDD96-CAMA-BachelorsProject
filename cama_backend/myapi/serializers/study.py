@@ -29,28 +29,6 @@ class StudySerializer(serializers.ModelSerializer):
         
 class StudyCreateSerializer(serializers.ModelSerializer):
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
-    country = CountrySerializer()
-    category = CategorySerializer()
-    experiments = serializers.ListField()
-
-    class Meta:
-        model = Study
-        fields = ['title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed',
-                  'authors', 'doi', 'abstract', 'keywords', 'nr_downloads', 'approved' 'experiments']
-        
-    def create(self, validated_data):
-        experiment_data = validated_data.pop('experiments')
-        study = Study.objects.create(**validated_data)
-        for experiment in experiment_data:
-            experiment = Experiment.objects.create(study_id=study, **experiment)
-            effect_data = experiment_data.pop('effects')
-            if (effect_data):
-                for effect in effect_data:
-                    EffectData.objects.create(experiment_nr=experiment, **effect)
-        return study
-    
-class StudyFullCreateSerializer(serializers.ModelSerializer):
-    uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
     country = serializers.SlugRelatedField(read_only = True, slug_field='country')
     category = serializers.SlugRelatedField(read_only = True, slug_field='category')
     experiments = serializers.ListField(child=ExperimentFromStudySerializer())

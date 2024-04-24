@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import CamaUser, Experiment, Study, EffectData, Country, Category, StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, TestTime, EffectSizeType
 from .serializers.cama_user import CamaUserSerializer
-from .serializers.study import StudySerializer, StudyCreateSerializer, StudyFullCreateSerializer, CountrySerializer, CategorySerializer
+from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
 
@@ -32,7 +32,7 @@ class StudyView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = StudyFullCreateSerializer(data=request.data)
+        serializer = StudyCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
@@ -57,7 +57,6 @@ class EffectDataView(APIView):
     def get(self, request):
         effect_data = EffectData.objects.all()
         serializer = EffectDataSerializer(effect_data, many=True)
-        #print(serializer.data)
         return Response(serializer.data)
     
     def post(self, request):
