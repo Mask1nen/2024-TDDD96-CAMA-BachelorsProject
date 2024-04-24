@@ -15,6 +15,6 @@ urlpatterns = [
     path('populate-participant-design/', ParticipantDesignOptionsView.as_view(), name='populate-participant-design'),
     path('populate-implementation/', ImplementationOptionsView.as_view(), name='populate-implementation'),
     path('populate-test-time/', TestTimeOptionsView.as_view(), name='populate-test-time'),
-    path('populate-effect-size-type/', EffectSizeTypeOptionsView.as_view(), name='populate-effect-size-type')
-    path('get-orcid-info/', get_orcid_infoAPIView.as_view(), name='get_orcid_info'),
-]
+    path('populate-effect-size-type/', EffectSizeTypeOptionsView.as_view(), name='populate-effect-size-type'),
+    path('get-orcid-info/', get_orcid_infoAPIView.as_view(), name='get_orcid_info')
+    ]
