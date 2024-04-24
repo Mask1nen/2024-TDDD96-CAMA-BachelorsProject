@@ -4,7 +4,8 @@ from django.contrib import admin
 
 # Register your models here.
 from .camauser import CamaUser
-from .study import Country, Category, Study 
+from .study import  Category, Study 
+from .country import Country
 from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
 from .effect_data import EffectData, TestTime, EffectSizeType
 

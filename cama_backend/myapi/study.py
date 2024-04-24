@@ -1,12 +1,10 @@
 from django.db import models
 from .camauser import CamaUser
+from .country import Country
 
 # Create your models here.
 
 
-class Country(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=255)
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
