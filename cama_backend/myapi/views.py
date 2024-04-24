@@ -42,6 +42,6 @@ def get_orcid_info(request):
         orcid = json_response.get('orcid')
         # Use the access token to make further requests to the ORCID API
         # Your code here
-        return Response({'name': name, 'orcid': orcid})
+        return Response({'access_token': access_token, 'refresh_token': refresh_token, 'name': name, 'orcid': orcid})
     else:
         return Response({'error': 'Failed to get auth token', "response": response})

@@ -1,15 +1,18 @@
 {/*This file conatins the code responible for controlling the content and function of the login page*/}
 
-import React, { useState } from "react";
+import React from "react";
 import {Box, Button} from "@mui/material";
 import Logo  from "../../assets/images/orcid_logo_icon.png";
-import axios from "axios";
 import { apiUrl } from "../../api/apiConfig";
+import { login, useAuth } from "../../hooks/useAuth";
 const loginUrl = "https://orcid.org/oauth/authorize?client_id=APP-IZWWE416AT5JC4N6&response_type=code&scope=/authenticate&redirect_uri=http://192.168.0.34:3000/Login"
 
 
 const LoginPage: React.FC = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, session] = useAuth();
+    if (isLoggedIn) {
+        window.location.href = "/Upload";
+    }
 
     const handleLogin = () => {
         console.log("Logging in...");
@@ -32,15 +35,20 @@ const LoginPage: React.FC = () => {
             });
 
             const data = await response.json();
+            const accessToken = data.access_token;
+            const refreshToken = data.refresh_token;
             const orcid = data.orcid;
             const name = data.name;
-            console.log("Response from server:", orcid, name);
+            const userSession = { accessToken, refreshToken, orcid, name };
+            login(userSession);
+            window.location.href = "/Upload";
 
         }
-    catch (error) {
-        console.error("Failed to fetch", error);
+        catch (error) {
+            alert("Failed to login with ORCID");
+        }
     }
-    }
+    
     }
 
     // Check for token in URL on component mount
