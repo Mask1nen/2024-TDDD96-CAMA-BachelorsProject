@@ -39,6 +39,15 @@ class StudyView(APIView):
             return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class StudyDetailView(APIView):
+    def get(self, request, id):
+        try: 
+            study = Study.objects.get(pk=id)
+            serializer = StudySerializer(study)
+            return Response(serializer.data)
+        except Study.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 class ExperimentView(APIView):
     def get(self, request):
         experiments = Experiment.objects.all()

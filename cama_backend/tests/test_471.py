@@ -1,4 +1,3 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase
 from django.urls import reverse
 
@@ -9,89 +8,28 @@ import logging
 logger = logging.getLogger(__name__)
 
 class TestData:
+    import json
     cama_user_data = {
         "orc_id": "0000-0002-1825-0097",
         "name": "John Doe",
         "nr_uploads": 5
     }
-    
+    cama_user_payload = json.dumps(cama_user_data)
+
     study_data = {
         "uploader": "0000-0002-1825-0097",
         "title": "Example Title",
         "country": "United States",
         "category": "Health" ,
         "study_year": 2024,
-        "country": "United States",
-        "category": "Health",
         "peer_reviewed": True,
         "authors": "Jane Doe, John Smith",
         "doi": "10.1234/abcd.12345",
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
         "nr_downloads": "200",
-        "experiments":
-            [
-                {
-                    "study_design": "Randomized Controlled Trial",
-                    "risks": {
-                        "rob": "Low",
-                        "robins": "Moderate"
-                    },
-                    "grade": "A",
-                    "participant_design": "Between-Group Design",
-                    "implemented": "Pilot Study",
-                    "intensity_n": 3,
-                    "duration_week": 12,
-                    "frequency_n": 3,
-                    "ni":1,
-                    "intervention":"vention",
-                    "intervention_op": "intervention",
-                    "target_population":"pop",
-                    "mean_age":15.5,
-                    "source":"hello_world",
-                  "effect_datas": 
-                    [
-                        {
-                           
-                            "effect_size_type": "type",
-                            "test_time": "1",
-                            "test_name": "name",
-
-                            "outcome": "come",
-                            "outcome_full": "outcome",
-                            "outcome_op": "op",
-
-
-                            "gender_1": 1,
-                            "gender_2": 2,
-                            "gender_3": 3,
-
-                            "d_var": 0.5,
-                            "d": 0.45,
-                            "f_stat": 5.23,
-                            "t": 2.45,
-                            "ri": 1,
-                            "icc":1.5,
-
-                            "mean_age_1i": 25.3,
-                            "mean_age_2i":26.4,
-
-                            "ai": 2,
-                            "bi": 3,
-                            "ci": 4,
-                            "di": 5,
-
-                            "sd1i": 1.5,
-                            "sd2i": 1.8,
-                            "n1i": 30,
-                            "n2i": 35,
-                            "m1i": 15.2,
-                            "m2i": 16.7,
-                        },
-                    ]
-                },
-            ]
     }
+    study_payload = json.dumps(study_data)
 
     experiment_data = {
         "study_id": 1,
@@ -111,6 +49,7 @@ class TestData:
         "mean_age": 25.5,
         "source": "Example Source"
     }
+    experiment_payload = json.dumps(experiment_data)
 
     effect_data = {
         "experiment_nr": 1,
@@ -152,11 +91,11 @@ class CamaUserAPITest(APITestCase):
         logger.info(response.data)
         self.assertEqual(response.data[0].get('orc_id'), '0000-0002-1825-0097')
 
-#     def test_create_cama_user(self):
-#         response = self.client.post(self.url, self.testData.cama_user_data, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         self.assertEqual(CamaUser.objects.count(), 1)
-#         self.assertEqual(CamaUser.objects.get().name, 'John Doe')
+    def test_create_cama_user(self):
+        response = self.client.post(self.url, self.testData.cama_user_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(CamaUser.objects.count(), 1)
+        self.assertEqual(CamaUser.objects.get().name, 'John Doe')
 
 
 class StudyListCreateAPIViewTests(APITestCase):
@@ -181,8 +120,6 @@ class StudyListCreateAPIViewTests(APITestCase):
         logger.info(f"Response after POST: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        response = self.client.get(self.url)
-        logger.info(f"Response after GET: {response.data}")
         self.assertEqual(Study.objects.count(), 1)
         study = Study.objects.first()
         self.assertEqual(study.uploader.orc_id, "0000-0002-1825-0097")
@@ -218,11 +155,4 @@ class StudyListCreateAPIViewTests(APITestCase):
 #         self.assertEqual(Experiment.objects.count(), 1)
 #         experiment = Experiment.objects.first()
 #         self.assertEqual(experiment.study.cama_user.orc_id, "0000-0002-1825-0097")
-
-
-      
-
-
-
-
 

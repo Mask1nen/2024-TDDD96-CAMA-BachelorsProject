@@ -1,6 +1,6 @@
 
 export interface Study {
-    id: string;
+    study_id: number;
     title: string;
     authors: string;
     keywords: string;

@@ -4,7 +4,7 @@ import { apiUrl } from "./apiConfig.ts"
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
         study.experiments = study.experiments.map(experiment => ({ risks:{rob:"low",robins:""}, implemented: experiment.implementation, ...experiment}))
-        const response = await fetch(`${apiUrl}/studies/`, {
+        const response = await fetch(`${apiUrl}/api/studies/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +26,11 @@ export const addStudy = async (study: Study): Promise<Study | null> => {
 
 export const fetchStudies = async (): Promise<Study[] | null> => {
     try {
-        const response = await fetch(`${apiUrl}/studies`);
+        const response = await fetch(`${apiUrl}/api/studies/`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }
+        );
         if (!response.ok) {
             throw new Error('Failed to get studies');
         }
@@ -39,7 +43,7 @@ export const fetchStudies = async (): Promise<Study[] | null> => {
 
 export const fetchStudyById = async (id: number): Promise<Study | null> => {
     try {
-        const response = await fetch(`${apiUrl}/studies/${id}`, {
+        const response = await fetch(`${apiUrl}/api/studies/${id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });

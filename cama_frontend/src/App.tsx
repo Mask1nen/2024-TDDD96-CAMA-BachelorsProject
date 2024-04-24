@@ -11,13 +11,14 @@ import ContactInfoPage from './pages/ContactInfo/ContactInfoPage.tsx';
 import AppPage from './pages/App/AppPage.tsx';
 import FbFPage from './pages/FbF/FbFPage.tsx';
 import AdminPage from './pages/Admin/AdminPage.tsx';
+import UploadPage from './pages/Upload/UploadPage.tsx';
 
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
-import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
+import DatabasePage from './pages/Database/DatabasePage.tsx';
 import { Dataset } from '@mui/icons-material';
-import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
+import DatabaseDetail from './pages/Database/DatabaseDetail.tsx';
 
 
 
@@ -52,13 +53,15 @@ const theme = createTheme({
             <Route path="/Home" element={<HomePage />} />
             <Route path="/Subjects" element={<HomePage />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/Database" element={<DatasetsPage />} />
+            <Route path="/Database" element={<DatabasePage />} />
+            <Route path="/Database/:id" element={<DatabaseDetail />} />
             <Route path="/Admin" element={<AdminPage />} />
             <Route path="/About" element={<AboutPage />} />
             <Route path="/Team" element={<TeamPage />} />
             <Route path="/ContactInfo" element={<ContactInfoPage />} />  
             <Route path="/App" element={<AppPage />} />  
-            <Route path="/FbF" element={<FbFPage />} />  
+            <Route path="/FbF" element={<FbFPage />} />
+            <Route path="/Upload" element={<UploadPage />} />  
         </Routes>
       </Container>
       <Footer />
