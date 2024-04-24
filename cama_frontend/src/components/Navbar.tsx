@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
-import { useAuth } from '../hooks/useAuth';
+import { logout, useAuth } from '../hooks/useAuth';
 import { red } from '@mui/material/colors';
 
 const pages = ['Home', 'Subjects', 'Apps', 'Database'];
@@ -36,6 +36,11 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/Home";
   };
   let redirect_uri = "Login"
   const [isLoggedIn, session] = useAuth();
@@ -175,7 +180,7 @@ function Navbar() {
                     <Typography textAlign="center">Profile</Typography>
                   </Link>
                 </MenuItem>
-                <MenuItem key="Logout" onClick={handleCloseUserMenu}>
+                <MenuItem key="Logout" onClick={handleLogout}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
             </Menu>
