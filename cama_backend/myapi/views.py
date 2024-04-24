@@ -56,6 +56,7 @@ class EffectDataView(APIView):
     def get(self, request):
         effect_data = EffectData.objects.all()
         serializer = EffectDataSerializer(effect_data, many=True)
+        #print(serializer.data)
         return Response(serializer.data)
     
     def post(self, request):

@@ -66,8 +66,6 @@ class StudyFullCreateSerializer(serializers.ModelSerializer):
         for experiment in experiment_data:
             effect_data = experiment.pop('effects')
             experiment = Experiment.objects.create(study_id=study, **experiment)
-            #experiment.effects.set(effect_data)
-            if (effect_data):
-                for effect in effect_data:
-                    EffectData.objects.create(experiment_nr=experiment, **effect)
+            for effect in effect_data:
+                EffectData.objects.create(experiment_nr=experiment, **effect)
         return study
