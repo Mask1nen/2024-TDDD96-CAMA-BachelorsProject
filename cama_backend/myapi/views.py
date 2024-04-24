@@ -76,7 +76,8 @@ class CountryOptionsVeiw(APIView):
 class CategoryOptionsView(APIView):
     def get(self, request):
         options = Category.objects.all()
-        serializer = CategorySerializer()
+        serializer = CategorySerializer(options, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
         name = request.data.pop('name')
