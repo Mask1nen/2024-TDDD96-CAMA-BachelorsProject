@@ -13,6 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
+import { useAuth } from '../hooks/useAuth';
+import { red } from '@mui/material/colors';
 
 const pages = ['Home', 'Subjects', 'Apps', 'Database'];
 const settings = ['Profile', 'Logout'];
@@ -35,6 +37,11 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  let redirect_uri = "Login"
+  const [isLoggedIn, session] = useAuth();
+  if (isLoggedIn) {
+    redirect_uri = "Upload";
+  }
 
   return (
     <AppBar position="sticky" color="default">
@@ -131,7 +138,7 @@ function Navbar() {
 
 
           <Box sx={{ flexGrow: 0, display:"flex"}}>
-              <Link to="Upload">
+              <Link to={redirect_uri}>
                 <Button size="small"
                   key="addstudy"
                   variant="contained"
