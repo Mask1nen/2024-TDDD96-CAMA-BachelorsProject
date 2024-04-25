@@ -35,7 +35,7 @@ class StudyCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Study
         fields = ['title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed',
-                  'authors', 'doi', 'abstract', 'keywords', 'nr_downloads', 'approved', 'experiments']
+                  'authors', 'doi', 'abstract', 'keywords', 'approved', 'experiments']
         
     def create(self, validated_data):
         experiment_data = validated_data.pop('experiments')
