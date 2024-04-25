@@ -5,7 +5,7 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
 
-const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly}: any) => {
+const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly, inputs}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -28,10 +28,9 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                                     variant="standard"
                                     id={"form" + field.key}
                                     label={field.name}
-                                    name={field.key}
+                                    name={experimentId +"_"+ field.key}
                                     select={!!field.options}
-                                    value={inputs[field.key] || ""}
-                                    onChange={(e) => {onChange(e, experimentId)}}
+                                    defaultValue={inputs[field.key]||""}
                                 >
                                     {field.options?.map(option => (
                                         <MenuItem key={`${field.key}-${option}`} value={option}>
@@ -41,13 +40,12 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                                 </TextField>
                             </Tooltip>
                         ))}
-                    {effects.map((effect: Effect) => (
+                    {effects.map((effect: {id: string, experiment_id:string}) => (
                         <div key={effect.id}>
                             {effect.experiment_id == experimentId ? (
                             <Box key={effect.id} >
                                 <EffectForm 
                                     readOnly={readOnly}
-                                    onChange={onChangeEffect} 
                                     inputs={effect} 
                                     experimentId={experimentId} 
                                     effectId={effect.id}/>

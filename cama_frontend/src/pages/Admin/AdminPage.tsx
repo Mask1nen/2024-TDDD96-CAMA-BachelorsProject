@@ -8,7 +8,7 @@ import { fetchStudies } from "../../api/dataAPI";
 import { Study } from "../../api/newTypes";
 
 const AdminPage: React.FC = () => {
-  const [studies, setStudies] = useState<Study>();
+  const [studies, setStudies] = useState<Study[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 

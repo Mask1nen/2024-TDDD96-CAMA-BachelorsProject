@@ -16,15 +16,15 @@ function Studyform(props) {
 
 	return (
 			<div>
-			<TextField disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Title" value={props.inputs.title||""} name="title" onChange={props.onChange} id="formTitle"/>
+			<TextField defaultValue={props.inputs["title"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Title" name="title" id="formTitle"/>
 
-			<TextField disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Authors"  value={props.inputs.authors || ""} name="authors" onChange={props.onChange} id="formAuthors"/>
+			<TextField defaultValue={props.inputs["authors"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Authors"  name="authors" id="formAuthors"/>
 			
-			<TextField disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Year" value={props.inputs.study_year||""} name="study_year" onChange={props.onChange} id="formYear"/>
+			<TextField defaultValue={props.inputs["study_year"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Year" name="study_year" id="formYear"/>
 			
-			<TextField disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Keywords" value={props.inputs.keywords||""} name="keywords" onChange={props.onChange} id="formKeywords"/>
+			<TextField defaultValue={props.inputs["keywords"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Keywords" name="keywords" id="formKeywords"/>
 
-			<TextField disabled={(props.readOnly||false)} sx={{width:"93%", my:2, ...disabledStyling}} label="Abstract" multiline value={props.inputs.abstract||""} name="abstract" onChange={props.onChange} id="formAbstract"/>
+			<TextField defaultValue={props.inputs["abstract"] || ""} disabled={(props.readOnly||false)} sx={{width:"93%", my:2, ...disabledStyling}} variant="standard" label="Abstract" multiline name="abstract" id="formAbstract"/>
 
 								
 			<TextField
@@ -34,8 +34,7 @@ function Studyform(props) {
 				name="country"
 				label="country"
 				select
-				value={props.inputs.country || ""}
-				onChange={props.onChange}
+				defaultValue={props.inputs["country"]||""}
 				>
 				{countries.map((option) => (
 					<MenuItem key={option.value} value={option.value}>
@@ -50,9 +49,8 @@ function Studyform(props) {
 				id="formPeerReview"
 				label="Peer review"
 				name="peer_review"
+				defaultValue={props.inputs["peer_review"]}
 				select
-				value={props.inputs.peer_review || ""}
-				onChange={props.onChange}
 				>
 				
 					<MenuItem key="yes" value="yes">
@@ -64,9 +62,9 @@ function Studyform(props) {
 			</TextField>
 				
 
-			<TextField disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" value={props.inputs.category||""} label="Category" name="category" onChange={props.onChange} id="formCategory"/>
+			<TextField defaultValue={props.inputs["category"]||""} disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Category" name="category" id="formCategory"/>
 
-			<TextField disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" value={props.inputs.doi||""} label="DOI" name="doi" onChange={props.onChange} id="formDOI"/>
+			<TextField defaultValue={props.inputs["doi"]||""} disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="DOI" name="doi" id="formDOI"/>
 			</div>
 				
 

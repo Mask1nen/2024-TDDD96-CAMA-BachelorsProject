@@ -24,41 +24,28 @@ const UploadPage: React.FC = () => {
 	const addExperiment = () => {
 
 		setExperimentValues(function(prev) {
-			let id = uuidv4();
-			return [...prev, emptyExperiment(id, inputs.id)];
+			return [...prev, uuidv4()];
 		});
 	};
 
 	const removeExperiment = (experimentId: string) => {
         if(window.confirm('Are you sure you want to remove this experiment?')) {
-            setExperimentValues(prev => prev.filter((experiment) => experiment['id'] !== experimentId));
+            setExperimentValues(prev => prev.filter((experiment) => experiment !== experimentId));
         }
 	}
 
 
-	const [experiments, setExperimentValues] = React.useState<Experiment[]>([]);	
+	const [experiments, setExperimentValues] = React.useState<string[]>([]);	
 
-	const handleExperimentChange = (event: inputEvent, experimentId: string) => {
-		const { name, value } = event.target;
-
-		setExperimentValues(function(prev) {
-			const res = [...prev];
-			const index = prev.findIndex(e => e.id == experimentId)
-			res[index][name] = value;
-
-			return res;
-		})
-	}
 
 	//EFFECT
 
-	const [effects, setEffects] = useState<Effect[]>([]);
+	const [effects, setEffects] = useState<{experiment_id: string, id:string}[]>([]);
 
     const addEffect = (experimentId: string) => {
         setEffects(function(prev) {
             let id = (prev.length + 1).toString();
-			let newEffect = emptyEffect(id, experimentId, inputs.id);
-			newEffect["experiment_id"] = experimentId;
+			let newEffect = {experiment_id: experimentId, id:id}
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
     };
@@ -67,18 +54,6 @@ const UploadPage: React.FC = () => {
             setEffects(prev => prev.filter((effect) => !(effect['id'] === effectId && effect['experiment_id'] === experimentId)));
         }
     };
-
-	const handleEffectChange = (event: any, experimentId: string, effectId: string) => {
-		const { name, value } = event.target;
-		setEffects(function(prev) {
-			const res = [...prev];
-			const index = prev.findIndex((e: any) => e.id == effectId && e.experiment_id == experimentId)
-			res[index][name] = value;
-
-			return res;
-		});
-		
-	}
 
 	//STUDY
 	const [inputs, setInputs] = useState<Study>(emptyStudy(uuidv4()));
@@ -91,6 +66,11 @@ const UploadPage: React.FC = () => {
 	
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		const formData = new FormData(event.target);
+		console.log(formData)
+		let study = emptyStudy(uuidv4());
+
+		return;
 		
 		const fullStudyData:Study = {
 			...inputs,
@@ -137,18 +117,16 @@ const UploadPage: React.FC = () => {
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
 							
 							{experiments.map((experiment) =>
-								<Box key={experiment['id']}>
+								<Box key={experiment}>
 									<Experimentform 
-										key={experiment['id']} 
-										onChangeEffect={handleEffectChange} 
-										onChange={handleExperimentChange} 
-										inputs={experiment} 
+										key={experiment} 
+										inputs={{}}
 										effects={effects}
 										addEffect={addEffect}
 										removeEffect={removeEffect}
-										experimentId={experiment['id']}/>
+										experimentId={experiment}/>
 								
-									<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment["id"])} variant="outlined" startIcon={<RemoveCircleOutline />}>
+									<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment)} variant="outlined" startIcon={<RemoveCircleOutline />}>
 										Remove Experiment
 									</Button>	
 								</Box>

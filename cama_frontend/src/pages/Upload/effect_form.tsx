@@ -30,10 +30,9 @@ const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId, readOnl
                     variant="standard"
                     id={"form" + field.key}
                     label={field.name}
-                    name={field.key}
+                    name={experimentId +"_"+ effectId +"_"+ field.key}
                     select={!!field.options}
-                    value={inputs[field.key] ?? ""}
-                    onChange={(e) => {onChange(e, experimentId, effectId)}}
+                    defaultValue={inputs[field.key]||""}
                     fullWidth
                   >
                     {field.options?.map(option => (
