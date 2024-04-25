@@ -75,7 +75,7 @@ class CountryOptionsView(APIView):
     
     def post(self, request):
         name = request.data.pop('name')
-        serializer = CountrySerializer(data=name)
+        serializer = CountrySerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -90,7 +90,7 @@ class CategoryOptionsView(APIView):
 
     def post(self, request):
         name = request.data.pop('name')
-        serializer = CategorySerializer(data=name)
+        serializer = CategorySerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -105,7 +105,7 @@ class StudyDesignOptionsView(APIView):
 
     def post(self, request):
         design = request.data.pop('design')
-        serializer = StudyDesignSerializer(data=design)
+        serializer = StudyDesignSerializer(data={'design': design})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -120,7 +120,7 @@ class RiskOfBiasOptionsView(APIView):
     
     def post(self, request):
         rob = request.data.pop('rob')
-        serializer = RiskOfBiasSerializer(data=rob)
+        serializer = RiskOfBiasSerializer(data={'rob': rob})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -135,7 +135,7 @@ class GradeOptionsView(APIView):
     
     def post(self, request):
         grade = request.data.pop('grade')
-        serializer = GradeSerializer(data=grade)
+        serializer = GradeSerializer(data={'grade': grade})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -150,7 +150,7 @@ class ParticipantDesignOptionsView(APIView):
     
     def post(self, request):
         design = request.data.pop('design')
-        serializer = ParticipantDesign(data=design)
+        serializer = ParticipantDesignSerializer(data={'design': design})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -165,7 +165,7 @@ class ImplementationOptionsView(APIView):
     
     def post(self, request):
         implementor = request.data.pop('implementor')
-        serializer = Implementation(data=implementor)
+        serializer = ImplementationSerializer(data={'implementor': implementor})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -180,7 +180,7 @@ class TestTimeOptionsView(APIView):
     
     def post(self, request):
         time = request.data.pop('time')
-        serializer = TestTimeSerializer(data=time)
+        serializer = TestTimeSerializer(data={'time': time})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -195,7 +195,7 @@ class EffectSizeTypeOptionsView(APIView):
     
     def post(self, request):
         name = request.data.pop('name')
-        serializer = EffectSizeTypeSerializer(data=name)
+        serializer = EffectSizeTypeSerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
