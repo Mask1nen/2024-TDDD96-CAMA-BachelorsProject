@@ -13,12 +13,18 @@ class CamaUserAPITest(APITestCase):
         self.url = reverse('cama_users')
         self.testData = TestData
 
-    def test_get_post_cama_users(self):
+    def test_get_post_cama_user(self):
         response = self.client.post(self.url, self.testData.cama_user_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data[0].get('orc_id'), '0000-0002-1825-0097')
+
+    def test_invalid_cama_user(self):
+        invalid_payload = {}  # Payload with missing required fields
+        response = self.client.post(self.url, invalid_payload, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(CamaUser.objects.count(), 0)  # No object should be created
 
 
 class StudyListCreateAPIViewTests(APITestCase):
@@ -81,11 +87,10 @@ class ExperimentTestCase(APITestCase):
                              approved=False)
 
     def test_post_get_bareexperiment(self):
-        logger.info(Study.objects.all())
         response = self.client.post(self.url, self.testData.bare_experiment_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experiment_study = response.data[0].get('study_id')
         self.assertEqual(experiment_study, 5)
@@ -96,7 +101,7 @@ class ExperimentTestCase(APITestCase):
         response = self.client.post(self.url, self.testData.full_experiment_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experiment_study = response.data[0].get('study_id')
         self.assertEqual(experiment_study, 6)
@@ -119,13 +124,12 @@ class EffectDataTestCase(APITestCase):
                              approved=False)
         experiment = Experiment.objects.create(study_id=study, ni=1, intervention="", intervention_op="",
                                                target_population="")
-        logger.info(experiment.experiment_nr)
 
     def test_get_post_effect_data(self):
         response = self.client.post(self.url, self.testData.effect_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experimentnr = response.data[0].get('experiment_nr')
         self.assertEqual(experimentnr, 5)
