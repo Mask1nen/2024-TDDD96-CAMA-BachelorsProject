@@ -1,14 +1,14 @@
-# import pytest
-# import django
-# django.setup()
-# from django.contrib.auth.models import User
-# from django.core.exceptions import *
-# from myapi.models import CamaUser
-# from myapi.models import Country
-# from myapi.models import Category
-# from myapi.models import Study
-# from myapi.models import EffectData, Experiment
-# from .factories import CamaUserFactory, StudyFactory, ExperimentFactory, EffectDataFactory
+import pytest
+import django
+django.setup()
+from django.contrib.auth.models import User
+from django.core.exceptions import *
+from myapi.models import CamaUser
+from myapi.models import Country
+from myapi.models import Category
+from myapi.models import Study
+from myapi.models import EffectData, Experiment
+from .factories import CamaUserFactory, StudyFactory, ExperimentFactory, EffectDataFactory
 
 
 @pytest.mark.django_db(transaction=True)
