@@ -33,13 +33,14 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
   let redirect_uri = "Login"
   const [isLoggedIn, session] = useAuth();
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     redirect_uri = "Upload";
   }
 

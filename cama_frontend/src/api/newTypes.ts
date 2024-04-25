@@ -10,6 +10,7 @@ export interface Study {
     study_year: number;
     doi: string;
     peer_reviewed: boolean;
+    approved: boolean;
     experiments: Experiment[];
 }
 

@@ -40,12 +40,12 @@ const DatabaseDetail = () => {
     <Box sx={{ mb: 2, p: 2, border: '1px dashed grey' }}>
       <Typography variant="h6">Experiment Details:</Typography>
       {Object.keys(experiment).map(key => {
-        if (key !== 'effects') {  // Exclude the effects key to handle it separately
+        if (key !== 'effects') { 
           return <Typography key={key}>{`${key}: ${experiment[key]}`}</Typography>;
         }
         return null;
       })}
-      {experiment.effects && experiment.effects.map((effect, idx) => renderEffectDetails(effect, idx))}
+      {experiment.effects && experiment.effects.map((effect, id) => renderEffectDetails(effect, id))}
     </Box>
   );
 
