@@ -7,7 +7,7 @@ import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import {AddCircleOutline, RemoveCircleOutline} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy } from '../../api/newTypes'
+import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
 
 interface inputEvent {
@@ -62,24 +62,72 @@ const UploadPage: React.FC = () => {
 		setInputs(prev => ({...prev, [name]: value }));
 	};
 
+	const getFormEntry = (formData:FormData) => {
+
+		//Create empty study 
+		let formEntry = emptyStudy(uuidv4());
+		//fill with values from form
+		let studyKeys = Object.keys(formEntry);
+		studyKeys.forEach(function(key){
+			if (key != "experiments" && key != "id") {
+				formEntry[key] = formData.get(key);
+			}
+		})
+
+		//Create empty experiment for each existing experiment
+		experiments.forEach(function(experimentId) {
+			let newExp = emptyExperiment(experimentId, formEntry['study_id']);
+			let experimentKeys = Object.keys(newExp);
+			//fill each prop with data from form
+			experimentKeys.forEach(function(key) {
+				if (key != "id" && key != "study_id" && key != "effects") {
+					newExp[key] = formData.get(experimentId + "_" + key);
+				} 
+				
+			});
+
+			//Create empty effect for each existing effect connected to this experiment and fill with data from form
+			effects.forEach(function(effectListObj) {
+				if (effectListObj['experiment_id'] == experimentId) { //make sure effect is associated with this experiment
+					let effectId = effectListObj['id'];
+					let newEffect = emptyEffect(effectId, experimentId, formEntry['study_id']);
+					let effectKeys = Object.keys(newEffect);
+					//fill each prop with data from form
+					effectKeys.forEach(function(key) {
+						if(key!="id" && key != "study_id" && key != "experiment_id") {
+							newEffect[key] = formData.get(experimentId + "_" + effectId + "_" + key);
+						}
+						
+					});
+					newExp.effects.push(newEffect);
+				}
+			});
+
+			formEntry.experiments.push(newExp);
+
+		});
+		return formEntry
+	}
+
 
 	
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		const formData = new FormData(event.target);
-		console.log(formData)
-		let study = emptyStudy(uuidv4());
 
-		return;
+		const formData = new FormData(event.target);
+		let formEntry = getFormEntry(formData);
+
+		
 		
 		const fullStudyData:Study = {
-			...inputs,
-			experiments: experiments.map<Experiment>(experiment => ({
+			...formEntry,
+			experiments: formEntry.experiments.map<Experiment>(experiment => ({
 				...experiment,
-				effect_datas: effects.filter((eff: Effect) => eff.experiment_id == experiment.id ).map((eff:Effect) => ({...eff}))
+				effect_datas: experiment.effects //@todo change
 			}))
 		}
 		
+		console.log(fullStudyData)
 		
 		try {
 			const response = await addStudy(fullStudyData);

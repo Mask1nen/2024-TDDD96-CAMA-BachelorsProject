@@ -47,9 +47,9 @@ function Studyform(props) {
 				sx={{width:"45%", mt: 2, ml: 1, ...disabledStyling}} variant="standard"
 				disabled={(props.readOnly||false)} 
 				id="formPeerReview"
-				label="Peer review"
-				name="peer_review"
-				defaultValue={props.inputs["peer_review"]}
+				label="Peer reviewed"
+				name="peer_reviewed"
+				defaultValue={props.inputs["peer_reviewed"]}
 				select
 				>
 				
