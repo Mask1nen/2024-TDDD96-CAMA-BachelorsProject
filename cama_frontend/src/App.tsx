@@ -60,8 +60,8 @@ const theme = createTheme({
             <Route path="/Team" element={<TeamPage />} />
             <Route path="/ContactInfo" element={<ContactInfoPage />} />  
             <Route path="/App" element={<AppPage />} />  
-            <Route path="/FbF" element={<FbFPage />} />
-            <Route path="/Upload" element={<UploadPage />} />  
+            <Route path="/FbF" element={<FbFPage />} />  
+            <Route path="/Upload" element={<UploadPage />} />
             <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Container>
