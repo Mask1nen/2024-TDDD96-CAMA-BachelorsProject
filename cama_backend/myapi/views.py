@@ -45,12 +45,10 @@ class ExperimentView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        logger.info(request.data)
-        #logger.info(request.META)
         serializer = ExperimentCreateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(ExperimentSerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class EffectDataView(APIView):

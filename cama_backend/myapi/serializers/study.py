@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from ..models import Study, Country, Category, CamaUser, Experiment, EffectData
-from .experiment import ExperimentSerializer, ExperimentFromStudySerializer
-from .effect_data import EffectDataFromStudySerializer
+from .experiment import ExperimentSerializer, ExperimentFromParentSerializer
 
 import logging
 logger = logging.getLogger(__name__)
@@ -29,9 +28,9 @@ class StudySerializer(serializers.ModelSerializer):
         
 class StudyCreateSerializer(serializers.ModelSerializer):
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
-    country = serializers.SlugRelatedField(read_only = True, slug_field='country')
-    category = serializers.SlugRelatedField(read_only = True, slug_field='category')
-    experiments = serializers.ListField(child=ExperimentFromStudySerializer())
+    country = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    category = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    experiments = serializers.ListField(child=ExperimentFromParentSerializer())
 
     class Meta:
         model = Study
