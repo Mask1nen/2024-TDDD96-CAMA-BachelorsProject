@@ -4,7 +4,8 @@ from django.contrib import admin
 
 # Register your models here.
 from .camauser import CamaUser
-from .study import Country, Category, Study 
+from .study import  Category, Study 
+from .country import Country
 from .experiment import StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, Experiment
 from .effect_data import EffectData, TestTime, EffectSizeType
 
@@ -20,9 +21,10 @@ class StudyAdmin(admin.ModelAdmin):
 
 class ExperimentAdmin(admin.ModelAdmin):
     model = Experiment
-    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'grade', 'participant_design', 'implemented', 'intensity_n',
-                    'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op', 'target_population', 'mean_age', 'source']
-    search_fields = ['study_id', 'experiment_nr']
+    list_display = ['study_id', 'experiment_nr', 'study_design', 'risks', 'robins', 'grade', 'participant_design', 'implemented',
+                    'intensity_n', 'duration_week', 'frequency_n', 'ni', 'intervention', 'intervention_op',
+                    'target_population', 'mean_age', 'source', 'approved']
+    search_fields = ['study_id', 'title', 'experiment_nr', 'approved']
 
 class EffectDataAdmin(admin.ModelAdmin):
     model = EffectData
@@ -33,12 +35,12 @@ class EffectDataAdmin(admin.ModelAdmin):
     
 class CountryAdmin(admin.ModelAdmin):
     model = Country
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 class StudyDesignAdmin(admin.ModelAdmin):
@@ -53,27 +55,29 @@ class RiskOfBiasAdmin(admin.ModelAdmin):
 
 class GradeAdmin(admin.ModelAdmin):
     model = Grade
-    list_display = ['grade']
-    search_fields = ['grade']
+    list_display = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+                    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
+    search_fields = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+                    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
 
 class ParticipantDesignAdmin(admin.ModelAdmin):
     model = ParticipantDesign
-    list_display = ['design']
+    list_display = ['id', 'design']
     search_fields = ['design']
 
 class ImplementationAdmin(admin.ModelAdmin):
     model = Implementation
-    list_display = ['implementor']
+    list_display = ['id', 'implementor']
     search_fields = ['implementor']
 
 class TestTimeAdmin(admin.ModelAdmin):
     model = TestTime
-    list_display = ['time']
+    list_display = ['id', 'time']
     search_fields = ['time']
 
 class EffectSizeTypeAdmin(admin.ModelAdmin):
     model = EffectSizeType
-    list_display = ['name']
+    list_display = ['id', 'name']
     search_fields = ['name']
 
 admin.site.register(CamaUser, CamaUserAdmin)

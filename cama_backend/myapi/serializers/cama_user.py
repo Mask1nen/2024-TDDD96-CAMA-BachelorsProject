@@ -10,4 +10,4 @@ class CamaUserSerializer(serializers.ModelSerializer):
     studies = StudySerializer(read_only=True, many=True)
     class Meta:
         model = CamaUser
-        fields = ['orc_id', 'name', 'nr_uploads', 'studies']
+        fields = ['orc_id', 'name', 'studies']

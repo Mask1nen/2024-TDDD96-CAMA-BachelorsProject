@@ -68,9 +68,21 @@
     
     # robins = "The robins value"
     
-#     @factory.lazy_attribute
-#     def grade(self):
-#         return Grade.objects.get_or_create(grade=factory.fuzzy.FuzzyChoice(["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]))[0]
+    # @factory.lazy_attribute
+    # def grade(self):
+    #     return Grade.objects.get_or_create(k=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        first=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        second=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        third=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        forth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        fifth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        sixth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        seventh=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        eighth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        ninth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        tenth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        eleventh=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+    #                                        twelfth=factory.fuzzy.FuzzyChoice([True,False]).fuzz())[0]
     
     
 #     @factory.lazy_attribute
@@ -91,9 +103,7 @@
 #     intervention = "The name of the intervention implemented"
 #     intervention_op = "A short explanation/description of how the intervention was operationalized"
    
-#     @factory.lazy_attribute
-#     def target_population(self):
-#         return TargetPopulation.objects.get_or_create(target=factory.fuzzy.FuzzyChoice(["Typically developing student", "Disabilities"]))[0]
+#    target_population = "This is the target population"
     
 #     mean_age = factory.fuzzy.FuzzyFloat(5, 50) 
 #     source = "The doi to the meta analysis from which the experiment is taken."
