@@ -24,7 +24,3 @@ class Study(models.Model):
     keywords = models.CharField(max_length=255, null=False)
     nr_downloads = models.IntegerField(null=True, default=0)
     approved = models.BooleanField(null=False, default=False)
-
-
-    def get_uploader(self):
-        return self.uploader.orc_id
