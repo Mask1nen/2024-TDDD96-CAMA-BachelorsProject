@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Typography, TableContainer, Paper } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import data from "../../data/randomized_data.json";
-import bild2 from "../../assets/images/bild2.png";
+import { Box, Typography, Paper } from "@mui/material";
 import { fetchStudyById } from "../../api/dataAPI";
 
 const DatabaseDetail = () => {
   const { id: paramId } = useParams();
   const id = paramId ? parseInt(paramId, 10) : null;
   const [study, setStudy] = useState(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    console.log("Study ID:", id); // Check what id is being captured
-
     const fetchStudy = async () => {
       if (!id) {
         console.error("No study ID provided");
-        return; // Exit if no id to prevent erroneous API call
+        return;
       }
       try {
         const response = await fetchStudyById(id);
@@ -36,48 +30,42 @@ const DatabaseDetail = () => {
     fetchStudy();
   }, [id]);
 
-  if (!study) {
-    return <Typography>Loading...</Typography>;
-  }
-  const { title, doi, authors, keywords, abstract, rows, columns } = study;
+  if (loading) return <Typography>Loading...</Typography>;
+  if (error) return <Typography>Error loading study details.</Typography>;
+  if (!study) return <Typography>No study data.</Typography>;
+
+  const { title, doi, authors, keywords, abstract, experiments } = study;
+
+  const renderExperimentDetails = (experiment) => (
+    <Box sx={{ mb: 2, p: 2, border: '1px dashed grey' }}>
+      <Typography variant="h6">Experiment Details:</Typography>
+      {Object.keys(experiment).map(key => {
+        if (key !== 'effects') {  // Exclude the effects key to handle it separately
+          return <Typography key={key}>{`${key}: ${experiment[key]}`}</Typography>;
+        }
+        return null;
+      })}
+      {experiment.effects && experiment.effects.map((effect, idx) => renderEffectDetails(effect, idx))}
+    </Box>
+  );
+
+  const renderEffectDetails = (effect, index) => (
+    <Box sx={{ mt: 2, ml: 4, p: 2, border: '1px solid lightgray' }} key={index}>
+      <Typography variant="subtitle1">Effect {index + 1} Details:</Typography>
+      {Object.keys(effect).map(key => (
+        <Typography key={key}>{`${key}: ${effect[key]}`}</Typography>
+      ))}
+    </Box>
+  );
 
   return (
     <Box sx={{ margin: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        {title}
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        DOI: {doi}
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        Authors: {authors}
-      </Typography>
-      <Typography variant="subtitle2" gutterBottom>
-        Keywords: {keywords}
-      </Typography>
-      <Typography variant="body1" align="left" gutterBottom>
-        Abstract: {abstract}
-      </Typography>
-      <Box
-        component="img"
-        sx={{
-          height: 233,
-          width: 350,
-          backgroundSize: "cover",
-          backgroundImage: `url(${bild2})`,
-        }}
-      />
-      <TableContainer component={Paper} sx={{ mt: 4, overflowX: "auto" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          autoHeight
-          autoPageSize
-          sx={{
-            "& .MuiDataGrid-virtualScroller": { justifyContent: "flex-start" },
-          }}
-        />
-      </TableContainer>
+      <Typography variant="h4" gutterBottom>{title}</Typography>
+      <Typography variant="subtitle1" gutterBottom>DOI: {doi}</Typography>
+      <Typography variant="subtitle1" gutterBottom>Authors: {authors}</Typography>
+      <Typography variant="subtitle2" gutterBottom>Keywords: {keywords}</Typography>
+      <Typography variant="body1" align="left" gutterBottom>Abstract: {abstract}</Typography>
+      {experiments && experiments.map(renderExperimentDetails)}
     </Box>
   );
 };
