@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
+import { Tooltip, Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
@@ -21,24 +21,25 @@ const ExperimentForm: React.FC = ({inputs, onChange, experimentId, onChangeEffec
                 </AccordionSummary>
                 <AccordionDetails>
                         {experimentFields.map(field => (
-                            <TextField
-                                disabled={(readOnly||false)}
-                                key={field.key} 
-                                sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
-                                variant="standard"
-                                id={"form" + field.key}
-                                label={field.name}
-                                name={field.key}
-                                select={!!field.options}
-                                value={inputs[field.key] || ""}
-                                onChange={(e) => {onChange(e, experimentId)}}
-                            >
-                                {field.options?.map(option => (
-                                    <MenuItem key={`${field.key}-${option}`} value={option}>
-                                        {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <Tooltip title={field.desc} key={field.key}>
+                                <TextField
+                                    disabled={(readOnly||false)}
+                                    sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
+                                    variant="standard"
+                                    id={"form" + field.key}
+                                    label={field.name}
+                                    name={field.key}
+                                    select={!!field.options}
+                                    value={inputs[field.key] || ""}
+                                    onChange={(e) => {onChange(e, experimentId)}}
+                                >
+                                    {field.options?.map(option => (
+                                        <MenuItem key={`${field.key}-${option}`} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Tooltip>
                         ))}
                     {effects.map((effect: Effect) => (
                         <div key={effect.id}>

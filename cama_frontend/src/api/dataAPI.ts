@@ -3,14 +3,14 @@ import { apiUrl } from "./apiConfig.ts"
 
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
-        study.experiments = study.experiments.map(experiment => ({ implemented: experiment.implementation, ...experiment}))
+        study.experiments = study.experiments.map(experiment => ({implemented: experiment.implementation, ...experiment, source:"frontenden såkalrt"}))
         const response = await fetch(`${apiUrl}/api/studies/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                uploader:"0000-0002-1825-0097", nr_downloads: 0, source:"" , ...study, }
+                uploader:"0000-0002-1825-0097", nr_downloads: 0, source:"felix är arg" , ...study, }
                 
             ),
         });
