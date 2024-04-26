@@ -111,11 +111,9 @@ class EffectSizeTypeAlternitivesAPITest(TestCase):
 
 @pytest.mark.django_db   
 class ExperimentFilterAPITest(TestCase):
-    def setup(self):
-        for x in self.experiemnt:
-            logger.info(x)
-           # print(f'Here : {x.study_id} : {x.study_design} : {x.risks} : {x.robins} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
-        
+    def setUp(self):
+        self.client = APIClient()
+    
     def test_get_filter_data(self):
         experiemnt = ExperimentFactory.create_batch(10)
         response = self.client.get(f'/api/experiment-filterd/?intensity_n=7&grade__seventh=True')
@@ -124,7 +122,10 @@ class ExperimentFilterAPITest(TestCase):
         
         
 @pytest.mark.django_db   
-class ExperimentFilterAPITest(TestCase):
+class EffectDataFilterAPITest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    
     def test_get_filter_data(self):
         effect_datas = EffectDataFactory.create_batch(10)
         smd_count = 0
@@ -137,6 +138,30 @@ class ExperimentFilterAPITest(TestCase):
         assert len(response.data) == smd_count;
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
+        
+@pytest.mark.django_db   
+class StudyFilterAPITest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    
+    def test_get_filter_data(self):
+        studies = StudyFactory.create_batch(10)
+        sweden_count = 0
+        for study in studies:
+            name = study.country.name
+            if name == "Sweden":
+                sweden_count += 1
+                
+        response = self.client.get(f'/api/studies-filterd/?country__name=Sweden')
+        assert len(response.data) == sweden_count;
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        
+# Integration test
+# Get the different options of the options tables through get calls to them.
+# Add an additional option.
+# Filter for studies with help of the accuired alternetives.
+# Check so the filterd gets worked. 
 
         
 

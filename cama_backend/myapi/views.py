@@ -39,6 +39,25 @@ class StudyView(APIView):
             return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+class StudyFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        studies = Study.objects.all().filter(filters)
+        serializer = StudySerializer(studies, many=True)
+        return Response(serializer.data)
+    
+    
 class ExperimentFilterView(APIView):
     def get(self, request):
         # Get all the provided parameters from the query string
