@@ -60,10 +60,11 @@ const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, a
                         </div>
                     ))}
                     {(!readOnly) ?(
-
-                        <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
-                          Add Effect<AddCircleOutline sx={{ ml: 1 }} />
-                        </Button>
+                        <div>
+                            <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
+                            Add Effect<AddCircleOutline sx={{ ml: 1 }} />
+                            </Button>
+                        </div>
                     ):""
                     }
                 </AccordionDetails>
