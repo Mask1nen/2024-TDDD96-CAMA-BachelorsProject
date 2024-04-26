@@ -7,6 +7,7 @@ from .serializers.cama_user import CamaUserSerializer
 from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
+from django.db.models import Q
 
 
 import logging
@@ -37,6 +38,40 @@ class StudyView(APIView):
             serializer.save()
             return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class ExperimentFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        experiments = Experiment.objects.all().filter(filters)
+        serializer = ExperimentSerializer(experiments, many=True)
+        return Response(serializer.data)
+    
+class EffectDataFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        effect_data = EffectData.objects.all().filter(filters)
+        serializer = EffectDataSerializer(effect_data, many=True)
+        return Response(serializer.data)
 
 class ExperimentView(APIView):
     def get(self, request):

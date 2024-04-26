@@ -39,7 +39,7 @@ def test_experiment_factory(experiment_factory):
     print(len(experiemnt))
     assert len(experiemnt) == size
     #for x in experiemnt:
-      # print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.robins} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
+    #    print(f'{x.study_id} : {x.study_design} : {x.risks} : {x.robins} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
        
        
 @pytest.mark.django_db(transaction=True)

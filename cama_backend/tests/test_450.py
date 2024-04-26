@@ -1,7 +1,12 @@
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
+from myapi.models import *
+from tests.factories import *
 import json
+import logging
+logger = logging.getLogger(__name__)
+
 
 
 def helper_get_population_test(self, url):
@@ -103,5 +108,41 @@ class EffectSizeTypeAlternitivesAPITest(TestCase):
     def test_post_effect_size_type_alternetivs(self):
         helper_post_population_test(self, 'populate-effect-size-type/', 'name')
         
+
+@pytest.mark.django_db   
+class ExperimentFilterAPITest(TestCase):
+    def setup(self):
+        for x in self.experiemnt:
+            logger.info(x)
+           # print(f'Here : {x.study_id} : {x.study_design} : {x.risks} : {x.robins} : {x.grade} : {x.participant_design} : {x.implemented} : {x.intensity_n} : {x.duration_week} : {x.frequency_n} : {x.ni} : {x.intervention} : {x.intervention_op} : {x.target_population} : {x.mean_age} : {x.source}')
+        
+    def test_get_filter_data(self):
+        experiemnt = ExperimentFactory.create_batch(10)
+        response = self.client.get(f'/api/experiment-filterd/?intensity_n=7&grade__seventh=True')
+        assert len(response.data) == 2;
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        
+@pytest.mark.django_db   
+class ExperimentFilterAPITest(TestCase):
+    def test_get_filter_data(self):
+        effect_datas = EffectDataFactory.create_batch(10)
+        smd_count = 0
+        for effect_data in effect_datas:
+            name = effect_data.effect_size_type.name
+            if name == "SMD":
+                smd_count += 1
+                
+        response = self.client.get(f'/api/effect-data-filterd/?effect_size_type__name=SMD')
+        assert len(response.data) == smd_count;
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+
+        
+
+        
+    
+
+
 
         
