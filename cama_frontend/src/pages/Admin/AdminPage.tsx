@@ -25,7 +25,6 @@ const AdminPage: React.FC = () => {
 			setError(true);
 			return;
 		} else{
-		console.log(fetchedStudies);
 		const unapprovedStudies = fetchedStudies?.filter(study=>!study.approved);
 		setStudies(unapprovedStudies);
 		setLoading(false);

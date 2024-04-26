@@ -17,12 +17,10 @@ interface StudyCardProps {
 
 const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   let navigate = useNavigate();
-  console.log("Study data in card:", studyData);
 
 
 
   const handleCardClick = () => {
-    console.log("Clicked on study:", studyData.study_id);
     navigate(`/Database/${studyData.study_id}`);
 };
 

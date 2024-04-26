@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class FieldsView(APIView):
-    def get(request):
+    def get(self, request):
         study_fields = {field.name: {
             'type': field.get_internal_type(),
             'required': not field.blank,
