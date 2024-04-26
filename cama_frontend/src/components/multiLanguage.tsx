@@ -1,16 +1,21 @@
+{/*This file conatins the code responible for controlling the multi language function
 
-import {useState} from "react";
+    multiLanguage(isSWE, test) takes in two parameters:
+    isSWE; that is a boolian if the target language is swedich or not (then eng)
+    text; that will be displayed. This text is in a json file.
 
-function multiLanguage(isSWE, test) {
-    //const [isSWE2, setIsSWE2] = useState(false);
+*/}
+
+
+function multiLanguage(isSWE, text) {
 
     if(isSWE){
-        return test.map((test) =>(
-            <h3>{test.swe}</h3>
+        return text.map((text) =>(
+            <div>{text.swe}</div>
         ))
     }
-    return test.map((test) =>(
-        <h3>{test.eng}</h3>
+    return text.map((text) =>(
+        <div>{text.eng}</div>
     ))    
 }
 

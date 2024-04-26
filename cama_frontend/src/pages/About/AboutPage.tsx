@@ -11,7 +11,6 @@ import aboutText1 from "../../../src/assets/pageText/aboutPage/aboutPageMain1.js
 import aboutText2 from "../../../src/assets/pageText/aboutPage/aboutPageMain2.json";
 import aboutText3 from "../../../src/assets/pageText/aboutPage/aboutPageMain3.json";
 import { useContext } from 'react';
-import SharedStateContext from "../../components/languageVariable";
 
 import {Context} from "../../../src/App";
 
@@ -25,7 +24,7 @@ const AboutPage: React.FC = () => {
     //const valueS = useContext(SharedStateContext);
 
 	return (
-        <SharedStateContext.Provider value={isSWE}>
+        <Context.Provider value={isSWE}>
         <Box>
             {/*Creats a centered title wich the icon on both sides*/} 
             <Box display="flex"  justifyContent="center"  alignItems="center">
@@ -86,7 +85,7 @@ const AboutPage: React.FC = () => {
         </Grid>
 
         </Box>
-        </SharedStateContext.Provider>
+        </Context.Provider>
 		);
 	};
 	

@@ -16,15 +16,13 @@ import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
-import { Dataset } from '@mui/icons-material';
-import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
 
 import React, {useState} from "react";
-export const Context = React.createContext();
+export const Context = React.createContext();  //creates the chared context for global language
 
 const App: React.FC = () => {
 
-  const [isSWE, setIsSWE] = useState(false);
+  const [isSWE, setIsSWE] = useState(false);  //creates the chared context for global language
 
 const theme = createTheme({
   
