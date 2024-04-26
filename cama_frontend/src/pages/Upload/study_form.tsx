@@ -49,10 +49,9 @@ function Studyform(props) {
 				id="formPeerReview"
 				label="Peer reviewed"
 				name="peer_reviewed"
-				defaultValue={props.inputs["peer_reviewed"]}
+				defaultValue={props.inputs["peer_reviewed"] ? "yes" : (props.inputs["peer_reviewed"] === false ? "no" : "")}
 				select
 				>
-				
 					<MenuItem key="yes" value="yes">
 					Yes
 					</MenuItem>
