@@ -1,6 +1,20 @@
 import { Study, Experiment, Effect } from "./newTypes.ts"
 import { apiUrl } from "./apiConfig.ts"
 
+export const fetchFieldDefinitions = async (): Promise<any> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/field-definitions/`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Failed to fetch field definitions');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching field definitions:', error);
+        return null;
+    }
+};
+
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
         study.experiments = study.experiments.map(experiment => ({implemented: experiment.implementation, ...experiment, source:"frontenden såkalrt"}))

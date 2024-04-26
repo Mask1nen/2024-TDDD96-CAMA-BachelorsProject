@@ -7,10 +7,37 @@ from .serializers.cama_user import CamaUserSerializer
 from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
+from django.http import JsonResponse
 
 
 import logging
 logger = logging.getLogger(__name__)
+
+class FieldsView(APIView):
+    def get(request):
+        study_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in Study._meta.fields}
+
+        experiment_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in Experiment._meta.fields}
+    
+        effect_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in EffectData._meta.fields}
+
+        return JsonResponse({
+            'study_fields': study_fields,
+            'experiment_fields': experiment_fields,
+            'effect_fields': effect_fields
+    })
 
 class CamaUserView(APIView):
     def get(self, request):
