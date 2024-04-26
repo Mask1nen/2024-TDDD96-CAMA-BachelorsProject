@@ -56,16 +56,11 @@ const UploadPage: React.FC = () => {
     };
 
 	//STUDY
-	const [inputs, setInputs] = useState<Study>(emptyStudy(uuidv4()));
-	const handleChange = (event: any) => {
-		const { name, value } = event.target;
-		setInputs(prev => ({...prev, [name]: value }));
-	};
 
 	const getFormEntry = (formData:FormData) => {
 
 		//Create empty study 
-		let formEntry = emptyStudy(uuidv4());
+		let formEntry = emptyStudy(0);
 		//fill with values from form
 		let studyKeys = Object.keys(formEntry);
 		studyKeys.forEach(function(key){
@@ -159,7 +154,7 @@ const UploadPage: React.FC = () => {
 					</Typography>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 						<form onSubmit={handleSubmit}>
-							<Studyform onChange={handleChange} inputs={inputs}/>
+							<Studyform inputs={{}}/>
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>

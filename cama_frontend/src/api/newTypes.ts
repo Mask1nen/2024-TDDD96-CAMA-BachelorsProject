@@ -14,8 +14,8 @@ export interface Study {
     experiments: Experiment[];
 }
 
-export const emptyStudy = (id: string): Study => ({
-    id: id,
+export const emptyStudy = (id: number): Study => ({
+    study_id: id,
     title: "",
     authors: "",
     keywords: "",
@@ -29,7 +29,7 @@ export const emptyStudy = (id: string): Study => ({
 });	
 
 export interface Experiment {
-    study_id?: string;
+    study_id?: number;
     id?: string;
     source?: string;
     experiment_number: number;
@@ -50,7 +50,7 @@ export interface Experiment {
     effects: Effect[];
 }
 
-export const emptyExperiment = (id: string, study_id:string): Experiment => ({
+export const emptyExperiment = (id: string, study_id:number): Experiment => ({
     study_id: study_id,
     id: id,
     source: "",
@@ -73,7 +73,7 @@ export const emptyExperiment = (id: string, study_id:string): Experiment => ({
 });
 
 export interface Effect {
-    study_id?: string;
+    study_id?: number;
     experiment_id?: string;
     id?: string;
     test_time: 'baseline' | 'post-test' | 'follow-up';
@@ -104,7 +104,7 @@ export interface Effect {
     outcome_full: string;
     outcome_op?: string;
 }
-export const emptyEffect = (id: string, experiment_id: string, study_id: string): Effect => ({
+export const emptyEffect = (id: string, experiment_id: string, study_id: number): Effect => ({
     id: id,
     study_id: study_id,
     experiment_id: experiment_id,

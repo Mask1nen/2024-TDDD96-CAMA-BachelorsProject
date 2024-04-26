@@ -32,12 +32,12 @@ function Studyform(props) {
 				disabled={(props.readOnly||false)} 
 				id="formCountry"
 				name="country"
-				label="country"
+				label="Country"
 				select
 				defaultValue={props.inputs["country"]||""}
 				>
 				{countries.map((option) => (
-					<MenuItem key={option.value} value={option.value}>
+					<MenuItem key={option.value} value={option.label}>
 					{option.label}
 					</MenuItem>
 				))}
