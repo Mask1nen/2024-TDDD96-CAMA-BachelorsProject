@@ -19,9 +19,12 @@ import DatasetsPage from './pages/Datasets/DatasetsPage.tsx';
 import { Dataset } from '@mui/icons-material';
 import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
 
-
+import React, {useState} from "react";
+export const Context = React.createContext();
 
 const App: React.FC = () => {
+
+  const [isSWE, setIsSWE] = useState(false);
 
 const theme = createTheme({
   
@@ -41,10 +44,11 @@ const theme = createTheme({
     },
   },
 });
-
+  
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <Context.Provider value = {[isSWE, setIsSWE]}>
       <Navbar />
       <Container sx={{px:4, py:4, minHeight: '60vh'}} className="bg-gray-100">
         <Routes>
@@ -61,6 +65,7 @@ const theme = createTheme({
         </Routes>
       </Container>
       <Footer />
+      </Context.Provider>
       </ThemeProvider>
     </Router>
   )
