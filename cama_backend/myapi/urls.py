@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import CamaUserView, StudyView, ExperimentView, EffectDataView, get_orcid_infoAPIView, \
                 CountryOptionsView, CategoryOptionsView, StudyDesignOptionsView, RiskOfBiasOptionsView, ParticipantDesignOptionsView, \
-                ImplementationOptionsView, TestTimeOptionsView, EffectSizeTypeOptionsView        
+                ImplementationOptionsView, TestTimeOptionsView, EffectSizeTypeOptionsView, StudyViewDetail        
 
 urlpatterns = [
     path('cama-users/', CamaUserView.as_view(), name='cama_users'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('populate-implementation/', ImplementationOptionsView.as_view(), name='populate-implementation'),
     path('populate-test-time/', TestTimeOptionsView.as_view(), name='populate-test-time'),
     path('populate-effect-size-type/', EffectSizeTypeOptionsView.as_view(), name='populate-effect-size-type'),
-    path('get-orcid-info/', get_orcid_infoAPIView.as_view(), name='get_orcid_info')
+    path('get-orcid-info/', get_orcid_infoAPIView.as_view(), name='get_orcid_info'),
+    path('study/<int:study_id>/', StudyViewDetail.as_view(), name='detailed-study')
     ]

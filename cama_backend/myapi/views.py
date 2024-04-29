@@ -1,13 +1,12 @@
-import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import CamaUser, Experiment, Study, EffectData, Country, Category, StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, TestTime, EffectSizeType
-from .serializers.cama_user import CamaUserSerializer
-from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
-from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
-from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
-
+from .models import *
+from .serializers.cama_user import *
+from .serializers.study import *
+from .serializers.experiment import *
+from .serializers.effect_data import *
+from django.shortcuts import get_object_or_404
 
 import logging
 logger = logging.getLogger(__name__)
@@ -37,6 +36,9 @@ class StudyView(APIView):
             serializer.save()
             return Response(StudySerializer(serializer.instance).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+        
 
 class ExperimentView(APIView):
     def get(self, request):
@@ -233,3 +235,34 @@ class get_orcid_infoAPIView(APIView):
             return Response({'access_token': access_token, 'refresh_token': refresh_token, 'name': name, 'orcid': orcid}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Failed to get auth token', "response": response}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class StudyViewDetail(APIView):
+
+    @staticmethod
+    def get(request, study_id):
+        """
+        View individual study
+        """
+
+        study = get_object_or_404(Study, pk=study_id)
+        return Response(StudySerializer(study).data)
+
+    @staticmethod
+    def patch(request, study_id):
+        """
+        Approve study
+        """
+
+        study = get_object_or_404(Study, pk=study_id)
+
+        
+        # Update the 'approved' field in the instance and all nested tables
+        study.approved = True
+        for table in study.experiments.all():
+            table.approved = True
+            table.save()
+        study.save()
+
+        # Serialize the instance to return it in the response
+        return Response(StudySerializer(study).data, status=status.HTTP_200_OK)

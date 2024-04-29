@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from ..models import Study, Country, Category, CamaUser, Experiment, EffectData
-from .experiment import ExperimentSerializer, ExperimentFromParentSerializer
+from ..models import *
+from .experiment import *
 
 import logging
 logger = logging.getLogger(__name__)
@@ -46,3 +46,29 @@ class StudyCreateSerializer(serializers.ModelSerializer):
             for effect in effect_data:
                 EffectData.objects.create(experiment_nr=experiment, **effect)
         return study
+
+
+
+
+class StudySerializerUpdate(serializers.ModelSerializer):
+    experiments = serializers.ListField(child=ExperimentFromParentSerializerApproved())
+
+    class Meta:
+        model = Study
+        fields = ['approved', 'experiments']
+    # def validate(self, data):
+    #     """
+    #     Validate authenticated user
+    #     """
+
+    #     if self.instance.uploader != self.context['request'].uploader:
+    #         raise serializers.ValidationError('You can not edit posts from other users')
+    #     return data
+
+    def update(self, instance, validated_data):
+        # Only update the 'approved' field in all nested tables
+        for table in validated_data.get('experiments'):
+            table.approved = validated_data.get('approved')
+            table.save()  # This is necessary
+        instance.save()
+        return instance

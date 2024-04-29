@@ -75,3 +75,9 @@ class ExperimentFromParentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experiment
         exclude = ['study_id']
+
+
+class ExperimentFromParentSerializerApproved(serializers.ModelSerializer):
+    class Meta:
+        model = Experiment
+        fields = ['approved']
