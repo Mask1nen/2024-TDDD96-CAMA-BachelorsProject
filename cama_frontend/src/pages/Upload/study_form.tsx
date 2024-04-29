@@ -5,7 +5,7 @@ import countries from "../../assets/countries.json"
 
 
 function Studyform(props) {
-
+	
 
 
 	  const disabledStyling = {

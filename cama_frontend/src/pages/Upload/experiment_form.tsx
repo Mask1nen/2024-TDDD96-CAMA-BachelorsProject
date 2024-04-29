@@ -5,7 +5,7 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
 
-const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly, inputs}: any) => {
+const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly, inputs, addToExisting = false}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -21,31 +21,29 @@ const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, a
                 </AccordionSummary>
                 <AccordionDetails>
                         {experimentFields.map(field => (
-                            <Tooltip title={field.desc} key={field.key}>
-                                <TextField
-                                    disabled={(readOnly||false)}
-                                    sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
-                                    variant="standard"
-                                    id={"form" + field.key}
-                                    label={field.name}
-                                    name={experimentId +"_"+ field.key}
-                                    select={!!field.options}
-                                    defaultValue={inputs[field.key]||""}
-                                >
-                                    {field.options?.map(option => (
-                                        <MenuItem key={`${field.key}-${option}`} value={option}>
-                                            {option}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Tooltip>
+                            <TextField
+                                disabled={(readOnly||false)}
+                                sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
+                                variant="standard"
+                                id={"form" + field.key}
+                                label={field.name}
+                                name={experimentId +"_"+ field.key}
+                                select={!!field.options}
+                                defaultValue={inputs[field.key]||""}
+                            >
+                                {field.options?.map(option => (
+                                    <MenuItem key={`${field.key}-${option}`} value={option}>
+                                        {option}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
                         ))}
                     {effects.map((effect: {id: string, experiment_id:string}) => (
                         <div key={effect.id}>
                             {effect.experiment_id == experimentId ? (
                             <Box key={effect.id} >
                                 <EffectForm 
-                                    readOnly={readOnly}
+                                    readOnly={readOnly && !addToExisting}
                                     inputs={effect} 
                                     experimentId={experimentId} 
                                     effectId={effect.id}/>
@@ -59,7 +57,7 @@ const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, a
                             ): ""}
                         </div>
                     ))}
-                    {(!readOnly) ?(
+                    {(!readOnly || addToExisting) ?(
                         <div>
                             <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
                             Add Effect<AddCircleOutline sx={{ ml: 1 }} />

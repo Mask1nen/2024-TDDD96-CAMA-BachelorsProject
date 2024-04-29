@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo,useEffect } from "react";
 import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
 import countries from "../../assets/countries.json"
 import '@mui/material';
@@ -8,7 +8,7 @@ import Experimentform from "./experiment_form"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
-import { addStudy } from "../../api/dataAPI";
+import { addStudy, fetchStudyById } from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 
 
@@ -143,7 +143,33 @@ const UploadPage: React.FC = () => {
 	const handleDialogClose = () => setDialogOpen(false);
 
 	const [addToExisting, setAddToExisting] = React.useState(false);
-	const [existingStudy, setExistingStudyId] = React.useState(null);
+	const [existingStudyId, setExistingStudyId] = React.useState<number>(-1);
+
+	const [existingStudy, setExistingStudy] = React.useState<Study>();
+
+	const setAddNewStudy = () => {
+		setAddToExisting(false);
+		setExistingStudyId(-1);
+		setExistingStudy(undefined);
+		setExperimentValues([]);
+	}
+
+	useEffect(() => {
+		const fetchStudy = async () => {
+			if (existingStudyId != -1) {
+				try {
+					const study = await fetchStudyById(existingStudyId);
+					setExistingStudy(study);
+
+				} catch (error) {
+					console.error('Error fetching study:', error);
+				}
+				console.log(existingStudy)
+			}
+
+		}
+		fetchStudy();
+	  }, [existingStudyId]);
 
 
 
@@ -170,15 +196,16 @@ const UploadPage: React.FC = () => {
 									Add to existing study
 								</Button>
 							) : (
-								<Button sx={{ml:2}} size="small" onClick={() => setAddToExisting(false)} variant="outlined">Add new study</Button>
+								<Button sx={{ml:2}} size="small" onClick={setAddNewStudy} variant="outlined">Add new study</Button>
 								)
 							}
-					<SearchDialog dialogOpen={dialogOpen} handleDialogClose={handleDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
+					<SearchDialog dialogOpen={dialogOpen} value={existingStudy} handleDialogClose={handleDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
 
 					</Box>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 						<form onSubmit={handleSubmit}>
-							<Studyform inputs={{}}/>
+							
+							<Studyform key={uuidv4()} readOnly={addToExisting} inputs={addToExisting ? existingStudy : {}}/>
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
@@ -188,6 +215,7 @@ const UploadPage: React.FC = () => {
 									<Experimentform 
 										key={experiment} 
 										inputs={{}}
+										readOnly={false}
 										effects={effects}
 										addEffect={addEffect}
 										removeEffect={removeEffect}
@@ -198,6 +226,20 @@ const UploadPage: React.FC = () => {
 									</Button>	
 								</Box>
 							)}
+							
+							{addToExisting ? (existingStudy?.experiments.map((experiment) =>
+								<Box key={experiment.id}>
+									<Experimentform 
+										inputs={experiment}
+										readOnly={addToExisting}
+										addToExisting={true}
+										effects={effects}
+										addEffect={addEffect}
+										removeEffect={removeEffect}
+										experimentId={experiment}/>
+								
+								</Box>
+							)) : ""}
 							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
 								<Button type="submit" variant="contained" className="float-">Send</Button>
 							</Box>

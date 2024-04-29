@@ -11,16 +11,15 @@ import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} fro
 import { searchStudy } from "../../api/dataAPI";	
 	
 		
-const SearchDialog: React.FC = ({dialogOpen, handleDialogClose, setAddToExisting, setExistingStudyId}:any) => {
+const SearchDialog: React.FC = ({dialogOpen, handleDialogClose, setAddToExisting, setExistingStudyId, value}:any) => {
 
 	const [options, setOptions] = useState([]);
-	const [value, setValue] = useState({});
   
 	const handleChange = (event, newValue) => {
 		console.log(newValue);
-		setValue(newValue);
-		setExistingStudyId(newValue.study_id);
-		console.log(value.title);
+		if (newValue) {
+			setExistingStudyId(newValue.study_id);
+		}
 	}
 	// Fetch options from the API based on the search term
 	const fetchOptions = async (query) => {
@@ -36,7 +35,7 @@ const SearchDialog: React.FC = ({dialogOpen, handleDialogClose, setAddToExisting
 	};
 
 
-	const getOptionLabel = (option) => option.study_id + ": " + option.title;
+	const getOptionLabel = (option) => option === "" ? "" : option.study_id + ": " + option.title;
 
 	return(
 
@@ -55,6 +54,7 @@ const SearchDialog: React.FC = ({dialogOpen, handleDialogClose, setAddToExisting
 					options={options}
 					getOptionLabel={getOptionLabel}
 					onChange={handleChange}
+					value={value || ""}
 					onInputChange={(event, newInputValue) => fetchOptions(newInputValue)}
 					renderInput={(params) => <TextField {...params} label="Search Studies" />}
 				/>
@@ -62,7 +62,7 @@ const SearchDialog: React.FC = ({dialogOpen, handleDialogClose, setAddToExisting
 			</DialogContent>
 			<DialogActions>
 			<Button onClick={handleDialogClose}>Cancel</Button>
-			<Button onClick={() => {setAddToExisting(true); handleDialogClose()}}>Save</Button>
+			<Button disabled={!value} onClick={() => {setAddToExisting(true); handleDialogClose()}}>Fetch</Button>
 			</DialogActions>
 		</Dialog>
 	)
