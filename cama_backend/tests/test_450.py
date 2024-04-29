@@ -6,6 +6,7 @@ from tests.factories import *
 import json
 import logging
 logger = logging.getLogger(__name__)
+from myapi.serializers import study, experiment, effect_data
 
 
 
@@ -115,9 +116,13 @@ class ExperimentFilterAPITest(TestCase):
         self.client = APIClient()
     
     def test_get_filter_data(self):
-        experiemnt = ExperimentFactory.create_batch(10)
+        experiemnt = ExperimentFactory.create_batch(100)
         response = self.client.get(f'/api/experiment-filterd/?intensity_n=7&grade__seventh=True')
-        assert len(response.data) == 2;
+        exp_count = 0
+        for x in experiemnt:
+            if (x.intensity_n == 7 and x.grade.seventh == True):
+                exp_count += 1 
+        assert len(response.data) == exp_count;
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
         
@@ -127,7 +132,7 @@ class EffectDataFilterAPITest(TestCase):
         self.client = APIClient()
     
     def test_get_filter_data(self):
-        effect_datas = EffectDataFactory.create_batch(10)
+        effect_datas = EffectDataFactory.create_batch(100)
         smd_count = 0
         for effect_data in effect_datas:
             name = effect_data.effect_size_type.name
@@ -145,7 +150,7 @@ class StudyFilterAPITest(TestCase):
         self.client = APIClient()
     
     def test_get_filter_data(self):
-        studies = StudyFactory.create_batch(10)
+        studies = StudyFactory.create_batch(100)
         sweden_count = 0
         for study in studies:
             name = study.country.name
@@ -155,14 +160,87 @@ class StudyFilterAPITest(TestCase):
         response = self.client.get(f'/api/studies-filterd/?country__name=Sweden')
         assert len(response.data) == sweden_count;
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
-        
-# Integration test
-# Get the different options of the options tables through get calls to them.
-# Add an additional option.
-# Filter for studies with help of the accuired alternetives.
-# Check so the filterd gets worked. 
 
+
+@pytest.mark.django_db   
+class StudySearchAPITest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    
+    def test_get_search_data(self):
+        studies = StudyFactory.create_batch(100)
+        response = self.client.get(f'/api/studies-search/?authors=Thomas')
+        name_count = 0
+        for x in studies:
+            if x.authors == 'Thomas':
+                name_count += 1
+        assert len(response.data) == name_count
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        word = 'fine'
+        response = self.client.get(f'/api/studies-search/?title={word}')        
+        word_count = 0
+        for x in studies:
+            if word in x.title:
+                word_count += 1
+        assert len(response.data) == word_count
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    
+    def test_get_search_data_wrong(self):
+        studies = StudyFactory.create_batch(100)
+        response = self.client.get(f'/api/studies-search/?authors=Thomas')
+        name_count = 0
+        for x in studies:
+            if x.authors == 'Thomas':
+                name_count += 1
+        assert len(response.data) == name_count
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        word = 'fine'
+        response = self.client.get(f'/api/studies-search/?title={word}')        
+        word_count = 0
+        for x in studies:
+            if word in x.title:
+                word_count += 1
+        assert len(response.data) == word_count
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+                
+       
+        
+        
+
+@pytest.mark.django_db   
+class Feat450IntegrationTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    
+    def test(self):
+        generated_data = ExperimentFactory.create_batch(10)
+        
+        country_response = self.client.get(f'/api/populate-country/')
+        self.assertEqual(country_response.status_code, status.HTTP_200_OK)
+        country_list = []
+        for country in country_response.data:
+            country_list.append([country['id'], country['name']])
+        
+        
+        study_design_response = self.client.get(f'/api/populate-study-design/')
+        self.assertEqual(country_response.status_code, status.HTTP_200_OK)
+        design_list = []
+        for study_design in study_design_response.data:
+            design_list.append([study_design['id'], study_design['design']])
+           
+        experiment_count = 0
+        for x in generated_data:
+            if x.study_id.country.name == country_list[47][1] and x.study_design.design == design_list[0][1]: 
+                experiment_count += 1
+                
+        filterd_experiments_response = self.client.get(f'/api/experiment-filterd/?study_id__country={country_list[47][0]}&study_design={design_list[0][0]}')
+        assert len(filterd_experiments_response.data) == experiment_count
+        self.assertEqual(filterd_experiments_response.status_code, status.HTTP_200_OK)
+        
+
+                
         
 
         

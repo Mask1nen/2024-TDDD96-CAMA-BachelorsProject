@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ['name']
+        fields = '__all__'
         
     def create(self, validated_data):
             country_name = validated_data.pop('name')
@@ -20,7 +20,7 @@ class CountrySerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = '__all__'
     
     def create(self, validated_data):
             name = validated_data.pop('name')

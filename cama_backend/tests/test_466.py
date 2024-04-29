@@ -24,12 +24,12 @@ def test_user_user_factory(cama_user_factory):
 
 @pytest.mark.django_db(transaction=True)
 def test_study_factory(study_factory):
-    size = 10
+    size = 100
     study = StudyFactory.create_batch(size)
     print(len(study))
     assert len(study) == size
     #for x in study:
-       # print(f'{x.study_id} : {x.uploader} : {x.study_year} : {x.country.name} : {x.category} : {x.peer_reviewed} : {x.authors} : {x.doi} : {x.abstract} : {x.keywords} : {x.nr_downloads}')
+    #    print(f'{x.study_id} : {x.uploader} : {x.study_year} : {x.country.name} : {x.category.name} : {x.peer_reviewed} : {x.authors} : {x.doi} : {x.abstract} : {x.keywords} : {x.nr_downloads}')
         
        
 @pytest.mark.django_db(transaction=True)
