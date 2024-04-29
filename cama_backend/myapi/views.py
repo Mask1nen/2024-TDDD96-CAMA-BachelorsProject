@@ -120,6 +120,21 @@ class EffectDataFilterView(APIView):
         effect_data = EffectData.objects.all().filter(filters)
         serializer = EffectDataSerializer(effect_data, many=True)
         return Response(serializer.data)
+    
+class StudySearchView(APIView):
+    def get(self, request):
+        # The title should be provided as url/?title=Part
+         # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        for key, value in parameters.items():
+            if key == 'title' or key == 'authors':
+                filter_condition = {f"{key}__contains": value}
+                filters &= Q(**filter_condition)
+        studies = Study.objects.all().filter(filters)
+        serializer = StudySerializer(studies, many=True)
+        return Response(serializer.data)
 
 class StudyDetailView(APIView):
     def get(self, request, id):

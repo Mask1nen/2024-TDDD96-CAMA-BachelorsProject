@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class StudyDesignSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyDesign
-        fields = ['design']
+        fields = '__all__'
         
     def create(self, validated_data):
             study_design_name = validated_data.pop('design')
@@ -20,7 +20,7 @@ class StudyDesignSerializer(serializers.ModelSerializer):
 class RiskOfBiasSerializer(serializers.ModelSerializer):
     class Meta:
         model = RiskOfBias
-        fields = ['rob']
+        fields = '__all__'
         
     def create(self, validated_data):
             risk_of_bias_rob = validated_data.pop('rob')
@@ -69,7 +69,7 @@ class ParticipantDesignSerializer(serializers.ModelSerializer):
 class ImplementationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Implementation
-        fields = ['implementor']
+        fields = '__all__'
         
     def create(self, validated_data):
             implementation_name = validated_data.pop('implementor')

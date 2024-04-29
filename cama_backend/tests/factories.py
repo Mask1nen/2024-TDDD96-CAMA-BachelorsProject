@@ -27,17 +27,17 @@ class StudyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Study
         
-    title = "This is a example title which is extremely captivating"
+    title = factory.Faker('sentence', nb_words=6) 
     uploader = factory.SubFactory(CamaUserFactory)
     study_year = factory.fuzzy.FuzzyInteger(2000, 2024)
     
     @factory.lazy_attribute
     def country(self):
-        return Country.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Sweden", "England", "Norway", "USA", "Germany"]))[0]
+        return Country.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Sweden", "England", "Norway", "USA", "Germany"]).fuzz())[0]
     
     @factory.lazy_attribute
     def category(self):
-        return Category.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Math", "STEM", "Language"]))[0]
+        return Category.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["Math", "STEM", "Language"]).fuzz())[0]
 
     
     peer_reviewed = True
@@ -57,12 +57,12 @@ class ExperimentFactory(factory.django.DjangoModelFactory):
 
     @factory.lazy_attribute
     def study_design(self):
-        return StudyDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["RCT", "QES"]))[0]
+        return StudyDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["RCT", "QES"]).fuzz())[0]
     
     
     @factory.lazy_attribute
     def risks(self):
-        return RiskOfBias.objects.get_or_create(rob=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]))[0]
+        return RiskOfBias.objects.get_or_create(rob=factory.fuzzy.FuzzyChoice(["low", "moderate", "high"]).fuzz())[0]
     
     robins = "The robins value"
     
@@ -85,12 +85,12 @@ class ExperimentFactory(factory.django.DjangoModelFactory):
     
     @factory.lazy_attribute
     def participant_design(self):
-        return ParticipantDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["within", "bewteen", "mixed"]))[0]
+        return ParticipantDesign.objects.get_or_create(design=factory.fuzzy.FuzzyChoice(["within", "bewteen", "mixed"]).fuzz())[0]
     
     
     @factory.lazy_attribute
     def implemented(self):
-        return Implementation.objects.get_or_create(implementor=factory.fuzzy.FuzzyChoice(["researcher","teacher", "paraprofessional"]))[0]
+        return Implementation.objects.get_or_create(implementor=factory.fuzzy.FuzzyChoice(["researcher","teacher", "paraprofessional"]).fuzz())[0]
     
     
     intensity_n = factory.fuzzy.FuzzyInteger(4, 14) 
@@ -117,11 +117,11 @@ class EffectDataFactory(factory.django.DjangoModelFactory):
     
     @factory.lazy_attribute
     def effect_size_type(self):
-        return EffectSizeType.objects.get_or_create(name=rd.choice(["SMD","RR/OR"]))[0]
+        return EffectSizeType.objects.get_or_create(name=factory.fuzzy.FuzzyChoice(["SMD","RR/OR"]).fuzz())[0]
     
     @factory.lazy_attribute
     def test_time(self):
-        return TestTime.objects.get_or_create(time=rd.choice(["pre-test", "post-test", "follow-up"]))[0]
+        return TestTime.objects.get_or_create(time=factory.fuzzy.FuzzyChoice(["pre-test", "post-test", "follow-up"]).fuzz())[0]
     
     test_name = "This is the name of the test used to measure the outcome"
     
