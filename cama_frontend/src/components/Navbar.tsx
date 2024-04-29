@@ -154,11 +154,11 @@ function Navbar() {
                   Add Study
                 </Button>
               </Link>
-            <Tooltip title="Open settings">
+            {isLoggedIn && <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ width: "40px", height: "40px", margin: "0 auto" }} />
               </IconButton>
-            </Tooltip>
+            </Tooltip>}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

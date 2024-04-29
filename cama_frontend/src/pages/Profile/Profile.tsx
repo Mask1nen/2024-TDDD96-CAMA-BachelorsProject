@@ -1,53 +1,47 @@
-import React from "react";
-import { Button, Grid, Paper, Avatar, Box, Typography} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {Grid, Paper, Avatar, Box, Typography} from "@mui/material";
 
 import '@mui/material';
+import { useAuth } from "../../hooks/useAuth";
 
 const ProfilePage: React.FC = () => {
-	return (
-		<Box sx={{py:2, pl:2}}>
-			<Grid container spacing={2}>
-				<Box display="flex">
-					<Grid item xs={6}>
-						<Paper sx={{p:3, height:'100%', mr:2}}>
-							<Box display="flex" sx={{justifyContent:"flex-start"}}>
-								<Avatar  sx={{width:200, height:200}} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-								<Box >
-									<Box><b>Marcus Wandt</b></Box>
-									<Box sx={{mt:2}}>Hedersdoktor vid Linköpings universitet, Astronaut, Chefstestare för JAS Gripen vid SAAB </Box>
-									<Box sx={{mt:2}}>Lorem ipsum dolor sit amet</Box>
-								</Box>
-							</Box>
-						</Paper>
-					</Grid>
-					<Grid item xs={6}>
-							<Paper sx={{p:3, height:'100%'}}><b>About: </b>LLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametorem ipsum dolor sit amet</Paper>
-					</Grid>
-				</Box>
-			</Grid>
-			<Grid container spacing={2} sx={{mt:2}}>
-				<Box display="flex">
-					<Grid item xs={6}>
-						<Paper sx={{p:3, height:'100%', mr:2}}>
-							<Grid container spacing={1}>
-								<Typography variant="h5">
-									Most viewed studies
-								</Typography>
-								<Typography variant="h5">
-									Most viewed studies
-								</Typography>
+	const [loading, setLoading] = useState(true);
+	const [isLoggedIn, session] = useAuth();
 
-							</Grid>
-						</Paper>
-					</Grid>
-					<Grid item xs={6}>
-							<Paper sx={{p:3, height:'100%'}}><b>About:</b>LLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametorem ipsum dolor sit amet</Paper>
-					</Grid>
-				</Box>
-			</Grid>
-		</Box>
+	// Handle to not have redirection on refresh
+	useEffect(() => {
+		setLoading(false);
+	}, [isLoggedIn]);
 
+	if (loading) {
+		return (
+			<div>
+				Loading...
+			</div>
 		);
-	};
-	
-	export default ProfilePage;
+		}
+  
+  if (!isLoggedIn) {
+    window.location.href = "/Home";
+  }
+
+  const orcid = session?.orcid;
+  const name = session?.name;
+  return (
+    <Grid container justifyContent="center">
+      <Grid item xs={12} sm={6} md={4}>
+        <Paper elevation={3} sx={{ padding: "2rem" }}>
+          <Avatar sx={{ width: "100px", height: "100px", margin: "0 auto" }} />
+          <Box textAlign="center" mt={2}>
+            <Typography variant="h5">{name}</Typography>
+            <Typography variant="subtitle1">{orcid}</Typography>
+          </Box>
+          <Box textAlign="center" mt={2}>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default ProfilePage;
