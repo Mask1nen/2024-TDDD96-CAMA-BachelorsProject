@@ -68,6 +68,18 @@ export const fetchStudyById = async (id: number): Promise<Study | null> => {
         return null;
     }
 };
+export const searchStudy = async (search_term: string): Promise<Study[] | null> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/studies-filterd/?title=${search_term}`, {
+            method: 'GET',
+        });
+        if (!response.ok) throw new Error(`Failed to search for study with title ${search_term}`);
+        return await response.json() as Study[];
+    } catch (error) {
+        console.error(`Error searching for study with title ${search_term}:`, error);
+        return null;
+    }
+};
 
 
 export const updateStudy = async (id: number, study: Study): Promise<Study | null> => {

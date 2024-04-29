@@ -1,14 +1,16 @@
 import React, { useState, useMemo } from "react";
-import { Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
+import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
 import countries from "../../assets/countries.json"
 import '@mui/material';
 import Studyform from "./study_form"
 import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
-import {AddCircleOutline, RemoveCircleOutline} from "@mui/icons-material"
+import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
 import { addStudy } from "../../api/dataAPI";
+import SearchDialog from "./searchDialog";
+
 
 interface inputEvent {
 	target: {
@@ -134,7 +136,15 @@ const UploadPage: React.FC = () => {
 		}
 
 	};
-	
+
+	//Dialog
+	const [dialogOpen, setDialogOpen] = React.useState(false);
+	const handleDialogOpen = () => setDialogOpen(true);
+	const handleDialogClose = () => setDialogOpen(false);
+
+	const [addToExisting, setAddToExisting] = React.useState(false);
+	const [existingStudy, setExistingStudyId] = React.useState(null);
+
 
 
 	return (
@@ -149,9 +159,23 @@ const UploadPage: React.FC = () => {
 				<Box sx={{ borderBottom: 1, borderColor: 'divider', my:1}}>
 				</Box>
 				
-					<Typography variant="h5">
-						Study information
-					</Typography>
+					<Box sx={{display:"flex", justifyContent:"start"}}>
+
+						<Typography variant="h5">
+							Study information
+						</Typography>
+						
+						{!addToExisting ? (
+								<Button sx={{ml:2}} size="small" variant="outlined" startIcon={<SavedSearch />} onClick={handleDialogOpen}>
+									Add to existing study
+								</Button>
+							) : (
+								<Button sx={{ml:2}} size="small" onClick={() => setAddToExisting(false)} variant="outlined">Add new study</Button>
+								)
+							}
+					<SearchDialog dialogOpen={dialogOpen} handleDialogClose={handleDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
+
+					</Box>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 						<form onSubmit={handleSubmit}>
 							<Studyform inputs={{}}/>
