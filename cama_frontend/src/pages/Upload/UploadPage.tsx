@@ -8,7 +8,7 @@ import Experimentform from "./experiment_form"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
-import { addStudy, fetchStudyById } from "../../api/dataAPI";
+import { addStudy, fetchStudyById, addExperiment } from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 
 
@@ -123,6 +123,22 @@ const UploadPage: React.FC = () => {
 				effect_datas: experiment.effects //@todo change
 			}))
 		}
+
+		if (addToExisting) {
+			let oldExperimentIds = existingStudy?.experiments.map((e) => e.id);
+			let newExperiments = formEntry.experiments.filter((exp) => (!oldExperimentIds?.includes(exp.id)));
+
+			let oldEffects = existingStudy?.experiments.map(e => e.effects).flat().map((eff) => eff.experiment_id + eff.id); //will not work. Check with jonas
+			let newEffects = formEntry?.experiments.map(e => e.effects).flat().filter((eff) => !oldEffects.includes(eff.experiment_id + eff.id)); //will not work. Check with jonas
+
+			newExperiments.forEach(function(exp) {
+				//post experiment
+			});
+			newEffects.forEach(function(eff) {
+				//post eff
+			});
+		}
+	
 		
 		console.log(fullStudyData)
 		
