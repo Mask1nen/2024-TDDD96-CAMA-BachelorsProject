@@ -4,11 +4,12 @@ from .data_471 import TestData
 
 from rest_framework import status
 from myapi.models import *
+from rest_framework.test import APIClient
 
 import logging
 logger = logging.getLogger(__name__)
 
-class CamaUserAPITest(APITestCase):
+class CamaUserTestCase(APITestCase):
     def setUp(self):
         self.url = reverse('cama_users')
         self.testData = TestData
@@ -27,9 +28,11 @@ class CamaUserAPITest(APITestCase):
         self.assertEqual(CamaUser.objects.count(), 0)  # No object should be created
 
 
-class StudyListCreateAPIViewTests(APITestCase):
+class StudyTestCase(APITestCase):
     def setUp(self):
         self.url = reverse('studies')
+        self.detailed_url = reverse('detailed-study', kwargs={'study_id': 2})
+
         self.testData = TestData
         CamaUser.objects.create(orc_id='0000-0002-1825-0097',
                                 name="John Doe")
@@ -58,6 +61,14 @@ class StudyListCreateAPIViewTests(APITestCase):
         study_experimentnr = response.data[0].get('experiments')[0].get('effects')[0].get('experiment_nr')
         self.assertEqual(study_experimentnr, 1)
 
+        print(study_id, 'banan')
+        update_data = {'approved': True}
+        response = self.client.patch(self.detailed_url, update_data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['approved'], True)
+        # self.assertEqual(response.data, StudySerializer(self.study).data)
+    
+
     def test_post_get_halfstudy(self):
         response = self.client.post(self.url, self.testData.half_study_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -71,11 +82,14 @@ class StudyListCreateAPIViewTests(APITestCase):
         study_effectslist = response.data[0].get('experiments')[0].get('effects')
         self.assertEqual(study_effectslist, [])
 
+
     def test_invalid_study(self):
         invalid_payload = {}  # Payload with missing required fields
         response = self.client.post(self.url, invalid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
+
+        
 
 class ExperimentTestCase(APITestCase):
     def setUp(self):
