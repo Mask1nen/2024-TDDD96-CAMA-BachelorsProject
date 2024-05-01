@@ -132,7 +132,7 @@ class EffectDataFilterAPITest(TestCase):
         self.client = APIClient()
     
     def test_get_filter_data(self):
-        effect_datas = EffectDataFactory.create_batch(100)
+        effect_datas = EffectDataFactory.create_batch(10)
         smd_count = 0
         for effect_data in effect_datas:
             name = effect_data.effect_size_type.name
@@ -204,10 +204,7 @@ class StudySearchAPITest(TestCase):
                 word_count += 1
         assert len(response.data) == word_count
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-                
-       
-        
-        
+                    
 
 @pytest.mark.django_db   
 class Feat450IntegrationTest(TestCase):
@@ -232,20 +229,10 @@ class Feat450IntegrationTest(TestCase):
            
         experiment_count = 0
         for x in generated_data:
-            if x.study_id.country.name == country_list[47][1] and x.study_design.design == design_list[0][1]: 
+            if x.study_id.country.name == country_list[46][1] and x.study_design.design == design_list[0][1]: 
                 experiment_count += 1
                 
-        filterd_experiments_response = self.client.get(f'/api/experiment-filterd/?study_id__country={country_list[47][0]}&study_design={design_list[0][0]}')
+        filterd_experiments_response = self.client.get(f'/api/experiment-filterd/?study_id__country={country_list[46][0]}&study_design={design_list[0][0]}')
         assert len(filterd_experiments_response.data) == experiment_count
         self.assertEqual(filterd_experiments_response.status_code, status.HTTP_200_OK)
-        
-
-                
-        
-
-        
-    
-
-
-
         

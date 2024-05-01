@@ -46,12 +46,16 @@ class StudyFilterView(APIView):
         parameters = request.GET.dict()
         # Create an empty Q object to hold the filters
         filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in Study._meta.get_fields()]
         for key, value in parameters.items():
             if '__' in key:
                 related_field, attribute = key.split('__')
-                filter_condition = {f"{related_field}__{attribute}": value}
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
             else:
-                filter_condition = {f"{key}": value}
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
             filters &= Q(**filter_condition)
         studies = Study.objects.all().filter(filters)
         serializer = StudySerializer(studies, many=True)
@@ -64,12 +68,16 @@ class ExperimentFilterView(APIView):
         parameters = request.GET.dict()
         # Create an empty Q object to hold the filters
         filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in Experiment._meta.get_fields()]
         for key, value in parameters.items():
             if '__' in key:
                 related_field, attribute = key.split('__')
-                filter_condition = {f"{related_field}__{attribute}": value}
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
             else:
-                filter_condition = {f"{key}": value}
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
             filters &= Q(**filter_condition)
         experiments = Experiment.objects.all().filter(filters)
         serializer = ExperimentSerializer(experiments, many=True)
@@ -81,12 +89,16 @@ class EffectDataFilterView(APIView):
         parameters = request.GET.dict()
         # Create an empty Q object to hold the filters
         filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in EffectData._meta.get_fields()]
         for key, value in parameters.items():
             if '__' in key:
                 related_field, attribute = key.split('__')
-                filter_condition = {f"{related_field}__{attribute}": value}
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
             else:
-                filter_condition = {f"{key}": value}
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
             filters &= Q(**filter_condition)
         effect_data = EffectData.objects.all().filter(filters)
         serializer = EffectDataSerializer(effect_data, many=True)
