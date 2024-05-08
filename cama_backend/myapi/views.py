@@ -1,12 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import *
-from .serializers.cama_user import *
-from .serializers.study import *
-from .serializers.experiment import *
-from .serializers.effect_data import *
+from .models import CamaUser, Experiment, Study, EffectData, Country, Category, StudyDesign, RiskOfBias, Grade, ParticipantDesign, Implementation, TestTime, EffectSizeType
+from .serializers.cama_user import CamaUserSerializer
+from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
+from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
+from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -39,6 +41,86 @@ class StudyView(APIView):
         
 
         
+    
+
+class StudyFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in Study._meta.get_fields()]
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        studies = Study.objects.all().filter(filters)
+        serializer = StudySerializer(studies, many=True)
+        return Response(serializer.data)
+    
+    
+class ExperimentFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in Experiment._meta.get_fields()]
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        experiments = Experiment.objects.all().filter(filters)
+        serializer = ExperimentSerializer(experiments, many=True)
+        return Response(serializer.data)
+    
+class EffectDataFilterView(APIView):
+    def get(self, request):
+        # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        filter_condition = {}
+        fields = [field.name for field in EffectData._meta.get_fields()]
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if (related_field in fields):
+                    filter_condition = {f"{related_field}__{attribute}": value}
+            else:
+                if (key in fields):
+                    filter_condition = {f"{key}": value}
+            filters &= Q(**filter_condition)
+        effect_data = EffectData.objects.all().filter(filters)
+        serializer = EffectDataSerializer(effect_data, many=True)
+        return Response(serializer.data)
+    
+class StudySearchView(APIView):
+    def get(self, request):
+        # The title should be provided as url/?title=Part
+         # Get all the provided parameters from the query string
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        filters = Q()
+        for key, value in parameters.items():
+            if key == 'title' or key == 'authors':
+                filter_condition = {f"{key}__contains": value}
+                filters &= Q(**filter_condition)
+        studies = Study.objects.all().filter(filters)
+        serializer = StudySerializer(studies, many=True)
+        return Response(serializer.data)
 
 class ExperimentView(APIView):
     def get(self, request):
@@ -75,7 +157,7 @@ class CountryOptionsView(APIView):
     
     def post(self, request):
         name = request.data.pop('name')
-        serializer = CountrySerializer(data=name)
+        serializer = CountrySerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -85,11 +167,12 @@ class CountryOptionsView(APIView):
 class CategoryOptionsView(APIView):
     def get(self, request):
         options = Category.objects.all()
-        serializer = CategorySerializer()
+        serializer = CategorySerializer(options, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
         name = request.data.pop('name')
-        serializer = CategorySerializer(data=name)
+        serializer = CategorySerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -104,7 +187,7 @@ class StudyDesignOptionsView(APIView):
 
     def post(self, request):
         design = request.data.pop('design')
-        serializer = StudyDesignSerializer(data=design)
+        serializer = StudyDesignSerializer(data={'design': design})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -119,7 +202,7 @@ class RiskOfBiasOptionsView(APIView):
     
     def post(self, request):
         rob = request.data.pop('rob')
-        serializer = RiskOfBiasSerializer(data=rob)
+        serializer = RiskOfBiasSerializer(data={'rob': rob})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -134,7 +217,7 @@ class GradeOptionsView(APIView):
     
     def post(self, request):
         grade = request.data.pop('grade')
-        serializer = GradeSerializer(data=grade)
+        serializer = GradeSerializer(data={'grade': grade})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -149,7 +232,7 @@ class ParticipantDesignOptionsView(APIView):
     
     def post(self, request):
         design = request.data.pop('design')
-        serializer = ParticipantDesign(data=design)
+        serializer = ParticipantDesignSerializer(data={'design': design})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -164,7 +247,7 @@ class ImplementationOptionsView(APIView):
     
     def post(self, request):
         implementor = request.data.pop('implementor')
-        serializer = Implementation(data=implementor)
+        serializer = ImplementationSerializer(data={'implementor': implementor})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -179,7 +262,7 @@ class TestTimeOptionsView(APIView):
     
     def post(self, request):
         time = request.data.pop('time')
-        serializer = TestTimeSerializer(data=time)
+        serializer = TestTimeSerializer(data={'time': time})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
@@ -194,7 +277,7 @@ class EffectSizeTypeOptionsView(APIView):
     
     def post(self, request):
         name = request.data.pop('name')
-        serializer = EffectSizeTypeSerializer(data=name)
+        serializer = EffectSizeTypeSerializer(data={'name': name})
         logger.info(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
