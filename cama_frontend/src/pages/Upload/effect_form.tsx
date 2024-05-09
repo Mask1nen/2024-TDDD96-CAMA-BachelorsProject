@@ -7,7 +7,7 @@ import { ArrowDownward } from '@mui/icons-material';
 import { blueGrey } from '@mui/material/colors';
 import { effectFields } from './effectFields'; // Make sure the import path is correct
 
-const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId, readOnly}: any) => {
+const EffectForm: React.FC = ({inputs, experiment_nr, effect_size_number, readOnly}: any) => {
   
   const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -30,7 +30,7 @@ const EffectForm: React.FC = ({inputs, onChange, experimentId, effectId, readOnl
                     variant="standard"
                     id={"form" + field.key}
                     label={field.name}
-                    name={experimentId +"_"+ effectId +"_"+ field.key}
+                    name={experiment_nr +"_"+ effect_size_number +"_"+ field.key}
                     select={!!field.options}
                     defaultValue={inputs[field.key]||""}
                     fullWidth

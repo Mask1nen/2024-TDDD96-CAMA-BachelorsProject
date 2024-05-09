@@ -26,7 +26,7 @@ const UploadPage: React.FC = () => {
 	const addExperiment = () => {
 
 		setExperimentValues(function(prev) {
-			return [...prev, uuidv4()];
+			return [...prev, uuidv4()]; //temporary id in frontend
 		});
 	};
 
@@ -42,18 +42,18 @@ const UploadPage: React.FC = () => {
 
 	//EFFECT
 
-	const [effects, setEffects] = useState<{experiment_id: string, id:string}[]>([]);
+	const [effects, setEffects] = useState<{experiment_nr: number, effect_size_number:number}[]>([]);
 
-    const addEffect = (experimentId: string) => {
+    const addEffect = (experiment_nr: string) => {
         setEffects(function(prev) {
-            let id = (prev.length + 1).toString();
-			let newEffect = {experiment_id: experimentId, id:id}
+            let effect_size_number = (prev.length + 1);
+			let newEffect = {experiment_nr: experiment_nr, effect_size_number:effect_size_number}
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
     };
-	const removeEffect = (effectId: string, experimentId: string) => {
+	const removeEffect = (effect_size_number: number, experiment_nr: string) => {
         if(window.confirm('Are you sure you want to remove this effect?')) {
-            setEffects(prev => prev.filter((effect) => !(effect['id'] === effectId && effect['experiment_id'] === experimentId)));
+            setEffects(prev => prev.filter((effect) => !(effect['effect_size_number'] == effect_size_number && effect['experiment_nr'] == experiment_nr)));
         }
     };
 
@@ -85,14 +85,14 @@ const UploadPage: React.FC = () => {
 
 			//Create empty effect for each existing effect connected to this experiment and fill with data from form
 			effects.forEach(function(effectListObj) {
-				if (effectListObj['experiment_id'] == experimentId) { //make sure effect is associated with this experiment
-					let effectId = effectListObj['id'];
-					let newEffect = emptyEffect(effectId, experimentId, formEntry['study_id']);
+				if (effectListObj['experiment_nr'] == experimentId) { //make sure effect is associated with this experiment
+					let effect_size_number = effectListObj['effect_size_number'];
+					let newEffect = emptyEffect(effect_size_number, experimentId, formEntry['study_id']);
 					let effectKeys = Object.keys(newEffect);
 					//fill each prop with data from form
 					effectKeys.forEach(function(key) {
-						if(key!="id" && key != "study_id" && key != "experiment_id") {
-							newEffect[key] = formData.get(experimentId + "_" + effectId + "_" + key);
+						if(key!="effect_size_number" && key != "study_id" && key != "experiment_nr") {
+							newEffect[key] = formData.get(experimentId + "_" + effect_size_number + "_" + key);
 						}
 						
 					});
@@ -112,6 +112,7 @@ const UploadPage: React.FC = () => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
+		console.log(formData);
 		let formEntry = getFormEntry(formData);
 
 		
@@ -125,11 +126,11 @@ const UploadPage: React.FC = () => {
 		}
 
 		if (addToExisting) {
-			let oldExperimentIds = existingStudy?.experiments.map((e) => e.id);
-			let newExperiments = formEntry.experiments.filter((exp) => (!oldExperimentIds?.includes(exp.id)));
-
-			let oldEffects = existingStudy?.experiments.map(e => e.effects).flat().map((eff) => eff.experiment_id + eff.id); //will not work. Check with jonas
-			let newEffects = formEntry?.experiments.map(e => e.effects).flat().filter((eff) => !oldEffects.includes(eff.experiment_id + eff.id)); //will not work. Check with jonas
+			let newExperiments = formEntry.experiments
+			let newExperimentsEffects = formEntry?.experiments.map(e => e.effects).flat()
+			let newEffToExisting = 
+			console.log({newEffects, newExperiments})
+			return;
 
 			newExperiments.forEach(function(exp) {
 				//post experiment
@@ -175,12 +176,12 @@ const UploadPage: React.FC = () => {
 			if (existingStudyId != -1) {
 				try {
 					const study = await fetchStudyById(existingStudyId);
+					console.log(study);
 					setExistingStudy(study);
 
 				} catch (error) {
 					console.error('Error fetching study:', error);
 				}
-				console.log(existingStudy)
 			}
 
 		}
@@ -235,7 +236,7 @@ const UploadPage: React.FC = () => {
 										effects={effects}
 										addEffect={addEffect}
 										removeEffect={removeEffect}
-										experimentId={experiment}/>
+										experiment_nr={experiment}/>
 								
 									<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment)} variant="outlined" startIcon={<RemoveCircleOutline />}>
 										Remove Experiment
@@ -244,7 +245,7 @@ const UploadPage: React.FC = () => {
 							)}
 							
 							{addToExisting ? (existingStudy?.experiments.map((experiment) =>
-								<Box key={experiment.id}>
+								<Box key={experiment.experiment_nr}>
 									<Experimentform 
 										inputs={experiment}
 										readOnly={addToExisting}
@@ -252,7 +253,7 @@ const UploadPage: React.FC = () => {
 										effects={effects}
 										addEffect={addEffect}
 										removeEffect={removeEffect}
-										experimentId={experiment}/>
+										experiment_nr={experiment.experiment_nr}/>
 								
 								</Box>
 							)) : ""}

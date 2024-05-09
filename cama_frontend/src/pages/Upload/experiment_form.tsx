@@ -5,13 +5,35 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
 
-const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, addEffect, effects, readOnly, inputs, addToExisting = false}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly, inputs, addToExisting = false}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
 			WebkitTextFillColor: "#010101",
 		  },
 	  };
+
+    const insertEffect = (effect) => {
+        return (
+        <div key={experiment_nr +'_'+ effect.effect_size_number}>
+            {effect.experiment_nr == experiment_nr ? (
+            <Box >
+                <EffectForm 
+                    readOnly={readOnly && !addToExisting}
+                    inputs={effect} 
+                    experiment_nr={experiment_nr} 
+                    effect_size_number={effect.effect_size_number}/>
+                {(!readOnly) ?(
+                    <Button sx={{mt:1}} size='small' onClick={() => removeEffect(effect.effect_size_number, effect.experiment_nr)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+                        Remove Effect
+                    </Button>
+                ):""
+                }
+            </Box>
+            ): ""}
+        </div>
+        )
+    }
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -27,7 +49,7 @@ const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, a
                                 variant="standard"
                                 id={"form" + field.key}
                                 label={field.name}
-                                name={experimentId +"_"+ field.key}
+                                name={experiment_nr +"_"+ field.key}
                                 select={!!field.options}
                                 defaultValue={inputs[field.key]||""}
                             >
@@ -38,28 +60,23 @@ const ExperimentForm: React.FC = ({experimentId, onChangeEffect, removeEffect, a
                                 ))}
                             </TextField>
                         ))}
-                    {effects.map((effect: {id: string, experiment_id:string}) => (
-                        <div key={effect.id}>
-                            {effect.experiment_id == experimentId ? (
-                            <Box key={effect.id} >
-                                <EffectForm 
-                                    readOnly={readOnly && !addToExisting}
-                                    inputs={effect} 
-                                    experimentId={experimentId} 
-                                    effectId={effect.id}/>
-                                {(!readOnly) ?(
-                                    <Button sx={{mt:1}} size='small' onClick={() => removeEffect(effect.id, effect.experiment_id)} variant="outlined" startIcon={<RemoveCircleOutline />}>
-                                        Remove Effect
-                                    </Button>
-                                ):""
-                                }
-                            </Box>
-                            ): ""}
-                        </div>
-                    ))}
+
+                        {/*existing (only when addToExisting)*/}
+                        {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
+                            <div>
+                                {insertEffect(effect)}
+                            </div>
+                        ))}
+
+                        {/*new*/}
+                        {effects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
+                            <div>
+                                {insertEffect(effect)}
+                            </div>
+                        ))}
                     {(!readOnly || addToExisting) ?(
                         <div>
-                            <Button onClick={() => {addEffect(experimentId)}} variant="outlined" sx={{ mt: 2 }}>
+                            <Button onClick={() => {addEffect(experiment_nr)}} variant="outlined" sx={{ mt: 2 }}>
                             Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
