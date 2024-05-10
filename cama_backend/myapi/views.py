@@ -259,9 +259,13 @@ class StudyViewDetail(APIView):
         
         # Update the 'approved' field in the instance and all nested tables
         study.approved = True
-        for table in study.experiments.all():
-            table.approved = True
-            table.save()
+        for experiment in study.experiments.all():
+            experiment.approved = True
+
+            for effect in experiment.effects.all():
+                effect.approved = True
+                effect.save()
+            experiment.save()
         study.save()
 
         # Serialize the instance to return it in the response

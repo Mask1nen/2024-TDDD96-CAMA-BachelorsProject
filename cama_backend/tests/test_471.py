@@ -66,7 +66,8 @@ class StudyTestCase(APITestCase):
         response = self.client.patch(self.detailed_url, update_data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['approved'], True)
-        # self.assertEqual(response.data, StudySerializer(self.study).data)
+        print(response.data)
+        self.assertEqual(response.data['experiments'][0]['effects'][0]['approved'], True)
     
 
     def test_post_get_halfstudy(self):
