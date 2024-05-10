@@ -8,6 +8,8 @@ from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySe
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
 from django.db.models import Q
+import csv
+from django.http import HttpResponse
 
 
 import logging
@@ -282,6 +284,93 @@ class EffectSizeTypeOptionsView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class DownloadCSV(APIView):
+    def get(self, request):
+        # Query the database to fetch data
+        parameters = request.GET.dict()
+        # Create an empty Q object to hold the filters
+        study_filters = Q()
+        experiment_filters = Q()
+        effect_data_filters = Q()
+        filter_condition = {}
+        fields_studies = [field.name for field in Study._meta.get_fields()]
+        fields_experiments = [field.name for field in Experiment._meta.get_fields()]
+        fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
+        
+        # Go through all studies and find the ones which mactch study fitlers
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if related_field in fields_studies:
+                    filter_condition = {f"{related_field}__{attribute}": value}
+                    study_filters &= Q(**filter_condition)
+                
+            else:
+                if key in fields_studies:
+                    filter_condition = {f"{key}": value}
+                    study_filters &= Q(**filter_condition)
+        
+        studies = Study.objects.filter(study_filters)
+        study_ids = [study.study_id for study in studies]
+
+        # Create filter condition on experiments so only experiment from the filterd studies are filterd
+        filter_condition = {f'study_id__in': study_ids}
+        experiment_filters &= Q(**filter_condition)
+        # Filter through the experiments 
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if related_field in fields_experiments:
+                    filter_condition = {f"{related_field}__{attribute}": value}
+                    experiment_filters &= Q(**filter_condition)              
+            else:
+                if key in fields_experiments:
+                    filter_condition = {f"{key}": value}
+                    experiment_filters &= Q(**filter_condition)
+        experiments = Experiment.objects.filter(experiment_filters)     
+        experiment_ids = [experiment.experiment_nr for experiment in experiments]
+    
+        # Create filter condition on effekt_data so only effekt_data from the filterd studies and experiments are filterd
+        filter_condition = {f'study_id__in': study_ids}
+        experiment_filters &= Q(**filter_condition)
+        filter_condition = {f'experiment_nr__in': experiment_ids}
+        experiment_filters &= Q(**filter_condition)
+        for key, value in parameters.items():
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if related_field in fields_effect_data:
+                    filter_condition = {f"{related_field}__{attribute}": value}
+                    effect_data_filters &= Q(**filter_condition)              
+            else:
+                if key in fields_effect_data:
+                    filter_condition = {f"{key}": value}
+                    effect_data_filters &= Q(**filter_condition)        
+        effect_datas = EffectData.objects.filter(effect_data_filters)
+
+        # Create a CSV response
+        response = Response(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="data.csv"'
+
+        # Write data to CSV
+        writer = csv.writer(response)
+        # Write header row
+        writer.writerow(['title','authors', 'keywords', 'abstract', 'category', 'country',  'year', 'DOI', 
+                         'peer_reviewed', 'source', 'experiment_number',
+                         'test_time', 'effect_size_number', 'intervention', 'intervention_op', 'target_population',
+                         'mean_age', 'grade', 'ni', 'gender_1', 'gender_2', 'gender_3', 'study_design',
+                         'participant_design', 'implementation', 'duration_week', 'frequency_n',
+                         'intensity_n', 'effect_size_type', 'mean_age_1i', 'm1i', 'sd1i', 'n1i',
+                         'mean_age_2i', 'm2i', 'sd2i', 'n2i', 'icc', 'ai', 'bi', 'ci', 'di', 'ri',
+                         't', 'f_stat', 'd', 'd_var', 'rob', 'robins', 'outcome', 'test_name',
+                         'outcome_full', 'outcome_op'])  # Add column names
+        # Write data rows
+        # TO do write all the shit above again, i go gym
+        for effekt_data in effect_datas:
+            writer.writerow([obj.field1, obj.field2, obj.field3])  # Add fields
+
+        return response
+
     
 class get_orcid_infoAPIView(APIView):
     def get(self, request):
