@@ -8,12 +8,24 @@ logger = logging.getLogger(__name__)
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ['name']
+        fields = '__all__'
+        
+    def create(self, validated_data):
+            country_name = validated_data.pop('name')
+            country = Country.objects.create(name=country_name)
+            return country
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = '__all__'
+    
+    def create(self, validated_data):
+            name = validated_data.pop('name')
+            category = Category.objects.create(name=name)
+            return category
+
 
 class StudySerializer(serializers.ModelSerializer):
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
