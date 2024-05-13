@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
-import { useAuth } from '../hooks/useAuth';
+import { logout, useAuth } from '../hooks/useAuth';
 import { red } from '@mui/material/colors';
 
 import {useState} from "react";
@@ -53,6 +53,11 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/Home";
   };
   let redirect_uri = "Login"
   const [isLoggedIn, session] = useAuth();
@@ -167,11 +172,11 @@ function Navbar() {
                   Add Study
                 </Button>
               </Link>
-            <Tooltip title="Open settings">
+            {isLoggedIn && <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ width: "40px", height: "40px", margin: "0 auto" }} />
               </IconButton>
-            </Tooltip>
+            </Tooltip>}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -193,7 +198,7 @@ function Navbar() {
                     <Typography textAlign="center">Profile</Typography>
                   </Link>
                 </MenuItem>
-                <MenuItem key="Logout" onClick={handleCloseUserMenu}>
+                <MenuItem key="Logout" onClick={handleLogout}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
             </Menu>
