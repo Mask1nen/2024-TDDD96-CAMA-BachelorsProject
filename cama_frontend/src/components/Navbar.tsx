@@ -16,12 +16,29 @@ import { Link } from "react-router-dom";
 import { useAuth } from '../hooks/useAuth';
 import { red } from '@mui/material/colors';
 
+import {useState} from "react";
+import multiLanguage from "../components/multiLanguage";
+import changeLanguageBotton from "../../src/assets/navBarText/changeLanguageButton.json";
+
+import {Context} from "../../src/App";
+import { useContext } from 'react';
+
+
+
 const pages = ['Home', 'Subjects', 'Apps', 'Database'];
 const settings = ['Profile', 'Logout'];
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const [isSWE, setIsSWE] = useContext(Context);
+
+  {/*
+  const [isSWE2, setIsSWE2] = useState(false);
+  languageVariable.value = isSWE2;
+*/}
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -138,6 +155,7 @@ function Navbar() {
 
 
           <Box sx={{ flexGrow: 0, display:"flex"}}>
+            <Button size="small" variant="contained" color="primary" sx={{mr:3}} onClick={() => setIsSWE(!isSWE)} > {multiLanguage(!isSWE, changeLanguageBotton)}</Button>
               <Link to={redirect_uri}>
                 <Button size="small"
                   key="addstudy"

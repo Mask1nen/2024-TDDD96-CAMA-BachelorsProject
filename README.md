@@ -58,3 +58,22 @@ In case of error, try:
 5. Starta django-server i cama\_backend `python3 manage.py runserver`
 
 6. Starta frontend i cama\_frontend i dev mode `npm start`
+
+# Testning
+
+### Köra tester lokalt
+1. Gå till root
+
+2. cd cama_backend
+
+3. pytest --cov=myapi tests/
+
+### Köra tester lokalt och generera en html report för bättre djup
+
+1. Gå till root
+
+2. cd cama_backend
+
+3. pytest --cov-report html:cov_html --cov-config=.coveragerc --cov=myapi tests/
+
+4. Öppna den nu skapade cov_html mappen och öppna index.html för att undersöka vad som behöver testas

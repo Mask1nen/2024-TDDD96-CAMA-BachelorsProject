@@ -6,6 +6,11 @@ import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
 import AboutPage from './pages/About/AboutPage.tsx';
+import TeamPage from './pages/Team/TeamPage.tsx';
+import ContactInfoPage from './pages/ContactInfo/ContactInfoPage.tsx';
+import AppPage from './pages/App/AppPage.tsx';
+import FbFPage from './pages/FbF/FbFPage.tsx';
+
 import UploadPage from './pages/Upload/UploadPage.tsx';
 import LoginPage from './pages/Login/LoginPage.tsx';
 
@@ -17,8 +22,12 @@ import { Dataset } from '@mui/icons-material';
 import DatasetDetail from './pages/Datasets/DatasetDetail.tsx';
 
 
+import React, {useState} from "react";
+export const Context = React.createContext();  //creates the chared context for global language
 
 const App: React.FC = () => {
+
+  const [isSWE, setIsSWE] = useState(false);  //creates the chared context for global language
 
 const theme = createTheme({
   
@@ -38,10 +47,11 @@ const theme = createTheme({
     },
   },
 });
-
+  
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <Context.Provider value = {[isSWE, setIsSWE]}>
       <Navbar />
       <Container sx={{px:4, py:4, minHeight: '60vh'}} className="bg-gray-100">
         <Routes>
@@ -51,12 +61,17 @@ const theme = createTheme({
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatasetsPage />} />
             <Route path="/About" element={<AboutPage />} />
+            <Route path="/Team" element={<TeamPage />} />
+            <Route path="/ContactInfo" element={<ContactInfoPage />} />  
+            <Route path="/App" element={<AppPage />} />  
+            <Route path="/FbF" element={<FbFPage />} />  
             <Route path="/Upload" element={<UploadPage />} />
             <Route path="/datasets/:titleSlug" element={<DatasetDetail />} />
             <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Container>
       <Footer />
+      </Context.Provider>
       </ThemeProvider>
     </Router>
   )
