@@ -2,7 +2,7 @@ from django.urls import path
 from .views import CamaUserView, StudyView, ExperimentView, EffectDataView, get_orcid_infoAPIView, \
                 CountryOptionsView, CategoryOptionsView, StudyDesignOptionsView, RiskOfBiasOptionsView, ParticipantDesignOptionsView, \
                 ImplementationOptionsView, TestTimeOptionsView, EffectSizeTypeOptionsView, ExperimentFilterView, EffectDataFilterView, \
-                StudyFilterView, StudySearchView
+                StudyFilterView, StudySearchView, DownloadCSV
 
 urlpatterns = [
     path('cama-users/', CamaUserView.as_view(), name='cama_users'),
@@ -21,5 +21,6 @@ urlpatterns = [
     path('experiment-filterd/', ExperimentFilterView.as_view(), name='experiment-filterd'),
     path('effect-data-filterd/', EffectDataFilterView.as_view(), name='effect-data-filterd'),
     path('studies-filterd/', StudyFilterView.as_view(), name='study-filterd'),
-    path('studies-search/', StudySearchView.as_view(), name='studies-search')
+    path('studies-search/', StudySearchView.as_view(), name='studies-search'),
+    path('download-effects/', DownloadCSV.as_view(), name='download-effects')
     ]
