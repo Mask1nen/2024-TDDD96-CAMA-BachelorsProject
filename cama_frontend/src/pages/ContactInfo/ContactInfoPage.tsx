@@ -24,17 +24,10 @@ const ContactInfoPage: React.FC = () => {
         <Grid container rowSpacing={8}>
             <Grid item xs={12}>
                 <Paper sx={{p:3, height:'100%'}}> 
-                    You can reach Lucija Batinovic at name@email.se
+                    You can reach Lucija Batinovic at lucija.batinovic@liu.se
                 </Paper>
             </Grid>
             
-            <Grid item xs={12} >
-                <Typography variant="h3" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> Developers </Typography>
-                <Paper sx={{p:3, height:'70%'}}> 
-                    <p>Grabbarna </p> <br />
-                    <p>Grus </p> <br />
-                </Paper>
-            </Grid>
 
         </Grid>
 
