@@ -3,8 +3,6 @@
 import React from "react";
 import {Grid, Paper, Box, Typography} from "@mui/material";
 import CAMA_test_icon from "../../assets/images/CAMA_test_icon.png";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -28,7 +26,6 @@ const FbFPage: React.FC = () => {
         
 
         {/*Creats the two blocks for about text and a timeline report, with headline for the timeline*/}
-        {/*<Grid container rowSpacing={0}>*/}
 
         <Grid container spacing={2} >
             <Grid item xs={8} sx={{ mb: 3}}>
@@ -69,6 +66,7 @@ const FbFPage: React.FC = () => {
                 </Paper>
             </Grid>
 
+            {/*Dropdown text on the right side*/}
             <Grid item xs={4}>
                 <Accordion>
                     <AccordionSummary

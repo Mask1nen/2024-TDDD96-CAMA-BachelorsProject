@@ -10,6 +10,7 @@ import teamText3 from "../../../src/assets/pageText/teamPage/teamPageMain3.json"
 import teamText4 from "../../../src/assets/pageText/teamPage/teamPageMain4.json";
 import teamText5 from "../../../src/assets/pageText/teamPage/teamPageMain5.json";
 import teamText6 from "../../../src/assets/pageText/teamPage/teamPageMain6.json";
+import teamDevelopers from "../../../src/assets/pageText/teamPage/teamDevelopers.json";
 
 
 
@@ -39,10 +40,15 @@ const TeamPage: React.FC = () => {
             <Grid item xs={12}>
                 <Paper sx={{p:3, height:'100%'}}>
                     {multiLanguage(isSWE, teamText1)}
+                    <br />
                     {multiLanguage(isSWE, teamText2)}
+                    <br />
                     {multiLanguage(isSWE, teamText3)}
+                    <br />
                     {multiLanguage(isSWE, teamText4)}
+                    <br />
                     {multiLanguage(isSWE, teamText5)}
+                    <br />
                     {multiLanguage(isSWE, teamText6)}
                 </Paper>
             </Grid>
@@ -50,8 +56,7 @@ const TeamPage: React.FC = () => {
             <Grid item xs={12} >
                 <Typography variant="h3" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> Developers </Typography>
                 <Paper sx={{p:3, height:'70%'}}> 
-                    <p>Grabbarna Grus</p> <br />
-                    <p>Copilot och chatGTP </p> <br />
+                    {multiLanguage(isSWE, teamDevelopers)}
                 </Paper>
             </Grid>
 
