@@ -24,11 +24,11 @@ class DownloadTest(TestCase):
         # Count the number of records with 'Sweden' as the country
         expected_count = 0
         for data in generated_data:
-            if data.experiment_nr.study_id.country.name == "Sweden":
+            if data.experiment_nr.study_id.country.name == "Sweden" and data.experiment_nr.grade.third == True:
                 expected_count += 1
         
         # Make a GET request to the endpoint that downloads the CSV
-        response = self.client.get('/api/download-effects/?country__name=Sweden')
+        response = self.client.get('/api/download-effects/?country__name=Sweden&grade__third=True')
         
 
         
@@ -41,8 +41,9 @@ class DownloadTest(TestCase):
         # Parse the CSV content using csv.reader
         csv_reader = csv.reader(csv_file)
         
+        
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
-        print(f'the response content data cssv++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ {csv_data}')
+        print(f'the response content data csv {csv_data}')
         # Check if the number of rows matches the expected count
         self.assertEqual(expected_count, actual_count)

@@ -289,7 +289,6 @@ class DownloadCSV(APIView):
     def get(self, request):
         # Query the database to fetch data
         parameters = request.GET.dict()
-        print(parameters)
         # Create an empty Q object to hold the filters
         study_filters = Q()
         experiment_filters = Q()
@@ -304,7 +303,6 @@ class DownloadCSV(APIView):
             if '__' in key:
                 related_field, attribute = key.split('__')
                 if related_field in fields_studies:
-                    print("got in here ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     filter_condition = {f"{related_field}__{attribute}": value}
                     study_filters &= Q(**filter_condition)
                 
@@ -315,16 +313,18 @@ class DownloadCSV(APIView):
         
         studies = Study.objects.filter(study_filters)
         study_ids = [study.study_id for study in studies]
-        print(f'The list of the study ids {study_ids}')
         
         # Create filter condition on experiments so only experiment from the filterd studies are filterd
         #filter_condition = {f'study_id__in': study_ids}
         experiment_filters &= Q(study_id__in=study_ids)
         # Filter through the experiments
+        print(parameters.items())
         for key, value in parameters.items():
             if '__' in key:
                 related_field, attribute = key.split('__')
+                print(f'{related_field}')
                 if related_field in fields_experiments:
+                    print(f"Got here +++++++++++++++++++++++++++++++++++++++++++++++++++++ {related_field} {attribute}")
                     filter_condition = {f"{related_field}__{attribute}": value}
                     experiment_filters &= Q(**filter_condition)              
             else:
@@ -352,7 +352,7 @@ class DownloadCSV(APIView):
         effect_datas = EffectData.objects.filter(effect_data_filters)
 
         # Create a CSV response
-        response = Response(content_type='text/csv')
+        response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="data.csv"'
 
         # Write data to CSV
@@ -361,7 +361,9 @@ class DownloadCSV(APIView):
         writer.writerow(['title','authors', 'keywords', 'abstract', 'category', 'country',  'year', 'DOI', 
                          'peer_reviewed', 'source', 'experiment_number',
                          'test_time', 'effect_size_number', 'intervention', 'intervention_op', 'target_population',
-                         'mean_age', 'grade', 'ni', 'gender_1', 'gender_2', 'gender_3', 'study_design',
+                         'mean_age', 'grade_k', 'grade_1', 'grade_2', 'grade_3', 'grade_4', 'grade_5',
+                         'grade_6', 'grade_7', 'grade_8', 'grade_9', 'grade_10', 'grade_11', 'grade_12',
+                         'ni', 'gender_1', 'gender_2', 'gender_3', 'study_design',
                          'participant_design', 'implementation', 'duration_week', 'frequency_n',
                          'intensity_n', 'effect_size_type', 'mean_age_1i', 'm1i', 'sd1i', 'n1i',
                          'mean_age_2i', 'm2i', 'sd2i', 'n2i', 'icc', 'ai', 'bi', 'ci', 'di', 'ri',
@@ -374,35 +376,25 @@ class DownloadCSV(APIView):
             experiment = effekt_data.experiment_nr
             study = effekt_data.experiment_nr.study_id
             
-            print([study.title, study.authors, study.keywords, study.category.name, study.country.name,
-                             study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
-                             effekt_data.test_time, effekt_data.effect_size_number, experiment.intervention, 
-                             experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade,
-                             experiment.ni, effekt_data.gender_1, effekt_data.gender_2, effekt_data.gender_3, 
-                             experiment.study_design, experiment.participant_design, experiment.implemented,
-                             experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
-                             effekt_data.effect_size_type, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
-                             effekt_data.n1i, effekt_data.mean_age_2i, effekt_data.m2i, effekt_data.sd2i,
-                             effekt_data.n2i, effekt_data.icc, effekt_data.ai, effekt_data.bi, effekt_data.ci,
-                             effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
-                             effekt_data.d_var, experiment.risks, experiment.robins, effekt_data.outcome, 
-                             effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])
             
             writer.writerow([study.title, study.authors, study.keywords, study.category.name, study.country.name,
                              study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
-                             effekt_data.test_time, effekt_data.effect_size_number, experiment.intervention, 
-                             experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade,
+                             effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
+                             experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
+                             experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.forth,
+                             experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
+                             experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
+                             experiment.grade.eleventh, experiment.grade.twelfth,
                              experiment.ni, effekt_data.gender_1, effekt_data.gender_2, effekt_data.gender_3, 
-                             experiment.study_design, experiment.participant_design, experiment.implemented,
+                             experiment.study_design.design, experiment.participant_design.design, experiment.implemented.implementor,
                              experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
-                             effekt_data.effect_size_type, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
+                             effekt_data.effect_size_type.name, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
                              effekt_data.n1i, effekt_data.mean_age_2i, effekt_data.m2i, effekt_data.sd2i,
                              effekt_data.n2i, effekt_data.icc, effekt_data.ai, effekt_data.bi, effekt_data.ci,
                              effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
-                             effekt_data.d_var, experiment.risks, experiment.robins, effekt_data.outcome, 
+                             effekt_data.d_var, experiment.risks.rob, experiment.robins, effekt_data.outcome, 
                              effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])  
 
-        # Save CSV to disk (temporary)
       
 
         return response
