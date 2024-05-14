@@ -294,6 +294,7 @@ class DownloadCSV(APIView):
         experiment_filters = Q()
         effect_data_filters = Q()
         filter_condition = {}
+        # Create field lists which contains the fiels of the tables
         fields_studies = [field.name for field in Study._meta.get_fields()]
         fields_experiments = [field.name for field in Experiment._meta.get_fields()]
         fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
@@ -315,16 +316,12 @@ class DownloadCSV(APIView):
         study_ids = [study.study_id for study in studies]
         
         # Create filter condition on experiments so only experiment from the filterd studies are filterd
-        #filter_condition = {f'study_id__in': study_ids}
         experiment_filters &= Q(study_id__in=study_ids)
         # Filter through the experiments
-        print(parameters.items())
         for key, value in parameters.items():
             if '__' in key:
                 related_field, attribute = key.split('__')
-                print(f'{related_field}')
                 if related_field in fields_experiments:
-                    print(f"Got here +++++++++++++++++++++++++++++++++++++++++++++++++++++ {related_field} {attribute}")
                     filter_condition = {f"{related_field}__{attribute}": value}
                     experiment_filters &= Q(**filter_condition)              
             else:
@@ -333,11 +330,8 @@ class DownloadCSV(APIView):
                     experiment_filters &= Q(**filter_condition)
         experiments = Experiment.objects.filter(experiment_filters)     
         experiment_ids = [experiment.experiment_nr for experiment in experiments]
-    
-        # Create filter condition on effekt_data so only effekt_data from the filterd studies and experiments are filterd
-        #filter_condition = {f'study_id__in': study_ids}
-        
-        #filter_condition = {f'experiment_nr__in': experiment_ids}
+
+        # Create filter condition on effekt_data so only effekt_data from the filterd experiments are filterd
         effect_data_filters &= Q(experiment_nr__in=experiment_ids)
         for key, value in parameters.items():
             if '__' in key:
@@ -375,8 +369,7 @@ class DownloadCSV(APIView):
             # Define the paths to the experiment of the effekt_data and the study of that experiment
             experiment = effekt_data.experiment_nr
             study = effekt_data.experiment_nr.study_id
-            
-            
+            # Write the rows to the CSV response
             writer.writerow([study.title, study.authors, study.keywords, study.category.name, study.country.name,
                              study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
                              effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
@@ -394,8 +387,6 @@ class DownloadCSV(APIView):
                              effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
                              effekt_data.d_var, experiment.risks.rob, experiment.robins, effekt_data.outcome, 
                              effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])  
-
-      
 
         return response
 
