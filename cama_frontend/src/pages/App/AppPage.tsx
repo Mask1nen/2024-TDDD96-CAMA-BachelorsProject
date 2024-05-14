@@ -14,7 +14,7 @@ const AppPage: React.FC = () => {
             <Box display="flex"  justifyContent="center"  alignItems="center">
                 <Box display="flex" sx={{justifyContent:"flex-start"}}>
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>  
-                    <Typography variant="h1" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> Vad bör stå??</Typography>
+                    <Typography variant="h1" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> Lorem ipsum </Typography>
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>                        
                 </Box>
             </Box>
