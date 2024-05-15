@@ -6,7 +6,9 @@ import { useAuth } from "../../hooks/useAuth";
 
 const ProfilePage: React.FC = () => {
 	const [loading, setLoading] = useState(true);
-	const [isLoggedIn, session] = useAuth();
+  // Change to const in production
+	let [isLoggedIn, session] = useAuth();
+  isLoggedIn = true; // Remove this line in production
 
 	// Handle to not have redirection on refresh
 	useEffect(() => {
@@ -25,8 +27,8 @@ const ProfilePage: React.FC = () => {
     window.location.href = "/Home";
   }
 
-  const orcid = session?.orcid;
-  const name = session?.name;
+  const orcid = session?.orcid || "Your ORCID";
+  const name = session?.name || "Your Name";
   return (
     <Grid container justifyContent="center">
       <Grid item xs={12} sm={6} md={4}>

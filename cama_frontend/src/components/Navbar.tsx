@@ -14,19 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
 import { logout, useAuth } from '../hooks/useAuth';
-import { red } from '@mui/material/colors';
-
-import {useState} from "react";
 import multiLanguage from "../components/multiLanguage";
 import changeLanguageBotton from "../../src/assets/navBarText/changeLanguageButton.json";
-
 import {Context} from "../../src/App";
 import { useContext } from 'react';
 
 
-
 const pages = ['Home', 'Subjects', 'Apps', 'Database'];
-const settings = ['Profile', 'Logout'];
 
 
 function Navbar() {
@@ -59,7 +53,11 @@ function Navbar() {
     logout();
     window.location.href = "/Home";
   };
-  let redirect_uri = "Login"
+
+  //Remove line below and uncomment the line below that to enable login redirect
+  let redirect_uri = "Upload"
+  //let redirect_uri = "Login"
+
   const [isLoggedIn, session] = useAuth();
   if (isLoggedIn) {
     redirect_uri = "Upload";
@@ -160,7 +158,9 @@ function Navbar() {
 
 
           <Box sx={{ flexGrow: 0, display:"flex"}}>
-            <Button size="small" variant="contained" color="primary" sx={{mr:3}} onClick={() => setIsSWE(!isSWE)} > {multiLanguage(!isSWE, changeLanguageBotton)}</Button>
+            <Button size="small" variant="contained" color="primary" sx={{ height: "31px", margin: "0 auto", mr:3}} 
+            onClick={() => setIsSWE(!isSWE)} > {multiLanguage(!isSWE, changeLanguageBotton)}</Button>
+              
               <Link to={redirect_uri}>
                 <Button size="small"
                   key="addstudy"
@@ -172,11 +172,29 @@ function Navbar() {
                   Add Study
                 </Button>
               </Link>
+            
             {isLoggedIn && <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar sx={{ width: "40px", height: "40px", margin: "0 auto" }} />
               </IconButton>
             </Tooltip>}
+
+            {/**
+             * Temporary login button, can be removed or kept
+             * depending on the design choice.
+             */}
+            {!isLoggedIn && <Link to="Login">
+              <Button size="small"
+                  key="login"
+                  variant="contained"
+                  color="primary"
+                  sx={{mr:3}}
+                >
+                  Login
+                </Button>
+                </Link>
+            }
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

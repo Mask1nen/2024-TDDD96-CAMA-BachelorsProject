@@ -5,7 +5,8 @@ import {Box, Button} from "@mui/material";
 import Logo  from "../../assets/images/orcid_logo_icon.png";
 import { apiUrl } from "../../api/apiConfig";
 import { login, useAuth } from "../../hooks/useAuth";
-const loginUrl = "https://orcid.org/oauth/authorize?client_id=APP-IZWWE416AT5JC4N6&response_type=code&scope=/authenticate&redirect_uri=http://192.168.0.34:3000/Login"
+const redirect_url = "http://192.168.0.34:3000/Login"; // Change this to your redirect URL
+const loginUrl = `https://orcid.org/oauth/authorize?client_id=APP-IZWWE416AT5JC4N6&response_type=code&scope=/authenticate&redirect_uri=${redirect_url}`;
 
 
 const LoginPage: React.FC = () => {
