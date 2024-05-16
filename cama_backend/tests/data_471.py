@@ -115,7 +115,7 @@ class TestData:
     }
 
     full_experiment_data = {
-        "study_id": 6,
+        "study_id": 433,
         "study_design":"Randomized Controlled Trial",
         "risks":"Low",
         "robins":"Moderate",
@@ -165,9 +165,9 @@ class TestData:
     }
 
     bare_experiment_data = {
-        "study_id": 5,
+       "study_id": 432,
         "study_design":"Randomized Controlled Trial",
-        "rob":"Low",
+        "risks":"Low",
         "robins":"Moderate",
         "grade":"A",
         "participant_design":"Between-Group Design",
@@ -184,30 +184,34 @@ class TestData:
         "effects":[]
     }
 
-    effect_data = {
-        "experiment_nr": 5,
-        "effect_size_type": "type",
-        "test_time": "time",
-        "test_name": "test name",
-        "outcome": "outcome short",
-        "outcome_full": "outcome_full",
-        "outcome_op": "outcome_op",
-        "sd1i": 1.5,
-        "sd2i": 1.8,
-        "n1i": 30,
-        "n2i": 35,
-        "m1i": 15.2,
-        "m2i": 16.7,
-        "d_var": 0.5,
-        "d": 0.45,
-        "f_stat": 5.23,
-        "t": 2.45,
-        "ri": 1,
-        "mean_age": 25.3,
-        "ni": 65,
-        "icc": 0.78,
-        "ai": 2,
-        "bi": 3,
-        "ci": 4,
-        "di": 5
-    }
+    effect_data =  {
+            "experiment_nr": 133,
+            "effect_size_type":"type",
+            "test_time":"1",
+            "test_name":"name",
+            "outcome":"come",
+            "outcome_full":"outcome",
+            "outcome_op":"op",
+            "gender_1":1,
+            "gender_2":2,
+            "gender_3":3,
+            "d_var":0.5,
+            "d":0.45,
+            "f_stat":5.23,
+            "t":2.45,
+            "ri":1,
+            "icc":1.5,
+            "mean_age_1i":25.3,
+            "mean_age_2i":26.4,
+            "ai":2,
+            "bi":3,
+            "ci":4,
+            "di":5,
+            "sd1i":1.5,
+            "sd2i":1.8,
+            "n1i":30,
+            "n2i":35,
+            "m1i":15.2,
+            "m2i":16.7
+            }
+    
