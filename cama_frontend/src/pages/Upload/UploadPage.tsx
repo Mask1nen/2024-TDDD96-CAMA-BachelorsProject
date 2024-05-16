@@ -5,6 +5,7 @@ import '@mui/material';
 import Studyform from "./study_form"
 import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
+import AddExperimentDialog from "./addExperimentDialog"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
@@ -36,6 +37,10 @@ const UploadPage: React.FC = () => {
         }
 	}
 
+	const clearExperiments = () => {
+		setExperimentValues([]);
+	}
+
 
 	const [experiments, setExperimentValues] = React.useState<string[]>([]);	
 
@@ -56,6 +61,9 @@ const UploadPage: React.FC = () => {
             setEffects(prev => prev.filter((effect) => !(effect['effect_size_number'] == effect_size_number && effect['experiment_nr'] == experiment_nr)));
         }
     };
+	const clearEffects = () => {
+		setEffects([]);
+	}
 
 	//STUDY
 
@@ -77,10 +85,9 @@ const UploadPage: React.FC = () => {
 			let experimentKeys = Object.keys(newExp);
 			//fill each prop with data from form
 			experimentKeys.forEach(function(key) {
-				if (key != "id" && key != "study_id" && key != "effects") {
+				if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
 					newExp[key] = formData.get(experimentId + "_" + key);
 				} 
-				
 			});
 
 			//Create empty effect for each existing effect connected to this experiment and fill with data from form
@@ -91,7 +98,7 @@ const UploadPage: React.FC = () => {
 					let effectKeys = Object.keys(newEffect);
 					//fill each prop with data from form
 					effectKeys.forEach(function(key) {
-						if(key!="effect_size_number" && key != "study_id" && key != "experiment_nr") {
+						if(key!="effect_size_number" && key != "study_id" && key != "experiment_nr") { //skip fields that are created in database
 							newEffect[key] = formData.get(experimentId + "_" + effect_size_number + "_" + key);
 						}
 						
@@ -114,6 +121,7 @@ const UploadPage: React.FC = () => {
 		const formData = new FormData(event.target);
 		console.log(formData);
 		let formEntry = getFormEntry(formData);
+		console.log(formEntry);
 
 		
 		
@@ -125,24 +133,6 @@ const UploadPage: React.FC = () => {
 			}))
 		}
 
-		if (addToExisting) {
-			let newExperiments = formEntry.experiments
-			let newExperimentsEffects = formEntry?.experiments.map(e => e.effects).flat()
-			let newEffToExisting = 
-			console.log({newEffects, newExperiments})
-			return;
-
-			newExperiments.forEach(function(exp) {
-				//post experiment
-			});
-			newEffects.forEach(function(eff) {
-				//post eff
-			});
-		}
-	
-		
-		console.log(fullStudyData)
-		
 		try {
 			const response = await addStudy(fullStudyData);
 			if (response) {
@@ -154,10 +144,18 @@ const UploadPage: React.FC = () => {
 
 	};
 
-	//Dialog
-	const [dialogOpen, setDialogOpen] = React.useState(false);
-	const handleDialogOpen = () => setDialogOpen(true);
-	const handleDialogClose = () => setDialogOpen(false);
+	//searchDialog
+	const [searchDialogOpen, setSearchDialogOpen] = React.useState(false);
+	const handleSearchDialogOpen = () => setSearchDialogOpen(true);
+	const handleSearchDialogClose = () => setSearchDialogOpen(false);
+
+	//add experiment dialog. Used when adding to existing study
+	const [addExperimentDialogOpen, setAddExperimentDialogOpen] = React.useState(false);
+	const handleAddExperimentDialogOpen = () => setAddExperimentDialogOpen(true);
+	const handleAddExperimentDialogClose = () => {
+		fetchExistingStudy();
+		setAddExperimentDialogOpen(false);
+	}
 
 	const [addToExisting, setAddToExisting] = React.useState(false);
 	const [existingStudyId, setExistingStudyId] = React.useState<number>(-1);
@@ -168,24 +166,26 @@ const UploadPage: React.FC = () => {
 		setAddToExisting(false);
 		setExistingStudyId(-1);
 		setExistingStudy(undefined);
-		setExperimentValues([]);
+		clearExperiments();
+		clearEffects();
+	}
+	const fetchExistingStudy = async () => {
+		if (existingStudyId != -1) {
+			try {
+				const study = await fetchStudyById(existingStudyId);
+				clearExperiments();
+				clearEffects();
+				setExistingStudy(study);
+
+			} catch (error) {
+				console.error('Error fetching study:', error);
+			}
+		}
+
 	}
 
-	useEffect(() => {
-		const fetchStudy = async () => {
-			if (existingStudyId != -1) {
-				try {
-					const study = await fetchStudyById(existingStudyId);
-					console.log(study);
-					setExistingStudy(study);
-
-				} catch (error) {
-					console.error('Error fetching study:', error);
-				}
-			}
-
-		}
-		fetchStudy();
+	useEffect(() => { //runs when new study is fetched
+		fetchExistingStudy();
 	  }, [existingStudyId]);
 
 
@@ -209,24 +209,32 @@ const UploadPage: React.FC = () => {
 						</Typography>
 						
 						{!addToExisting ? (
-								<Button sx={{ml:2}} size="small" variant="outlined" startIcon={<SavedSearch />} onClick={handleDialogOpen}>
+								<Button sx={{ml:2}} size="small" variant="outlined" startIcon={<SavedSearch />} onClick={handleSearchDialogOpen}>
 									Add to existing study
 								</Button>
 							) : (
 								<Button sx={{ml:2}} size="small" onClick={setAddNewStudy} variant="outlined">Add new study</Button>
 								)
 							}
-					<SearchDialog dialogOpen={dialogOpen} value={existingStudy} handleDialogClose={handleDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
+					<SearchDialog dialogOpen={searchDialogOpen} value={existingStudy} handleDialogClose={handleSearchDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
 
 					</Box>
+					<AddExperimentDialog dialogOpen={addExperimentDialogOpen} handleDialogClose={handleAddExperimentDialogClose} study_id={existingStudy?.study_id || 0}/>
 					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 						<form onSubmit={handleSubmit}>
 							
 							<Studyform key={uuidv4()} readOnly={addToExisting} inputs={addToExisting ? existingStudy : {}}/>
 							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
+							{!addToExisting ? (
 							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
+						) : (
+							<Button sx={{ml:2}} size="small" variant="contained" onClick={handleAddExperimentDialogOpen}>
+								Add experiment to study
+							</Button>
+						)}
 							
+
 							{experiments.map((experiment) =>
 								<Box key={experiment}>
 									<Experimentform 
@@ -265,7 +273,6 @@ const UploadPage: React.FC = () => {
 
 		</Box>
 
-		
 		);
 	};
 	

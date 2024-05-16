@@ -111,9 +111,9 @@ export const deleteStudy = async (id: number): Promise<boolean> => {
     }
 };
 
-export const addExperiment = async (studyId: number, experiment: Experiment): Promise<Experiment | null> => {
+export const addExperiment = async (experiment: Experiment): Promise<Experiment | null> => {
     try {
-        const response = await fetch(`${apiUrl}/studies/${studyId}/experiments`, {
+        const response = await fetch(`${apiUrl}/api/experiments/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(experiment)

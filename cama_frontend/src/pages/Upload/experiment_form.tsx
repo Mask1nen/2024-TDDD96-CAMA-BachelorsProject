@@ -5,7 +5,7 @@ import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly, inputs, addToExisting = false}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, addToExisting = false, expanded = false}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -37,7 +37,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
-            <Accordion>
+            <Accordion defaultExpanded={expanded}>
                 <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
                     <Typography>Experiment Data</Typography>
                 </AccordionSummary>
