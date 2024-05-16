@@ -4,9 +4,7 @@ import {styled, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, Outl
 import countries from "../../assets/countries.json"
 
 
-function Studyform(props) {
-	
-
+function Studyform({inputs = {}, readOnly = false}) {
 
 	  const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -16,25 +14,25 @@ function Studyform(props) {
 
 	return (
 			<div>
-			<TextField defaultValue={props.inputs["title"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Title" name="title" id="formTitle"/>
+			<TextField defaultValue={inputs["title"] || ""} disabled={readOnly} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Title" name="title" id="formTitle"/>
 
-			<TextField defaultValue={props.inputs["authors"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Authors"  name="authors" id="formAuthors"/>
+			<TextField defaultValue={inputs["authors"] || ""} disabled={readOnly} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Authors"  name="authors" id="formAuthors"/>
 			
-			<TextField defaultValue={props.inputs["study_year"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Year" name="study_year" id="formYear"/>
+			<TextField defaultValue={inputs["study_year"] || ""} disabled={readOnly} sx={{width:"45%", m:1, ...disabledStyling}} variant="standard" label="Year" name="study_year" id="formYear"/>
 			
-			<TextField defaultValue={props.inputs["keywords"] || ""} disabled={(props.readOnly||false)} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Keywords" name="keywords" id="formKeywords"/>
+			<TextField defaultValue={inputs["keywords"] || ""} disabled={readOnly} sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Keywords" name="keywords" id="formKeywords"/>
 
-			<TextField defaultValue={props.inputs["abstract"] || ""} disabled={(props.readOnly||false)} sx={{width:"93%", my:2, ...disabledStyling}} variant="standard" label="Abstract" multiline name="abstract" id="formAbstract"/>
+			<TextField defaultValue={inputs["abstract"] || ""} disabled={readOnly} sx={{width:"93%", my:2, ...disabledStyling}} variant="standard" label="Abstract" multiline name="abstract" id="formAbstract"/>
 
 								
 			<TextField
 				sx={{width:"45%", mt: 2, ml:1, ...disabledStyling}} variant="standard"
-				disabled={(props.readOnly||false)} 
+				disabled={readOnly} 
 				id="formCountry"
 				name="country"
 				label="Country"
 				select
-				defaultValue={props.inputs["country"]||""}
+				defaultValue={inputs["country"]||""}
 				>
 				{countries.map((option) => (
 					<MenuItem key={option.value} value={option.label}>
@@ -45,11 +43,11 @@ function Studyform(props) {
 			
 			<TextField
 				sx={{width:"45%", mt: 2, ml: 1, ...disabledStyling}} variant="standard"
-				disabled={(props.readOnly||false)} 
+				disabled={readOnly} 
 				id="formPeerReview"
 				label="Peer reviewed"
 				name="peer_reviewed"
-				defaultValue={props.inputs["peer_reviewed"] ? "yes" : (props.inputs["peer_reviewed"] === false ? "no" : "")}
+				defaultValue={inputs["peer_reviewed"] ? "yes" : (inputs["peer_reviewed"] === false ? "no" : "")}
 				select
 				>
 					<MenuItem key="yes" value="yes">
@@ -61,9 +59,9 @@ function Studyform(props) {
 			</TextField>
 				
 
-			<TextField defaultValue={props.inputs["category"]||""} disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Category" name="category" id="formCategory"/>
+			<TextField defaultValue={inputs["category"]||""} disabled={readOnly}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Category" name="category" id="formCategory"/>
 
-			<TextField defaultValue={props.inputs["doi"]||""} disabled={(props.readOnly||false)}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="DOI" name="doi" id="formDOI"/>
+			<TextField defaultValue={inputs["doi"]||""} disabled={readOnly}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="DOI" name="doi" id="formDOI"/>
 			</div>
 				
 

@@ -160,9 +160,9 @@ const UploadPage: React.FC = () => {
 
 	//clear all states when toggling to "addNewStudy-mode"
 	const setAddNewStudy = () => {
-		setAddToExisting(false);
 		setExistingStudyId(-1);
 		setExistingStudy(undefined);
+		setAddToExisting(false);
 		clearExperiments();
 		clearEffects();
 	}
@@ -222,8 +222,9 @@ const UploadPage: React.FC = () => {
 			</Box>
 			<Box sx={{display:"flex", flexWrap: 'wrap'}}>
 				<form onSubmit={handleSubmit}>
-					
-					<Studyform readOnly={addToExisting} inputs={addToExisting ? existingStudy : {}}/>
+
+						
+					<Studyform key={addToExisting? existingStudy?.study_id : -1} readOnly={addToExisting} inputs={addToExisting?existingStudy:{}}/>
 					<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
 
 					{!addToExisting ? (
@@ -267,7 +268,9 @@ const UploadPage: React.FC = () => {
 						</Box>
 					)) : ""}
 					<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
+						{!addToExisting ? (
 						<Button type="submit" variant="contained" className="float-">Send</Button>
+						) : ""}
 					</Box>
 				</form>
 			</Box>
