@@ -6,6 +6,7 @@ from .serializers.cama_user import CamaUserSerializer
 from .serializers.study import StudySerializer, StudyCreateSerializer, CountrySerializer, CategorySerializer
 from .serializers.experiment import ExperimentSerializer, ExperimentCreateSerializer, StudyDesignSerializer, RiskOfBiasSerializer, GradeSerializer, ParticipantDesignSerializer, ImplementationSerializer
 from .serializers.effect_data import EffectDataSerializer, EffectDataCreateSerializer, EffectSizeTypeSerializer, TestTimeSerializer
+from django.http import JsonResponse
 from django.db.models import Q
 import csv
 from django.http import HttpResponse
@@ -15,6 +16,32 @@ from django.shortcuts import get_object_or_404
 import logging
 logger = logging.getLogger(__name__)
 
+class FieldsView(APIView):
+    def get(self, request):
+        study_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in Study._meta.fields}
+
+        experiment_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in Experiment._meta.fields}
+    
+        effect_fields = {field.name: {
+            'type': field.get_internal_type(),
+            'required': not field.blank,
+            'help_text': getattr(field, 'help_text', '')
+        } for field in EffectData._meta.fields}
+
+        return JsonResponse({
+            'study_fields': study_fields,
+            'experiment_fields': experiment_fields,
+            'effect_fields': effect_fields
+    })
+
 class CamaUserView(APIView):
     def get(self, request):
         cama_users = CamaUser.objects.all()
@@ -22,7 +49,9 @@ class CamaUserView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = CamaUserSerializer(data=request.data)
+        data = request.data
+        # Serialize the data and create a Study instance
+        serializer = CamaUserSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -123,6 +152,15 @@ class StudySearchView(APIView):
         studies = Study.objects.all().filter(filters)
         serializer = StudySerializer(studies, many=True)
         return Response(serializer.data)
+
+class StudyDetailView(APIView):
+    def get(self, request, id):
+        try: 
+            study = Study.objects.get(pk=id)
+            serializer = StudySerializer(study)
+            return Response(serializer.data)
+        except Study.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class ExperimentView(APIView):
     def get(self, request):

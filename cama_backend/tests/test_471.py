@@ -163,8 +163,6 @@ class StudyTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
-        
-
 class ExperimentTestCase(APITestCase):
     def setUp(self):
         self.url = reverse('experiments') 
@@ -228,7 +226,6 @@ class EffectDataTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(EffectData.objects.count(), 0)  # No object should be created
       
-
 
 
 

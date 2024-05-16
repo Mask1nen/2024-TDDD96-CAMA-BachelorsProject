@@ -31,8 +31,12 @@ class RiskOfBiasSerializer(serializers.ModelSerializer):
 class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
+<<<<<<< HEAD
         fields = ['k', 'first', 'second', 'third', 'forth', 'fifth', 'sixth',
                   'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth']
+=======
+        fields = '__all__'
+>>>>>>> 6728e64b2aa6a9fe7371aacbc52435b815165482
         
     def create(self, validated_data):
             grade_k = validated_data.pop('k')
