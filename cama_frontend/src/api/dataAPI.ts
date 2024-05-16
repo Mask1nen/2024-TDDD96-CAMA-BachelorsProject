@@ -211,6 +211,21 @@ export const fetchEffectById = async (id: number): Promise<Effect | null> => {
     }
 };
 
+export const addEffect = async (effect: Effect): Promise<Effect | null> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/effect-data/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(effect)
+        });
+        if (!response.ok) throw new Error('Failed to update effect');
+        return await response.json() as Effect;
+    } catch (error) {
+        console.error('Error updating effect:', error);
+        return null;
+    }
+};
+
 export const updateEffect = async (id: number, effect: Effect): Promise<Effect | null> => {
     try {
         const response = await fetch(`${apiUrl}/effects/${id}`, {

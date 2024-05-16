@@ -7,7 +7,7 @@ import { ArrowDownward } from '@mui/icons-material';
 import { blueGrey } from '@mui/material/colors';
 import { effectFields } from './effectFields'; // Make sure the import path is correct
 
-const EffectForm: React.FC = ({inputs, experiment_nr, effect_size_number, readOnly}: any) => {
+const EffectForm: React.FC = ({inputs, experiment_nr, effect_size_number, readOnly, expanded=false}: any) => {
   
   const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -17,7 +17,7 @@ const EffectForm: React.FC = ({inputs, experiment_nr, effect_size_number, readOn
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Accordion sx={{ backgroundColor: blueGrey['A100'] }}>
+      <Accordion sx={{ backgroundColor: blueGrey['A100'] }} defaultExpanded={expanded}>
         <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
           <Typography>Effect Data</Typography>
         </AccordionSummary>

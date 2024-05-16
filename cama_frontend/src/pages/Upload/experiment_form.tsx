@@ -4,8 +4,10 @@ import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
 import { Effect } from '../../api/newTypes'
+import AddEffectDialog from "./addEffectDialog"
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, addToExisting = false, expanded = false}: any) => {
+
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -13,13 +15,13 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
 		  },
 	  };
 
-    const insertEffect = (effect) => {
+    const insertEffect = (effect:any) => {
         return (
         <div key={experiment_nr +'_'+ effect.effect_size_number}>
             {effect.experiment_nr == experiment_nr ? (
             <Box >
                 <EffectForm 
-                    readOnly={readOnly && !addToExisting}
+                    readOnly={readOnly}
                     inputs={effect} 
                     experiment_nr={experiment_nr} 
                     effect_size_number={effect.effect_size_number}/>
@@ -35,8 +37,17 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
         )
     }
 
+    //addEffectDialog
+    const [addEffectDialogOpen, setAddEffectDialogOpen] = React.useState(false);
+	const handleAddEffectDialogOpen = () => setAddEffectDialogOpen(true);
+	const handleAddEffectDialogClose = () => {
+        fetchExistingStudy();
+		setAddEffectDialogOpen(false);
+	}
+
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
+            <AddEffectDialog dialogOpen={addEffectDialogOpen} handleDialogClose={handleAddEffectDialogClose} experiment_nr={experiment_nr} study_id={study_id || 0}/>
             <Accordion defaultExpanded={expanded}>
                 <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
                     <Typography>Experiment Data</Typography>
@@ -44,6 +55,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                 <AccordionDetails>
                         {experimentFields.map(field => (
                             <TextField
+                                key={field.key}
                                 disabled={(readOnly||false)}
                                 sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
                                 variant="standard"
@@ -63,25 +75,30 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
 
                         {/*existing (only when addToExisting)*/}
                         {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
-                            <div>
+                            <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>
                         ))}
 
                         {/*new*/}
                         {effects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
-                            <div>
+                             <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>
                         ))}
-                    {(!readOnly || addToExisting) ?(
+                    {(!readOnly) ?(
                         <div>
                             <Button onClick={() => {addEffect(experiment_nr)}} variant="outlined" sx={{ mt: 2 }}>
-                            Add Effect<AddCircleOutline sx={{ ml: 1 }} />
+                                Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
-                    ):""
-                    }
+                    ):(
+                        <div>
+                            <Button onClick={() => {setAddEffectDialogOpen(true)}} variant="outlined" sx={{ mt: 2 }}>
+                                Add Effect To Experiment<AddCircleOutline sx={{ ml: 1 }} />
+                            </Button>
+                        </div>
+                    ) }
                 </AccordionDetails>
             </Accordion>
         </Box>

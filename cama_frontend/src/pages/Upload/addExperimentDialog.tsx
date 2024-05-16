@@ -41,30 +41,30 @@ const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		let experimentId = -1; //temporary unique ID. Id is set in backend later
+		let experiment_nr = -1; //temporary unique ID. Id is set in backend later
 
 		const formData = new FormData(event.target);
 		console.log(formData);
 
-		let newExp = emptyExperiment(experimentId, study_id);
+		let newExp = emptyExperiment(experiment_nr, study_id);
 		let experimentKeys = Object.keys(newExp);
 		//fill each prop with data from form
 		experimentKeys.forEach(function(key) {
 			if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
-				newExp[key] = formData.get(experimentId + "_" + key);
+				newExp[key] = formData.get(experiment_nr + "_" + key);
 			} 
 		});
 
 		//Create empty effect for each existing effect connected to this experiment and fill with data from form
 		effects.forEach(function(effectListObj) {
-			if (effectListObj['experiment_nr'] == experimentId) { //make sure effect is associated with this experiment
+			if (effectListObj['experiment_nr'] == experiment_nr) { //make sure effect is associated with this experiment
 				let effect_size_number = effectListObj['effect_size_number'];
-				let newEffect = emptyEffect(effect_size_number, experimentId, study_id);
+				let newEffect = emptyEffect(effect_size_number, experiment_nr, study_id);
 				let effectKeys = Object.keys(newEffect);
 				//fill each prop with data from form
 				effectKeys.forEach(function(key) {
 					if(key!="effect_size_number" && key != "study_id" && key != "experiment_nr") { //skip fields that are created in database
-						newEffect[key] = formData.get(experimentId + "_" + effect_size_number + "_" + key);
+						newEffect[key] = formData.get(experiment_nr + "_" + effect_size_number + "_" + key);
 					}
 					
 				});

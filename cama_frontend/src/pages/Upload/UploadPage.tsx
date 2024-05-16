@@ -13,13 +13,6 @@ import { addStudy, fetchStudyById, addExperiment } from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 
 
-interface inputEvent {
-	target: {
-		name: 'title' | 'authors' | 'keywords' | 'abstract' | 'category' | 'country' | 'year' | 'doi' | 'peer_reviewed' | 'source' | 'experiment_number' | 'intervention' | 'intervention_op' | 'target_population' | 'mean_age' | 'grade' | 'ni' | 'study_design' | 'participant_design' | 'implementation' | 'duration_week' | 'frequency_n' | 'intensity_n' | 'robins' | 'rob' | 'test_time' | 'gender_1' | 'gender_2' | 'gender_3' | 'effect_size_type' | 'mean_age_1i' | 'm1i' | 'sd1i' | 'n1i' | 'mean_age_2i' | 'm2i' | 'sd2i' | 'n2i' | 'icc' | 'ai' | 'bi' | 'ci' | 'di' | 'ri' | 't' | 'f_stat' | 'd' | 'd_var' | 'outcome' | 'test_name' | 'outcome_full' | 'outcome_op' ; 
-		value: string;
-	}
-}
-
 const UploadPage: React.FC = () => {
 
 	//EXPERIMENT
@@ -261,7 +254,9 @@ const UploadPage: React.FC = () => {
 										effects={effects}
 										addEffect={addEffect}
 										removeEffect={removeEffect}
-										experiment_nr={experiment.experiment_nr}/>
+										experiment_nr={experiment.experiment_nr}
+										fetchExistingStudy={fetchExistingStudy}
+										/>
 								
 								</Box>
 							)) : ""}
