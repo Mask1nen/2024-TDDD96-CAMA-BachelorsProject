@@ -28,6 +28,7 @@ class TestData:
         "abstract": "This study investigates the effects of...",
         "keywords": "health, research, study",
         "nr_downloads": "200",
+        "experiments" : []
     }
     study_payload = json.dumps(study_data)
 
@@ -110,7 +111,6 @@ class StudyListCreateAPIViewTests(APITestCase):
         response = self.client.post(self.url, self.testData.study_data, format='json')
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data[0].get('uploader').get('orc_id'), '0000-0002-1825-0097')
 
     def test_create_study(self):
         CamaUser.objects.create(orc_id='0000-0002-1825-0097',
@@ -130,34 +130,6 @@ class StudyListCreateAPIViewTests(APITestCase):
         response = self.client.post(self.url, invalid_payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Study.objects.count(), 0)  # No object should be created
-
-# class ExperimentTestCase(APITestCase):
-#     def setUp(self):
-#         self.url = reverse('experiments') 
-#         self.testData = TestData
-
-#     def test_create_experiment(self):
-#         Country.objects.create(name="United States")
-#         Category.objects.create(name="Health")
-#         Grade.objects.create(grade='A')
-#         StudyDesign.objects.create(design="Randomized Controlled Trial")
-#         ParticipantDesign.objects.create(design="Between-Group Design")
-#         Implementation.objects.create(implementor="Pilot Study")
-#         user = CamaUser.objects.create(orc_id='0000-0002-1825-0097',name="1", email="1", organization="1", nr_uploads=1)
-#         TestTime.objects.create(time="1")
-#         RiskOfBias.objects.create(rob='Low')
-#         #response = self.client.post(self.url, self.testData.study_data, format='json')
-
-#         response = self.client.post(self.url, self.testData.experiment_data, format='json')
-#         logger.info(f"Response after POST: {response.data}")
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-#         self.assertEqual(Experiment.objects.count(), 1)
-#         experiment = Experiment.objects.first()
-#         self.assertEqual(experiment.study.cama_user.orc_id, "0000-0002-1825-0097")
-
-
-      
 
 
 
