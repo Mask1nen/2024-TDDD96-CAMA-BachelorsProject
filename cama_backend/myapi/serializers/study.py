@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from ..models import Study, Country, Category, CamaUser, Experiment, EffectData
-from .experiment import ExperimentSerializer, ExperimentFromStudySerializer
-from .effect_data import EffectDataFromStudySerializer
+from ..models import *
+from .experiment import *
 
 import logging
 logger = logging.getLogger(__name__)
@@ -41,14 +40,14 @@ class StudySerializer(serializers.ModelSerializer):
         
 class StudyCreateSerializer(serializers.ModelSerializer):
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
-    country = serializers.SlugRelatedField(read_only = True, slug_field='country')
-    category = serializers.SlugRelatedField(read_only = True, slug_field='category')
-    experiments = serializers.ListField(child=ExperimentFromStudySerializer())
+    country = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    category = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    experiments = serializers.ListField(child=ExperimentFromParentSerializer())
 
     class Meta:
         model = Study
         fields = ['title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed',
-                  'authors', 'doi', 'abstract', 'keywords', 'nr_downloads', 'approved', 'experiments']
+                  'authors', 'doi', 'abstract', 'keywords', 'approved', 'experiments']
         
     def create(self, validated_data):
         experiment_data = validated_data.pop('experiments')
@@ -59,3 +58,29 @@ class StudyCreateSerializer(serializers.ModelSerializer):
             for effect in effect_data:
                 EffectData.objects.create(experiment_nr=experiment, **effect)
         return study
+
+
+
+
+class StudySerializerUpdate(serializers.ModelSerializer):
+    experiments = serializers.ListField(child=ExperimentFromParentSerializerApproved())
+
+    class Meta:
+        model = Study
+        fields = ['approved', 'experiments']
+    # def validate(self, data):
+    #     """
+    #     Validate authenticated user
+    #     """
+
+    #     if self.instance.uploader != self.context['request'].uploader:
+    #         raise serializers.ValidationError('You can not edit posts from other users')
+    #     return data
+
+    def update(self, instance, validated_data):
+        # Only update the 'approved' field in all nested tables
+        for table in validated_data.get('experiments'):
+            table.approved = validated_data.get('approved')
+            table.save()  # This is necessary
+        instance.save()
+        return instance
