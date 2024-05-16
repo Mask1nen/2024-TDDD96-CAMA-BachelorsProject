@@ -9,90 +9,90 @@ from rest_framework.test import APIClient
 import logging
 logger = logging.getLogger(__name__)
 
-# class CamaUserAPITest(APITestCase):
-#     def setUp(self):
-#         self.url = reverse('cama_users')
-#         self.testData = TestData
+class CamaUserAPITest(APITestCase):
+    def setUp(self):
+        self.url = reverse('cama_users')
+        self.testData = TestData
 
-#     def test_get_post_cama_user(self):
-#         response = self.client.post(self.url, self.testData.cama_user_data, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         response = self.client.get(self.url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         self.assertEqual(response.data[0].get('orc_id'), '0000-0002-1825-0097')
+    def test_get_post_cama_user(self):
+        response = self.client.post(self.url, self.testData.cama_user_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data[0].get('orc_id'), '0000-0002-1825-0097')
 
-#     def test_invalid_cama_user(self):
-#         invalid_payload = {}  # Payload with missing required fields
-#         response = self.client.post(self.url, invalid_payload, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-#         self.assertEqual(CamaUser.objects.count(), 0)  # No object should be created
+    def test_invalid_cama_user(self):
+        invalid_payload = {}  # Payload with missing required fields
+        response = self.client.post(self.url, invalid_payload, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(CamaUser.objects.count(), 0)  # No object should be created
 
 
-# class StudyTestCase(APITestCase):
-#     def setUp(self):
-#         self.url = reverse('studies')
-#         self.detailed_url = reverse('detailed-study', kwargs={'study_id': 432})
+class StudyTestCase(APITestCase):
+    def setUp(self):
+        self.url = reverse('studies')
+        self.detailed_url = reverse('detailed-study', kwargs={'study_id': 432})
 
-#         self.testData = TestData
-#         CamaUser.objects.create(orc_id='0000-0002-1825-0097',
-#                                 name="John Doe")
+        self.testData = TestData
+        CamaUser.objects.create(orc_id='0000-0002-1825-0097',
+                                name="John Doe")
 
-#     def test_post_get_barestudy(self):
-#         response = self.client.post(self.url, self.testData.bare_study_data, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         response = self.client.get(self.url)
-#         #logger.info(response.data)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         study_uploader = response.data[0].get('uploader')
-#         self.assertEqual(study_uploader, '0000-0002-1825-0097')
-#         experiments_list = response.data[0].get('experiments')
-#         self.assertEqual(experiments_list, [])
+    def test_post_get_barestudy(self):
+        response = self.client.post(self.url, self.testData.bare_study_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.get(self.url)
+        #logger.info(response.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        study_uploader = response.data[0].get('uploader')
+        self.assertEqual(study_uploader, '0000-0002-1825-0097')
+        experiments_list = response.data[0].get('experiments')
+        self.assertEqual(experiments_list, [])
 
-#     def test_post_get_fullstudy(self):
-#         response = self.client.post(self.url, self.testData.full_study_data, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         response = self.client.get(self.url)
-#         logger.info(response.data)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         study_uploader = response.data[0].get('uploader')
-#         self.assertEqual(study_uploader, '0000-0002-1825-0097')
-#         study_id = response.data[0].get('experiments')[0].get('study_id')
-#         self.assertEqual(study_id, 432)
-#         study_experimentnr = response.data[0].get('experiments')[0].get('effects')[0].get('experiment_nr')
-#         self.assertEqual(study_experimentnr, 131)
+    def test_post_get_fullstudy(self):
+        response = self.client.post(self.url, self.testData.full_study_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.get(self.url)
+        logger.info(response.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        study_uploader = response.data[0].get('uploader')
+        self.assertEqual(study_uploader, '0000-0002-1825-0097')
+        study_id = response.data[0].get('experiments')[0].get('study_id')
+        self.assertEqual(study_id, 432)
+        study_experimentnr = response.data[0].get('experiments')[0].get('effects')[0].get('experiment_nr')
+        self.assertEqual(study_experimentnr, 131)
 
-#         print(study_id, 'banan')
-#         update_data = {}
-#         response = self.client.patch(self.detailed_url, update_data)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         self.assertEqual(response.data['approved'], True)
-#         print(response.data)
-#         self.assertEqual(response.data['experiments'][0]['effects'][0]['approved'], True)
+        print(study_id, 'banan')
+        update_data = {}
+        response = self.client.patch(self.detailed_url, update_data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['approved'], True)
+        print(response.data)
+        self.assertEqual(response.data['experiments'][0]['effects'][0]['approved'], True)
     
 
-#     def test_post_get_halfstudy(self):
-#         response = self.client.get(self.url)
-#         study_id = response.data
-#         print(study_id)
+    def test_post_get_halfstudy(self):
+        response = self.client.get(self.url)
+        study_id = response.data
+        print(study_id)
 
-#         response = self.client.post(self.url, self.testData.half_study_data, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         response = self.client.get(self.url)
-#         logger.info(response.data)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         study_uploader = response.data[0].get('uploader')
-#         self.assertEqual(study_uploader, '0000-0002-1825-0097')
-#         study_id = response.data[0].get('experiments')[0].get('study_id')
-#         self.assertEqual(study_id, 433)
-#         study_effectslist = response.data[0].get('experiments')[0].get('effects')
-#         self.assertEqual(study_effectslist, [])
+        response = self.client.post(self.url, self.testData.half_study_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.get(self.url)
+        logger.info(response.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        study_uploader = response.data[0].get('uploader')
+        self.assertEqual(study_uploader, '0000-0002-1825-0097')
+        study_id = response.data[0].get('experiments')[0].get('study_id')
+        self.assertEqual(study_id, 433)
+        study_effectslist = response.data[0].get('experiments')[0].get('effects')
+        self.assertEqual(study_effectslist, [])
 
 
-#     def test_invalid_study(self):
-#         invalid_payload = {}  # Payload with missing required fields
-#         response = self.client.post(self.url, invalid_payload, format='json')
-#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-#         self.assertEqual(Study.objects.count(), 0)  # No object should be created
+    def test_invalid_study(self):
+        invalid_payload = {}  # Payload with missing required fields
+        response = self.client.post(self.url, invalid_payload, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(Study.objects.count(), 0)  # No object should be created
 
 class ExperimentTestCase(APITestCase):
     def setUp(self):
