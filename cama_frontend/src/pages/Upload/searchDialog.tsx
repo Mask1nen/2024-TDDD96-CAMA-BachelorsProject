@@ -1,13 +1,5 @@
-import React, { useState, useMemo } from "react";
-import {Autocomplete, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
-import countries from "../../assets/countries.json"
-import '@mui/material';
-import Studyform from "./study_form"
-import Effectform from "./effect_form"
-import Experimentform from "./experiment_form"
-import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
-import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
+import React, { useState} from "react";
+import {Autocomplete, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, TextField} from "@mui/material";
 import { searchStudy } from "../../api/dataAPI";	
 	
 		

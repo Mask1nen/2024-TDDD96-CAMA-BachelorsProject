@@ -1,26 +1,29 @@
-import React, { useState, useMemo,useEffect } from "react";
-import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
-import countries from "../../assets/countries.json"
+import React, { useState, useEffect } from "react";
+import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography} from "@mui/material";
 import '@mui/material';
 import Studyform from "./study_form"
-import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
 import AddExperimentDialog from "./addExperimentDialog"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
-import { addStudy, fetchStudyById, addExperiment } from "../../api/dataAPI";
+import { addStudy, fetchStudyById} from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 
 
 const UploadPage: React.FC = () => {
 
 	//EXPERIMENT
+
+	//experiments is a list of temporary IDs for new experiments for frontend separation.
+	//Their values are not stored in states, but in uncontrolled textFields.
+	//ID is set in backend later.
+	const [experiments, setExperimentValues] = React.useState<string[]>([]);	
 	
 	const addExperiment = () => {
 
 		setExperimentValues(function(prev) {
-			return [...prev, uuidv4()]; //temporary id in frontend
+			return [...prev, uuidv4()];
 		});
 	};
 
@@ -35,11 +38,10 @@ const UploadPage: React.FC = () => {
 	}
 
 
-	const [experiments, setExperimentValues] = React.useState<string[]>([]);	
-
-
 	//EFFECT
 
+	//effects is a list of objects containing experiment_nr and effect_size_number. They make up a unique
+	//combination to separate in frontend. Their real numbers are set in backend later.
 	const [effects, setEffects] = useState<{experiment_nr: number, effect_size_number:number}[]>([]);
 
     const addEffect = (experiment_nr: string) => {
@@ -49,6 +51,7 @@ const UploadPage: React.FC = () => {
             return [...prev, newEffect]
         });  // Ensure you are adding unique identifiers
     };
+
 	const removeEffect = (effect_size_number: number, experiment_nr: string) => {
         if(window.confirm('Are you sure you want to remove this effect?')) {
             setEffects(prev => prev.filter((effect) => !(effect['effect_size_number'] == effect_size_number && effect['experiment_nr'] == experiment_nr)));
@@ -60,6 +63,7 @@ const UploadPage: React.FC = () => {
 
 	//STUDY
 
+	//parse form entry and put in correct data structure
 	const getFormEntry = (formData:FormData) => {
 
 		//Create empty study 
@@ -107,17 +111,15 @@ const UploadPage: React.FC = () => {
 	}
 
 
+	const [formSent, setFormSent] = React.useState(false);
 	
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
-		console.log(formData);
 		let formEntry = getFormEntry(formData);
 		console.log(formEntry);
 
-		
-		
 		const fullStudyData:Study = {
 			...formEntry,
 			experiments: formEntry.experiments.map<Experiment>(experiment => ({
@@ -129,6 +131,7 @@ const UploadPage: React.FC = () => {
 		try {
 			const response = await addStudy(fullStudyData);
 			if (response) {
+				setFormSent(true);
 			} else {
 			}
 		} catch (error) {
@@ -151,10 +154,11 @@ const UploadPage: React.FC = () => {
 	}
 
 	const [addToExisting, setAddToExisting] = React.useState(false);
-	const [existingStudyId, setExistingStudyId] = React.useState<number>(-1);
+	const [existingStudyId, setExistingStudyId] = React.useState<number>(-1); //the ID of existing study to add data to. -1 when addToExisting is false
 
-	const [existingStudy, setExistingStudy] = React.useState<Study>();
+	const [existingStudy, setExistingStudy] = React.useState<Study>(); //Complete study to add data to when addToExisting. Is set after existingStudyId is changed
 
+	//clear all states when toggling to "addNewStudy-mode"
 	const setAddNewStudy = () => {
 		setAddToExisting(false);
 		setExistingStudyId(-1);
@@ -162,6 +166,7 @@ const UploadPage: React.FC = () => {
 		clearExperiments();
 		clearEffects();
 	}
+	//fetch existing study and set it
 	const fetchExistingStudy = async () => {
 		if (existingStudyId != -1) {
 			try {
@@ -185,6 +190,11 @@ const UploadPage: React.FC = () => {
 
 	return (
 		<Box sx={{py:2, pl:2, textAlign:"left"}}>
+
+			{/* Dialogs */}
+			<AddExperimentDialog dialogOpen={addExperimentDialogOpen} handleDialogClose={handleAddExperimentDialogClose} study_id={existingStudy?.study_id || 0}/>
+			<SearchDialog dialogOpen={searchDialogOpen} value={existingStudy} handleDialogClose={handleSearchDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
+
 			<Typography variant="h3" gutterBottom>
         		Upload
       		</Typography>
@@ -192,79 +202,75 @@ const UploadPage: React.FC = () => {
 				Are you adding a new study to an existing dataset or a whole new meta-analysis?
 			</Typography>
 			
-				<Box sx={{ borderBottom: 1, borderColor: 'divider', my:1}}>
-				</Box>
+			<Box sx={{ borderBottom: 1, borderColor: 'divider', my:1}}></Box>
 				
-					<Box sx={{display:"flex", justifyContent:"start"}}>
+			<Box sx={{display:"flex", justifyContent:"start"}}>
 
-						<Typography variant="h5">
-							Study information
-						</Typography>
+				<Typography variant="h5">
+					Study information
+				</Typography>
+				
+				{!addToExisting ? (
+					<Button sx={{ml:2}} size="small" variant="outlined" startIcon={<SavedSearch />} onClick={handleSearchDialogOpen}>
+						Add to existing study
+					</Button>
+				) : (
+					<Button sx={{ml:2}} size="small" onClick={setAddNewStudy} variant="outlined">Add new study</Button>
+					)
+				}
+
+			</Box>
+			<Box sx={{display:"flex", flexWrap: 'wrap'}}>
+				<form onSubmit={handleSubmit}>
+					
+					<Studyform readOnly={addToExisting} inputs={addToExisting ? existingStudy : {}}/>
+					<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
+
+					{!addToExisting ? (
+					<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
+				) : (
+					<Button sx={{ml:2}} size="small" variant="contained" onClick={handleAddExperimentDialogOpen}>
+						Add experiment to study
+					</Button>
+				)}
+					
+
+					{/* new experiments when adding new study */}
+					{experiments.map((experiment_nr) =>
+						<Box key={experiment_nr}>
+							<Experimentform 
+								inputs={{}}
+								readOnly={false}
+								effects={effects}
+								addEffect={addEffect}
+								removeEffect={removeEffect}
+								experiment_nr={experiment_nr}/>
 						
-						{!addToExisting ? (
-								<Button sx={{ml:2}} size="small" variant="outlined" startIcon={<SavedSearch />} onClick={handleSearchDialogOpen}>
-									Add to existing study
-								</Button>
-							) : (
-								<Button sx={{ml:2}} size="small" onClick={setAddNewStudy} variant="outlined">Add new study</Button>
-								)
-							}
-					<SearchDialog dialogOpen={searchDialogOpen} value={existingStudy} handleDialogClose={handleSearchDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
-
+							<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment_nr)} variant="outlined" startIcon={<RemoveCircleOutline />}>
+								Remove Experiment
+							</Button>	
+						</Box>
+					)}
+					
+					{/* existing experiments when addToExisting */}
+					{addToExisting ? (existingStudy?.experiments.map((experiment) =>
+						<Box key={experiment.experiment_nr}>
+							<Experimentform 
+								inputs={experiment}
+								readOnly={addToExisting}
+								effects={effects}
+								addEffect={addEffect}
+								removeEffect={removeEffect}
+								experiment_nr={experiment.experiment_nr}
+								fetchExistingStudy={fetchExistingStudy}
+								/>
+						</Box>
+					)) : ""}
+					<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
+						<Button type="submit" variant="contained" className="float-">Send</Button>
 					</Box>
-					<AddExperimentDialog dialogOpen={addExperimentDialogOpen} handleDialogClose={handleAddExperimentDialogClose} study_id={existingStudy?.study_id || 0}/>
-					<Box sx={{display:"flex", flexWrap: 'wrap'}}>
-						<form onSubmit={handleSubmit}>
-							
-							<Studyform key={uuidv4()} readOnly={addToExisting} inputs={addToExisting ? existingStudy : {}}/>
-							<Box sx={{width:"90%", borderTop: 1, mx:1, my:3}}></Box>
-
-							{!addToExisting ? (
-							<Button onClick={addExperiment} variant="outlined">Add Experiment<AddCircleOutline sx={{ml:1}}/></Button>
-						) : (
-							<Button sx={{ml:2}} size="small" variant="contained" onClick={handleAddExperimentDialogOpen}>
-								Add experiment to study
-							</Button>
-						)}
-							
-
-							{experiments.map((experiment) =>
-								<Box key={experiment}>
-									<Experimentform 
-										key={experiment} 
-										inputs={{}}
-										readOnly={false}
-										effects={effects}
-										addEffect={addEffect}
-										removeEffect={removeEffect}
-										experiment_nr={experiment}/>
-								
-									<Button sx={{mt:1}} size='small' onClick={() => removeExperiment(experiment)} variant="outlined" startIcon={<RemoveCircleOutline />}>
-										Remove Experiment
-									</Button>	
-								</Box>
-							)}
-							
-							{addToExisting ? (existingStudy?.experiments.map((experiment) =>
-								<Box key={experiment.experiment_nr}>
-									<Experimentform 
-										inputs={experiment}
-										readOnly={addToExisting}
-										addToExisting={true}
-										effects={effects}
-										addEffect={addEffect}
-										removeEffect={removeEffect}
-										experiment_nr={experiment.experiment_nr}
-										fetchExistingStudy={fetchExistingStudy}
-										/>
-								
-								</Box>
-							)) : ""}
-							<Box sx={{display:"flex", justifyContent: 'flex-end'}}>
-								<Button type="submit" variant="contained" className="float-">Send</Button>
-							</Box>
-						</form>
-					</Box>
+				</form>
+			</Box>
 
 		</Box>
 

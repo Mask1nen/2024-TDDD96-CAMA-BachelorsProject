@@ -94,7 +94,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                         </div>
                     ):(
                         <div>
-                            <Button onClick={() => {setAddEffectDialogOpen(true)}} variant="outlined" sx={{ mt: 2 }}>
+                            <Button onClick={handleAddEffectDialogOpen} variant="outlined" sx={{ mt: 2 }}>
                                 Add Effect To Experiment<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>

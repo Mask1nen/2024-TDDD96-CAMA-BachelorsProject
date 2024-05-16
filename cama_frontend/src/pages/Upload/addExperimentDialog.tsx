@@ -1,14 +1,9 @@
 import React, { useState, useMemo } from "react";
-import {Autocomplete, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Tabs,Input, FilledInput, OutlinedInput, InputLabel, InputAdornment, FormHelperText, FormControl, TextField, MenuItem} from "@mui/material";
-import countries from "../../assets/countries.json"
+import { Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button } from "@mui/material";
 import '@mui/material';
-import Studyform from "./study_form"
-import Effectform from "./effect_form"
 import Experimentform from "./experiment_form"
-import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
-import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
-import { searchStudy, addExperiment } from "../../api/dataAPI";	
+import {emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
+import { addExperiment } from "../../api/dataAPI";	
 	
 		
 const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}:any) => {
@@ -93,9 +88,6 @@ const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}
 			<form onSubmit={handleSubmit}>
 				<DialogTitle>Add Experiment</DialogTitle>
 				<DialogContent >
-					<DialogContentText>
-						Search for study to add experiments/effects to.
-					</DialogContentText>
 
 						<Experimentform 
 							experiment_nr={experiment_nr}
