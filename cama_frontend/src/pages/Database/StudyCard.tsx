@@ -7,24 +7,23 @@ import {
   Box,
   Tooltip
 } from "@mui/material";
-import { DataEntry } from "../api/types";
-import rawData from "../data/randomized_data.json";
-import bild2 from "../assets/images/bild2.png";
+import { Study } from "../../api/newTypes";
+import bild2 from "../../assets/images/bild2.png";
 import { useNavigate } from "react-router-dom";
 
-interface DatasetCardProps {
-  data: DataEntry;
+interface StudyCardProps {
+  studyData: Study;
 }
 
-const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
+const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   let navigate = useNavigate();
 
 
 
   const handleCardClick = () => {
-    const titleSlug = encodeURIComponent(data.title);
-    navigate(`/datasets/${titleSlug}`);
-  };
+    navigate(`/Database/${studyData.study_id}`);
+};
+
 
   return (
     <Box
@@ -35,7 +34,7 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
         "&:hover": { transform: "scale(1.05)" },
       }}
     >
-        <Tooltip title={data.title} placement="top">
+        <Tooltip title={studyData.title} placement="top">
         <Card
           sx={{
             minWidth: 240,
@@ -50,8 +49,8 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
         >
           <CardMedia
             component="img"
-            image={data.image || bild2}
-            alt={data.title}
+            image={studyData.image || bild2}
+            alt={studyData.title}
             sx={{ width: "100%", height: "auto" }}
           />
           <CardContent>
@@ -67,7 +66,7 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
                 whiteSpace: "nowrap",
               }}
             >
-              {data.title}
+              {studyData.title}
             </Typography>
             <Typography
               variant="body2"
@@ -79,7 +78,7 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
                 whiteSpace: "nowrap",
               }}
             >
-              {data.authors}
+              {studyData.authors}
             </Typography>
           </CardContent>
         </Card>
@@ -88,4 +87,4 @@ const DatasetCard: React.FC<DatasetCardProps> = ({ data }) => {
   );
 };
 
-export default DatasetCard;
+export default StudyCard;
