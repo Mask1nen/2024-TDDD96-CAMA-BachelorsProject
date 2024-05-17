@@ -1,7 +1,7 @@
 import { ExperimentField } from '../../types/formFieldTypes';
 
 export const experimentFields: ExperimentField[] = [
-    { name: "Number of the experiment", key: "experiment_number", type: "number", desc: "Which experiment in the study was it" },
+    { name: "Number of the experiment", key: "experiment_nr", type: "number", desc: "Which experiment in the study was it" },
     { name: "Intervention", key: "intervention", type: "string", desc: "Name of the intervention" },
     { name: "Intervention Operationalization", key: "intervention_op", type: "string", desc: "Description of the intervention" },
     { name: "Target Population", key: "target_population", type: "string", desc: "Who was the intervention aimed at" },

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography} from "@mui/material";
+import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Grid,Tab, Box, Typography, Snackbar,
+	Alert} from "@mui/material";
 import '@mui/material';
 import Studyform from "./study_form"
 import Experimentform from "./experiment_form"
 import AddExperimentDialog from "./addExperimentDialog"
-import {AddCircleOutline, RemoveCircleOutline, SavedSearch} from "@mui/icons-material"
+import {AddCircleOutline, RemoveCircleOutline, SavedSearch, Check} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
 import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
 import { addStudy, fetchStudyById} from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
-
-
 const UploadPage: React.FC = () => {
 
 	//EXPERIMENT
@@ -163,8 +162,10 @@ const UploadPage: React.FC = () => {
 		setExistingStudyId(-1);
 		setExistingStudy(undefined);
 		setAddToExisting(false);
+		document.querySelector("#uploadForm")?.reset();
 		clearExperiments();
 		clearEffects();
+		setFormSent(false);
 	}
 	//fetch existing study and set it
 	const fetchExistingStudy = async () => {
@@ -187,13 +188,25 @@ const UploadPage: React.FC = () => {
 	  }, [existingStudyId]);
 
 
-
 	return (
 		<Box sx={{py:2, pl:2, textAlign:"left"}}>
+			{formSent ? (
+			<Box sx={{}}>
+				<Alert icon={<Check fontSize="inherit" />} severity="success">
+					Study has successfully been submitted!
+				</Alert>
+				<Button sx={{ml:2, mt:2}} size="small" variant="outlined" onClick={setAddNewStudy}>
+					Upload new study
+				</Button>
+			</Box>
+			):(
+			<div>
+
 
 			{/* Dialogs */}
 			<AddExperimentDialog dialogOpen={addExperimentDialogOpen} handleDialogClose={handleAddExperimentDialogClose} study_id={existingStudy?.study_id || 0}/>
 			<SearchDialog dialogOpen={searchDialogOpen} value={existingStudy} handleDialogClose={handleSearchDialogClose} setAddToExisting={setAddToExisting} setExistingStudyId={setExistingStudyId}/>
+
 
 			<Typography variant="h3" gutterBottom>
         		Upload
@@ -221,7 +234,7 @@ const UploadPage: React.FC = () => {
 
 			</Box>
 			<Box sx={{display:"flex", flexWrap: 'wrap'}}>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} id="uploadForm">
 
 						
 					<Studyform key={addToExisting? existingStudy?.study_id : -1} readOnly={addToExisting} inputs={addToExisting?existingStudy:{}}/>
@@ -274,6 +287,8 @@ const UploadPage: React.FC = () => {
 					</Box>
 				</form>
 			</Box>
+			</div>
+			) }
 
 		</Box>
 
