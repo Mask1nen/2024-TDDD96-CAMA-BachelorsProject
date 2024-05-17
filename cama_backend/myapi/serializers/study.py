@@ -41,7 +41,7 @@ class StudySerializer(serializers.ModelSerializer):
 class StudyCreateSerializer(serializers.ModelSerializer):
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
     country = serializers.SlugRelatedField(queryset=Country.objects.all(), slug_field='name')
-    category = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    category = serializers.SlugRelatedField(queryset=Category.objects.all(), slug_field='name')
     experiments = serializers.ListField(child=ExperimentFromParentSerializer())
 
     class Meta:
@@ -53,11 +53,12 @@ class StudyCreateSerializer(serializers.ModelSerializer):
         experiment_data = validated_data.pop('experiments')
         study = Study.objects.create(**validated_data)
         for experiment in experiment_data:
+            grade_data = experiment.pop('grade')
+            grade = Grade.objects.get_or_create(**grade_data)[0]
             effect_data = experiment.pop('effects')
-            experiment = Experiment.objects.create(study_id=study, **experiment)
+            experiment = Experiment.objects.create(grade=grade, study_id=study, **experiment)
             for effect in effect_data:
                 EffectData.objects.create(experiment_nr=experiment, **effect)
-        print(f'{study.country.name} ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         return study
 
 

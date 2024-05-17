@@ -37,16 +37,16 @@ class EffectDataSerializer(serializers.ModelSerializer):
 
 class EffectDataCreateSerializer(serializers.ModelSerializer):
     experiment_nr = serializers.PrimaryKeyRelatedField(queryset=Experiment.objects.all())
-    effect_size_type = serializers.SlugRelatedField(read_only = True, slug_field='name')
-    test_time = serializers.SlugRelatedField(read_only = True, slug_field='name')
+    effect_size_type = serializers.SlugRelatedField(queryset=EffectSizeType.objects.all(), slug_field='name')
+    test_time = serializers.SlugRelatedField(queryset=TestTime.objects.all(), slug_field='time')
 
     class Meta:
         model = EffectData
         fields = '__all__'
 
 class EffectDataFromParentSerializer(serializers.ModelSerializer):
-    effect_size_type = serializers.SlugRelatedField(read_only = True, slug_field='name')
-    test_time = serializers.SlugRelatedField(read_only = True, slug_field='name')
+    effect_size_type = serializers.SlugRelatedField(queryset=EffectSizeType.objects.all(), slug_field='name')
+    test_time = serializers.SlugRelatedField(queryset=TestTime.objects.all(), slug_field='time')
     
     class Meta:
         model = EffectData
