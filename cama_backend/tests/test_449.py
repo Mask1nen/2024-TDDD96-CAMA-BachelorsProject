@@ -41,7 +41,7 @@ class DownloadTest(TestCase):
         
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
-        print(f'the response content data csv {csv_data}')
+        #print(f'the response content data csv {csv_data}')
         
         # Check if the number of rows matches the expected count
         self.assertEqual(expected_count, actual_count)
