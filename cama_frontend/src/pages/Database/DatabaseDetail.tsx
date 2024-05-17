@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, Paper, Button } from "@mui/material";
 import { fetchStudyById } from "../../api/dataAPI";
+import { apiUrl } from "../../api/apiConfig";
 
 const DatabaseDetail = () => {
   const { id: paramId } = useParams();
@@ -58,12 +59,45 @@ const DatabaseDetail = () => {
     </Box>
   );
 
+  const handleDownload = async () => {
+    try {
+      const respone = await fetch(`${apiUrl}/api/download-effects/?title=${title}/`, {
+          method: "GET",
+         
+      })
+      if (respone.status == 200) {
+        const blob = await respone.blob();
+        // Create blob link to download
+        const url = window.URL.createObjectURL(
+          new Blob([blob]),
+        );
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute(
+          'download',
+          `${title}.csv`,
+        );
+    
+        document.body.appendChild(link);
+        link.click();    
+        link.parentNode.removeChild(link);
+      }
+
+
+  }
+  catch (error) {
+      alert("Failed to download dataset.");
+  }
+  };
+  
+
   return (
     <Box sx={{ margin: 4 }}>
       <Typography variant="h4" gutterBottom>{title}</Typography>
       <Typography variant="subtitle1" gutterBottom>DOI: {doi}</Typography>
       <Typography variant="subtitle1" gutterBottom>Authors: {authors}</Typography>
       <Typography variant="subtitle2" gutterBottom>Keywords: {keywords}</Typography>
+      <Button variant="contained" color="primary" onClick={handleDownload}>Download</Button>
       <Typography variant="body1" align="left" gutterBottom>Abstract: {abstract}</Typography>
       {experiments && experiments.map(renderExperimentDetails)}
     </Box>
