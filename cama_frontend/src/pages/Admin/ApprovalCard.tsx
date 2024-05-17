@@ -5,6 +5,7 @@ import { DataEntry } from "../../api/types";
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import Studyform from "../Upload/study_form";
 import Experimentform from "../Upload/experiment_form";
+import { approveStudy } from "../../api/dataAPI"
 
 interface ApprovalCardProps {
   data: DataEntry;
@@ -18,7 +19,8 @@ const ApprovalCard: React.FC<ApprovalCardProps> = ({ data }) => {
   };
 
   const handleApprove = () => {
-    console.log("Approve", data.id);
+    console.log("Approve", data.study_id);
+    let response = approveStudy(data.study_id);
   };
 
   const handleReject = () => {
