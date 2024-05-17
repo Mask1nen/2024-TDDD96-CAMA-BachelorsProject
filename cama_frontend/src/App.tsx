@@ -20,6 +20,7 @@ import { ThemeProvider } from '@emotion/react';
 import DatabasePage from './pages/Database/DatabasePage.tsx';
 import { Dataset } from '@mui/icons-material';
 import DatabaseDetail from './pages/Database/DatabaseDetail.tsx';
+import SubjectsPage from './pages/Subjects/SubjectsPage.tsx';
 
 
 import React, {useState} from "react";
@@ -58,7 +59,7 @@ const theme = createTheme({
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />
             <Route path="/Apps" element={<AppsPage />} />
-            <Route path="/Subjects" element={<HomePage />} />
+            <Route path="/Subjects" element={<SubjectsPage />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatabasePage />} />
             <Route path="/Database/:id" element={<DatabaseDetail />} />

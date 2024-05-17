@@ -274,3 +274,15 @@ export const deleteEffect = async (id: number): Promise<boolean> => {
     }
 };
 
+export const fetchStudiesByCategory = async (category: string): Promise<Study[] | null> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/studies-filterd/?category__name=${category}`, {
+            method: 'GET',
+        });
+        if (!response.ok) throw new Error(`Failed to fetch studies for category ${category}`);
+        return await response.json() as Study[];
+    } catch (error) {
+        console.error(`Error fetching studies for category ${category}:`, error);
+        return null;
+    }
+};
