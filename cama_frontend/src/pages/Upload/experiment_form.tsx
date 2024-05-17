@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tooltip, Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
+import { FormLabel, FormControlLabel, Checkbox, Tooltip, Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
@@ -44,6 +44,20 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
         fetchExistingStudy();
 		setAddEffectDialogOpen(false);
 	}
+    const schoolGrades = [
+    {label:"K", val:"K",},
+    {label:"1", val: "first"},
+    {label:"2", val: "second"},
+    {label:"3", val: "third"},
+    {label:"4", val: "fourth"},
+    {label:"5", val: "fifth"},
+    {label:"6", val: "sixth"},
+    {label:"7", val: "seventh"},
+    {label:"8", val: "eight"},
+    {label:"9", val: "ninth"},
+    {label:"10", val: "tenth"},
+    {label:"11", val: "eleventh"},
+    {label:"12", val: "twelfth"}];
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -53,10 +67,23 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                     <Typography>Experiment Data</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
+                    <FormLabel component="legend">School grade</FormLabel>
+                    {schoolGrades.map(grade => (
+
+                        <FormControlLabel
+                        key={"grade_" + grade.val}
+                        sx={{mx:0}}
+                        name={experiment_nr+"_grade_"+grade.val}
+                        control={<Checkbox name={experiment_nr+"_grade_"+grade.val}/>}
+                        label={grade.label}
+                        labelPlacement="top"
+                        />
+                    ))}
+                    <br/>
                         {experimentFields.map(field => (
                             <TextField
                                 key={field.key}
-                                disabled={(readOnly||false)}
+                                disabled={(readOnly||false||field.type=="disabled")}
                                 sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
                                 variant="standard"
                                 id={"form" + field.key}
@@ -73,14 +100,16 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                             </TextField>
                         ))}
 
-                        {/*existing (only when addToExisting)*/}
+                        
+
+                        {/*existing effects (only when addToExisting)*/}
                         {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                             <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>
                         ))}
 
-                        {/*new*/}
+                        {/*new effects*/}
                         {effects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                              <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}

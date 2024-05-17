@@ -5,7 +5,7 @@ export const effectFields: EffectField[] = [
     { name: "Gender 1 (Males)", key: "gender_1", type: "number", desc: "Number of males included in the study" },
     { name: "Gender 2 (Females)", key: "gender_2", type: "number", desc: "Number of females included in the study" },
     { name: "Gender 3 (Other)", key: "gender_3", type: "number", desc: "Number of other genders included in the study" },
-    { name: "Effect Size Type", key: "effect_size_type", type: "option", desc: "Type of effect size", options: ["SMD", "RR", "OR"] },
+    { name: "Effect Size Type", key: "effect_size_type", type: "option", desc: "Type of effect size", options: ["SMD", "RR/OR"] },
     { name: "Age mean (Experimental Group)", key: "mean_age_1i", type: "number", desc: "State mean of age in years for the experimental group" },
     { name: "Mean of experimental group", key: "m1i", type: "number", desc: "" },
     { name: "Standard deviation of experimental group", key: "sd1i", type: "number", desc: "" },

@@ -62,6 +62,22 @@ const UploadPage: React.FC = () => {
 
 	//STUDY
 
+	const schoolGrades = [
+		"K",
+		"first",
+		"second",
+		"third",
+		"fourth",
+		"fifth",
+		"sixth",
+		"seventh",
+		"eight",
+		"ninth",
+		 "tenth",
+		 "eleventh",
+		 "twelfth"];
+	
+	
 	//parse form entry and put in correct data structure
 	const getFormEntry = (formData:FormData) => {
 
@@ -81,7 +97,12 @@ const UploadPage: React.FC = () => {
 			let experimentKeys = Object.keys(newExp);
 			//fill each prop with data from form
 			experimentKeys.forEach(function(key) {
-				if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
+				if(key=="grade") {
+					schoolGrades.forEach((grade) => {
+						newExp["grade"][grade] = (formData.get(experimentId+"_grade_"+grade)=="on")||false;
+					})
+				}
+				else if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
 					newExp[key] = formData.get(experimentId + "_" + key);
 				} 
 			});
@@ -116,6 +137,7 @@ const UploadPage: React.FC = () => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
+		console.log(formData);
 		let formEntry = getFormEntry(formData);
 		console.log(formEntry);
 

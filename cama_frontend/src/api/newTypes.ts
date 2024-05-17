@@ -20,7 +20,7 @@ export const emptyStudy = (id: number): Study => ({
     authors: "",
     keywords: "",
     abstract: "",
-    category: "",
+    category: "Math" | "Language" | "STEM",
     country: "",
     study_year: 0,
     doi: "",
@@ -36,7 +36,21 @@ export interface Experiment {
     intervention_op: string;
     target_population: string;
     mean_age?: number;
-    grade?: string;
+    grade?: {
+        "K":boolean;
+		"first":boolean;
+		"second":boolean;
+		"third":boolean;
+		"fourth":boolean;
+		"fifth":boolean;
+		"sixth":boolean;
+		"seventh":boolean;
+		"eight":boolean;
+		"ninth":boolean;
+		 "tenth":boolean;
+		 "eleventh":boolean;
+		 "twelfth":boolean;
+    };
     ni: number; //sample size
     study_design: 'RCT' | 'QES';
     participant_design: 'within' | 'between' | 'mixed';
@@ -45,7 +59,7 @@ export interface Experiment {
     frequency_n?: number;
     intensity_n?: number;
     robins?: string;
-    rob: 'low' | 'moderate' | 'high' | 'NA';
+    risks: 'low' | 'moderate' | 'high' | 'NA';
     effects: Effect[];
 }
 
@@ -57,7 +71,21 @@ export const emptyExperiment = (experiment_nr: number, study_id:number): Experim
     intervention_op: "",
     target_population: "",
     mean_age: undefined,
-    grade: "",
+    grade: {
+        "K":false,
+		"first":false,
+		"second":false,
+		"third":false,
+		"fourth":false,
+		"fifth":false,
+		"sixth":false,
+		"seventh":false,
+		"eight":false,
+		"ninth":false,
+		 "tenth":false,
+		 "eleventh":false,
+		 "twelfth":false,
+    },
     ni: "",
     study_design: "",
     participant_design: "",
@@ -66,7 +94,7 @@ export const emptyExperiment = (experiment_nr: number, study_id:number): Experim
     frequency_n: "",
     intensity_n: "",
     robins: "",
-    rob: "",
+    risks: "",
     effects: [],
 });
 

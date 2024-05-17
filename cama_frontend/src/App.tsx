@@ -13,6 +13,7 @@ import FbFPage from './pages/FbF/FbFPage.tsx';
 import AdminPage from './pages/Admin/AdminPage.tsx';
 import AppsPage from './pages/Apps/ShinyAppsPage.tsx';
 import UploadPage from './pages/Upload/UploadPage.tsx';
+import DownloadPage from './pages/Download/DownloadPage.tsx';
 import LoginPage from './pages/Login/LoginPage.tsx';
 import { createTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
@@ -69,6 +70,7 @@ const theme = createTheme({
             <Route path="/App" element={<AppPage />} />  
             <Route path="/FbF" element={<FbFPage />} />  
             <Route path="/Upload" element={<UploadPage />} />
+            <Route path="/Download" element={<DownloadPage />} />
             <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Container>

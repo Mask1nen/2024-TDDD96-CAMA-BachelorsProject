@@ -12,6 +12,7 @@ interface ApprovalCardProps {
 }
 
 const ApprovalCard: React.FC<ApprovalCardProps> = ({ data, onApprove }) => {
+  console.log(data);
   let navigate = useNavigate();
 
   const handleApprove = () => {

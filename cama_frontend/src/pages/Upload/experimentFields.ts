@@ -1,7 +1,7 @@
 import { ExperimentField } from '../../types/formFieldTypes';
 
 export const experimentFields: ExperimentField[] = [
-    { name: "Number of the experiment", key: "experiment_nr", type: "number", desc: "Which experiment in the study was it" },
+    { name: "Number of the experiment", key: "experiment_nr", type: "disabled", desc: "Which experiment in the study was it" },
     { name: "Intervention", key: "intervention", type: "string", desc: "Name of the intervention" },
     { name: "Intervention Operationalization", key: "intervention_op", type: "string", desc: "Description of the intervention" },
     { name: "Target Population", key: "target_population", type: "string", desc: "Who was the intervention aimed at" },
@@ -15,6 +15,6 @@ export const experimentFields: ExperimentField[] = [
     { name: "Duration in weeks", key: "duration_week", type: "number", desc: "How long was the intervention?" },
     { name: "Frequency of sessions", key: "frequency_n", type: "number", desc: "How many occasions did the intervention run?" },
     { name: "Intensity of the sessions", key: "intensity_n", type: "number", desc: "How long were each session in minutes?" },
-    { name: "Risk of Bias (Cochrane)", key: "rob", type: "option", desc: "Risk of bias assessment for randomized studies - final score for the entire study", options:["low", "moderate", "high", "N/A"] },
+    { name: "Risk of Bias (Cochrane)", key: "risks", type: "option", desc: "Risk of bias assessment for randomized studies - final score for the entire study", options:["low", "moderate", "high", "N/A"] },
     { name: "Risk of Bias (ROBINS-I)", key: "robins", type: "string", desc: "Risk of bias assessment for non-randomized studies" },
     ];

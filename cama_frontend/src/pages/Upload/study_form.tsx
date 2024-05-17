@@ -59,7 +59,26 @@ function Studyform({inputs = {}, readOnly = false}) {
 			</TextField>
 				
 
-			<TextField defaultValue={inputs["category"]||""} disabled={readOnly}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="Category" name="category" id="formCategory"/>
+
+			<TextField
+				sx={{width:"45%", mt: 2, ml: 1, ...disabledStyling}} variant="standard"
+				disabled={readOnly} 
+				id="formCategory"
+				label="Category"
+				name="category"
+				defaultValue={inputs.category||""}
+				select
+				>
+					<MenuItem key="STEM" value="STEM">
+					STEM
+					</MenuItem>
+					<MenuItem key="Math" value="Math">
+					Math
+					</MenuItem>
+					<MenuItem key="Language" value="Language">
+					Language
+					</MenuItem>
+			</TextField>
 
 			<TextField defaultValue={inputs["doi"]||""} disabled={readOnly}  sx={{width:"45%", m: 1 , ...disabledStyling}} variant="standard" label="DOI" name="doi" id="formDOI"/>
 			</div>
