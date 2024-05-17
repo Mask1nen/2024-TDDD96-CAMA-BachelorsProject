@@ -1,7 +1,7 @@
 import { EffectField } from '../../types/formFieldTypes';
 
 export const effectFields: EffectField[] = [
-    { name: "Test Time", key: "test_time", type: "option", desc: "Time of the testing", options: ["baseline", "post-test", "follow-up"] },
+    { name: "Test Time", key: "test_time", type: "option", desc: "Time of the testing", options: ["baseline(pre-test)", "post-test", "follow-up"] },
     { name: "Gender 1 (Males)", key: "gender_1", type: "number", desc: "Number of males included in the study" },
     { name: "Gender 2 (Females)", key: "gender_2", type: "number", desc: "Number of females included in the study" },
     { name: "Gender 3 (Other)", key: "gender_3", type: "number", desc: "Number of other genders included in the study" },

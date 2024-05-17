@@ -102,11 +102,11 @@ export interface Effect {
     study_id?: number;
     experiment_nr?: number;
     effect_size_nr?: number;
-    test_time: 'baseline' | 'post-test' | 'follow-up';
+    test_time: 'baseline(pre-test)' | 'post-test' | 'follow-up';
     gender_1?: number;
     gender_2?: number;
     gender_3?: number;
-    effect_size_type: 'SMD' | 'RR' | 'OR';
+    effect_size_type: 'SMD' | 'RR/OR' ;
     mean_age_1i?: number;
     m1i?: number;
     sd1i?: number;
