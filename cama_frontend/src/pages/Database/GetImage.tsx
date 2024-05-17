@@ -1,3 +1,5 @@
+{/*This file conatins the code responible for sending different images to the study cards depending on the study id*/}
+
 import bild0 from "../../assets/images/studiebild0.jpg";
 import bild1 from "../../assets/images/studiebild1.png";
 import bild2 from "../../assets/images/studiebild2.jpg";

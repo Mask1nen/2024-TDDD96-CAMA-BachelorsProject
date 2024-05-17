@@ -1,3 +1,5 @@
+{/*This file conatins the code responible for reacting the individual study cards that are displayed on the study page*/}
+
 import React from "react";
 import {
   Card,
@@ -22,7 +24,8 @@ const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   const handleCardClick = () => {
     navigate(`/Database/${studyData.study_id}`);
 };
-const image1 = getImage(studyData.study_id);
+//gets the image for the card that is dependent on the study id
+const cardImage = getImage(studyData.study_id);
 
 
 
@@ -50,7 +53,7 @@ const image1 = getImage(studyData.study_id);
         >
           <CardMedia
             component="img"
-            image={studyData.image || image1}
+            image={studyData.image || cardImage}
             alt={studyData.title}
             sx={{ width: "100%", height: "auto" }}
           />
