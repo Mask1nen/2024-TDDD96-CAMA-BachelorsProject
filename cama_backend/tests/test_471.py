@@ -50,8 +50,10 @@ class StudyTestCase(APITestCase):
 
     def test_post_get_fullstudy(self):
         response = self.client.post(self.url, self.testData.full_study_data, format='json')
+        logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
+        print(f'{response.data} ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         study_uploader = response.data[0].get('uploader')
