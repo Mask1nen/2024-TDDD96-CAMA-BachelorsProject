@@ -32,33 +32,11 @@ class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
         exclude = ['id']
-        
-    # def create(self, validated_data):
-    #         grade_k = validated_data.pop('k')
-    #         grade_first = validated_data.pop('first')
-    #         grade_second = validated_data.pop('second')
-    #         grade_third = validated_data.pop('third')
-    #         grade_forth = validated_data.pop('forth')
-    #         grade_fifth = validated_data.pop('fifth')
-    #         grade_sixth = validated_data.pop('sixth')
-    #         grade_seventh = validated_data.pop('seventh')
-    #         grade_eighth = validated_data.pop('eighth')
-    #         grade_ninth = validated_data.pop('ninth')
-    #         grade_tenth = validated_data.pop('tenth')
-    #         grade_eleventh = validated_data.pop('eleventh')
-    #         grade_twelfth = validated_data.pop('twelfth')
-    #         grade = Grade.objects.create(k=grade_k, first=grade_first, second=grade_second,
-    #                                      third=grade_third, forth=grade_forth, fifth=grade_fifth,
-    #                                      sixth=grade_sixth, seventh=grade_seventh, eighth=grade_eighth,
-    #                                      ninth=grade_ninth, tenth=grade_tenth, eleventh=grade_eleventh,
-    #                                      twelfth=grade_twelfth)
-    #         return grade
-
 
 class ParticipantDesignSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParticipantDesign
-        fields = '__all__' #['design']
+        fields = '__all__'
         
     def create(self, validated_data):
             participant_design_name = validated_data.pop('design')

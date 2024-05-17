@@ -55,7 +55,7 @@ class RiskOfBiasAdmin(admin.ModelAdmin):
 
 class GradeAdmin(admin.ModelAdmin):
     model = Grade
-    list_display = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+    list_display = ["k", "first", "second", "third", "fourth", "fifth", "sixth",
                     "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
     search_fields = ["k", "first", "second", "third", "forth", "fifth", "sixth",
                     "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]

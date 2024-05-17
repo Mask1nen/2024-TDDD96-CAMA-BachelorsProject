@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 class TestTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestTime
-        fields = '__all__' #['id,', 'name']
+        fields = '__all__'
     
     def create(self, validated_data):
             time = validated_data.pop('time')
@@ -18,7 +18,7 @@ class TestTimeSerializer(serializers.ModelSerializer):
 class EffectSizeTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectSizeType
-        fields = '__all__' #['id', 'name']
+        fields = '__all__'
     
     def create(self, validated_data):
             type = validated_data.pop('name')
