@@ -2,29 +2,21 @@ import React from "react";
 import { Card, CardContent, CardActions, Button, Typography, Box, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { DataEntry } from "../../api/types";
-import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
+import { ArrowDownward } from "@mui/icons-material";
 import Studyform from "../Upload/study_form";
 import Experimentform from "../Upload/experiment_form";
-import { approveStudy } from "../../api/dataAPI"
 
 interface ApprovalCardProps {
   data: DataEntry;
+  onApprove: (studyId: number, studyTitle: string) => void;
 }
 
-const ApprovalCard: React.FC<ApprovalCardProps> = ({ data }) => {
+const ApprovalCard: React.FC<ApprovalCardProps> = ({ data, onApprove }) => {
   let navigate = useNavigate();
-
-  const handleEdit = () => {
-    navigate(`/edit/${data.id}`);
-  };
 
   const handleApprove = () => {
     console.log("Approve", data.study_id);
-    let response = approveStudy(data.study_id);
-  };
-
-  const handleReject = () => {
-    console.log("Reject", data.id);
+    onApprove(data.study_id, data.title);
   };
 
   return (
@@ -42,41 +34,32 @@ const ApprovalCard: React.FC<ApprovalCardProps> = ({ data }) => {
         <Typography variant="body2">
           {data.abstract.substring(0, 100)}...
         </Typography>
-		<Accordion>
-                <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
-                    <Typography>Show details</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-					<Studyform onChange={() => {}} inputs={data} readOnly={true}/>
-          {data.experiments.map(experiment => 
-
-            							
-								<Box key={experiment['id']}>
-									<Experimentform 
-										key={experiment['id']} 
-                    readOnly={true}
-										onChangeEffect={() => {}} 
-										onChange={() => {}} 
-										inputs={experiment} 
-										effects={experiment.effects}
-										addEffect={() => {}}
-										removeEffect={() => {}}
-										experimentId={experiment['id']}/>
-								
-								</Box>
-            
-            )}
-
-
-                </AccordionDetails>
-            </Accordion>
-
-
+        <Accordion>
+          <AccordionSummary expandIcon={<ArrowDownward />} aria-controls="panel1-content" id="panel1-header">
+            <Typography>Show details</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Studyform onChange={() => {}} inputs={data} readOnly={true} />
+            {data.experiments.map(experiment => (
+              <Box key={experiment['id']}>
+                <Experimentform 
+                  key={experiment['id']} 
+                  readOnly={true}
+                  onChangeEffect={() => {}} 
+                  onChange={() => {}} 
+                  inputs={experiment} 
+                  effects={experiment.effects}
+                  addEffect={() => {}}
+                  removeEffect={() => {}}
+                  experimentId={experiment['id']}
+                />
+              </Box>
+            ))}
+          </AccordionDetails>
+        </Accordion>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={handleEdit}>Edit</Button>
         <Button size="small" onClick={handleApprove}>Approve</Button>
-        <Button size="small" onClick={handleReject}>Reject</Button>
       </CardActions>
     </Card>
   );
