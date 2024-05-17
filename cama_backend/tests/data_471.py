@@ -1,0 +1,217 @@
+class TestData:
+    cama_user_data = {
+        "orc_id": "0000-0002-1825-0097",
+        "name": "John Doe"
+    }
+
+    full_study_data = {
+        "title":"Example Title",
+        "uploader":"0000-0002-1825-0097",
+        "study_year":2024,
+        "country":"United States",
+        "category":"Health",
+        "peer_reviewed":True,
+        "authors":"Jane Doe, John Smith",
+        "doi":"10.1234/abcd.12345",
+        "abstract":"This study investigates the effects of...",
+        "keywords":"health, research, study",
+        "experiments":[
+            {
+            "study_design":"Randomized Controlled Trial",
+            "rob":"Low",
+            "robins":"Moderate",
+            "grade":"A",
+            "participant_design":"Between-Group Design",
+            "implemented":"Pilot Study",
+            "intensity_n":3,
+            "duration_week":12,
+            "frequency_n":3,
+            "ni":1,
+            "intervention":"vention",
+            "intervention_op":"intervention",
+            "target_population":"pop",
+            "mean_age":15.5,
+            "source":"hello_world",
+            "effects":[
+                {
+                "effect_size_type":"type",
+                "test_time":"1",
+                "test_name":"name",
+                "outcome":"come",
+                "outcome_full":"outcome",
+                "outcome_op":"op",
+                "gender_1":1,
+                "gender_2":2,
+                "gender_3":3,
+                "d_var":0.5,
+                "d":0.45,
+                "f_stat":5.23,
+                "t":2.45,
+                "ri":1,
+                "icc":1.5,
+                "mean_age_1i":25.3,
+                "mean_age_2i":26.4,
+                "ai":2,
+                "bi":3,
+                "ci":4,
+                "di":5,
+                "sd1i":1.5,
+                "sd2i":1.8,
+                "n1i":30,
+                "n2i":35,
+                "m1i":15.2,
+                "m2i":16.7
+                }
+            ]
+            }
+        ]
+    }
+
+    half_study_data = {
+        "title":"Example Title",
+        "uploader":"0000-0002-1825-0097",
+        "study_year":2024,
+        "country":"United States",
+        "category":"Health",
+        "peer_reviewed":True,
+        "authors":"Jane Doe, John Smith",
+        "doi":"10.1234/abcd.12345",
+        "abstract":"This study investigates the effects of...",
+        "keywords":"health, research, study",
+        "experiments":[
+            {
+            "study_design":"Randomized Controlled Trial",
+            "rob":"Low",
+            "robins":"Moderate",
+            "grade":"A",
+            "participant_design":"Between-Group Design",
+            "implemented":"Pilot Study",
+            "intensity_n":3,
+            "duration_week":12,
+            "frequency_n":3,
+            "ni":1,
+            "intervention":"vention",
+            "intervention_op":"intervention",
+            "target_population":"pop",
+            "mean_age":15.5,
+            "source":"hello_world",
+            "effects":[]
+            }
+        ]
+    }
+
+    bare_study_data = {
+        "title":"Example Title",
+        "uploader":"0000-0002-1825-0097",
+        "study_year":2024,
+        "country":"United States",
+        "category":"Health",
+        "peer_reviewed":True,
+        "authors":"Jane Doe, John Smith",
+        "doi":"10.1234/abcd.12345",
+        "abstract":"This study investigates the effects of...",
+        "keywords":"health, research, study",
+        "experiments":[]
+    }
+
+    full_experiment_data = {
+        "study_id": 433,
+        "study_design":"Randomized Controlled Trial",
+        "risks":"Low",
+        "robins":"Moderate",
+        "grade":"A",
+        "participant_design":"Between-Group Design",
+        "implemented":"Pilot Study",
+        "intensity_n":3,
+        "duration_week":12,
+        "frequency_n":3,
+        "ni":1,
+        "intervention":"vention",
+        "intervention_op":"intervention",
+        "target_population":"pop",
+        "mean_age":15.5,
+        "source":"hello_world",
+        "effects":[
+            {
+            "effect_size_type":"type",
+            "test_time":"1",
+            "test_name":"name",
+            "outcome":"come",
+            "outcome_full":"outcome",
+            "outcome_op":"op",
+            "gender_1":1,
+            "gender_2":2,
+            "gender_3":3,
+            "d_var":0.5,
+            "d":0.45,
+            "f_stat":5.23,
+            "t":2.45,
+            "ri":1,
+            "icc":1.5,
+            "mean_age_1i":25.3,
+            "mean_age_2i":26.4,
+            "ai":2,
+            "bi":3,
+            "ci":4,
+            "di":5,
+            "sd1i":1.5,
+            "sd2i":1.8,
+            "n1i":30,
+            "n2i":35,
+            "m1i":15.2,
+            "m2i":16.7
+            }
+        ]
+    }
+
+    bare_experiment_data = {
+       "study_id": 432,
+        "study_design":"Randomized Controlled Trial",
+        "risks":"Low",
+        "robins":"Moderate",
+        "grade":"A",
+        "participant_design":"Between-Group Design",
+        "implemented":"Pilot Study",
+        "intensity_n":3,
+        "duration_week":12,
+        "frequency_n":3,
+        "ni":1,
+        "intervention":"vention",
+        "intervention_op":"intervention",
+        "target_population":"pop",
+        "mean_age":15.5,
+        "source":"hello_world",
+        "effects":[]
+    }
+
+    effect_data =  {
+            "experiment_nr": 133,
+            "effect_size_type":"type",
+            "test_time":"1",
+            "test_name":"name",
+            "outcome":"come",
+            "outcome_full":"outcome",
+            "outcome_op":"op",
+            "gender_1":1,
+            "gender_2":2,
+            "gender_3":3,
+            "d_var":0.5,
+            "d":0.45,
+            "f_stat":5.23,
+            "t":2.45,
+            "ri":1,
+            "icc":1.5,
+            "mean_age_1i":25.3,
+            "mean_age_2i":26.4,
+            "ai":2,
+            "bi":3,
+            "ci":4,
+            "di":5,
+            "sd1i":1.5,
+            "sd2i":1.8,
+            "n1i":30,
+            "n2i":35,
+            "m1i":15.2,
+            "m2i":16.7
+            }
+    

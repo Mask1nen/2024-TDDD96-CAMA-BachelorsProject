@@ -15,8 +15,8 @@ class Study(models.Model):
     title = models.CharField(max_length=255, null=False)
     uploader = models.ForeignKey(CamaUser, null=True, on_delete=models.SET_NULL, related_name='studies')
     study_year = models.IntegerField(null=False)
-    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL, related_name='country')
-    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, related_name='category')
+    country = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     peer_reviewed = models.BooleanField(null=False)
     authors = models.CharField(max_length=255, null=False)
     doi = models.CharField(max_length=255, null=False)
@@ -24,7 +24,3 @@ class Study(models.Model):
     keywords = models.CharField(max_length=255, null=False)
     nr_downloads = models.IntegerField(null=True, default=0)
     approved = models.BooleanField(null=False, default=False)
-
-
-    def get_uploader(self):
-        return self.uploader.orc_id
