@@ -8,13 +8,12 @@ import {
   Tooltip
 } from "@mui/material";
 import { Study } from "../../api/newTypes";
-import bild2 from "../../assets/images/bild2.png";
 import { useNavigate } from "react-router-dom";
+import getImage from "./GetImage";
 
 interface StudyCardProps {
   studyData: Study;
 }
-
 const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   let navigate = useNavigate();
 
@@ -23,6 +22,8 @@ const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   const handleCardClick = () => {
     navigate(`/Database/${studyData.study_id}`);
 };
+const image1 = getImage(studyData.study_id);
+
 
 
   return (
@@ -49,7 +50,7 @@ const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
         >
           <CardMedia
             component="img"
-            image={studyData.image || bild2}
+            image={studyData.image || image1}
             alt={studyData.title}
             sx={{ width: "100%", height: "auto" }}
           />
