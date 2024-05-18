@@ -431,7 +431,7 @@ class DownloadCSV(APIView):
                              study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
                              effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
                              experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
-                             experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.forth,
+                             experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.fourth,
                              experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
                              experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
                              experiment.grade.eleventh, experiment.grade.twelfth,
