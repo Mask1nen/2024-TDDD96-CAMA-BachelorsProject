@@ -32,7 +32,7 @@ class DownloadTest(TestCase):
 
         # Read the content of the CSV response
         csv_data = response.content.decode('utf-8')
-        
+        print(f'{response.content}')
         # Use StringIO to read the CSV content as a file-like object
         csv_file = StringIO(csv_data)
         
@@ -41,7 +41,22 @@ class DownloadTest(TestCase):
         
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
-        #print(f'the response content data csv {csv_data}')
+        print(f'the response content data csv {csv_data}')
         
         # Check if the number of rows matches the expected count
         self.assertEqual(expected_count, actual_count)
+        
+        response = self.client.get('/api/download-effects/?title=May watch apply college rock him stock same.')
+        
+        # Read the content of the CSV response
+        csv_data = response.content.decode('utf-8')
+        print(f'{response.content}')
+        # Use StringIO to read the CSV content as a file-like object
+        csv_file = StringIO(csv_data)
+        
+        # Parse the CSV content using csv.reader
+        csv_reader = csv.reader(csv_file)
+        
+        # Calculate the number of rows in the CSV
+        actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
+        print(f'the response content data csv {response.content}')
