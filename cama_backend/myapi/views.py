@@ -16,6 +16,32 @@ from django.shortcuts import get_object_or_404
 import logging
 logger = logging.getLogger(__name__)
 
+def filter_helper(parameters, fields):
+    """A helper functions which creates a Q filter based on the parameters 
+    which are provided.
+
+    Arguments:
+        parameters -- The parameters provided in the request.
+        fields -- The fields which exists in the table.
+
+    Returns:
+        A Q filter containing filters based on the provided parameters.
+    """    
+    filter_container = Q()
+    for key, value in parameters.items():
+            # Handles refrences to other tables and thier fields
+            if '__' in key:
+                related_field, attribute = key.split('__')
+                if related_field in fields:
+                    filter_condition = {f"{related_field}__{attribute}": value}
+                    filter_container &= Q(**filter_condition)
+                
+            else:
+                if key in fields:
+                    filter_condition = {f"{key}": value}
+                    filter_container &= Q(**filter_condition)
+    return filter_container
+
 class FieldsView(APIView):
     def get(self, request):
         study_fields = {field.name: {
@@ -58,6 +84,8 @@ class CamaUserView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StudyView(APIView):
+    """StudyView is a apiview which handles gets and posts for the study table.
+    """    
     def get(self, request):
         study = Study.objects.all()
         serializer = StudySerializer(study, many=True)
@@ -71,75 +99,85 @@ class StudyView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
-        
-    
-
 class StudyFilterView(APIView):
+    """StudyFilterView is a APIViews which handles study get requests with filters
+    
+    """    
     def get(self, request):
+        """Handles get requests whith provided filters in the url
+
+        Arguments:
+            request -- the request
+
+        Returns:
+            A HTTP request with the data in json format.
+        """        
         # Get all the provided parameters from the query string
         parameters = request.GET.dict()
-        # Create an empty Q object to hold the filters
-        filters = Q()
-        filter_condition = {}
         fields = [field.name for field in Study._meta.get_fields()]
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if (related_field in fields):
-                    filter_condition = {f"{related_field}__{attribute}": value}
-            else:
-                if (key in fields):
-                    filter_condition = {f"{key}": value}
-            filters &= Q(**filter_condition)
+        filters = filter_helper(parameters, fields)
         studies = Study.objects.all().filter(filters)
         serializer = StudySerializer(studies, many=True)
         return Response(serializer.data)
     
     
 class ExperimentFilterView(APIView):
+    """ExperimentFilterView is a APIViews which handles experiments get requests with filters
+    
+    """
     def get(self, request):
+        """Handles get requests whith provided filters in the url
+
+        Arguments:
+            request -- the request
+
+        Returns:
+            A HTTP request with the data in json format.
+        """
         # Get all the provided parameters from the query string
         parameters = request.GET.dict()
-        # Create an empty Q object to hold the filters
-        filters = Q()
-        filter_condition = {}
         fields = [field.name for field in Experiment._meta.get_fields()]
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if (related_field in fields):
-                    filter_condition = {f"{related_field}__{attribute}": value}
-            else:
-                if (key in fields):
-                    filter_condition = {f"{key}": value}
-            filters &= Q(**filter_condition)
+        filters = filter_helper(parameters, fields)
         experiments = Experiment.objects.all().filter(filters)
         serializer = ExperimentSerializer(experiments, many=True)
         return Response(serializer.data)
     
 class EffectDataFilterView(APIView):
+    """EffectDataFilterView is a APIViews which handles effect_data get requests with filters
+    
+    """
     def get(self, request):
+        """Handles get requests whith provided filters in the url
+
+        Arguments:
+            request -- the request
+
+        Returns:
+            A HTTP response whith the filterd data in json format
+        """
         # Get all the provided parameters from the query string
         parameters = request.GET.dict()
-        # Create an empty Q object to hold the filters
-        filters = Q()
-        filter_condition = {}
         fields = [field.name for field in EffectData._meta.get_fields()]
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if (related_field in fields):
-                    filter_condition = {f"{related_field}__{attribute}": value}
-            else:
-                if (key in fields):
-                    filter_condition = {f"{key}": value}
-            filters &= Q(**filter_condition)
+        filters = filter_helper(parameters, fields)
         effect_data = EffectData.objects.all().filter(filters)
         serializer = EffectDataSerializer(effect_data, many=True)
         return Response(serializer.data)
     
 class StudySearchView(APIView):
+    """EffectDataFilterView is a APIViews which handles study get requests whith
+    provided search filters
+    
+    """
     def get(self, request):
+        """Filters the studys based on the search fileds of author and title
+        and provides all studies where the provided text is in the fields.
+
+        Arguments:
+            request -- the request
+
+        Returns:
+            A HTTP response whith the filterd data in json format
+        """        
         # The title should be provided as url/?title=Part
          # Get all the provided parameters from the query string
         parameters = request.GET.dict()
@@ -324,64 +362,44 @@ class EffectSizeTypeOptionsView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    
 class DownloadCSV(APIView):
+    """DownloadCSV is a view calss which handles reqests for downloading effect_data and its
+    paraent tables variables as CSV data.
+    """    
     def get(self, request):
+        """Get the effect_data based on provided filters in the url call
+
+        Arguments:
+            request -- The request call from the url.
+
+        Returns:
+            Returns all effect_data and its parent variables as CSV data.
+        """        
         # Query the database to fetch data
         parameters = request.GET.dict()
-        # Create an empty Q object to hold the filters
-        study_filters = Q()
-        experiment_filters = Q()
-        effect_data_filters = Q()
-        filter_condition = {}
         # Create field lists which contains the fiels of the tables
         fields_studies = [field.name for field in Study._meta.get_fields()]
         fields_experiments = [field.name for field in Experiment._meta.get_fields()]
         fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
         
         # Go through all studies and find the ones which mactch study fitlers
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if related_field in fields_studies:
-                    filter_condition = {f"{related_field}__{attribute}": value}
-                    study_filters &= Q(**filter_condition)
-                
-            else:
-                if key in fields_studies:
-                    filter_condition = {f"{key}": value}
-                    study_filters &= Q(**filter_condition)
-        
+        study_filters = filter_helper(parameters, fields_studies)
         studies = Study.objects.filter(study_filters)
         study_ids = [study.study_id for study in studies]
         
+        
+        # Filter through the experiments
+        experiment_filters = filter_helper(parameters, fields_experiments)
         # Create filter condition on experiments so only experiment from the filterd studies are filterd
         experiment_filters &= Q(study_id__in=study_ids)
-        # Filter through the experiments
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if related_field in fields_experiments:
-                    filter_condition = {f"{related_field}__{attribute}": value}
-                    experiment_filters &= Q(**filter_condition)              
-            else:
-                if key in fields_experiments:
-                    filter_condition = {f"{key}": value}
-                    experiment_filters &= Q(**filter_condition)
         experiments = Experiment.objects.filter(experiment_filters)     
         experiment_ids = [experiment.experiment_nr for experiment in experiments]
 
+        
+        effect_data_filters = filter_helper(parameters, fields_effect_data)  
         # Create filter condition on effekt_data so only effekt_data from the filterd experiments are filterd
         effect_data_filters &= Q(experiment_nr__in=experiment_ids)
-        for key, value in parameters.items():
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if related_field in fields_effect_data:
-                    filter_condition = {f"{related_field}__{attribute}": value}
-                    effect_data_filters &= Q(**filter_condition)              
-            else:
-                if key in fields_effect_data:
-                    filter_condition = {f"{key}": value}
-                    effect_data_filters &= Q(**filter_condition)        
         effect_datas = EffectData.objects.filter(effect_data_filters)
 
         # Create a CSV response
