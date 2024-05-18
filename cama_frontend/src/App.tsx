@@ -11,6 +11,7 @@ import ContactInfoPage from './pages/ContactInfo/ContactInfoPage.tsx';
 import AppPage from './pages/App/AppPage.tsx';
 import FbFPage from './pages/FbF/FbFPage.tsx';
 import AdminPage from './pages/Admin/AdminPage.tsx';
+import AppsPage from './pages/Apps/ShinyAppsPage.tsx';
 import UploadPage from './pages/Upload/UploadPage.tsx';
 import LoginPage from './pages/Login/LoginPage.tsx';
 import { createTheme } from '@mui/material/styles';
@@ -56,6 +57,7 @@ const theme = createTheme({
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />
+            <Route path="/Apps" element={<AppsPage />} />
             <Route path="/Subjects" element={<HomePage />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatabasePage />} />

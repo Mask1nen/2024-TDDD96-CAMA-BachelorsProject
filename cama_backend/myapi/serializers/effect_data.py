@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 class TestTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestTime
-        fields = '__all__' #['id,', 'name']
+        fields = '__all__'
     
     def create(self, validated_data):
             time = validated_data.pop('time')
@@ -18,7 +18,7 @@ class TestTimeSerializer(serializers.ModelSerializer):
 class EffectSizeTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectSizeType
-        fields = '__all__' #['id', 'name']
+        fields = '__all__'
     
     def create(self, validated_data):
             type = validated_data.pop('name')
@@ -37,16 +37,16 @@ class EffectDataSerializer(serializers.ModelSerializer):
 
 class EffectDataCreateSerializer(serializers.ModelSerializer):
     experiment_nr = serializers.PrimaryKeyRelatedField(queryset=Experiment.objects.all())
-    effect_size_type = serializers.SlugRelatedField(read_only = True, slug_field='name')
-    test_time = serializers.SlugRelatedField(read_only = True, slug_field='name')
+    effect_size_type = serializers.SlugRelatedField(queryset=EffectSizeType.objects.all(), slug_field='name')
+    test_time = serializers.SlugRelatedField(queryset=TestTime.objects.all(), slug_field='time')
 
     class Meta:
         model = EffectData
         fields = '__all__'
 
 class EffectDataFromParentSerializer(serializers.ModelSerializer):
-    effect_size_type = serializers.SlugRelatedField(read_only = True, slug_field='name')
-    test_time = serializers.SlugRelatedField(read_only = True, slug_field='name')
+    effect_size_type = serializers.SlugRelatedField(queryset=EffectSizeType.objects.all(), slug_field='name')
+    test_time = serializers.SlugRelatedField(queryset=TestTime.objects.all(), slug_field='time')
     
     class Meta:
         model = EffectData

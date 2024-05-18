@@ -60,7 +60,3 @@ class DownloadTest(TestCase):
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
         print(f'the response content data csv {response.content}')
-
-        
-        
-        

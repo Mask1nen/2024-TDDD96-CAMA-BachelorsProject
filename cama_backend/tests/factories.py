@@ -72,7 +72,7 @@ class ExperimentFactory(factory.django.DjangoModelFactory):
                                            first=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
                                            second=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
                                            third=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
-                                           forth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
+                                           fourth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
                                            fifth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
                                            sixth=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 
                                            seventh=factory.fuzzy.FuzzyChoice([True,False]).fuzz(), 

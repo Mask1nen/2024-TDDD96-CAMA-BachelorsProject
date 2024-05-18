@@ -18,9 +18,23 @@ class TestData:
         "experiments":[
             {
             "study_design":"Randomized Controlled Trial",
-            "rob":"Low",
+            "risks":"Low",
             "robins":"Moderate",
-            "grade":"A",
+            "grade": {
+                "k": True,
+                "first": True,
+                "second": False,
+                "third": False,
+                "fourth": False,
+                "fifth": False,
+                "sixth": False,
+                "seventh": False,
+                "eight": False,
+                "ninth": False,
+                "tenth": False,
+                "eleventh": False,
+                "twelfth": False
+            },
             "participant_design":"Between-Group Design",
             "implemented":"Pilot Study",
             "intensity_n":3,
@@ -81,9 +95,23 @@ class TestData:
         "experiments":[
             {
             "study_design":"Randomized Controlled Trial",
-            "rob":"Low",
+            "risks":"Low",
             "robins":"Moderate",
-            "grade":"A",
+            "grade": {
+                "k": True,
+                "first": True,
+                "second": False,
+                "third": False,
+                "fourth": False,
+                "fifth": False,
+                "sixth": False,
+                "seventh": False,
+                "eight": False,
+                "ninth": False,
+                "tenth": False,
+                "eleventh": False,
+                "twelfth": False
+            },
             "participant_design":"Between-Group Design",
             "implemented":"Pilot Study",
             "intensity_n":3,
@@ -115,11 +143,25 @@ class TestData:
     }
 
     full_experiment_data = {
-        "study_id": 433,
+        "study_id": 436,
         "study_design":"Randomized Controlled Trial",
         "risks":"Low",
         "robins":"Moderate",
-        "grade":"A",
+        "grade": {
+                "k": True,
+                "first": True,
+                "second": False,
+                "third": False,
+                "fourth": False,
+                "fifth": False,
+                "sixth": False,
+                "seventh": False,
+                "eight": False,
+                "ninth": False,
+                "tenth": False,
+                "eleventh": False,
+                "twelfth": False
+        },
         "participant_design":"Between-Group Design",
         "implemented":"Pilot Study",
         "intensity_n":3,
@@ -165,11 +207,25 @@ class TestData:
     }
 
     bare_experiment_data = {
-       "study_id": 432,
+        "study_id": 435,
         "study_design":"Randomized Controlled Trial",
         "risks":"Low",
         "robins":"Moderate",
-        "grade":"A",
+        "grade": {
+                "k": True,
+                "first": True,
+                "second": False,
+                "third": False,
+                "fourth": False,
+                "fifth": False,
+                "sixth": False,
+                "seventh": False,
+                "eight": False,
+                "ninth": False,
+                "tenth": False,
+                "eleventh": False,
+                "twelfth": False
+        },
         "participant_design":"Between-Group Design",
         "implemented":"Pilot Study",
         "intensity_n":3,
@@ -185,7 +241,7 @@ class TestData:
     }
 
     effect_data =  {
-            "experiment_nr": 133,
+            "experiment_nr": 135,
             "effect_size_type":"type",
             "test_time":"1",
             "test_name":"name",

@@ -10,6 +10,7 @@ const DatabaseDetail = () => {
   const [study, setStudy] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [expanded, setExpanded] = useState({});
 
   useEffect(() => {
     const fetchStudy = async () => {
@@ -30,6 +31,13 @@ const DatabaseDetail = () => {
 
     fetchStudy();
   }, [id]);
+
+  const handleExpandClick = (index) => {
+    setExpanded(prevExpanded => ({
+      ...prevExpanded,
+      [index]: !prevExpanded[index]
+    }));
+  };
 
   if (loading) return <Typography>Loading...</Typography>;
   if (error) return <Typography>Error loading study details.</Typography>;
