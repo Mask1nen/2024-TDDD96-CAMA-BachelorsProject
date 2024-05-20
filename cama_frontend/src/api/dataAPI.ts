@@ -17,7 +17,6 @@ export const fetchFieldDefinitions = async (): Promise<any> => {
 
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
-        study.experiments = study.experiments.map(experiment => ({implemented: experiment.implementation, ...experiment, source:"frontenden såkalrt"}))
         const response = await fetch(`${apiUrl}/api/studies/`, {
             method: 'POST',
             headers: {

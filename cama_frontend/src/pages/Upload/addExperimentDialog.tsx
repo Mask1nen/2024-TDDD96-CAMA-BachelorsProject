@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button } from "@mui/material";
 import '@mui/material';
 import Experimentform from "./experiment_form"
-import {emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
+import {emptyExperiment, emptyEffect, emptyStudy, schoolGrades} from '../../api/newTypes'
 import { addExperiment } from "../../api/dataAPI";	
 	
 		
@@ -45,7 +45,12 @@ const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}
 		let experimentKeys = Object.keys(newExp);
 		//fill each prop with data from form
 		experimentKeys.forEach(function(key) {
-			if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
+			if(key=="grade") {
+				schoolGrades.forEach((grade) => {
+					newExp["grade"][grade] = (formData.get(experiment_nr+"_grade_"+grade)=="on")||false;
+				})
+			}
+			else if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
 				newExp[key] = formData.get(experiment_nr + "_" + key);
 			} 
 		});
@@ -93,7 +98,7 @@ const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}
 							experiment_nr={experiment_nr}
 							addEffect={addEffect}
 							removeEffect={removeEffect}
-							effects={effects}
+							newEffects={effects}
 							expanded={true}
 							/>
 					

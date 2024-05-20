@@ -12,6 +12,7 @@ interface ApprovalCardProps {
 }
 
 const ApprovalCard: React.FC<ApprovalCardProps> = ({ data, onApprove }) => {
+  console.log(data);
   let navigate = useNavigate();
 
   const handleApprove = () => {
@@ -41,17 +42,17 @@ const ApprovalCard: React.FC<ApprovalCardProps> = ({ data, onApprove }) => {
           <AccordionDetails>
             <Studyform onChange={() => {}} inputs={data} readOnly={true} />
             {data.experiments.map(experiment => (
-              <Box key={experiment['id']}>
+              <Box key={experiment.experiment_nr}>
                 <Experimentform 
-                  key={experiment['id']} 
+                  key={experiment.experiment_nr} 
                   readOnly={true}
+                  allowAdd={false}
                   onChangeEffect={() => {}} 
                   onChange={() => {}} 
                   inputs={experiment} 
-                  effects={experiment.effects}
                   addEffect={() => {}}
                   removeEffect={() => {}}
-                  experimentId={experiment['id']}
+                  experiment_nr={experiment.experiment_nr}
                 />
               </Box>
             ))}

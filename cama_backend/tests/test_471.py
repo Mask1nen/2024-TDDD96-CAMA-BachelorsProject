@@ -36,6 +36,15 @@ class StudyTestCase(APITestCase):
         self.testData = TestData
         CamaUser.objects.create(orc_id='0000-0002-1825-0097',
                                 name="John Doe")
+        Country.objects.create(name="United States")
+        Category.objects.create(name="Health")
+        StudyDesign.objects.create(design="Randomized Controlled Trial")
+        RiskOfBias.objects.create(rob="Low")
+        ParticipantDesign.objects.create(design="Between-Group Design")
+        Implementation.objects.create(implementor="Pilot Study")
+        TestTime.objects.create(time="1")
+        EffectSizeType.objects.create(name="type")
+
 
     def test_post_get_barestudy(self):
         response = self.client.post(self.url, self.testData.bare_study_data, format='json')
@@ -50,9 +59,10 @@ class StudyTestCase(APITestCase):
 
     def test_post_get_fullstudy(self):
         response = self.client.post(self.url, self.testData.full_study_data, format='json')
+        logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         study_uploader = response.data[0].get('uploader')
         self.assertEqual(study_uploader, '0000-0002-1825-0097')
@@ -78,7 +88,7 @@ class StudyTestCase(APITestCase):
         response = self.client.post(self.url, self.testData.half_study_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         study_uploader = response.data[0].get('uploader')
         self.assertEqual(study_uploader, '0000-0002-1825-0097')
@@ -102,6 +112,12 @@ class ExperimentTestCase(APITestCase):
         study = Study.objects.create(uploader=user, study_year=2024, peer_reviewed=True, 
                              authors="", doi="", abstract="", keywords="",
                              approved=False)
+        StudyDesign.objects.create(design="Randomized Controlled Trial")
+        RiskOfBias.objects.create(rob="Low")
+        ParticipantDesign.objects.create(design="Between-Group Design")
+        Implementation.objects.create(implementor="Pilot Study")
+        TestTime.objects.create(time="1")
+        EffectSizeType.objects.create(name="type")
 
     def test_post_get_bareexperiment(self):
         response = self.client.post(self.url, self.testData.bare_experiment_data, format='json')
@@ -110,7 +126,7 @@ class ExperimentTestCase(APITestCase):
         #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experiment_study = response.data[0].get('study_id')
-        self.assertEqual(experiment_study, 432)
+        self.assertEqual(experiment_study, 435)
         effectslist = response.data[0].get('effects')
         self.assertEqual(effectslist, [])
 
@@ -121,9 +137,9 @@ class ExperimentTestCase(APITestCase):
         #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experiment_study = response.data[0].get('study_id')
-        self.assertEqual(experiment_study, 433)
+        self.assertEqual(experiment_study, 436)
         effect_experimentnr = response.data[0].get('effects')[0].get('experiment_nr')
-        self.assertEqual(effect_experimentnr, 132)
+        self.assertEqual(effect_experimentnr, 134)
 
     def test_invalid_experiment(self):
         invalid_payload = {}  # Payload with missing required fields
@@ -141,6 +157,9 @@ class EffectDataTestCase(APITestCase):
                              approved=False)
         experiment = Experiment.objects.create(study_id=study, ni=1, intervention="", intervention_op="",
                                                target_population="")
+        EffectSizeType.objects.create(name="type")
+        TestTime.objects.create(time="1")
+        logger.info(experiment.experiment_nr)
 
     def test_get_post_effect_data(self):
         response = self.client.post(self.url, self.testData.effect_data, format='json')
@@ -149,7 +168,7 @@ class EffectDataTestCase(APITestCase):
         #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         experimentnr = response.data[0].get('experiment_nr')
-        self.assertEqual(experimentnr, 133)
+        self.assertEqual(experimentnr, 135)
 
     def test_invalid_effect_data(self):
         invalid_payload = {}  # Payload with missing required fields

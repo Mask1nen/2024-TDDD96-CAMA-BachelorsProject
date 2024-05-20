@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Tooltip, Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
+import { FormLabel, FormControlLabel, Checkbox, Tooltip, Box, Button, Accordion, AccordionSummary, AccordionDetails, Typography, FormControl, TextField, MenuItem, Input, InputLabel, InputAdornment } from "@mui/material";
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
-import { Effect } from '../../api/newTypes'
+import { Effect, schoolGradesOptions } from '../../api/newTypes'
 import AddEffectDialog from "./addEffectDialog"
 
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, newEffects=[], readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -53,35 +53,53 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                     <Typography>Experiment Data</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
+                    <FormLabel component="legend">School grade</FormLabel>
+                    {schoolGradesOptions.map(grade => (
+
+                        <FormControlLabel
+                        key={"grade_" + grade.val}
+                        sx={{mx:0}}
+                        name={experiment_nr+"_grade_"+grade.val}
+                        control={<Checkbox defaultChecked={inputs?.grade?.[grade.val]??false} name={experiment_nr+"_grade_"+grade.val}/>}
+                        label={grade.label}
+                        labelPlacement="top"
+                        
+                        />
+                    ))}
+                    <br/>
                         {experimentFields.map(field => (
-                            <TextField
-                                key={field.key}
-                                disabled={(readOnly||false)}
-                                sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
-                                variant="standard"
-                                id={"form" + field.key}
-                                label={field.name}
-                                name={experiment_nr +"_"+ field.key}
-                                select={!!field.options}
-                                defaultValue={inputs[field.key]||""}
-                            >
-                                {field.options?.map(option => (
-                                    <MenuItem key={`${field.key}-${option}`} value={option}>
-                                        {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <span key={field.key}>
+
+                                {field.key != "grade" ? (
+                                    <TextField
+                                    disabled={(readOnly||false||field.type=="disabled")}
+                                    sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
+                                    variant="standard"
+                                    id={"form" + field.key}
+                                    label={field.name}
+                                    name={experiment_nr +"_"+ field.key}
+                                    select={field.type == "option"}
+                                    defaultValue={field.type == "option" ? (inputs[field.key]?.[field.database_name]??"" ): inputs[field.key]??""}
+                                >
+                                    {field.options?.map(option => (
+                                        <MenuItem key={`${field.key}-${option}`} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                                ):""}
+                            </span>
                         ))}
 
-                        {/*existing (only when addToExisting)*/}
+                        {/*existing effects (only when readOnly)*/}
                         {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                             <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>
                         ))}
 
-                        {/*new*/}
-                        {effects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
+                        {/*new effects*/}
+                        {newEffects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                              <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>
@@ -92,13 +110,14 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                                 Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
-                    ):(
+                    ):""}
+                    {(readOnly && allowAdd) ?(
                         <div>
                             <Button onClick={handleAddEffectDialogOpen} variant="outlined" sx={{ mt: 2 }}>
                                 Add Effect To Experiment<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
-                    ) }
+                    ) : ""}
                 </AccordionDetails>
             </Accordion>
         </Box>
