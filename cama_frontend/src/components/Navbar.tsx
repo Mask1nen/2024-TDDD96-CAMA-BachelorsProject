@@ -20,7 +20,7 @@ import multiLanguage from "../components/multiLanguage";
 import changeLanguageBotton from "../../src/assets/navBarText/changeLanguageButton.json";
 import { Context } from "../../src/App";
 
-const pages = ['Home', 'Subjects', 'Apps', 'Database'];
+const pages = ['Home', 'Subjects', 'Apps', 'Database', 'Admin'];
 const settings = ['Profile', 'Logout'];
 
 function Navbar() {

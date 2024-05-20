@@ -60,7 +60,12 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, newEf
                         key={"grade_" + grade.val}
                         sx={{mx:0}}
                         name={experiment_nr+"_grade_"+grade.val}
-                        control={<Checkbox defaultChecked={inputs?.grade?.[grade.val]??false} name={experiment_nr+"_grade_"+grade.val}/>}
+                        control={<Checkbox 
+                            defaultChecked={inputs?.grade?.[grade.val]??false} 
+                            name={experiment_nr+"_grade_"+grade.val}
+                            disabled={readOnly}
+                            />
+                        }
                         label={grade.label}
                         labelPlacement="top"
                         

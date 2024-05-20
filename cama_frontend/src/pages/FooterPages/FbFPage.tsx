@@ -115,7 +115,7 @@ const FbFPage: React.FC = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                         <Typography>
-                            Vad ska stå här??? 
+                            Information kommer.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -130,7 +130,7 @@ const FbFPage: React.FC = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                         <Typography>
-                        Vad ska stå här???  
+                        Information kommer.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
