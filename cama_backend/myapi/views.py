@@ -379,6 +379,10 @@ class DownloadCSV(APIView):
         # Query the database to fetch data
         parameters = request.GET.dict()
         # Create field lists which contains the fiels of the tables
+        study_filters = Q()
+        experiment_filters = Q()
+        effect_data_filters = Q()
+        
         fields_studies = [field.name for field in Study._meta.get_fields()]
         fields_experiments = [field.name for field in Experiment._meta.get_fields()]
         fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
@@ -389,18 +393,23 @@ class DownloadCSV(APIView):
         study_ids = [study.study_id for study in studies]
         
         
+        
         # Filter through the experiments
-        experiment_filters = filter_helper(parameters, fields_experiments)
         # Create filter condition on experiments so only experiment from the filterd studies are filterd
         experiment_filters &= Q(study_id__in=study_ids)
-        experiments = Experiment.objects.filter(experiment_filters)     
+        experiment_filters &= filter_helper(parameters, fields_experiments)
+        experiments = Experiment.objects.filter(experiment_filters)
+        
         experiment_ids = [experiment.experiment_nr for experiment in experiments]
+    
 
         
-        effect_data_filters = filter_helper(parameters, fields_effect_data)  
         # Create filter condition on effekt_data so only effekt_data from the filterd experiments are filterd
         effect_data_filters &= Q(experiment_nr__in=experiment_ids)
+        effect_data_filters &= filter_helper(parameters, fields_effect_data)  
+        
         effect_datas = EffectData.objects.filter(effect_data_filters)
+        
 
         # Create a CSV response
         response = HttpResponse(content_type='text/csv')
@@ -420,31 +429,34 @@ class DownloadCSV(APIView):
                          'mean_age_2i', 'm2i', 'sd2i', 'n2i', 'icc', 'ai', 'bi', 'ci', 'di', 'ri',
                          't', 'f_stat', 'd', 'd_var', 'rob', 'robins', 'outcome', 'test_name',
                          'outcome_full', 'outcome_op'])  # Add column names
-      
+        
+        if effect_datas.exists():
         # For each effect in effect_datas write a row in the csv file with all variables defined above.
-        for effekt_data in effect_datas:
-            # Define the paths to the experiment of the effekt_data and the study of that experiment
-            experiment = effekt_data.experiment_nr
-            study = effekt_data.experiment_nr.study_id
-            # Write the rows to the CSV response
-            writer.writerow([study.title, study.authors, study.keywords, study.category.name, study.country.name,
-                             study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
-                             effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
-                             experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
-                             experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.fourth,
-                             experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
-                             experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
-                             experiment.grade.eleventh, experiment.grade.twelfth,
-                             experiment.ni, effekt_data.gender_1, effekt_data.gender_2, effekt_data.gender_3, 
-                             experiment.study_design.design, experiment.participant_design.design, experiment.implemented.implementor,
-                             experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
-                             effekt_data.effect_size_type.name, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
-                             effekt_data.n1i, effekt_data.mean_age_2i, effekt_data.m2i, effekt_data.sd2i,
-                             effekt_data.n2i, effekt_data.icc, effekt_data.ai, effekt_data.bi, effekt_data.ci,
-                             effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
-                             effekt_data.d_var, experiment.risks.rob, experiment.robins, effekt_data.outcome, 
-                             effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])  
+            for effekt_data in effect_datas:
+                # Define the paths to the experiment of the effekt_data and the study of that experiment
+                experiment = effekt_data.experiment_nr
+                study = effekt_data.experiment_nr.study_id
+                # Write the rows to the CSV response
+                writer.writerow([study.title, study.authors, study.keywords, study.category.name, study.country.name,
+                                study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
+                                effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
+                                experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
+                                experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.fourth,
+                                experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
+                                experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
+                                experiment.grade.eleventh, experiment.grade.twelfth,
+                                experiment.ni, effekt_data.gender_1, effekt_data.gender_2, effekt_data.gender_3, 
+                                experiment.study_design.design, experiment.participant_design.design, experiment.implemented.implementor,
+                                experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
+                                effekt_data.effect_size_type.name, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
+                                effekt_data.n1i, effekt_data.mean_age_2i, effekt_data.m2i, effekt_data.sd2i,
+                                effekt_data.n2i, effekt_data.icc, effekt_data.ai, effekt_data.bi, effekt_data.ci,
+                                effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
+                                effekt_data.d_var, experiment.risks.rob, experiment.robins, effekt_data.outcome, 
+                                effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])  
 
+            return response
+        response = HttpResponse(status=404)
         return response
 
     

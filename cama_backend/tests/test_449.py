@@ -4,6 +4,8 @@ from rest_framework.test import APIClient
 from myapi.models import *
 from tests.factories import *
 import csv
+from django.http import HttpResponse
+
 
 from io import StringIO
 
@@ -60,3 +62,8 @@ class DownloadTest(TestCase):
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
         print(f'the response content data csv {response.content}')
+        
+        response = self.client.get('/api/download-effects/?country__name=Sweden&grade__k=False')
+        print(f'the response content data csv last one {response.content}')
+        
+        self.assertEqual(response.status_code, 404)
