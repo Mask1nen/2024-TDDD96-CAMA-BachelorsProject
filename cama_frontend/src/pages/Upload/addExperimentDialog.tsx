@@ -98,7 +98,7 @@ const AddExperimentDialog: React.FC = ({dialogOpen, handleDialogClose, study_id}
 							experiment_nr={experiment_nr}
 							addEffect={addEffect}
 							removeEffect={removeEffect}
-							effects={effects}
+							newEffects={effects}
 							expanded={true}
 							/>
 					

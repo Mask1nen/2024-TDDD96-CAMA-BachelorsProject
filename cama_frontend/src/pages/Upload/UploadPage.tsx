@@ -261,7 +261,7 @@ const UploadPage: React.FC = () => {
 							<Experimentform 
 								inputs={{}}
 								readOnly={false}
-								effects={effects}
+								newEffects={effects}
 								addEffect={addEffect}
 								removeEffect={removeEffect}
 								experiment_nr={experiment_nr}/>
@@ -278,7 +278,7 @@ const UploadPage: React.FC = () => {
 							<Experimentform 
 								inputs={experiment}
 								readOnly={addToExisting}
-								effects={effects}
+								newEffects={effects}
 								addEffect={addEffect}
 								removeEffect={removeEffect}
 								experiment_nr={experiment.experiment_nr}

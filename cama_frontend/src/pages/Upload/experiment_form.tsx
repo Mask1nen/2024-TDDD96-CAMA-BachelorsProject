@@ -7,7 +7,7 @@ import { Effect, schoolGradesOptions } from '../../api/newTypes'
 import AddEffectDialog from "./addEffectDialog"
 
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects=[], readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, newEffects=[], readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -68,11 +68,10 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                     ))}
                     <br/>
                         {experimentFields.map(field => (
-                            <span>
+                            <span key={field.key}>
 
                                 {field.key != "grade" ? (
                                     <TextField
-                                    key={field.key}
                                     disabled={(readOnly||false||field.type=="disabled")}
                                     sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
                                     variant="standard"
@@ -92,7 +91,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                             </span>
                         ))}
 
-                        {/*existing effects (only when addToExisting)*/}
+                        {/*existing effects (only when readOnly)*/}
                         {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                             <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
@@ -100,7 +99,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                         ))}
 
                         {/*new effects*/}
-                        {effects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
+                        {newEffects.map((effect: {effect_size_number: number, experiment_nr:number}) => (
                              <div key={experiment_nr +'_'+ effect.effect_size_number}>
                                 {insertEffect(effect)}
                             </div>

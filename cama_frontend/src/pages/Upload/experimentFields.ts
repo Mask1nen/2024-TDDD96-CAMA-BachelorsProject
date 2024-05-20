@@ -17,5 +17,4 @@ export const experimentFields: ExperimentField[] = [
     { name: "Intensity of the sessions", key: "intensity_n", type: "number", desc: "How long were each session in minutes?" },
     { name: "Risk of Bias (Cochrane)", key: "risks", type: "option", desc: "Risk of bias assessment for randomized studies - final score for the entire study", options:["low", "moderate", "high", "N/A"], database_name:"rob" },
     { name: "Risk of Bias (ROBINS-I)", key: "robins", type: "string", desc: "Risk of bias assessment for non-randomized studies" },
-    { name: "Source", key: "source", type: "string", desc: "" },
     ];
