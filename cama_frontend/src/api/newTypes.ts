@@ -1,4 +1,9 @@
+/*
+ * Interface for study, experiment and effect.
 
+    When any interface is changed make sure to change the emtpyXXX function as well.
+    When changing Experiment or study make sure to change in newTypes.ts as well.
+ */
 export interface Study {
     study_id: number;
     title: string;
@@ -20,7 +25,7 @@ export const emptyStudy = (id: number): Study => ({
     authors: "",
     keywords: "",
     abstract: "",
-    category: "",
+    category: "Math" | "Language" | "STEM",
     country: "",
     study_year: 0,
     doi: "",
@@ -36,16 +41,30 @@ export interface Experiment {
     intervention_op: string;
     target_population: string;
     mean_age?: number;
-    grade?: string;
+    grade?: {
+        "K":boolean;
+		"first":boolean;
+		"second":boolean;
+		"third":boolean;
+		"fourth":boolean;
+		"fifth":boolean;
+		"sixth":boolean;
+		"seventh":boolean;
+		"eight":boolean;
+		"ninth":boolean;
+		 "tenth":boolean;
+		 "eleventh":boolean;
+		 "twelfth":boolean;
+    };
     ni: number; //sample size
     study_design: 'RCT' | 'QES';
     participant_design: 'within' | 'between' | 'mixed';
-    implementation: 'researcher' | 'teacher' | 'paraprofessional' | null;
+    implemented: 'researcher' | 'teacher' | 'paraprofessional' | null;
     duration_week?: number;
     frequency_n?: number;
     intensity_n?: number;
     robins?: string;
-    rob: 'low' | 'moderate' | 'high' | 'NA';
+    risks: 'low' | 'moderate' | 'high' | 'NA';
     effects: Effect[];
 }
 
@@ -57,16 +76,30 @@ export const emptyExperiment = (experiment_nr: number, study_id:number): Experim
     intervention_op: "",
     target_population: "",
     mean_age: undefined,
-    grade: "",
+    grade: {
+        "K":false,
+		"first":false,
+		"second":false,
+		"third":false,
+		"fourth":false,
+		"fifth":false,
+		"sixth":false,
+		"seventh":false,
+		"eight":false,
+		"ninth":false,
+		 "tenth":false,
+		 "eleventh":false,
+		 "twelfth":false,
+    },
     ni: "",
     study_design: "",
     participant_design: "",
-    implementation: "",
+    implemented: "",
     duration_week: "",
     frequency_n: "",
     intensity_n: "",
     robins: "",
-    rob: "",
+    risks: "",
     effects: [],
 });
 
@@ -74,11 +107,11 @@ export interface Effect {
     study_id?: number;
     experiment_nr?: number;
     effect_size_nr?: number;
-    test_time: 'baseline' | 'post-test' | 'follow-up';
+    test_time: 'baseline(pre-test)' | 'post-test' | 'follow-up';
     gender_1?: number;
     gender_2?: number;
     gender_3?: number;
-    effect_size_type: 'SMD' | 'RR' | 'OR';
+    effect_size_type: 'SMD' | 'RR/OR' ;
     mean_age_1i?: number;
     m1i?: number;
     sd1i?: number;
@@ -138,3 +171,32 @@ export const emptyEffect = (effect_size_nr: number, experiment_nr: number, study
 
 
 
+export const schoolGrades = [
+    "k",
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "sixth",
+    "seventh",
+    "eight",
+    "ninth",
+     "tenth",
+     "eleventh",
+     "twelfth"];
+
+export const schoolGradesOptions = [
+        {label:"K", val:"k",},
+        {label:"1", val: "first"},
+        {label:"2", val: "second"},
+        {label:"3", val: "third"},
+        {label:"4", val: "fourth"},
+        {label:"5", val: "fifth"},
+        {label:"6", val: "sixth"},
+        {label:"7", val: "seventh"},
+        {label:"8", val: "eight"},
+        {label:"9", val: "ninth"},
+        {label:"10", val: "tenth"},
+        {label:"11", val: "eleventh"},
+        {label:"12", val: "twelfth"}];

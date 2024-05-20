@@ -339,7 +339,6 @@ class EffectSizeTypeOptionsView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-
     
 class get_orcid_infoAPIView(APIView):
     def get(self, request):

@@ -18,7 +18,6 @@ export const fetchFieldDefinitions = async (): Promise<any> => {
 
 export const addStudy = async (study: Study): Promise<Study | null> => {
     try {
-        study.experiments = study.experiments.map(experiment => ({implemented: experiment.implementation, ...experiment, source:"frontenden såkalrt"}))
         const response = await fetch(`${apiUrl}/api/studies/`, {
             method: 'POST',
             headers: {
@@ -298,3 +297,15 @@ export const downloadFilteredData = async (filters: any): Promise<void> => {
     }
 };
 
+export const fetchStudiesByCategory = async (category: string): Promise<Study[] | null> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/studies-filterd/?category__name=${category}`, {
+            method: 'GET',
+        });
+        if (!response.ok) throw new Error(`Failed to fetch studies for category ${category}`);
+        return await response.json() as Study[];
+    } catch (error) {
+        console.error(`Error fetching studies for category ${category}:`, error);
+        return null;
+    }
+};

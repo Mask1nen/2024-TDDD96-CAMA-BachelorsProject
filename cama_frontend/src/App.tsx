@@ -5,11 +5,11 @@ import  Navbar from './components/Navbar.tsx';
 import HomePage from './pages/Home/HomePage';
 import Footer from './components/Footer.tsx';
 import Profile from './pages/Profile/Profile';
-import AboutPage from './pages/About/AboutPage.tsx';
-import TeamPage from './pages/Team/TeamPage.tsx';
-import ContactInfoPage from './pages/ContactInfo/ContactInfoPage.tsx';
-import AppPage from './pages/App/AppPage.tsx';
-import FbFPage from './pages/FbF/FbFPage.tsx';
+import AboutPage from './pages/FooterPages/AboutPage.tsx';
+import TeamPage from './pages/FooterPages/TeamPage.tsx';
+import ContactInfoPage from './pages/FooterPages/ContactInfoPage.tsx';
+import AppPage from './pages/FooterPages/AppPage.tsx';
+import FbFPage from './pages/FooterPages/FbFPage.tsx';
 import AdminPage from './pages/Admin/AdminPage.tsx';
 import AppsPage from './pages/Apps/ShinyAppsPage.tsx';
 import UploadPage from './pages/Upload/UploadPage.tsx';
@@ -20,6 +20,7 @@ import { ThemeProvider } from '@emotion/react';
 import DatabasePage from './pages/Database/DatabasePage.tsx';
 import { Dataset } from '@mui/icons-material';
 import DatabaseDetail from './pages/Database/DatabaseDetail.tsx';
+import SubjectsPage from './pages/Subjects/SubjectsPage.tsx';
 
 
 import React, {useState} from "react";
@@ -58,7 +59,7 @@ const theme = createTheme({
             <Route path="/" element={<HomePage />} />
             <Route path="/Home" element={<HomePage />} />
             <Route path="/Apps" element={<AppsPage />} />
-            <Route path="/Subjects" element={<HomePage />} />
+            <Route path="/Subjects" element={<SubjectsPage />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Database" element={<DatabasePage />} />
             <Route path="/Database/:id" element={<DatabaseDetail />} />

@@ -3,19 +3,19 @@
 import React from "react";
 import {Grid, Paper, Box, Typography} from "@mui/material";
 import CAMA_test_icon from "../../assets/images/CAMA_test_icon.png";
-import teamHeading from "../../../src/assets/pageText/teamPage/teamPageHeading.json";
-import teamText1 from "../../../src/assets/pageText/teamPage/teamPageMain1.json";
-import teamText2 from "../../../src/assets/pageText/teamPage/teamPageMain2.json";
-import teamText3 from "../../../src/assets/pageText/teamPage/teamPageMain3.json";
-import teamText4 from "../../../src/assets/pageText/teamPage/teamPageMain4.json";
-import teamText5 from "../../../src/assets/pageText/teamPage/teamPageMain5.json";
-import teamText6 from "../../../src/assets/pageText/teamPage/teamPageMain6.json";
-import teamDevelopers from "../../../src/assets/pageText/teamPage/teamDevelopers.json";
+import teamHeading from "../../assets/pageText/teamPage/teamPageHeading.json";
+import teamText1 from "../../assets/pageText/teamPage/teamPageMain1.json";
+import teamText2 from "../../assets/pageText/teamPage/teamPageMain2.json";
+import teamText3 from "../../assets/pageText/teamPage/teamPageMain3.json";
+import teamText4 from "../../assets/pageText/teamPage/teamPageMain4.json";
+import teamText5 from "../../assets/pageText/teamPage/teamPageMain5.json";
+import teamText6 from "../../assets/pageText/teamPage/teamPageMain6.json";
+import teamDevelopers from "../../assets/pageText/teamPage/teamDevelopers.json";
 
 
 
 import { useContext } from 'react';
-import {Context} from "../../../src/App";
+import {Context} from "../../App";
 import multiLanguage from "../../components/multiLanguage";
 
 import '@mui/material';
