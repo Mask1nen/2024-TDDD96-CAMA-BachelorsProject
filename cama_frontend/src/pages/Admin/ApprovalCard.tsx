@@ -50,7 +50,6 @@ const ApprovalCard: React.FC<ApprovalCardProps> = ({ data, onApprove }) => {
                   onChangeEffect={() => {}} 
                   onChange={() => {}} 
                   inputs={experiment} 
-                  effects={experiment.effects}
                   addEffect={() => {}}
                   removeEffect={() => {}}
                   experiment_nr={experiment.experiment_nr}

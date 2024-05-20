@@ -1,4 +1,9 @@
+/*
+ * Interface for study, experiment and effect.
 
+    When any interface is changed make sure to change the emtpyXXX function as well.
+    When changing Experiment or study make sure to change in newTypes.ts as well.
+ */
 export interface Study {
     study_id: number;
     title: string;
@@ -54,7 +59,7 @@ export interface Experiment {
     ni: number; //sample size
     study_design: 'RCT' | 'QES';
     participant_design: 'within' | 'between' | 'mixed';
-    implementation: 'researcher' | 'teacher' | 'paraprofessional' | null;
+    implemented: 'researcher' | 'teacher' | 'paraprofessional' | null;
     duration_week?: number;
     frequency_n?: number;
     intensity_n?: number;
@@ -89,7 +94,7 @@ export const emptyExperiment = (experiment_nr: number, study_id:number): Experim
     ni: "",
     study_design: "",
     participant_design: "",
-    implementation: "",
+    implemented: "",
     duration_week: "",
     frequency_n: "",
     intensity_n: "",

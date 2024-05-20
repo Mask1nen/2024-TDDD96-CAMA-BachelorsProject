@@ -7,7 +7,7 @@ export const experimentFields: ExperimentField[] = [
     { name: "Target Population", key: "target_population", type: "string", desc: "Who was the intervention aimed at" },
     { name: "Mean Age", key: "mean_age", type: "number", desc: "Mean age of the participants" },
     { name: "Source", key: "source", type: "string", desc: "link/doi to the meta-analysis it was extracted from (can be empty if it’s an original study) " },
-    { name: "School grade", key: "grade", type: "string", desc: "State the grades (e.g., K-12)" },
+    { name: "School grade", key: "grade", type: "checkbox", desc: "State the grades (e.g., K-12)" }, //this is manually treated in experiment_form
     { name: "Sample size", key: "ni", type: "number", desc: "Total sample size" },
     { name: "Study Design", key: "study_design", type: "option", desc: "E.g. RCT, QES", options: ["RCT", "QES"], database_name:"design" },
     { name: "Participant Design", key: "participant_design", type: "option", desc: "E.g. within or between subject design", options: ["within", "between", "mixed"], database_name:"design" },

@@ -7,7 +7,7 @@ import { Effect, schoolGradesOptions } from '../../api/newTypes'
 import AddEffectDialog from "./addEffectDialog"
 
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects=[], readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -16,7 +16,6 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
 	  };
 
     const insertEffect = (effect:any) => {
-        console.log({experiment_nr, effect})
         return (
         <div key={experiment_nr +'_'+ effect.effect_size_number}>
             {effect.experiment_nr == experiment_nr ? (
