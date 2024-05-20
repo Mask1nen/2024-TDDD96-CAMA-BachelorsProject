@@ -34,7 +34,7 @@ class DownloadTest(TestCase):
 
         # Read the content of the CSV response
         csv_data = response.content.decode('utf-8')
-        print(f'{response.content}')
+        print(f'the response content data csv  {response.content}')
         # Use StringIO to read the CSV content as a file-like object
         csv_file = StringIO(csv_data)
         
@@ -52,7 +52,7 @@ class DownloadTest(TestCase):
         
         # Read the content of the CSV response
         csv_data = response.content.decode('utf-8')
-        print(f'{response.content}')
+        print(f'the response content data csv  {response.content}')
         # Use StringIO to read the CSV content as a file-like object
         csv_file = StringIO(csv_data)
         
@@ -63,7 +63,8 @@ class DownloadTest(TestCase):
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
         print(f'the response content data csv {response.content}')
         
+        # check only works aslong as long as the create_batsh isn't long enough to create a object with the provided filters
         response = self.client.get('/api/download-effects/?country__name=Sweden&grade__k=False')
-        print(f'the response content data csv last one {response.content}')
+        print(f'the response content data csv {response.content}')
         
         self.assertEqual(response.status_code, 404)
