@@ -88,7 +88,7 @@ class StudyTestCase(APITestCase):
         response = self.client.post(self.url, self.testData.half_study_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get(self.url)
-        logger.info(response.data)
+        #logger.info(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         study_uploader = response.data[0].get('uploader')
         self.assertEqual(study_uploader, '0000-0002-1825-0097')
