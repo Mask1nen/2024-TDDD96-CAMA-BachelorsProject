@@ -25,7 +25,7 @@ import { useContext } from 'react';
 
 
 
-const pages = ['Home', 'Subjects', 'Apps', 'Database', 'Admin'];
+const pages = ['Home', 'Subjects', 'Apps', 'Database', 'Download', 'Admin'];
 const settings = ['Profile', 'Logout'];
 
 

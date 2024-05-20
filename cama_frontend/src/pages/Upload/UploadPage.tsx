@@ -7,7 +7,7 @@ import Experimentform from "./experiment_form"
 import AddExperimentDialog from "./addExperimentDialog"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch, Check} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
+import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy, schoolGrades} from '../../api/newTypes'
 import { addStudy, fetchStudyById} from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 const UploadPage: React.FC = () => {
@@ -81,7 +81,12 @@ const UploadPage: React.FC = () => {
 			let experimentKeys = Object.keys(newExp);
 			//fill each prop with data from form
 			experimentKeys.forEach(function(key) {
-				if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
+				if(key=="grade") {
+					schoolGrades.forEach((grade) => {
+						newExp["grade"][grade] = (formData.get(experimentId+"_grade_"+grade)=="on")||false;
+					})
+				}
+				else if (key != "experiment_nr" && key != "study_id" && key != "effects") { //skip fields that are created in database. Effects are handled below
 					newExp[key] = formData.get(experimentId + "_" + key);
 				} 
 			});
@@ -116,6 +121,7 @@ const UploadPage: React.FC = () => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
+		console.log(formData);
 		let formEntry = getFormEntry(formData);
 		console.log(formEntry);
 

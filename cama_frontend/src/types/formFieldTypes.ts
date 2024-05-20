@@ -4,6 +4,7 @@ export interface Field{
     type: string;
     desc: string;
     options?: string[];
+    database_name?: string;
 }
 
 
