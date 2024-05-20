@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { fetchStudies } from '../../api/dataAPI';
+import FilterAndDownload from '../../components/downloadFilteredData';
 
 const sliderSettings = {
   dots: true,
@@ -49,6 +50,10 @@ const DatabasePage = () => {
 
   return (
     <Box sx={{ px: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Download Filtered Data
+      </Typography>
+      <FilterAndDownload />
       <Grid
         container
         justifyContent="space-between"

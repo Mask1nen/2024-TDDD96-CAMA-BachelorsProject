@@ -1,5 +1,6 @@
 import { Study, Experiment, Effect } from "./newTypes.ts"
 import { apiUrl } from "./apiConfig.ts"
+import { saveAs } from 'file-saver';
 
 export const fetchFieldDefinitions = async (): Promise<any> => {
     try {
@@ -271,6 +272,29 @@ export const deleteEffect = async (id: number): Promise<boolean> => {
     } catch (error) {
         console.error('Error deleting effect:', error);
         return false;
+    }
+};
+
+
+export const downloadFilteredData = async (filters: any): Promise<void> => {
+    try {
+        const queryString = new URLSearchParams(filters).toString();
+        const response = await fetch(`${apiUrl}/api/download-effects/?${queryString}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'text/csv' }
+        });
+        if (!response.ok) throw new Error('Failed to download data');
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    } catch (error) {
+        console.error('Error downloading data:', error);
     }
 };
 
