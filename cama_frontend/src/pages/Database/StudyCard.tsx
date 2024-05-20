@@ -1,3 +1,5 @@
+{/*This file conatins the code responible for reacting the individual study cards that are displayed on the study page*/}
+
 import React from "react";
 import {
   Card,
@@ -8,13 +10,12 @@ import {
   Tooltip
 } from "@mui/material";
 import { Study } from "../../api/newTypes";
-import bild2 from "../../assets/images/bild2.png";
 import { useNavigate } from "react-router-dom";
+import getImage from "./GetImage";
 
 interface StudyCardProps {
   studyData: Study;
 }
-
 const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   let navigate = useNavigate();
 
@@ -23,6 +24,9 @@ const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
   const handleCardClick = () => {
     navigate(`/Database/${studyData.study_id}`);
 };
+//gets the image for the card that is dependent on the study id
+const cardImage = getImage(studyData.study_id);
+
 
 
   return (
@@ -49,7 +53,7 @@ const StudyCard: React.FC<StudyCardProps> = ({ studyData }) => {
         >
           <CardMedia
             component="img"
-            image={studyData.image || bild2}
+            image={studyData.image || cardImage}
             alt={studyData.title}
             sx={{ width: "100%", height: "auto" }}
           />

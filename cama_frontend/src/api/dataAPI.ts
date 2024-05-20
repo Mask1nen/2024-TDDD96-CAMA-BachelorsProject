@@ -38,6 +38,25 @@ export const addStudy = async (study: Study): Promise<Study | null> => {
     }
 };
 
+export const approveStudy = async (study_id: number): Promise<Study | null> => {
+    try {
+        const response = await fetch(`${apiUrl}/api/study/${study_id}/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({})
+        });
+        if (!response.ok) {
+            throw new Error('Failed to approve study');
+        }
+        return await response.json() as Study;
+    } catch (error) {
+        console.error('Error approving study:', error);
+        return null;
+    }
+};
+
 export const fetchStudies = async (): Promise<Study[] | null> => {
     try {
         const response = await fetch(`${apiUrl}/api/studies/`, {
