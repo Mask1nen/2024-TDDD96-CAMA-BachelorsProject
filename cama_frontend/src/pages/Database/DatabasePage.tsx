@@ -3,7 +3,6 @@ import { Box, Grid, Typography, Button, TextField, InputAdornment, Tooltip, Pagi
 import SearchIcon from '@mui/icons-material/Search';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import StudyCard from './StudyCard';
 import Slider from 'react-slick';
@@ -76,7 +75,6 @@ const DatabasePage = () => {
     return Math.ceil(filteredData.length / itemsPerPage);
   }, [filteredData, itemsPerPage]);
 
-  const trendingDatasets = filteredData.slice(0, 8);
   const latestDatasets = filteredData.slice(-8);
 
   return (
@@ -95,20 +93,10 @@ const DatabasePage = () => {
                 alignItems="center"
                 marginBottom={4}
               >
-                <Typography variant="h5" color="primary" component="h1">
-                  Trending Datasets <TrendingUpIcon color="primary" />
-                </Typography>
-                <Button variant="text" onClick={handleSeeAllClick}>
-                  See All
-                </Button>
+                
+                
               </Grid>
-              <Slider {...sliderSettings}>
-                {trendingDatasets.map((study, index) => (
-                  <Box key={index} padding={1}>
-                    <StudyCard studyData={study} />
-                  </Box>
-                ))}
-              </Slider>
+            
 
               <Grid
                 container
