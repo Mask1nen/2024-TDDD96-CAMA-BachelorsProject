@@ -7,7 +7,7 @@ import { Effect, schoolGradesOptions } from '../../api/newTypes'
 import AddEffectDialog from "./addEffectDialog"
 
 
-const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}}: any) => {
+const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effects, readOnly = false, inputs = {}, expanded = false, study_id = -1, fetchExistingStudy=() => {}, allowAdd=true}: any) => {
 
     const disabledStyling = {
 		"& .MuiInputBase-input.Mui-disabled": {
@@ -16,6 +16,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
 	  };
 
     const insertEffect = (effect:any) => {
+        console.log({experiment_nr, effect})
         return (
         <div key={experiment_nr +'_'+ effect.effect_size_number}>
             {effect.experiment_nr == experiment_nr ? (
@@ -44,20 +45,6 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
         fetchExistingStudy();
 		setAddEffectDialogOpen(false);
 	}
-    const schoolGradesOptions = [
-    {label:"K", val:"K",},
-    {label:"1", val: "first"},
-    {label:"2", val: "second"},
-    {label:"3", val: "third"},
-    {label:"4", val: "fourth"},
-    {label:"5", val: "fifth"},
-    {label:"6", val: "sixth"},
-    {label:"7", val: "seventh"},
-    {label:"8", val: "eight"},
-    {label:"9", val: "ninth"},
-    {label:"10", val: "tenth"},
-    {label:"11", val: "eleventh"},
-    {label:"12", val: "twelfth"}];
 
     return (
         <Box sx={{ width: "90%", borderLeft: 4, mt: 5, pl: 3 }}>
@@ -74,33 +61,37 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                         key={"grade_" + grade.val}
                         sx={{mx:0}}
                         name={experiment_nr+"_grade_"+grade.val}
-                        control={<Checkbox name={experiment_nr+"_grade_"+grade.val}/>}
+                        control={<Checkbox defaultChecked={inputs?.grade?.[grade.val]??false} name={experiment_nr+"_grade_"+grade.val}/>}
                         label={grade.label}
                         labelPlacement="top"
+                        
                         />
                     ))}
                     <br/>
                         {experimentFields.map(field => (
-                            <TextField
-                                key={field.key}
-                                disabled={(readOnly||false||field.type=="disabled")}
-                                sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
-                                variant="standard"
-                                id={"form" + field.key}
-                                label={field.name}
-                                name={experiment_nr +"_"+ field.key}
-                                select={!!field.options}
-                                defaultValue={inputs[field.key]||""}
-                            >
-                                {field.options?.map(option => (
-                                    <MenuItem key={`${field.key}-${option}`} value={option}>
-                                        {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        ))}
+                            <span>
 
-                        
+                                {field.key != "grade" ? (
+                                    <TextField
+                                    key={field.key}
+                                    disabled={(readOnly||false||field.type=="disabled")}
+                                    sx={{ width: "30%", mt: 1, ml: 1, ...disabledStyling}}
+                                    variant="standard"
+                                    id={"form" + field.key}
+                                    label={field.name}
+                                    name={experiment_nr +"_"+ field.key}
+                                    select={field.type == "option"}
+                                    defaultValue={field.type == "option" ? (inputs[field.key]?.[field.database_name]??"" ): inputs[field.key]??""}
+                                >
+                                    {field.options?.map(option => (
+                                        <MenuItem key={`${field.key}-${option}`} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                                ):""}
+                            </span>
+                        ))}
 
                         {/*existing effects (only when addToExisting)*/}
                         {inputs.effects?.map((effect: {effect_size_number: number, experiment_nr:number}) => (
@@ -121,13 +112,14 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                                 Add Effect<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
-                    ):(
+                    ):""}
+                    {(readOnly && allowAdd) ?(
                         <div>
                             <Button onClick={handleAddEffectDialogOpen} variant="outlined" sx={{ mt: 2 }}>
                                 Add Effect To Experiment<AddCircleOutline sx={{ ml: 1 }} />
                             </Button>
                         </div>
-                    ) }
+                    ) : ""}
                 </AccordionDetails>
             </Accordion>
         </Box>

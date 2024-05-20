@@ -31,8 +31,8 @@ const EffectForm: React.FC = ({inputs, experiment_nr, effect_size_number, readOn
                     id={"form" + field.key}
                     label={field.name}
                     name={experiment_nr +"_"+ effect_size_number +"_"+ field.key}
-                    select={!!field.options}
-                    defaultValue={inputs[field.key]||""}
+                    select={field.type == "option"}
+                    defaultValue={field.type == "option" ? (inputs[field.key]?.[field.database_name] ?? "") : (inputs[field.key]??"")}
                     fullWidth
                   >
                     {field.options?.map(option => (

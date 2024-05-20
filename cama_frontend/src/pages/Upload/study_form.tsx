@@ -32,7 +32,7 @@ function Studyform({inputs = {}, readOnly = false}) {
 				name="country"
 				label="Country"
 				select
-				defaultValue={inputs["country"]||""}
+				defaultValue={inputs?.country?.name??""}
 				>
 				{countries.map((option) => (
 					<MenuItem key={option.value} value={option.label}>
@@ -66,7 +66,7 @@ function Studyform({inputs = {}, readOnly = false}) {
 				id="formCategory"
 				label="Category"
 				name="category"
-				defaultValue={inputs.category||""}
+				defaultValue={inputs?.category?.name ?? ""}
 				select
 				>
 					<MenuItem key="STEM" value="STEM">
