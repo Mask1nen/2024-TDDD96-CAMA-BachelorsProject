@@ -11,36 +11,13 @@ from django.db.models import Q
 import csv
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from .models import get_id_from_name, FIELD_MODEL_MAP
 
 
 import logging
 logger = logging.getLogger(__name__)
 
-def filter_helper(parameters, fields):
-    """A helper functions which creates a Q filter based on the parameters 
-    which are provided.
 
-    Arguments:
-        parameters -- The parameters provided in the request.
-        fields -- The fields which exists in the table.
-
-    Returns:
-        A Q filter containing filters based on the provided parameters.
-    """    
-    filter_container = Q()
-    for key, value in parameters.items():
-            # Handles refrences to other tables and thier fields
-            if '__' in key:
-                related_field, attribute = key.split('__')
-                if related_field in fields:
-                    filter_condition = {f"{related_field}__{attribute}": value}
-                    filter_container &= Q(**filter_condition)
-                
-            else:
-                if key in fields:
-                    filter_condition = {f"{key}": value}
-                    filter_container &= Q(**filter_condition)
-    return filter_container
 
 class FieldsView(APIView):
     def get(self, request):
@@ -363,103 +340,6 @@ class EffectSizeTypeOptionsView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
-class DownloadCSV(APIView):
-    """DownloadCSV is a view calss which handles reqests for downloading effect_data and its
-    paraent tables variables as CSV data.
-    """    
-    def get(self, request):
-        """Get the effect_data based on provided filters in the url call
-
-        Arguments:
-            request -- The request call from the url.
-
-        Returns:
-            Returns all effect_data and its parent variables as CSV data.
-        """        
-        # Query the database to fetch data
-        parameters = request.GET.dict()
-        # Create field lists which contains the fiels of the tables
-        study_filters = Q()
-        experiment_filters = Q()
-        effect_data_filters = Q()
-        
-        fields_studies = [field.name for field in Study._meta.get_fields()]
-        fields_experiments = [field.name for field in Experiment._meta.get_fields()]
-        fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
-        
-        # Go through all studies and find the ones which mactch study fitlers
-        study_filters = filter_helper(parameters, fields_studies)
-        studies = Study.objects.filter(study_filters)
-        study_ids = [study.study_id for study in studies]
-        
-        
-        
-        # Filter through the experiments
-        # Create filter condition on experiments so only experiment from the filterd studies are filterd
-        experiment_filters &= Q(study_id__in=study_ids)
-        experiment_filters &= filter_helper(parameters, fields_experiments)
-        experiments = Experiment.objects.filter(experiment_filters)
-        
-        experiment_ids = [experiment.experiment_nr for experiment in experiments]
-    
-
-        
-        # Create filter condition on effekt_data so only effekt_data from the filterd experiments are filterd
-        effect_data_filters &= Q(experiment_nr__in=experiment_ids)
-        effect_data_filters &= filter_helper(parameters, fields_effect_data)  
-        
-        effect_datas = EffectData.objects.filter(effect_data_filters)
-        
-
-        # Create a CSV response
-        response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename="data.csv"'
-
-        # Write data to CSV
-        writer = csv.writer(response)
-        # Write header row
-        writer.writerow(['title','authors', 'keywords', 'abstract', 'category', 'country',  'year', 'DOI', 
-                         'peer_reviewed', 'source', 'experiment_number',
-                         'test_time', 'effect_size_number', 'intervention', 'intervention_op', 'target_population',
-                         'mean_age', 'grade_k', 'grade_1', 'grade_2', 'grade_3', 'grade_4', 'grade_5',
-                         'grade_6', 'grade_7', 'grade_8', 'grade_9', 'grade_10', 'grade_11', 'grade_12',
-                         'ni', 'gender_1', 'gender_2', 'gender_3', 'study_design',
-                         'participant_design', 'implementation', 'duration_week', 'frequency_n',
-                         'intensity_n', 'effect_size_type', 'mean_age_1i', 'm1i', 'sd1i', 'n1i',
-                         'mean_age_2i', 'm2i', 'sd2i', 'n2i', 'icc', 'ai', 'bi', 'ci', 'di', 'ri',
-                         't', 'f_stat', 'd', 'd_var', 'rob', 'robins', 'outcome', 'test_name',
-                         'outcome_full', 'outcome_op'])  # Add column names
-        
-        if effect_datas.exists():
-        # For each effect in effect_datas write a row in the csv file with all variables defined above.
-            for effekt_data in effect_datas:
-                # Define the paths to the experiment of the effekt_data and the study of that experiment
-                experiment = effekt_data.experiment_nr
-                study = effekt_data.experiment_nr.study_id
-                # Write the rows to the CSV response
-                writer.writerow([study.title, study.authors, study.keywords, study.category.name, study.country.name,
-                                study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
-                                effekt_data.test_time.time, effekt_data.effect_size_number, experiment.intervention, 
-                                experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
-                                experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.fourth,
-                                experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
-                                experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
-                                experiment.grade.eleventh, experiment.grade.twelfth,
-                                experiment.ni, effekt_data.gender_1, effekt_data.gender_2, effekt_data.gender_3, 
-                                experiment.study_design.design, experiment.participant_design.design, experiment.implemented.implementor,
-                                experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
-                                effekt_data.effect_size_type.name, effekt_data.mean_age_1i, effekt_data.m1i, effekt_data.sd1i,
-                                effekt_data.n1i, effekt_data.mean_age_2i, effekt_data.m2i, effekt_data.sd2i,
-                                effekt_data.n2i, effekt_data.icc, effekt_data.ai, effekt_data.bi, effekt_data.ci,
-                                effekt_data.di, effekt_data.ri, effekt_data.t, effekt_data.f_stat, effekt_data.d,
-                                effekt_data.d_var, experiment.risks.rob, experiment.robins, effekt_data.outcome, 
-                                effekt_data.test_name, effekt_data.outcome_full, effekt_data.outcome_op])  
-
-            return response
-        response = HttpResponse(status=404)
-        return response
-
-    
 class get_orcid_infoAPIView(APIView):
     def get(self, request):
         return 
@@ -529,3 +409,92 @@ class StudyViewDetail(APIView):
 
         # Serialize the instance to return it in the response
         return Response(StudySerializer(study).data, status=status.HTTP_200_OK)
+    
+def filter_helper(parameters, fields):
+    """A helper functions which creates a Q filter based on the parameters 
+    which are provided.
+
+    Arguments:
+        parameters -- The parameters provided in the request.
+        fields -- The fields which exists in the table.
+
+    Returns:
+        A Q filter containing filters based on the provided parameters.
+    """    
+    filter_container = Q()
+    for key, value in parameters.items():
+        if key in fields:
+            filter_condition = {f"{key}": value}
+            filter_container &= Q(**filter_condition)
+    return filter_container
+
+class DownloadCSV(APIView):
+    def get(self, request):
+        parameters = request.GET.dict()
+
+        fields_studies = [field.name for field in Study._meta.get_fields()]
+        fields_experiments = [field.name for field in Experiment._meta.get_fields()]
+        fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
+
+        # Filter studies
+        study_filters = filter_helper(parameters, fields_studies)
+        studies = Study.objects.filter(study_filters)
+        study_ids = [study.study_id for study in studies]
+        print("Filtered Studies:", studies)
+
+        # Filter experiments
+        experiment_filters = filter_helper(parameters, fields_experiments)
+        experiment_filters &= Q(study_id__in=study_ids)
+        experiments = Experiment.objects.filter(experiment_filters)
+        experiment_ids = [experiment.experiment_nr for experiment in experiments]
+        print("Filtered Experiments:", experiments)
+
+        # Fetch EffectData related to filtered experiments
+        effect_datas = EffectData.objects.filter(experiment_nr__in=experiment_ids)
+        print("Filtered Effect Data:", effect_datas)
+
+        for experiment in experiments:
+            related_effects = EffectData.objects.filter(experiment_nr=experiment.experiment_nr)
+            print(f"Experiment {experiment.experiment_nr} has related EffectData: {related_effects}")
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="data.csv"'
+
+        writer = csv.writer(response)
+        writer.writerow(['title', 'authors', 'keywords', 'abstract', 'category', 'country', 'study_year', 'doi', 
+                         'peer_reviewed', 'source', 'experiment_number', 'test_time', 'effect_size_number', 
+                         'intervention', 'intervention_op', 'target_population', 'mean_age', 'grade_k', 
+                         'grade_1', 'grade_2', 'grade_3', 'grade_4', 'grade_5', 'grade_6', 'grade_7', 
+                         'grade_8', 'grade_9', 'grade_10', 'grade_11', 'grade_12', 'ni', 'gender_1', 
+                         'gender_2', 'gender_3', 'study_design', 'participant_design', 'implementation', 
+                         'duration_week', 'frequency_n', 'intensity_n', 'effect_size_type', 'mean_age_1i', 
+                         'm1i', 'sd1i', 'n1i', 'mean_age_2i', 'm2i', 'sd2i', 'n2i', 'icc', 'ai', 'bi', 'ci', 
+                         'di', 'ri', 't', 'f_stat', 'd', 'd_var', 'rob', 'robins', 'outcome', 'test_name', 
+                         'outcome_full', 'outcome_op'])
+
+        # Write CSV rows
+        for effect_data in effect_datas:
+            experiment = effect_data.experiment_nr
+            study = experiment.study_id
+            print("Writing row for Study:", study)
+            writer.writerow([
+                study.title, study.authors, study.keywords, study.abstract, study.category.name, study.country.name,
+                study.study_year, study.doi, study.peer_reviewed, experiment.source, experiment.experiment_nr,
+                effect_data.test_time.time, effect_data.effect_size_number, experiment.intervention, 
+                experiment.intervention_op, experiment.target_population, experiment.mean_age, experiment.grade.k,
+                experiment.grade.first, experiment.grade.second, experiment.grade.third, experiment.grade.fourth,
+                experiment.grade.fifth, experiment.grade.sixth, experiment.grade.seventh,
+                experiment.grade.eighth, experiment.grade.ninth, experiment.grade.tenth, 
+                experiment.grade.eleventh, experiment.grade.twelfth,
+                experiment.ni, effect_data.gender_1, effect_data.gender_2, effect_data.gender_3, 
+                experiment.study_design.design, experiment.participant_design.design, experiment.implemented.implementor,
+                experiment.duration_week, experiment.frequency_n, experiment.intensity_n, 
+                effect_data.effect_size_type.name, effect_data.mean_age_1i, effect_data.m1i, effect_data.sd1i,
+                effect_data.n1i, effect_data.mean_age_2i, effect_data.m2i, effect_data.sd2i,
+                effect_data.n2i, effect_data.icc, effect_data.ai, effect_data.bi, effect_data.ci,
+                effect_data.di, effect_data.ri, effect_data.t, effect_data.f_stat, effect_data.d,
+                effect_data.d_var, experiment.risks.rob, experiment.robins, effect_data.outcome, 
+                effect_data.test_name, effect_data.outcome_full, effect_data.outcome_op
+            ])
+
+        return response

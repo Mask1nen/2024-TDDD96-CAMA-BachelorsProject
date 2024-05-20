@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   Box,
+  Button,
   Typography,
   Card,
   CardContent,
@@ -11,11 +12,12 @@ import {
   Divider,
   CircularProgress,
   FormControlLabel,
-  Checkbox
+  Checkbox,
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { fetchStudyById } from "../../api/dataAPI";
+import { apiUrl } from "../../api/apiConfig";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,6 +29,8 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
+
 
 const DatabaseDetail = () => {
   const { id: paramId } = useParams();
@@ -68,6 +72,37 @@ const DatabaseDetail = () => {
   if (!study) return <Typography>No study data.</Typography>;
 
   const { title, doi, authors, keywords, abstract, experiments, category, country } = study;
+
+  const handleDownload = async () => {
+    try {
+      const respone = await fetch(`${apiUrl}/api/download-effects/?title=${title}/`, {
+          method: "GET",
+         
+      })
+      if (respone.status == 200) {
+        const blob = await respone.blob();
+        // Create blob link to download
+        const url = window.URL.createObjectURL(
+          new Blob([blob]),
+        );
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute(
+          'download',
+          `${title}.csv`,
+        );
+    
+        document.body.appendChild(link);
+        link.click();    
+        link.parentNode.removeChild(link);
+      }
+
+
+  }
+  catch (error) {
+      alert("Failed to download dataset.");
+  }
+  };
 
   return (
     <Box sx={{ margin: 4, textAlign: "left" }}>
@@ -137,6 +172,10 @@ const DatabaseDetail = () => {
       ))}
     </Box>
   );
+
+  
+  
+
 };
 
 export default DatabaseDetail;

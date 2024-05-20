@@ -9,6 +9,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { fetchStudies } from '../../api/dataAPI';
+import FilterAndDownload from '../../components/downloadFilteredData';
 
 const sliderSettings = {
   dots: true,
@@ -79,6 +80,21 @@ const DatabasePage = () => {
 
   return (
     <Box sx={{ px: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Download Filtered Data
+      </Typography>
+      <FilterAndDownload />
+      <Grid
+        container
+        justifyContent="space-between"
+        alignItems="center"
+        marginBottom={4}
+      >
+        <Typography variant="h5" color="primary" component="h1">
+          Fetched studies
+        </Typography>
+      </Grid>
+
       {loading ? (
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
           <CircularProgress />
