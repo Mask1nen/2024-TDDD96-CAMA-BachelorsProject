@@ -7,7 +7,7 @@ import Experimentform from "./experiment_form"
 import AddExperimentDialog from "./addExperimentDialog"
 import {AddCircleOutline, RemoveCircleOutline, SavedSearch, Check} from "@mui/icons-material"
 import { v4 as uuidv4 } from 'uuid';
-import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy} from '../../api/newTypes'
+import {Experiment, Effect, Study, emptyExperiment, emptyEffect, emptyStudy, schoolGrades} from '../../api/newTypes'
 import { addStudy, fetchStudyById} from "../../api/dataAPI";
 import SearchDialog from "./searchDialog";
 const UploadPage: React.FC = () => {
@@ -62,22 +62,6 @@ const UploadPage: React.FC = () => {
 
 	//STUDY
 
-	const schoolGrades = [
-		"K",
-		"first",
-		"second",
-		"third",
-		"fourth",
-		"fifth",
-		"sixth",
-		"seventh",
-		"eight",
-		"ninth",
-		 "tenth",
-		 "eleventh",
-		 "twelfth"];
-	
-	
 	//parse form entry and put in correct data structure
 	const getFormEntry = (formData:FormData) => {
 

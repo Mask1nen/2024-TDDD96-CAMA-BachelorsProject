@@ -166,3 +166,32 @@ export const emptyEffect = (effect_size_nr: number, experiment_nr: number, study
 
 
 
+export const schoolGrades = [
+    "K",
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "sixth",
+    "seventh",
+    "eight",
+    "ninth",
+     "tenth",
+     "eleventh",
+     "twelfth"];
+
+export const schoolGradesOptions = [
+        {label:"K", val:"K",},
+        {label:"1", val: "first"},
+        {label:"2", val: "second"},
+        {label:"3", val: "third"},
+        {label:"4", val: "fourth"},
+        {label:"5", val: "fifth"},
+        {label:"6", val: "sixth"},
+        {label:"7", val: "seventh"},
+        {label:"8", val: "eight"},
+        {label:"9", val: "ninth"},
+        {label:"10", val: "tenth"},
+        {label:"11", val: "eleventh"},
+        {label:"12", val: "twelfth"}];

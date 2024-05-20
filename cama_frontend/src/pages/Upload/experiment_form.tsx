@@ -3,7 +3,7 @@ import { FormLabel, FormControlLabel, Checkbox, Tooltip, Box, Button, Accordion,
 import { ArrowDownward, AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
 import { experimentFields } from "./experimentFields";
 import  EffectForm  from "./effect_form";
-import { Effect } from '../../api/newTypes'
+import { Effect, schoolGradesOptions } from '../../api/newTypes'
 import AddEffectDialog from "./addEffectDialog"
 
 
@@ -44,7 +44,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
         fetchExistingStudy();
 		setAddEffectDialogOpen(false);
 	}
-    const schoolGrades = [
+    const schoolGradesOptions = [
     {label:"K", val:"K",},
     {label:"1", val: "first"},
     {label:"2", val: "second"},
@@ -68,7 +68,7 @@ const ExperimentForm: React.FC = ({experiment_nr, removeEffect, addEffect, effec
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormLabel component="legend">School grade</FormLabel>
-                    {schoolGrades.map(grade => (
+                    {schoolGradesOptions.map(grade => (
 
                         <FormControlLabel
                         key={"grade_" + grade.val}
