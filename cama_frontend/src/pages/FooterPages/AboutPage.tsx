@@ -31,40 +31,28 @@ const AboutPage: React.FC = () => {
                     <Typography variant="h1" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> {multiLanguage(isSWE, aboutHeading)} </Typography>
                     <img src={CAMA_test_icon} alt="Description of the image" width="250" height="250" style={{ top: '-50px', position: 'relative' }}/>                        
                 </Box>
-                <Box>
-                    <button onClick={() => setBottonPopup(true)} style={{ color: 'white' }}> INFO</button>
-                    <InfoPopUps trigger={buttonPopup} setTrigger={setBottonPopup} >
-                        <h3 >xxTestxxZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</h3>
-                        
-                    </InfoPopUps>
-                </Box>
             </Box>
         
 
-        {/*Creats the two blocks for about text and a timeline report, with headline for the timeline*/}
+        {/*Creats a block for about text*/}
         
         <Grid container rowSpacing={8}>
-            <Grid item >
-                <Paper sx={{p:3, height:'100%'}}>                
-                    {multiLanguage(isSWE, aboutText1)}
-                    <br />
-                    {multiLanguage(isSWE, aboutText2)}
-                    <br />
-                    {multiLanguage(isSWE, aboutText3)}
-                </Paper>
-            </Grid>
-
-            <Grid item xs={12} >
-                <Typography variant="h3" style={{ color: 'black' , textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> CAMA through the years </Typography>
-                <Paper sx={{p:3, height:'70%'}}> 
-                <p>2020: The begining </p> <br />
-                <p>2022: Cool stuff </p> <br />
-                <p>2024: This website </p> <br />
-                </Paper>
-            </Grid>
-            
-
-        </Grid>
+                    <Grid item xs={12}>
+                        <Paper sx={{ p: 3, height: '100%' }}>
+                            <Typography align="left" variant="body1">
+                                {multiLanguage(isSWE, aboutText1)}
+                            </Typography>
+                            <br />
+                            <Typography align="left" variant="body1">
+                                {multiLanguage(isSWE, aboutText2)}
+                            </Typography>
+                            <br />
+                            <Typography align="left" variant="body1">
+                                {multiLanguage(isSWE, aboutText3)}
+                            </Typography>
+                        </Paper>
+                    </Grid>
+                </Grid>
 
         </Box>
         </Context.Provider>

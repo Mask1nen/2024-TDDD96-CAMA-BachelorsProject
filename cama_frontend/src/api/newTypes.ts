@@ -1,0 +1,202 @@
+/*
+ * Interface for study, experiment and effect.
+
+    When any interface is changed make sure to change the emtpyXXX function as well.
+    When changing Experiment or study make sure to change in newTypes.ts as well.
+ */
+export interface Study {
+    study_id: number;
+    title: string;
+    authors: string;
+    keywords: string;
+    abstract: string;
+    category: string;
+    country: string;
+    study_year: number;
+    doi: string;
+    peer_reviewed: boolean;
+    approved: boolean;
+    experiments: Experiment[];
+}
+
+export const emptyStudy = (id: number): Study => ({
+    study_id: id,
+    title: "",
+    authors: "",
+    keywords: "",
+    abstract: "",
+    category: "Math" | "Language" | "STEM",
+    country: "",
+    study_year: 0,
+    doi: "",
+    peer_reviewed: false,
+    experiments: [],
+});	
+
+export interface Experiment {
+    study_id?: number;
+    experiment_nr?: number;
+    source?: string;
+    intervention: string;
+    intervention_op: string;
+    target_population: string;
+    mean_age?: number;
+    grade?: {
+        "K":boolean;
+		"first":boolean;
+		"second":boolean;
+		"third":boolean;
+		"fourth":boolean;
+		"fifth":boolean;
+		"sixth":boolean;
+		"seventh":boolean;
+		"eight":boolean;
+		"ninth":boolean;
+		 "tenth":boolean;
+		 "eleventh":boolean;
+		 "twelfth":boolean;
+    };
+    ni: number; //sample size
+    study_design: 'RCT' | 'QES';
+    participant_design: 'within' | 'between' | 'mixed';
+    implemented: 'researcher' | 'teacher' | 'paraprofessional' | null;
+    duration_week?: number;
+    frequency_n?: number;
+    intensity_n?: number;
+    robins?: string;
+    risks: 'low' | 'moderate' | 'high' | 'NA';
+    effects: Effect[];
+}
+
+export const emptyExperiment = (experiment_nr: number, study_id:number): Experiment => ({
+    study_id: study_id,
+    experiment_nr: experiment_nr,
+    source: "",
+    intervention: "",
+    intervention_op: "",
+    target_population: "",
+    mean_age: undefined,
+    grade: {
+        "K":false,
+		"first":false,
+		"second":false,
+		"third":false,
+		"fourth":false,
+		"fifth":false,
+		"sixth":false,
+		"seventh":false,
+		"eight":false,
+		"ninth":false,
+		 "tenth":false,
+		 "eleventh":false,
+		 "twelfth":false,
+    },
+    ni: "",
+    study_design: "",
+    participant_design: "",
+    implemented: "",
+    duration_week: "",
+    frequency_n: "",
+    intensity_n: "",
+    robins: "",
+    risks: "",
+    effects: [],
+});
+
+export interface Effect {
+    study_id?: number;
+    experiment_nr?: number;
+    effect_size_nr?: number;
+    test_time: 'baseline(pre-test)' | 'post-test' | 'follow-up';
+    gender_1?: number;
+    gender_2?: number;
+    gender_3?: number;
+    effect_size_type: 'SMD' | 'RR/OR' ;
+    mean_age_1i?: number;
+    m1i?: number;
+    sd1i?: number;
+    n1i?: number;
+    mean_age_2i?: number;
+    m2i?: number;
+    sd2i?: number;
+    n2i?: number;
+    icc?: number;
+    ai?: number;
+    bi?: number;
+    ci?: number;
+    di?: number;
+    ri?: number;
+    t?: number;
+    f_stat?: number;
+    d?: number;
+    d_var?: number;
+    outcome: string;
+    test_name?: string;
+    outcome_full: string;
+    outcome_op?: string;
+}
+
+export const emptyEffect = (effect_size_nr: number, experiment_nr: number, study_id: number): Effect => ({
+    effect_size_nr: effect_size_nr,
+    study_id: study_id,
+    experiment_nr: experiment_nr,
+    test_time: "",
+    gender_1: "",
+    gender_2: "",
+    gender_3: "",
+    effect_size_type: "",
+    mean_age_1i: "",
+    m1i: "",
+    sd1i: "",
+    n1i: "",
+    mean_age_2i: "",
+    m2i: "",
+    sd2i: "",
+    n2i: "",
+    icc: "",
+    ai: "",
+    bi: "",
+    ci: "",
+    di: "",
+    ri: "",
+    t: "",
+    f_stat: "",
+    d: "",
+    d_var: "",
+    outcome: "",
+    test_name: "",
+    outcome_full: "",
+    outcome_op: "",
+});
+
+
+
+export const schoolGrades = [
+    "k",
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "sixth",
+    "seventh",
+    "eight",
+    "ninth",
+     "tenth",
+     "eleventh",
+     "twelfth"];
+
+export const schoolGradesOptions = [
+        {label:"K", val:"k",},
+        {label:"1", val: "first"},
+        {label:"2", val: "second"},
+        {label:"3", val: "third"},
+        {label:"4", val: "fourth"},
+        {label:"5", val: "fifth"},
+        {label:"6", val: "sixth"},
+        {label:"7", val: "seventh"},
+        {label:"8", val: "eight"},
+        {label:"9", val: "ninth"},
+        {label:"10", val: "tenth"},
+        {label:"11", val: "eleventh"},
+        {label:"12", val: "twelfth"}];

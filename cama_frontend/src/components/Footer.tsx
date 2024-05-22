@@ -22,9 +22,6 @@ function Footer() {
                     <Link to="Team" className=" hover:underline">Team</Link>
               </li>
               
-              <li className="mb-4">
-                    <Link to="App" className=" hover:underline">App</Link>
-              </li>
             </ul>
           </div>
           <div>

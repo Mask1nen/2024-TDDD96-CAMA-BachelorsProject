@@ -16,10 +16,8 @@ class CamaUserAdmin(admin.ModelAdmin):
 
 class StudyAdmin(admin.ModelAdmin):
     model = Study
-    list_display = ['study_id', 'title', 'uploader', 'study_year', 'country', 'category',
-                    'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads',
-                    'approved']
-    search_fields = ['study_id', 'approved']
+    list_display = ['study_id', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed', 'authors', 'doi', 'abstract', 'keywords', 'nr_downloads']
+    search_fields = ['study_id']
 
 class ExperimentAdmin(admin.ModelAdmin):
     model = Experiment
@@ -57,9 +55,9 @@ class RiskOfBiasAdmin(admin.ModelAdmin):
 
 class GradeAdmin(admin.ModelAdmin):
     model = Grade
-    list_display = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+    list_display = ["k", "first", "second", "third", "fourth", "fifth", "sixth",
                     "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
-    search_fields = ["k", "first", "second", "third", "forth", "fifth", "sixth",
+    search_fields = ["k", "first", "second", "third", "fourth", "fifth", "sixth",
                     "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"]
 
 class ParticipantDesignAdmin(admin.ModelAdmin):
