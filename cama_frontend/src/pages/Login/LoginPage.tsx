@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
         console.log("Code from ORCID:", code);
     if (code) {
         try {
-            const response = await fetch(`${apiUrl}/get-orcid-info/`, {
+            const response = await fetch(`${apiUrl}/api/get-orcid-info/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const LoginPage: React.FC = () => {
             const name = data.name;
             const userSession = { accessToken, refreshToken, orcid, name };
             login(userSession);
-            window.location.href = "/Upload";
+            window.location.href = "/home";
 
         }
         catch (error) {
