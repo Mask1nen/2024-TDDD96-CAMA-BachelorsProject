@@ -1,3 +1,4 @@
+import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -347,9 +348,9 @@ class get_orcid_infoAPIView(APIView):
     def post(self, request):
         code = request.data.get('code')
     
-        client_id = 'APP-IZWWE416AT5JC4N6',
-        client_secret = '51bd4130-6aad-4777-9102-4755f7a5c01a',
-        redirect_uri = 'http://192.168.0.34:3000/Login'
+        client_id = 'APP-IZWWE416AT5JC4N6', ###FIXME replace with your client id
+        client_secret = '51bd4130-6aad-4777-9102-4755f7a5c01a', ###FIXME replace with your client secret
+        redirect_uri = 'http://192.168.0.34:3000/Login' ###FIXME replace with your redirect uri
 
         # Make a request to the ORCID API to get the auth token
         token_url = 'https://orcid.org/oauth/token'

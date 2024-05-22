@@ -11,14 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { logout, useAuth } from '../hooks/useAuth';
 import { NavLink, Link } from "react-router-dom";
-import { useAuth } from '../hooks/useAuth';
-import { red } from '@mui/material/colors';
-
 import { useState, useContext } from "react";
-import multiLanguage from "../components/multiLanguage";
-import changeLanguageBotton from "../../src/assets/navBarText/changeLanguageButton.json";
-import { Context } from "../../src/App";
+
 
 const pages = ['Home', 'Subjects', 'Apps', 'Database', 'Admin'];
 const settings = ['Profile', 'Logout'];
@@ -26,7 +22,7 @@ const settings = ['Profile', 'Logout'];
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const [isSWE, setIsSWE] = useContext(Context);
+  //const [isSWE, setIsSWE] = useContext(Context);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -44,7 +40,15 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  let redirect_uri = "Login";
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/Home";
+  };
+
+  //Remove line below and uncomment the line below that to enable login redirect
+  let redirect_uri = "Upload"
+  //let redirect_uri = "Login"
+
   const [isLoggedIn, session] = useAuth();
   if (!isLoggedIn) {
     redirect_uri = "Upload";
@@ -121,24 +125,43 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: "flex" }}>
+
+          <Box sx={{ flexGrow: 0, display:"flex"}}>
+              
+              <Link to={redirect_uri}>
+                <Button size="small"
+                  key="addstudy"
+                  variant="contained"
+                  color="primary"
+                  sx={{mr:3}}
+
+                >
+                  Add Study
+                </Button>
+              </Link>
             
-            <Link to={redirect_uri}>
-              <Button 
-                size="small"
-                key="addstudy"
-                variant="contained"
-                color="primary"
-                sx={{ mr: 3 }}
-              >
-                Add Study
-              </Button>
-            </Link>
-            <Tooltip title="Open settings">
+            {isLoggedIn && <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar sx={{ width: "40px", height: "40px", margin: "0 auto" }} />
               </IconButton>
-            </Tooltip>
+            </Tooltip>}
+
+            {/**
+             * Temporary login button, can be removed or kept
+             * depending on the design choice.
+             */}
+            {!isLoggedIn && <Link to="Login">
+              <Button size="small"
+                  key="login"
+                  variant="contained"
+                  color="primary"
+                  sx={{mr:3}}
+                >
+                  Login
+                </Button>
+                </Link>
+            }
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -155,13 +178,15 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link to={`/${setting.toLowerCase()}`}>
-                    <Typography textAlign="center">{setting}</Typography>
+              <MenuItem key="Profile" onClick={handleCloseUserMenu}>
+                  <Link to="Profile">
+                    <Typography textAlign="center">Profile</Typography>
                   </Link>
                 </MenuItem>
-              ))}
+                <MenuItem key="Logout" onClick={handleLogout}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
