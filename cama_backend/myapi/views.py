@@ -436,24 +436,7 @@ class StudyViewDetail(APIView):
 
         # Serialize the instance to return it in the response
         return Response(StudySerializer(study).data, status=status.HTTP_200_OK)
-    
-def filter_helper(parameters, fields):
-    """A helper functions which creates a Q filter based on the parameters 
-    which are provided.
 
-    Arguments:
-        parameters -- The parameters provided in the request.
-        fields -- The fields which exists in the table.
-
-    Returns:
-        A Q filter containing filters based on the provided parameters.
-    """    
-    filter_container = Q()
-    for key, value in parameters.items():
-        if key in fields:
-            filter_condition = {f"{key}": value}
-            filter_container &= Q(**filter_condition)
-    return filter_container
 
 class DownloadCSV(APIView):
     """DownloadCSV is a view calss which handles reqests for downloading effect_data and its
@@ -470,8 +453,8 @@ class DownloadCSV(APIView):
         """        
         # Query the database to fetch data
         parameters = request.GET.dict()
+        print(f'The parameters +++++++++++++++++++++++++++++++++++++++++++++++++++ {parameters.items()}')
         # Create field lists which contains the fiels of the tables
-        study_filters = Q()
         experiment_filters = Q()
         effect_data_filters = Q()
         
@@ -480,7 +463,9 @@ class DownloadCSV(APIView):
         fields_effect_data = [field.name for field in EffectData._meta.get_fields()]
         
         # Go through all studies and find the ones which mactch study fitlers
+        print(f'The fields +++++++++++++++++++++++++++++++++++++++++++++++++++ {fields_studies}')
         study_filters = filter_helper(parameters, fields_studies)
+        print(f'THe filters +++++++++++++++++++++++++++++++++++++++++++++++++++ {study_filters}')
         studies = Study.objects.filter(study_filters)
         study_ids = [study.study_id for study in studies]
         
@@ -490,6 +475,7 @@ class DownloadCSV(APIView):
         # Create filter condition on experiments so only experiment from the filterd studies are filterd
         experiment_filters &= Q(study_id__in=study_ids)
         experiment_filters &= filter_helper(parameters, fields_experiments)
+        print(f'THe filters +++++++++++++++++++++++++++++++++++++++++++++++++++ {experiment_filters}')
         experiments = Experiment.objects.filter(experiment_filters)
         
         experiment_ids = [experiment.experiment_nr for experiment in experiments]
@@ -499,7 +485,7 @@ class DownloadCSV(APIView):
         # Create filter condition on effekt_data so only effekt_data from the filterd experiments are filterd
         effect_data_filters &= Q(experiment_nr__in=experiment_ids)
         effect_data_filters &= filter_helper(parameters, fields_effect_data)  
-        
+        print(f'THe filters +++++++++++++++++++++++++++++++++++++++++++++++++++ {effect_data_filters}')
         effect_datas = EffectData.objects.filter(effect_data_filters)
         
 
