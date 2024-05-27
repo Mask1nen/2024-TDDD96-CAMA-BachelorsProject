@@ -31,7 +31,7 @@ def filter_helper(parameters, fields):
     """    
     filter_container = Q()
     for key, value in parameters.items():
-        if value:
+        if value and value != '':
             # Handles refrences to other tables and thier fields
             if '__' in key:
                 related_field, attribute = key.split('__')
