@@ -6,28 +6,38 @@ import logging
 logger = logging.getLogger(__name__)
 
 class CountrySerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Country model.
+    
+    Converts JSON representations of a country into a Country model object 
+    during POST-requests and Country model objects into JSON objects during 
+    GET-requests.
+    """
     class Meta:
         model = Country
         fields = '__all__'
-        
-    def create(self, validated_data):
-            country_name = validated_data.pop('name')
-            country = Country.objects.create(name=country_name)
-            return country
-
 
 class CategorySerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Category model.
+    
+    Converts JSON representations of a category into a Category model object 
+    during POST-requests and Category model objects into JSON objects during 
+    GET-requests.
+    """
+
     class Meta:
         model = Category
         fields = '__all__'
-    
-    def create(self, validated_data):
-            name = validated_data.pop('name')
-            category = Category.objects.create(name=name)
-            return category
-
 
 class StudySerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Study model.
+    
+    Converts Study model objects into JSON representations during GET-requests.
+    Provides a nested representation of related objects.
+    """
+
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
     country = CountrySerializer(read_only=True)
     category = CategorySerializer(read_only=True)
@@ -37,8 +47,16 @@ class StudySerializer(serializers.ModelSerializer):
         model = Study
         fields = ['study_id', 'title', 'uploader', 'study_year', 'country', 'category', 'peer_reviewed',
                   'authors', 'doi', 'abstract', 'keywords', 'nr_downloads', 'approved', 'experiments']
-        
+
+   
 class StudyCreateSerializer(serializers.ModelSerializer):
+    """
+    Serializer for creating a Study model.
+    
+    Converts JSON representations of a study into a Study model object during 
+    POST-requests. Handles nested creation of experiments and their related data.
+    """
+
     uploader = serializers.PrimaryKeyRelatedField(queryset=CamaUser.objects.all())
     country = serializers.SlugRelatedField(queryset=Country.objects.all(), slug_field='name')
     category = serializers.SlugRelatedField(queryset=Category.objects.all(), slug_field='name')
@@ -50,6 +68,16 @@ class StudyCreateSerializer(serializers.ModelSerializer):
                   'authors', 'doi', 'abstract', 'keywords', 'approved', 'experiments']
         
     def create(self, validated_data):
+        """
+        Create a new Study instance along with nested Experiment and EffectData instances.
+        
+        Args:
+            validated_data (dict): Validated data containing study and nested 
+                                   experiment and effect_data attributes.
+        
+        Returns:
+            Study: The created Study instance.
+        """
         experiment_data = validated_data.pop('experiments')
         study = Study.objects.create(**validated_data)
         for experiment in experiment_data:
@@ -62,24 +90,34 @@ class StudyCreateSerializer(serializers.ModelSerializer):
         return study
 
 
-
-
 class StudySerializerUpdate(serializers.ModelSerializer):
+    """
+    Serializer for updating a Study model.
+    
+    Converts JSON representations of a study into a Study model object during 
+    POST-requests. Used for updating the approval status of studies and their 
+    nested experiments.
+    """
+
     experiments = serializers.ListField(child=ExperimentFromParentSerializerApproved())
 
     class Meta:
         model = Study
         fields = ['approved', 'experiments']
-    # def validate(self, data):
-    #     """
-    #     Validate authenticated user
-    #     """
-
-    #     if self.instance.uploader != self.context['request'].uploader:
-    #         raise serializers.ValidationError('You can not edit posts from other users')
-    #     return data
 
     def update(self, instance, validated_data):
+        """
+        Update the approval status of a Study instance and its nested Experiment instances.
+        
+        Args:
+            instance (Study): The existing Study instance to be updated.
+            validated_data (dict): Validated data containing the new approval status and 
+                                   nested experiment attributes.
+        
+        Returns:
+            Study: The updated Study instance.
+        """
+
         # Only update the 'approved' field in all nested tables
         for table in validated_data.get('experiments'):
             table.approved = validated_data.get('approved')

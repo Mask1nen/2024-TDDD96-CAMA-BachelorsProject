@@ -16,10 +16,24 @@ from myapi.serializers import study, experiment, effect_data
 
 @pytest.mark.django_db   
 class DownloadTest(TestCase):
+    """
+    Test case for testing the download of effect data as a CSV file.
+    """
+
     def setUp(self):
+        """
+        Set up the test case by initializing the API client.
+        """
         self.client = APIClient()
     
     def test_download_csv(self):
+        """
+        Test the CSV download functionality for effect data.
+
+        This test generates a batch of effect data, counts the number of records 
+        that match specific criteria, and verifies the CSV download functionality 
+        by checking if the number of rows in the downloaded CSV matches the expected count.
+        """
         # Generate some test data
         generated_data = EffectDataFactory.create_batch(10)
            
@@ -34,7 +48,8 @@ class DownloadTest(TestCase):
 
         # Read the content of the CSV response
         csv_data = response.content.decode('utf-8')
-        print(f'the response content data csv  {response.content}')
+        print(f'The response content data csv: {response.content}')
+        
         # Use StringIO to read the CSV content as a file-like object
         csv_file = StringIO(csv_data)
         
@@ -43,7 +58,7 @@ class DownloadTest(TestCase):
         
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
-        print(f'the response content data csv {csv_data}')
+        print(f'The response content data csv: {csv_data}')
         
         # Check if the number of rows matches the expected count
         self.assertEqual(expected_count, actual_count)
@@ -52,7 +67,8 @@ class DownloadTest(TestCase):
         
         # Read the content of the CSV response
         csv_data = response.content.decode('utf-8')
-        print(f'the response content data csv  {response.content}')
+        print(f'The response content data csv: {response.content}')
+        
         # Use StringIO to read the CSV content as a file-like object
         csv_file = StringIO(csv_data)
         
@@ -61,10 +77,10 @@ class DownloadTest(TestCase):
         
         # Calculate the number of rows in the CSV
         actual_count = sum(1 for row in csv_reader) - 1  # Subtract 1 for the header
-        print(f'the response content data csv {response.content}')
+        print(f'The response content data csv: {response.content}')
         
-        # check only works aslong as long as the create_batsh isn't long enough to create a object with the provided filters
+        # Check only works as long as the create_batch isn't long enough to create an object with the provided filters
         response = self.client.get('/api/download-effects/?country__name=Sweden&grade__k=False')
-        print(f'the response content data csv {response.content}')
+        print(f'The response content data csv: {response.content}')
         
         self.assertEqual(response.status_code, 404)

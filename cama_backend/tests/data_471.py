@@ -1,4 +1,8 @@
 class TestData:
+    """
+    Provides the testdata used to create model objects in test_471.
+    This can be used as a reference for the required appearance of JSON objects.
+    """
     cama_user_data = {
         "orc_id": "0000-0002-1825-0097",
         "name": "John Doe"
